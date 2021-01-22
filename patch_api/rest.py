@@ -57,13 +57,13 @@ class RESTClientObject(object):
         # maxsize is the number of requests to host that are allowed in parallel  # noqa: E501
         # Custom SSL certificates and client certificates: http://urllib3.readthedocs.io/en/latest/advanced-usage.html  # noqa: E501
 
-        self.configuration = configuration
-
         # cert_reqs
         if configuration.verify_ssl:
             cert_reqs = ssl.CERT_REQUIRED
         else:
             cert_reqs = ssl.CERT_NONE
+
+        self.configuration = configuration
 
         # ca_certs
         if configuration.ssl_ca_cert:
@@ -141,6 +141,7 @@ class RESTClientObject(object):
 
         post_params = post_params or {}
         headers = headers or {}
+
         timeout = None
         if _request_timeout:
             if isinstance(_request_timeout, (int, ) if six.PY3 else (int, long)):  # noqa: E501,F821
@@ -221,6 +222,11 @@ class RESTClientObject(object):
 
         if _preload_content:
             r = RESTResponse(r)
+
+            # In the python 3, the response.data is bytes.
+            # we need to decode it to string.
+            if six.PY3:
+                r.data = r.data.decode('utf8')
 
             # log response body
             logger.debug("response body: %s", r.data)

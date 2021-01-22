@@ -34,47 +34,33 @@ class TestPreferencesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    # def test_delete_and_create_preference(self):
-    #     """Test case for create_preference
+    def test_retrieve_preferences_and_preference(self):
+        """Test case for retrieve_preferences and retrieve_preference
 
-    #     creates a project preference  # noqa: E501
-    #     """
-    #     # Try to create the preference
-    #     try:
-    #         project_id = "pro_test_2b67b11a030b66e0a6dd61a56b49079a"
-
-    #         create_preference_request = CreatePreferenceRequest(project_id=project_id)
-    #         preference = self.api.create_preference(create_preference_request)
-
-    #     # Delete it if it exists
-    #     except ApiException as err:
-    #         print('err---------------->', err)
-    #         deleted_preference = self.api.delete_preference(id=project_id)
-    #         self.assertTrue(deleted_preference)
-
-        # self.assertTrue(preference)
-        # self.assertEqual(preference.data.project_id, project_id)
-
-
-        # def test_retrieve_preference(self):
-        #     """Test case for retrieve_preference
-
-        #     Retrieve the preference  # noqa: E501
-        #     """
-        #     project_id = "pro_test_2b67b11a030b66e0a6dd61a56b49079a"
-
-        #     create_preference_request = CreatePreferenceRequest(project_id=project_id)
-        #     preference = self.api.create_preference(create_preference_request)
-
-        #     preference = self.api.retrieve_preference()
-
-
-    def test_retrieve_preferences(self):
-        """Test case for retrieve_preferences
-
-        Retrieves a list of preferences  # noqa: E501
+        creates a project preference  # noqa: E501
         """
-        pass
+        preferences = self.api.retrieve_preferences()
+        self.assertTrue(isinstance(preferences.data, list))
+
+        preference_id = preferences.data[0].id
+        preference = self.api.retrieve_preference(id=preference_id)
+        self.assertTrue(preference)
+
+    def test_delete_and_create_preferences(self):
+        """Test case for create_preference and delete_preference
+        """
+        project_id = "pro_test_0de1a59eed9ff8474e09077ddb3714b2"
+        preferences = self.api.retrieve_preferences()
+        preference_id = preferences.data[0].id
+
+        deleted_preference = self.api.delete_preference(id=preference_id)
+
+        self.assertTrue(deleted_preference)
+
+        create_preference_request = CreatePreferenceRequest(project_id=project_id)
+        preference = self.api.create_preference(create_preference_request)
+
+        self.assertTrue(preference)
 
 
 if __name__ == '__main__':
