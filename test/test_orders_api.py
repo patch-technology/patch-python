@@ -14,9 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import os
 
 import patch_api
 from patch_api.api.orders_api import OrdersApi  # noqa: E501
+from patch_api.models.create_order_request import CreateOrderRequest
 from patch_api.rest import ApiException
 
 
@@ -24,45 +26,46 @@ class TestOrdersApi(unittest.TestCase):
     """OrdersApi unit test stubs"""
 
     def setUp(self):
-        self.api = patch_api.api.orders_api.OrdersApi()  # noqa: E501
+        configuration = patch_api.Configuration(api_key=os.environ.get('SANDBOX_API_KEY'))
+        api_client = patch_api.ApiClient(configuration)
+        self.api = OrdersApi(api_client=api_client)  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_cancel_order(self):
-        """Test case for cancel_order
-
-        Cancel an order  # noqa: E501
+    def test_interactions_with_an_order(self):
+        """Test case for create_order, retrieve_order, cancel_order
         """
-        pass
 
-    def test_create_order(self):
-        """Test case for create_order
-
-        Creates an order  # noqa: E501
+        """Create an order
         """
-        pass
+        create_order_request = CreateOrderRequest(mass_g=100)
+        order = self.api.create_order(create_order_request)
 
-    def test_place_order(self):
-        """Test case for place_order
+        self.assertTrue(order)
 
-        Place an order  # noqa: E501
+        """Retrieve an order
         """
-        pass
+        create_order_request = CreateOrderRequest(mass_g=100)
+        order = self.api.create_order(create_order_request=create_order_request)
+        retrieved_order = self.api.retrieve_order(id=order.data.id)
 
-    def test_retrieve_order(self):
-        """Test case for retrieve_order
+        self.assertTrue(retrieved_order)
 
-        Retrieves an order  # noqa: E501
+        """Cancel an order
         """
-        pass
+        cancelled_order = self.api.retrieve_order(id=order.data.id)
+
+        self.assertTrue(cancelled_order)
+
 
     def test_retrieve_orders(self):
         """Test case for retrieve_orders
 
         Retrieves a list of orders  # noqa: E501
         """
-        pass
+        orders = self.api.retrieve_orders()
+        self.assertTrue(isinstance(orders.data, list))
 
 
 if __name__ == '__main__':
