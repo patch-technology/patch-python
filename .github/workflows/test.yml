@@ -1,0 +1,23 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    name: Python Library tests
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        - uses: actions/setup-python@v2
+          with:
+            python-version: '3.x'
+      - name: Run tests
+        env:
+          SANDBOX_API_KEY: ${{ secrets.SANDBOX_API_KEY }}
+        run: make test
