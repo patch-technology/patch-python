@@ -26,7 +26,9 @@ class TestOrdersApi(unittest.TestCase):
     """OrdersApi unit test stubs"""
 
     def setUp(self):
-        configuration = patch_api.Configuration(api_key=os.environ.get('SANDBOX_API_KEY'))
+        configuration = patch_api.Configuration(
+            api_key=os.environ.get("SANDBOX_API_KEY")
+        )
         api_client = patch_api.ApiClient(configuration)
         self.api = OrdersApi(api_client=api_client)  # noqa: E501
 
@@ -58,7 +60,6 @@ class TestOrdersApi(unittest.TestCase):
 
         self.assertTrue(cancelled_order)
 
-
     def test_retrieve_orders(self):
         """Test case for retrieve_orders
 
@@ -68,5 +69,5 @@ class TestOrdersApi(unittest.TestCase):
         self.assertTrue(isinstance(orders.data, list))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

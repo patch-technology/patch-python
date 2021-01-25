@@ -34,34 +34,48 @@ class CreateProjectRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str',
-        'description': 'str',
-        'country': 'str',
-        'state': 'str',
-        'verifier': 'str',
-        'type': 'str',
-        'standard_type': 'str',
-        'longitude': 'str',
-        'latitude': 'str',
-        'production': 'str',
-        'organization_id': 'str'
+        "name": "str",
+        "description": "str",
+        "country": "str",
+        "state": "str",
+        "verifier": "str",
+        "type": "str",
+        "standard_type": "str",
+        "longitude": "str",
+        "latitude": "str",
+        "production": "str",
+        "organization_id": "str",
     }
 
     attribute_map = {
-        'name': 'name',
-        'description': 'description',
-        'country': 'country',
-        'state': 'state',
-        'verifier': 'verifier',
-        'type': 'type',
-        'standard_type': 'standard_type',
-        'longitude': 'longitude',
-        'latitude': 'latitude',
-        'production': 'production',
-        'organization_id': 'organization_id'
+        "name": "name",
+        "description": "description",
+        "country": "country",
+        "state": "state",
+        "verifier": "verifier",
+        "type": "type",
+        "standard_type": "standard_type",
+        "longitude": "longitude",
+        "latitude": "latitude",
+        "production": "production",
+        "organization_id": "organization_id",
     }
 
-    def __init__(self, name=None, description=None, country=None, state=None, verifier=None, type=None, standard_type=None, longitude=None, latitude=None, production=None, organization_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        name=None,
+        description=None,
+        country=None,
+        state=None,
+        verifier=None,
+        type=None,
+        standard_type=None,
+        longitude=None,
+        latitude=None,
+        production=None,
+        organization_id=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """CreateProjectRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -162,11 +176,265 @@ class CreateProjectRequest(object):
         :param country: The country of this CreateProjectRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = ["TJ", "JM", "HT", "ST", "MS", "AE", "PK", "NL", "LU", "BZ", "IR", "BO", "UY", "GH", "SA", "CI", "MF", "TF", "AI", "QA", "SX", "LY", "BV", "PG", "KG", "GQ", "EH", "NU", "PR", "GD", "KR", "HM", "SM", "SL", "CD", "MK", "TR", "DZ", "GE", "PS", "BB", "UA", "GP", "PF", "NA", "BW", "SY", "TG", "DO", "AQ", "CH", "MG", "FO", "VG", "GI", "BN", "LA", "IS", "EE", "UM", "LT", "RS", "MR", "AD", "HU", "TK", "MY", "AO", "CV", "NF", "PA", "GW", "BE", "PT", "GB", "IM", "US", "YE", "HK", "AZ", "CC", "ML", "SK", "VU", "TL", "HR", "SR", "MU", "CZ", "PM", "LS", "WS", "KM", "IT", "BI", "WF", "GN", "SG", "CO", "CN", "AW", "MA", "FI", "VA", "ZW", "KY", "BH", "PY", "EC", "LR", "RU", "PL", "OM", "MT", "SS", "DE", "TM", "SJ", "MM", "TT", "IL", "BD", "NR", "LK", "UG", "NG", "BQ", "MX", "CW", "SI", "MN", "CA", "AX", "VN", "TW", "JP", "IO", "RO", "BG", "GU", "BR", "AM", "ZM", "DJ", "JE", "AT", "CM", "SE", "FJ", "KZ", "GL", "GY", "CX", "MW", "TN", "ZA", "TO", "CY", "MV", "PN", "RW", "NI", "KN", "BJ", "ET", "GM", "TZ", "VC", "FK", "SD", "MC", "AU", "CL", "DK", "FR", "TC", "CU", "AL", "MZ", "BS", "NE", "GT", "LI", "NP", "BF", "PW", "KW", "IN", "GA", "TV", "MO", "SH", "MD", "CK", "AR", "SC", "IE", "ES", "LB", "BM", "RE", "KI", "AG", "MQ", "SV", "JO", "TH", "SO", "MH", "CG", "KP", "GF", "BA", "YT", "GS", "KE", "PE", "BT", "SZ", "CR", "TD", "DM", "NC", "GR", "GG", "HN", "VI", "CF", "SN", "AF", "MP", "PH", "BY", "LV", "NO", "EG", "KH", "IQ", "LC", "NZ", "BL", "UZ", "ID", "ER", "VE", "FM", "SB", "ME", "AS"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and country not in allowed_values:  # noqa: E501
+        allowed_values = [
+            "TJ",
+            "JM",
+            "HT",
+            "ST",
+            "MS",
+            "AE",
+            "PK",
+            "NL",
+            "LU",
+            "BZ",
+            "IR",
+            "BO",
+            "UY",
+            "GH",
+            "SA",
+            "CI",
+            "MF",
+            "TF",
+            "AI",
+            "QA",
+            "SX",
+            "LY",
+            "BV",
+            "PG",
+            "KG",
+            "GQ",
+            "EH",
+            "NU",
+            "PR",
+            "GD",
+            "KR",
+            "HM",
+            "SM",
+            "SL",
+            "CD",
+            "MK",
+            "TR",
+            "DZ",
+            "GE",
+            "PS",
+            "BB",
+            "UA",
+            "GP",
+            "PF",
+            "NA",
+            "BW",
+            "SY",
+            "TG",
+            "DO",
+            "AQ",
+            "CH",
+            "MG",
+            "FO",
+            "VG",
+            "GI",
+            "BN",
+            "LA",
+            "IS",
+            "EE",
+            "UM",
+            "LT",
+            "RS",
+            "MR",
+            "AD",
+            "HU",
+            "TK",
+            "MY",
+            "AO",
+            "CV",
+            "NF",
+            "PA",
+            "GW",
+            "BE",
+            "PT",
+            "GB",
+            "IM",
+            "US",
+            "YE",
+            "HK",
+            "AZ",
+            "CC",
+            "ML",
+            "SK",
+            "VU",
+            "TL",
+            "HR",
+            "SR",
+            "MU",
+            "CZ",
+            "PM",
+            "LS",
+            "WS",
+            "KM",
+            "IT",
+            "BI",
+            "WF",
+            "GN",
+            "SG",
+            "CO",
+            "CN",
+            "AW",
+            "MA",
+            "FI",
+            "VA",
+            "ZW",
+            "KY",
+            "BH",
+            "PY",
+            "EC",
+            "LR",
+            "RU",
+            "PL",
+            "OM",
+            "MT",
+            "SS",
+            "DE",
+            "TM",
+            "SJ",
+            "MM",
+            "TT",
+            "IL",
+            "BD",
+            "NR",
+            "LK",
+            "UG",
+            "NG",
+            "BQ",
+            "MX",
+            "CW",
+            "SI",
+            "MN",
+            "CA",
+            "AX",
+            "VN",
+            "TW",
+            "JP",
+            "IO",
+            "RO",
+            "BG",
+            "GU",
+            "BR",
+            "AM",
+            "ZM",
+            "DJ",
+            "JE",
+            "AT",
+            "CM",
+            "SE",
+            "FJ",
+            "KZ",
+            "GL",
+            "GY",
+            "CX",
+            "MW",
+            "TN",
+            "ZA",
+            "TO",
+            "CY",
+            "MV",
+            "PN",
+            "RW",
+            "NI",
+            "KN",
+            "BJ",
+            "ET",
+            "GM",
+            "TZ",
+            "VC",
+            "FK",
+            "SD",
+            "MC",
+            "AU",
+            "CL",
+            "DK",
+            "FR",
+            "TC",
+            "CU",
+            "AL",
+            "MZ",
+            "BS",
+            "NE",
+            "GT",
+            "LI",
+            "NP",
+            "BF",
+            "PW",
+            "KW",
+            "IN",
+            "GA",
+            "TV",
+            "MO",
+            "SH",
+            "MD",
+            "CK",
+            "AR",
+            "SC",
+            "IE",
+            "ES",
+            "LB",
+            "BM",
+            "RE",
+            "KI",
+            "AG",
+            "MQ",
+            "SV",
+            "JO",
+            "TH",
+            "SO",
+            "MH",
+            "CG",
+            "KP",
+            "GF",
+            "BA",
+            "YT",
+            "GS",
+            "KE",
+            "PE",
+            "BT",
+            "SZ",
+            "CR",
+            "TD",
+            "DM",
+            "NC",
+            "GR",
+            "GG",
+            "HN",
+            "VI",
+            "CF",
+            "SN",
+            "AF",
+            "MP",
+            "PH",
+            "BY",
+            "LV",
+            "NO",
+            "EG",
+            "KH",
+            "IQ",
+            "LC",
+            "NZ",
+            "BL",
+            "UZ",
+            "ID",
+            "ER",
+            "VE",
+            "FM",
+            "SB",
+            "ME",
+            "AS",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and country not in allowed_values
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `country` ({0}), must be one of {1}"  # noqa: E501
-                .format(country, allowed_values)
+                "Invalid value for `country` ({0}), must be one of {1}".format(  # noqa: E501
+                    country, allowed_values
+                )
             )
 
         self._country = country
@@ -231,11 +499,22 @@ class CreateProjectRequest(object):
         :param type: The type of this CreateProjectRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = ["biomass", "dac", "forestry", "mineralization", "ocean", "soil"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+        allowed_values = [
+            "biomass",
+            "dac",
+            "forestry",
+            "mineralization",
+            "ocean",
+            "soil",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and type not in allowed_values
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
+                "Invalid value for `type` ({0}), must be one of {1}".format(  # noqa: E501
+                    type, allowed_values
+                )
             )
 
         self._type = type
@@ -258,11 +537,20 @@ class CreateProjectRequest(object):
         :param standard_type: The standard_type of this CreateProjectRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = ["american_carbon_registry", "climate_action_reserve", "verified_carbon_standard", "european_biochar_certificate"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and standard_type not in allowed_values:  # noqa: E501
+        allowed_values = [
+            "american_carbon_registry",
+            "climate_action_reserve",
+            "verified_carbon_standard",
+            "european_biochar_certificate",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and standard_type not in allowed_values
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `standard_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(standard_type, allowed_values)
+                "Invalid value for `standard_type` ({0}), must be one of {1}".format(  # noqa: E501
+                    standard_type, allowed_values
+                )
             )
 
         self._standard_type = standard_type
@@ -358,18 +646,20 @@ class CreateProjectRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

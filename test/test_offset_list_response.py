@@ -21,6 +21,7 @@ from patch_api.models.offset_list_response import OffsetListResponse  # noqa: E5
 from factories import OffsetFactory, MetaIndexObjectFactory
 from patch_api.rest import ApiException
 
+
 class TestOffsetListResponse(unittest.TestCase):
     """OffsetListResponse unit test stubs"""
 
@@ -36,24 +37,20 @@ class TestOffsetListResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.offset_list_response.OffsetListResponse()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return OffsetListResponse(
-                success = True,
-                error = None,
-                data = [
-                    OffsetFactory()
-                    ],
-                meta = MetaIndexObjectFactory()
+                success=True,
+                error=None,
+                data=[OffsetFactory()],
+                meta=MetaIndexObjectFactory(),
             )
-        else :
+        else:
             return OffsetListResponse(
-                success = True,
-                error = None,
-                data = [
-                    OffsetFactory()
-                    ],
-                meta = MetaIndexObjectFactory(),
-        )
+                success=True,
+                error=None,
+                data=[OffsetFactory()],
+                meta=MetaIndexObjectFactory(),
+            )
 
     def testOffsetListResponse(self):
         """Test OffsetListResponse"""
@@ -64,5 +61,5 @@ class TestOffsetListResponse(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

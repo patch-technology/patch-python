@@ -21,6 +21,7 @@ from patch_api.models.offset_response import OffsetResponse  # noqa: E501
 from factories import OffsetFactory
 from patch_api.rest import ApiException
 
+
 class TestOffsetResponse(unittest.TestCase):
     """OffsetResponse unit test stubs"""
 
@@ -36,18 +37,10 @@ class TestOffsetResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.offset_response.OffsetResponse()  # noqa: E501
-        if include_optional :
-            return OffsetResponse(
-                success = True,
-                error = None,
-                data = OffsetFactory()
-            )
-        else :
-            return OffsetResponse(
-                success = True,
-                error = None,
-                data = OffsetFactory(),
-        )
+        if include_optional:
+            return OffsetResponse(success=True, error=None, data=OffsetFactory())
+        else:
+            return OffsetResponse(success=True, error=None, data=OffsetFactory())
 
     def testOffsetResponse(self):
         """Test OffsetResponse"""
@@ -58,5 +51,5 @@ class TestOffsetResponse(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

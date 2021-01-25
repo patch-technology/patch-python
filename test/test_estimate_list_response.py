@@ -21,6 +21,7 @@ from patch_api.models.estimate_list_response import EstimateListResponse  # noqa
 from factories import EstimateFactory, MetaIndexObjectFactory
 from patch_api.rest import ApiException
 
+
 class TestEstimateListResponse(unittest.TestCase):
     """EstimateListResponse unit test stubs"""
 
@@ -36,24 +37,20 @@ class TestEstimateListResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.estimate_list_response.EstimateListResponse()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return EstimateListResponse(
-                success = True,
-                error = None,
-                data = [
-                    EstimateFactory()
-                    ],
-                meta = MetaIndexObjectFactory()
+                success=True,
+                error=None,
+                data=[EstimateFactory()],
+                meta=MetaIndexObjectFactory(),
             )
-        else :
+        else:
             return EstimateListResponse(
-                success = True,
-                error = None,
-                data = [
-                    EstimateFactory()
-                    ],
-                meta = MetaIndexObjectFactory(),
-        )
+                success=True,
+                error=None,
+                data=[EstimateFactory()],
+                meta=MetaIndexObjectFactory(),
+            )
 
     def testEstimateListResponse(self):
         """Test EstimateListResponse"""
@@ -63,5 +60,6 @@ class TestEstimateListResponse(unittest.TestCase):
         self.assertTrue(inst_req_only)
         self.assertTrue(inst_req_and_optional)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

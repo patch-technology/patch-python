@@ -34,34 +34,48 @@ class Offset(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'allocated_mass_g': 'int',
-        'fulfilled_at': 'str',
-        'fulfillment_state': 'str',
-        'mass_g': 'int',
-        'price_cents_usd': 'str',
-        'production': 'bool',
-        'retired': 'bool',
-        'serial_number': 'str',
-        'vintage_year': 'int',
-        'project_id': 'str'
+        "id": "str",
+        "allocated_mass_g": "int",
+        "fulfilled_at": "str",
+        "fulfillment_state": "str",
+        "mass_g": "int",
+        "price_cents_usd": "str",
+        "production": "bool",
+        "retired": "bool",
+        "serial_number": "str",
+        "vintage_year": "int",
+        "project_id": "str",
     }
 
     attribute_map = {
-        'id': 'id',
-        'allocated_mass_g': 'allocated_mass_g',
-        'fulfilled_at': 'fulfilled_at',
-        'fulfillment_state': 'fulfillment_state',
-        'mass_g': 'mass_g',
-        'price_cents_usd': 'price_cents_usd',
-        'production': 'production',
-        'retired': 'retired',
-        'serial_number': 'serial_number',
-        'vintage_year': 'vintage_year',
-        'project_id': 'project_id'
+        "id": "id",
+        "allocated_mass_g": "allocated_mass_g",
+        "fulfilled_at": "fulfilled_at",
+        "fulfillment_state": "fulfillment_state",
+        "mass_g": "mass_g",
+        "price_cents_usd": "price_cents_usd",
+        "production": "production",
+        "retired": "retired",
+        "serial_number": "serial_number",
+        "vintage_year": "vintage_year",
+        "project_id": "project_id",
     }
 
-    def __init__(self, id=None, allocated_mass_g=None, fulfilled_at=None, fulfillment_state=None, mass_g=None, price_cents_usd=None, production=None, retired=None, serial_number=None, vintage_year=None, project_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        allocated_mass_g=None,
+        fulfilled_at=None,
+        fulfillment_state=None,
+        mass_g=None,
+        price_cents_usd=None,
+        production=None,
+        retired=None,
+        serial_number=None,
+        vintage_year=None,
+        project_id=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """Offset - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -112,7 +126,9 @@ class Offset(object):
         :param id: The id of this Offset.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -137,14 +153,29 @@ class Offset(object):
         :param allocated_mass_g: The allocated_mass_g of this Offset.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and allocated_mass_g is None:  # noqa: E501
-            raise ValueError("Invalid value for `allocated_mass_g`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                allocated_mass_g is not None and allocated_mass_g > 1000000000):  # noqa: E501
-            raise ValueError("Invalid value for `allocated_mass_g`, must be a value less than or equal to `1000000000`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                allocated_mass_g is not None and allocated_mass_g < 0):  # noqa: E501
-            raise ValueError("Invalid value for `allocated_mass_g`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and allocated_mass_g is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `allocated_mass_g`, must not be `None`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and allocated_mass_g is not None
+            and allocated_mass_g > 1000000000
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `allocated_mass_g`, must be a value less than or equal to `1000000000`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and allocated_mass_g is not None
+            and allocated_mass_g < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `allocated_mass_g`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._allocated_mass_g = allocated_mass_g
 
@@ -191,13 +222,22 @@ class Offset(object):
         :param fulfillment_state: The fulfillment_state of this Offset.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and fulfillment_state is None:  # noqa: E501
-            raise ValueError("Invalid value for `fulfillment_state`, must not be `None`")  # noqa: E501
-        allowed_values = ["pending", "fulfilled"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and fulfillment_state not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and fulfillment_state is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `fulfillment_state` ({0}), must be one of {1}"  # noqa: E501
-                .format(fulfillment_state, allowed_values)
+                "Invalid value for `fulfillment_state`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["pending", "fulfilled"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and fulfillment_state not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `fulfillment_state` ({0}), must be one of {1}".format(  # noqa: E501
+                    fulfillment_state, allowed_values
+                )
             )
 
         self._fulfillment_state = fulfillment_state
@@ -222,14 +262,28 @@ class Offset(object):
         :param mass_g: The mass_g of this Offset.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and mass_g is None:  # noqa: E501
-            raise ValueError("Invalid value for `mass_g`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                mass_g is not None and mass_g > 1000000000):  # noqa: E501
-            raise ValueError("Invalid value for `mass_g`, must be a value less than or equal to `1000000000`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                mass_g is not None and mass_g < 1):  # noqa: E501
-            raise ValueError("Invalid value for `mass_g`, must be a value greater than or equal to `1`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and mass_g is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `mass_g`, must not be `None`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and mass_g is not None
+            and mass_g > 1000000000
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `mass_g`, must be a value less than or equal to `1000000000`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and mass_g is not None
+            and mass_g < 1
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `mass_g`, must be a value greater than or equal to `1`"
+            )  # noqa: E501
 
         self._mass_g = mass_g
 
@@ -253,8 +307,13 @@ class Offset(object):
         :param price_cents_usd: The price_cents_usd of this Offset.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and price_cents_usd is None:  # noqa: E501
-            raise ValueError("Invalid value for `price_cents_usd`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and price_cents_usd is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `price_cents_usd`, must not be `None`"
+            )  # noqa: E501
 
         self._price_cents_usd = price_cents_usd
 
@@ -278,8 +337,12 @@ class Offset(object):
         :param production: The production of this Offset.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and production is None:  # noqa: E501
-            raise ValueError("Invalid value for `production`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and production is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `production`, must not be `None`"
+            )  # noqa: E501
 
         self._production = production
 
@@ -301,8 +364,12 @@ class Offset(object):
         :param retired: The retired of this Offset.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and retired is None:  # noqa: E501
-            raise ValueError("Invalid value for `retired`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and retired is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `retired`, must not be `None`"
+            )  # noqa: E501
 
         self._retired = retired
 
@@ -347,8 +414,13 @@ class Offset(object):
         :param vintage_year: The vintage_year of this Offset.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and vintage_year is None:  # noqa: E501
-            raise ValueError("Invalid value for `vintage_year`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vintage_year is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vintage_year`, must not be `None`"
+            )  # noqa: E501
 
         self._vintage_year = vintage_year
 
@@ -370,8 +442,12 @@ class Offset(object):
         :param project_id: The project_id of this Offset.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and project_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `project_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and project_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `project_id`, must not be `None`"
+            )  # noqa: E501
 
         self._project_id = project_id
 
@@ -382,18 +458,20 @@ class Offset(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

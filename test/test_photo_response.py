@@ -21,6 +21,7 @@ from patch_api.models.photo_response import PhotoResponse  # noqa: E501
 from factories import PhotoFactory  # noqa: E501
 from patch_api.rest import ApiException
 
+
 class TestPhotoResponse(unittest.TestCase):
     """PhotoResponse unit test stubs"""
 
@@ -36,18 +37,10 @@ class TestPhotoResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.photo_response.PhotoResponse()  # noqa: E501
-        if include_optional :
-            return PhotoResponse(
-                success = True,
-                error = None,
-                data = PhotoFactory()
-            )
-        else :
-            return PhotoResponse(
-                success = True,
-                error = None,
-                data = PhotoFactory(),
-        )
+        if include_optional:
+            return PhotoResponse(success=True, error=None, data=PhotoFactory())
+        else:
+            return PhotoResponse(success=True, error=None, data=PhotoFactory())
 
     def testPhotoResponse(self):
         """Test PhotoResponse"""
@@ -58,5 +51,5 @@ class TestPhotoResponse(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

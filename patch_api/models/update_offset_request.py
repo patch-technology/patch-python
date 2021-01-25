@@ -34,20 +34,27 @@ class UpdateOffsetRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'mass_g': 'int',
-        'price_cents_usd': 'int',
-        'vintage_year': 'int',
-        'serial_number': 'str'
+        "mass_g": "int",
+        "price_cents_usd": "int",
+        "vintage_year": "int",
+        "serial_number": "str",
     }
 
     attribute_map = {
-        'mass_g': 'mass_g',
-        'price_cents_usd': 'price_cents_usd',
-        'vintage_year': 'vintage_year',
-        'serial_number': 'serial_number'
+        "mass_g": "mass_g",
+        "price_cents_usd": "price_cents_usd",
+        "vintage_year": "vintage_year",
+        "serial_number": "serial_number",
     }
 
-    def __init__(self, mass_g=None, price_cents_usd=None, vintage_year=None, serial_number=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        mass_g=None,
+        price_cents_usd=None,
+        vintage_year=None,
+        serial_number=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """UpdateOffsetRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -85,12 +92,22 @@ class UpdateOffsetRequest(object):
         :param mass_g: The mass_g of this UpdateOffsetRequest.  # noqa: E501
         :type: int
         """
-        if (self.local_vars_configuration.client_side_validation and
-                mass_g is not None and mass_g > 1000000000):  # noqa: E501
-            raise ValueError("Invalid value for `mass_g`, must be a value less than or equal to `1000000000`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                mass_g is not None and mass_g < 1):  # noqa: E501
-            raise ValueError("Invalid value for `mass_g`, must be a value greater than or equal to `1`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and mass_g is not None
+            and mass_g > 1000000000
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `mass_g`, must be a value less than or equal to `1000000000`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and mass_g is not None
+            and mass_g < 1
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `mass_g`, must be a value greater than or equal to `1`"
+            )  # noqa: E501
 
         self._mass_g = mass_g
 
@@ -112,9 +129,14 @@ class UpdateOffsetRequest(object):
         :param price_cents_usd: The price_cents_usd of this UpdateOffsetRequest.  # noqa: E501
         :type: int
         """
-        if (self.local_vars_configuration.client_side_validation and
-                price_cents_usd is not None and price_cents_usd < 1):  # noqa: E501
-            raise ValueError("Invalid value for `price_cents_usd`, must be a value greater than or equal to `1`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and price_cents_usd is not None
+            and price_cents_usd < 1
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `price_cents_usd`, must be a value greater than or equal to `1`"
+            )  # noqa: E501
 
         self._price_cents_usd = price_cents_usd
 
@@ -167,18 +189,20 @@ class UpdateOffsetRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

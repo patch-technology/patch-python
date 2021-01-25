@@ -21,6 +21,7 @@ from patch_api.models.preference import Preference  # noqa: E501
 from factories import PreferenceFactory
 from patch_api.rest import ApiException
 
+
 class TestPreference(unittest.TestCase):
     """Preference unit test stubs"""
 
@@ -36,9 +37,9 @@ class TestPreference(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.preference.Preference()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return PreferenceFactory()
-        else :
+        else:
             return PreferenceFactory()
 
     def testPreference(self):
@@ -50,5 +51,5 @@ class TestPreference(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

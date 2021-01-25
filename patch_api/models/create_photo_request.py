@@ -33,19 +33,17 @@ class CreatePhotoRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'project_id': 'str',
-        'url': 'str',
-        'sort_order': 'int'
-    }
+    openapi_types = {"project_id": "str", "url": "str", "sort_order": "int"}
 
     attribute_map = {
-        'project_id': 'project_id',
-        'url': 'url',
-        'sort_order': 'sort_order'
+        "project_id": "project_id",
+        "url": "url",
+        "sort_order": "sort_order",
     }
 
-    def __init__(self, project_id=None, url=None, sort_order=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, project_id=None, url=None, sort_order=None, local_vars_configuration=None
+    ):  # noqa: E501
         """CreatePhotoRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -79,8 +77,12 @@ class CreatePhotoRequest(object):
         :param project_id: The project_id of this CreatePhotoRequest.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and project_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `project_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and project_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `project_id`, must not be `None`"
+            )  # noqa: E501
 
         self._project_id = project_id
 
@@ -102,8 +104,12 @@ class CreatePhotoRequest(object):
         :param url: The url of this CreatePhotoRequest.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and url is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `url`, must not be `None`"
+            )  # noqa: E501
 
         self._url = url
 
@@ -135,18 +141,20 @@ class CreatePhotoRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

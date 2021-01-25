@@ -21,6 +21,7 @@ from patch_api.models.order import Order  # noqa: E501
 from patch_api.rest import ApiException
 from factories import AllocationFactory
 
+
 class TestOrder(unittest.TestCase):
     """Order unit test stubs"""
 
@@ -36,34 +37,30 @@ class TestOrder(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.order.Order()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return Order(
-                id = '0',
-                mass_g = 1,
-                production = True,
-                state = 'draft',
-                allocation_state = 'pending',
-                price_cents_usd = '0',
-                patch_fee_cents_usd = '0',
-                allocations = [
-                        AllocationFactory()
-                    ],
-                metadata = {},
+                id="0",
+                mass_g=1,
+                production=True,
+                state="draft",
+                allocation_state="pending",
+                price_cents_usd="0",
+                patch_fee_cents_usd="0",
+                allocations=[AllocationFactory()],
+                metadata={},
             )
-        else :
+        else:
             return Order(
-                id = '0',
-                mass_g = 1,
-                production = True,
-                state = 'draft',
-                allocation_state = 'pending',
-                price_cents_usd = '0',
-                patch_fee_cents_usd = '0',
-                allocations = [
-                        AllocationFactory()
-                    ],
-                metadata = {},
-        )
+                id="0",
+                mass_g=1,
+                production=True,
+                state="draft",
+                allocation_state="pending",
+                price_cents_usd="0",
+                patch_fee_cents_usd="0",
+                allocations=[AllocationFactory()],
+                metadata={},
+            )
 
     def testOrder(self):
         """Test Order"""
@@ -74,5 +71,5 @@ class TestOrder(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -26,7 +26,9 @@ class TestEstimatesApi(unittest.TestCase):
     """EstimatesApi unit test stubs"""
 
     def setUp(self):
-        configuration = patch_api.Configuration(api_key=os.environ.get('SANDBOX_API_KEY'))
+        configuration = patch_api.Configuration(
+            api_key=os.environ.get("SANDBOX_API_KEY")
+        )
         api_client = patch_api.ApiClient(configuration)
         self.api = EstimatesApi(api_client=api_client)  # noqa: E501
 
@@ -40,7 +42,9 @@ class TestEstimatesApi(unittest.TestCase):
         """
         mass_g = 100
         project_id = "pro_test_2b67b11a030b66e0a6dd61a56b49079a"
-        mass_estimate_request = CreateMassEstimateRequest(mass_g=mass_g,project_id=project_id)
+        mass_estimate_request = CreateMassEstimateRequest(
+            mass_g=mass_g, project_id=project_id
+        )
         estimate = self.api.create_mass_estimate(mass_estimate_request)
 
         self.assertTrue(estimate)
@@ -51,5 +55,5 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.id, estimate.data.id)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

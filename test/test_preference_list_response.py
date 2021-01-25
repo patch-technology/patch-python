@@ -17,9 +17,12 @@ import unittest
 import datetime
 
 import patch_api
-from patch_api.models.preference_list_response import PreferenceListResponse  # noqa: E501
+from patch_api.models.preference_list_response import (
+    PreferenceListResponse,
+)  # noqa: E501
 from factories import MetaIndexObjectFactory, PreferenceFactory
 from patch_api.rest import ApiException
+
 
 class TestPreferenceListResponse(unittest.TestCase):
     """PreferenceListResponse unit test stubs"""
@@ -36,24 +39,20 @@ class TestPreferenceListResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.preference_list_response.PreferenceListResponse()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return PreferenceListResponse(
-                success = True,
-                error = None,
-                data = [
-                        PreferenceFactory()
-                    ],
-                meta = MetaIndexObjectFactory()
+                success=True,
+                error=None,
+                data=[PreferenceFactory()],
+                meta=MetaIndexObjectFactory(),
             )
-        else :
+        else:
             return PreferenceListResponse(
-                success = True,
-                error = None,
-                data = [
-                        PreferenceFactory()
-                    ],
-                meta = MetaIndexObjectFactory(),
-        )
+                success=True,
+                error=None,
+                data=[PreferenceFactory()],
+                meta=MetaIndexObjectFactory(),
+            )
 
     def testPreferenceListResponse(self):
         """Test PreferenceListResponse"""
@@ -64,5 +63,5 @@ class TestPreferenceListResponse(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

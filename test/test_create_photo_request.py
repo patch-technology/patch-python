@@ -20,6 +20,7 @@ import patch_api
 from patch_api.models.create_photo_request import CreatePhotoRequest  # noqa: E501
 from patch_api.rest import ApiException
 
+
 class TestCreatePhotoRequest(unittest.TestCase):
     """CreatePhotoRequest unit test stubs"""
 
@@ -35,17 +36,10 @@ class TestCreatePhotoRequest(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.create_photo_request.CreatePhotoRequest()  # noqa: E501
-        if include_optional :
-            return CreatePhotoRequest(
-                project_id = '0',
-                url = '0',
-                sort_order = 56
-            )
-        else :
-            return CreatePhotoRequest(
-                project_id = '0',
-                url = '0',
-        )
+        if include_optional:
+            return CreatePhotoRequest(project_id="0", url="0", sort_order=56)
+        else:
+            return CreatePhotoRequest(project_id="0", url="0")
 
     def testCreatePhotoRequest(self):
         """Test CreatePhotoRequest"""
@@ -56,5 +50,5 @@ class TestCreatePhotoRequest(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

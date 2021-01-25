@@ -20,6 +20,7 @@ import patch_api
 from patch_api.models.create_order_request import CreateOrderRequest  # noqa: E501
 from patch_api.rest import ApiException
 
+
 class TestCreateOrderRequest(unittest.TestCase):
     """CreateOrderRequest unit test stubs"""
 
@@ -35,16 +36,12 @@ class TestCreateOrderRequest(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.create_order_request.CreateOrderRequest()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return CreateOrderRequest(
-                mass_g = 1,
-                total_price_cents_usd = 1,
-                project_id = '0',
-                metadata = None
+                mass_g=1, total_price_cents_usd=1, project_id="0", metadata=None
             )
-        else :
-            return CreateOrderRequest(
-        )
+        else:
+            return CreateOrderRequest()
 
     def testCreateOrderRequest(self):
         """Test CreateOrderRequest"""
@@ -55,5 +52,5 @@ class TestCreateOrderRequest(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

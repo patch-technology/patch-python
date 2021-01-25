@@ -20,6 +20,7 @@ import patch_api
 from patch_api.models.meta_index_object import MetaIndexObject  # noqa: E501
 from patch_api.rest import ApiException
 
+
 class TestMetaIndexObject(unittest.TestCase):
     """MetaIndexObject unit test stubs"""
 
@@ -35,14 +36,10 @@ class TestMetaIndexObject(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.meta_index_object.MetaIndexObject()  # noqa: E501
-        if include_optional :
-            return MetaIndexObject(
-                prev_page = 56,
-                next_page = 56
-            )
-        else :
-            return MetaIndexObject(
-        )
+        if include_optional:
+            return MetaIndexObject(prev_page=56, next_page=56)
+        else:
+            return MetaIndexObject()
 
     def testMetaIndexObject(self):
         """Test MetaIndexObject"""
@@ -53,5 +50,5 @@ class TestMetaIndexObject(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

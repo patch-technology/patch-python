@@ -21,6 +21,7 @@ from patch_api.models.allocation import Allocation  # noqa: E501
 from factories import AllocationFactory
 from patch_api.rest import ApiException
 
+
 class TestAllocation(unittest.TestCase):
     """Allocation unit test stubs"""
 
@@ -36,9 +37,9 @@ class TestAllocation(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.allocation.Allocation()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return AllocationFactory()
-        else :
+        else:
             return AllocationFactory()
 
     def testAllocation(self):
@@ -50,5 +51,5 @@ class TestAllocation(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

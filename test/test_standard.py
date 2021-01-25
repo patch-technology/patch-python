@@ -20,6 +20,7 @@ import patch
 from patch_api.models.standard import Standard  # noqa: E501
 from patch_api.rest import ApiException
 
+
 class TestStandard(unittest.TestCase):
     """Standard unit test stubs"""
 
@@ -35,18 +36,10 @@ class TestStandard(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.standard.Standard()  # noqa: E501
-        if include_optional :
-            return Standard(
-                type = '0',
-                acronym = '0',
-                description = '0'
-            )
-        else :
-            return Standard(
-                type = '0',
-                acronym = '0',
-                description = '0',
-        )
+        if include_optional:
+            return Standard(type="0", acronym="0", description="0")
+        else:
+            return Standard(type="0", acronym="0", description="0")
 
     def testStandard(self):
         """Test Standard"""
@@ -57,5 +50,5 @@ class TestStandard(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

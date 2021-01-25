@@ -37,5 +37,5 @@ setup(
     include_package_data=True,
     long_description="""\
     The core API used to integrate with Patch&#39;s service  # noqa: E501
-    """
+    """,
 )

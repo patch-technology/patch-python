@@ -21,6 +21,7 @@ from patch_api.models.project_response import ProjectResponse  # noqa: E501
 from factories import ProjectFactory
 from patch_api.rest import ApiException
 
+
 class TestProjectResponse(unittest.TestCase):
     """ProjectResponse unit test stubs"""
 
@@ -36,18 +37,10 @@ class TestProjectResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.project_response.ProjectResponse()  # noqa: E501
-        if include_optional :
-            return ProjectResponse(
-                success = True,
-                error = None,
-                data = ProjectFactory()
-            )
-        else :
-            return ProjectResponse(
-                success = True,
-                error = None,
-                data = ProjectFactory()
-        )
+        if include_optional:
+            return ProjectResponse(success=True, error=None, data=ProjectFactory())
+        else:
+            return ProjectResponse(success=True, error=None, data=ProjectFactory())
 
     def testProjectResponse(self):
         """Test ProjectResponse"""
@@ -58,5 +51,5 @@ class TestProjectResponse(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

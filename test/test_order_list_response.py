@@ -21,6 +21,7 @@ from patch_api.models.order_list_response import OrderListResponse  # noqa: E501
 from factories import OrderFactory, MetaIndexObjectFactory
 from patch_api.rest import ApiException
 
+
 class TestOrderListResponse(unittest.TestCase):
     """OrderListResponse unit test stubs"""
 
@@ -36,24 +37,20 @@ class TestOrderListResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.order_list_response.OrderListResponse()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return OrderListResponse(
-                success = True,
-                error = None,
-                data = [
-                    OrderFactory()
-                    ],
-                meta = MetaIndexObjectFactory()
+                success=True,
+                error=None,
+                data=[OrderFactory()],
+                meta=MetaIndexObjectFactory(),
             )
-        else :
+        else:
             return OrderListResponse(
-                success = True,
-                error = None,
-                data = [
-                    OrderFactory()
-                    ],
-                meta = MetaIndexObjectFactory(),
-        )
+                success=True,
+                error=None,
+                data=[OrderFactory()],
+                meta=MetaIndexObjectFactory(),
+            )
 
     def testOrderListResponse(self):
         """Test OrderListResponse"""
@@ -64,5 +61,5 @@ class TestOrderListResponse(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

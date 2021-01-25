@@ -21,6 +21,7 @@ from patch_api.models.standard_list_response import StandardListResponse  # noqa
 from factories import StandardFactory, MetaIndexObjectFactory
 from patch_api.rest import ApiException
 
+
 class TestStandardListResponse(unittest.TestCase):
     """StandardListResponse unit test stubs"""
 
@@ -36,24 +37,20 @@ class TestStandardListResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.standard_list_response.StandardListResponse()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return StandardListResponse(
-                success = True,
-                error = None,
-                data = [
-                    StandardFactory(),
-                ],
-                meta = MetaIndexObjectFactory(),
+                success=True,
+                error=None,
+                data=[StandardFactory()],
+                meta=MetaIndexObjectFactory(),
             )
-        else :
+        else:
             return StandardListResponse(
-                success = True,
-                error = None,
-                data = [
-                    StandardFactory(),
-                ],
-                meta = MetaIndexObjectFactory(),
-        )
+                success=True,
+                error=None,
+                data=[StandardFactory()],
+                meta=MetaIndexObjectFactory(),
+            )
 
     def testStandardListResponse(self):
         """Test StandardListResponse"""
@@ -64,5 +61,5 @@ class TestStandardListResponse(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

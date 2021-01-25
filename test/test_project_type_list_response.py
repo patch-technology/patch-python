@@ -17,9 +17,12 @@ import unittest
 import datetime
 
 import patch_api
-from patch_api.models.project_type_list_response import ProjectTypeListResponse  # noqa: E501
+from patch_api.models.project_type_list_response import (
+    ProjectTypeListResponse,
+)  # noqa: E501
 from factories import MetaIndexObjectFactory
 from patch_api.rest import ApiException
+
 
 class TestProjectTypeListResponse(unittest.TestCase):
     """ProjectTypeListResponse unit test stubs"""
@@ -36,24 +39,14 @@ class TestProjectTypeListResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.project_type_list_response.ProjectTypeListResponse()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return ProjectTypeListResponse(
-                success = True,
-                error = None,
-                data = [
-                    '0'
-                    ],
-                meta = MetaIndexObjectFactory()
+                success=True, error=None, data=["0"], meta=MetaIndexObjectFactory()
             )
-        else :
+        else:
             return ProjectTypeListResponse(
-                success = True,
-                error = None,
-                data = [
-                    '0'
-                    ],
-                meta = MetaIndexObjectFactory(),
-        )
+                success=True, error=None, data=["0"], meta=MetaIndexObjectFactory()
+            )
 
     def testProjectTypeListResponse(self):
         """Test ProjectTypeListResponse"""
@@ -64,5 +57,5 @@ class TestProjectTypeListResponse(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

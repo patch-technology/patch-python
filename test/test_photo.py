@@ -20,6 +20,7 @@ import patch_api
 from patch_api.models.photo import Photo  # noqa: E501
 from patch_api.rest import ApiException
 
+
 class TestPhoto(unittest.TestCase):
     """Photo unit test stubs"""
 
@@ -35,16 +36,10 @@ class TestPhoto(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.photo.Photo()  # noqa: E501
-        if include_optional :
-            return Photo(
-                url = '0',
-                id = '0'
-            )
-        else :
-            return Photo(
-                url = '0',
-                id = '0',
-        )
+        if include_optional:
+            return Photo(url="0", id="0")
+        else:
+            return Photo(url="0", id="0")
 
     def testPhoto(self):
         """Test Photo"""
@@ -55,5 +50,5 @@ class TestPhoto(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

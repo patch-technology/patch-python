@@ -19,10 +19,7 @@ import re  # noqa: F401
 import six
 
 from patch_api.api_client import ApiClient
-from patch_api.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from patch_api.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class EstimatesApi(object):
@@ -37,7 +34,9 @@ class EstimatesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_mass_estimate(self, create_mass_estimate_request, **kwargs):  # noqa: E501
+    def create_mass_estimate(
+        self, create_mass_estimate_request, **kwargs
+    ):  # noqa: E501
         """Create an estimate based on mass of CO2  # noqa: E501
 
         Creates an estimate for the mass of CO2 to be compensated. An order in the `draft` state will also be created, linked to the estimate.   # noqa: E501
@@ -59,10 +58,14 @@ class EstimatesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.create_mass_estimate_with_http_info(create_mass_estimate_request, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.create_mass_estimate_with_http_info(
+            create_mass_estimate_request, **kwargs
+        )  # noqa: E501
 
-    def create_mass_estimate_with_http_info(self, create_mass_estimate_request, **kwargs):  # noqa: E501
+    def create_mass_estimate_with_http_info(
+        self, create_mass_estimate_request, **kwargs
+    ):  # noqa: E501
         """Create an estimate based on mass of CO2  # noqa: E501
 
         Creates an estimate for the mass of CO2 to be compensated. An order in the `draft` state will also be created, linked to the estimate.   # noqa: E501
@@ -89,30 +92,32 @@ class EstimatesApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'create_mass_estimate_request'
-        ]
+        all_params = ["create_mass_estimate_request"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method create_mass_estimate" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'create_mass_estimate_request' is set
-        if self.api_client.client_side_validation and ('create_mass_estimate_request' not in local_var_params or  # noqa: E501
-                                                        local_var_params['create_mass_estimate_request'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `create_mass_estimate_request` when calling `create_mass_estimate`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "create_mass_estimate_request" not in local_var_params
+            or local_var_params["create_mass_estimate_request"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `create_mass_estimate_request` when calling `create_mass_estimate`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -126,34 +131,42 @@ class EstimatesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'create_mass_estimate_request' in local_var_params:
-            body_params = local_var_params['create_mass_estimate_request']
+        if "create_mass_estimate_request" in local_var_params:
+            body_params = local_var_params["create_mass_estimate_request"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['bearer_auth']  # noqa: E501
+        auth_settings = ["bearer_auth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/estimates/mass', 'POST',
+            "/v1/estimates/mass",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='EstimateResponse',  # noqa: E501
+            response_type="EstimateResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def retrieve_estimate(self, id, **kwargs):  # noqa: E501
         """Retrieves an estimate  # noqa: E501
@@ -177,7 +190,7 @@ class EstimatesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.retrieve_estimate_with_http_info(id, **kwargs)  # noqa: E501
 
     def retrieve_estimate_with_http_info(self, id, **kwargs):  # noqa: E501
@@ -207,36 +220,37 @@ class EstimatesApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'id'
-        ]
+        all_params = ["id"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method retrieve_estimate" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `retrieve_estimate`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "id" not in local_var_params or local_var_params["id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `id` when calling `retrieve_estimate`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+        if "id" in local_var_params:
+            path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
 
@@ -247,27 +261,32 @@ class EstimatesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['bearer_auth']  # noqa: E501
+        auth_settings = ["bearer_auth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/estimates/{id}', 'GET',
+            "/v1/estimates/{id}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='EstimateResponse',  # noqa: E501
+            response_type="EstimateResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def retrieve_estimates(self, **kwargs):  # noqa: E501
         """Retrieves a list of estimates  # noqa: E501
@@ -291,7 +310,7 @@ class EstimatesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.retrieve_estimates_with_http_info(**kwargs)  # noqa: E501
 
     def retrieve_estimates_with_http_info(self, **kwargs):  # noqa: E501
@@ -321,34 +340,34 @@ class EstimatesApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'page'
-        ]
+        all_params = ["page"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method retrieve_estimates" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
-            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if (
+            "page" in local_var_params and local_var_params["page"] is not None
+        ):  # noqa: E501
+            query_params.append(("page", local_var_params["page"]))  # noqa: E501
 
         header_params = {}
 
@@ -357,24 +376,29 @@ class EstimatesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['bearer_auth']  # noqa: E501
+        auth_settings = ["bearer_auth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/estimates', 'GET',
+            "/v1/estimates",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='EstimateListResponse',  # noqa: E501
+            response_type="EstimateListResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

@@ -21,6 +21,7 @@ from patch_api.models.membership_response import MembershipResponse  # noqa: E50
 from factories import MembershipFactory
 from patch_api.rest import ApiException
 
+
 class TestMembershipResponse(unittest.TestCase):
     """MembershipResponse unit test stubs"""
 
@@ -36,22 +37,14 @@ class TestMembershipResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.membership_response.MembershipResponse()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return MembershipResponse(
-                success = True,
-                error = None,
-                data = [
-                    MembershipFactory()
-                    ]
+                success=True, error=None, data=[MembershipFactory()]
             )
-        else :
+        else:
             return MembershipResponse(
-                success = True,
-                error = None,
-                data = [
-                    MembershipFactory()
-                    ],
-        )
+                success=True, error=None, data=[MembershipFactory()]
+            )
 
     def testMembershipResponse(self):
         """Test MembershipResponse"""
@@ -62,5 +55,5 @@ class TestMembershipResponse(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

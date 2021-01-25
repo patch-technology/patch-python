@@ -20,6 +20,7 @@ import patch_api
 from patch_api.models.error_response import ErrorResponse  # noqa: E501
 from patch_api.rest import ApiException
 
+
 class TestErrorResponse(unittest.TestCase):
     """ErrorResponse unit test stubs"""
 
@@ -35,18 +36,10 @@ class TestErrorResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.error_response.ErrorResponse()  # noqa: E501
-        if include_optional :
-            return ErrorResponse(
-                success = True,
-                error = {},
-                data = None
-            )
-        else :
-            return ErrorResponse(
-                success = True,
-                error = {},
-                data = None,
-        )
+        if include_optional:
+            return ErrorResponse(success=True, error={}, data=None)
+        else:
+            return ErrorResponse(success=True, error={}, data=None)
 
     def testErrorResponse(self):
         """Test ErrorResponse"""
@@ -56,5 +49,6 @@ class TestErrorResponse(unittest.TestCase):
         self.assertTrue(inst_req_only)
         self.assertTrue(inst_req_and_optional)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

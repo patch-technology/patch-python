@@ -21,6 +21,7 @@ from patch_api.models.estimate_response import EstimateResponse  # noqa: E501
 from factories import EstimateFactory
 from patch_api.rest import ApiException
 
+
 class TestEstimateResponse(unittest.TestCase):
     """EstimateResponse unit test stubs"""
 
@@ -36,18 +37,10 @@ class TestEstimateResponse(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.estimate_response.EstimateResponse()  # noqa: E501
-        if include_optional :
-            return EstimateResponse(
-                success = True,
-                error = None,
-                data = EstimateFactory()
-            )
-        else :
-            return EstimateResponse(
-                success = True,
-                error = None,
-                data = EstimateFactory(),
-        )
+        if include_optional:
+            return EstimateResponse(success=True, error=None, data=EstimateFactory())
+        else:
+            return EstimateResponse(success=True, error=None, data=EstimateFactory())
 
     def testEstimateResponse(self):
         """Test EstimateResponse"""
@@ -57,5 +50,6 @@ class TestEstimateResponse(unittest.TestCase):
         self.assertTrue(inst_req_only)
         self.assertTrue(inst_req_and_optional)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

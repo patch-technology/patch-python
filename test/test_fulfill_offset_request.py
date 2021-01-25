@@ -21,6 +21,7 @@ import patch_api
 from patch_api.models.fulfill_offset_request import FulfillOffsetRequest  # noqa: E501
 from patch_api.rest import ApiException
 
+
 class TestFulfillOffsetRequest(unittest.TestCase):
     """FulfillOffsetRequest unit test stubs"""
 
@@ -36,13 +37,10 @@ class TestFulfillOffsetRequest(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.fulfill_offset_request.FulfillOffsetRequest()  # noqa: E501
-        if include_optional :
-            return FulfillOffsetRequest(
-                serial_number = '0'
-            )
-        else :
-            return FulfillOffsetRequest(
-        )
+        if include_optional:
+            return FulfillOffsetRequest(serial_number="0")
+        else:
+            return FulfillOffsetRequest()
 
     def testFulfillOffsetRequest(self):
         """Test FulfillOffsetRequest"""
@@ -53,5 +51,5 @@ class TestFulfillOffsetRequest(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

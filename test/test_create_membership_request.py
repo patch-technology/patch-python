@@ -17,8 +17,11 @@ import unittest
 import datetime
 
 import patch_api
-from patch_api.models.create_membership_request import CreateMembershipRequest  # noqa: E501
+from patch_api.models.create_membership_request import (
+    CreateMembershipRequest,
+)  # noqa: E501
 from patch_api.rest import ApiException
+
 
 class TestCreateMembershipRequest(unittest.TestCase):
     """CreateMembershipRequest unit test stubs"""
@@ -35,15 +38,10 @@ class TestCreateMembershipRequest(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.create_membership_request.CreateMembershipRequest()  # noqa: E501
-        if include_optional :
-            return CreateMembershipRequest(
-                email = '0',
-                role = 'admin',
-                organization_id = '0'
-            )
-        else :
-            return CreateMembershipRequest(
-        )
+        if include_optional:
+            return CreateMembershipRequest(email="0", role="admin", organization_id="0")
+        else:
+            return CreateMembershipRequest()
 
     def testCreateMembershipRequest(self):
         """Test CreateMembershipRequest"""
@@ -54,5 +52,5 @@ class TestCreateMembershipRequest(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

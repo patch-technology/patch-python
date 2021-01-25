@@ -38,6 +38,9 @@ from patch_api.models.offset_response import OffsetResponse
 from patch_api.models.order import Order
 from patch_api.models.order_list_response import OrderListResponse
 from patch_api.models.order_response import OrderResponse
+from patch_api.models.organization import Organization
+from patch_api.models.organization_list_response import OrganizationListResponse
+from patch_api.models.organization_response import OrganizationResponse
 from patch_api.models.photo import Photo
 from patch_api.models.photo_response import PhotoResponse
 from patch_api.models.preference import Preference

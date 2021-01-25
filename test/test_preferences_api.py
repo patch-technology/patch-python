@@ -27,7 +27,9 @@ class TestPreferencesApi(unittest.TestCase):
     """PreferencesApi unit test stubs"""
 
     def setUp(self):
-        configuration = patch_api.Configuration(api_key=os.environ.get('SANDBOX_API_KEY'))
+        configuration = patch_api.Configuration(
+            api_key=os.environ.get("SANDBOX_API_KEY")
+        )
         api_client = patch_api.ApiClient(configuration)
         self.api = PreferencesApi(api_client=api_client)  # noqa: E501
 
@@ -63,5 +65,5 @@ class TestPreferencesApi(unittest.TestCase):
         self.assertTrue(preference)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

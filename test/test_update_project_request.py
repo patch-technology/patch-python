@@ -20,6 +20,7 @@ import patch
 from patch_api.models.update_project_request import UpdateProjectRequest  # noqa: E501
 from patch_api.rest import ApiException
 
+
 class TestUpdateProjectRequest(unittest.TestCase):
     """UpdateProjectRequest unit test stubs"""
 
@@ -35,23 +36,22 @@ class TestUpdateProjectRequest(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.update_project_request.UpdateProjectRequest()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return UpdateProjectRequest(
-                name = '0',
-                description = '0',
-                country = 'TJ',
-                state = '0',
-                verifier = '0',
-                type = 'biomass',
-                standard_type = 'american_carbon_registry',
-                longitude = '0',
-                latitude = '0',
-                production = '0',
-                organization_id = '0'
+                name="0",
+                description="0",
+                country="TJ",
+                state="0",
+                verifier="0",
+                type="biomass",
+                standard_type="american_carbon_registry",
+                longitude="0",
+                latitude="0",
+                production="0",
+                organization_id="0",
             )
-        else :
-            return UpdateProjectRequest(
-        )
+        else:
+            return UpdateProjectRequest()
 
     def testUpdateProjectRequest(self):
         """Test UpdateProjectRequest"""
@@ -62,5 +62,5 @@ class TestUpdateProjectRequest(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

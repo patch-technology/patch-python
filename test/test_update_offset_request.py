@@ -20,6 +20,7 @@ import patch
 from patch_api.models.update_offset_request import UpdateOffsetRequest  # noqa: E501
 from patch_api.rest import ApiException
 
+
 class TestUpdateOffsetRequest(unittest.TestCase):
     """UpdateOffsetRequest unit test stubs"""
 
@@ -35,16 +36,12 @@ class TestUpdateOffsetRequest(unittest.TestCase):
             params are included, when True both required and
             optional params are included """
         # model = patch_api.models.update_offset_request.UpdateOffsetRequest()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return UpdateOffsetRequest(
-                mass_g = 1,
-                price_cents_usd = 1,
-                vintage_year = 56,
-                serial_number = '0'
+                mass_g=1, price_cents_usd=1, vintage_year=56, serial_number="0"
             )
-        else :
-            return UpdateOffsetRequest(
-        )
+        else:
+            return UpdateOffsetRequest()
 
     def testUpdateOffsetRequest(self):
         """Test UpdateOffsetRequest"""
@@ -55,5 +52,5 @@ class TestUpdateOffsetRequest(unittest.TestCase):
         self.assertTrue(inst_req_and_optional)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
