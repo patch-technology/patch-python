@@ -18,7 +18,6 @@ import os
 
 import patch_api
 from patch_api.api.estimates_api import EstimatesApi  # noqa: E501
-from patch_api.models.create_mass_estimate_request import CreateMassEstimateRequest
 from patch_api.rest import ApiException
 
 
@@ -26,14 +25,11 @@ class TestEstimatesApi(unittest.TestCase):
     """EstimatesApi unit test stubs"""
 
     def setUp(self):
-        configuration = patch_api.Configuration(
-            api_key=os.environ.get("SANDBOX_API_KEY")
-        )
-        api_client = patch_api.ApiClient(configuration)
+        api_client = patch_api.ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
         self.api = EstimatesApi(api_client=api_client)  # noqa: E501
 
     def tearDown(self):
-        pass
+        self.api = None
 
     def test_create_and_retrieve_mass_estimate(self):
         """Test case for create_mass_estimate
@@ -42,11 +38,9 @@ class TestEstimatesApi(unittest.TestCase):
         """
         mass_g = 100
         project_id = "pro_test_2b67b11a030b66e0a6dd61a56b49079a"
-        mass_estimate_request = CreateMassEstimateRequest(
-            mass_g=mass_g, project_id=project_id
+        estimate = self.api.create_mass_estimate(
+            opts={"mass_g": mass_g, "project_id": project_id}
         )
-        estimate = self.api.create_mass_estimate(mass_estimate_request)
-
         self.assertTrue(estimate)
         self.assertEqual(estimate.data.order.mass_g, mass_g)
 

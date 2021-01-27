@@ -27,10 +27,7 @@ class TestPreferencesApi(unittest.TestCase):
     """PreferencesApi unit test stubs"""
 
     def setUp(self):
-        configuration = patch_api.Configuration(
-            api_key=os.environ.get("SANDBOX_API_KEY")
-        )
-        api_client = patch_api.ApiClient(configuration)
+        api_client = patch_api.ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
         self.api = PreferencesApi(api_client=api_client)  # noqa: E501
 
     def tearDown(self):
@@ -44,23 +41,22 @@ class TestPreferencesApi(unittest.TestCase):
         preferences = self.api.retrieve_preferences()
         self.assertTrue(isinstance(preferences.data, list))
 
-        preference_id = preferences.data[0].id
-        preference = self.api.retrieve_preference(id=preference_id)
-        self.assertTrue(preference)
+        if len(preferences.data) > 0:
+            preference_id = preferences.data[0].id
+            preference = self.api.retrieve_preference(id=preference_id)
+            self.assertTrue(preference)
 
     def test_delete_and_create_preferences(self):
         """Test case for create_preference and delete_preference
         """
         project_id = "pro_test_0de1a59eed9ff8474e09077ddb3714b2"
         preferences = self.api.retrieve_preferences()
-        preference_id = preferences.data[0].id
+        if len(preferences.data) > 0:
+            preference_id = preferences.data[0].id
+            deleted_preference = self.api.delete_preference(id=preference_id)
+            self.assertTrue(deleted_preference)
 
-        deleted_preference = self.api.delete_preference(id=preference_id)
-
-        self.assertTrue(deleted_preference)
-
-        create_preference_request = CreatePreferenceRequest(project_id=project_id)
-        preference = self.api.create_preference(create_preference_request)
+        preference = self.api.create_preference(opts={"project_id": project_id})
 
         self.assertTrue(preference)
 

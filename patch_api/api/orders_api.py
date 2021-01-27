@@ -34,7 +34,7 @@ class OrdersApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def cancel_order(self, id, **kwargs):  # noqa: E501
+    def cancel_order(self, opts={}, id={}, **kwargs):  # noqa: E501
         """Cancel an order  # noqa: E501
 
         Cancelling an order removes the associated offset allocation from an order. You will not be charged for cancelled orders. Only orders in the `draft` state can be cancelled.   # noqa: E501
@@ -45,6 +45,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
+        :param dict opts: dictionary holding the optional arguments for the query (optional)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -57,9 +58,9 @@ class OrdersApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.cancel_order_with_http_info(id, **kwargs)  # noqa: E501
+        return self.cancel_order_with_http_info(opts, id, **kwargs)  # noqa: E501
 
-    def cancel_order_with_http_info(self, id, **kwargs):  # noqa: E501
+    def cancel_order_with_http_info(self, opts, id, **kwargs):  # noqa: E501
         """Cancel an order  # noqa: E501
 
         Cancelling an order removes the associated offset allocation from an order. You will not be charged for cancelled orders. Only orders in the `draft` state can be cancelled.   # noqa: E501
@@ -70,6 +71,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
+        :param dict opts: dictionary holding the optional arguments for the query (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -113,6 +115,8 @@ class OrdersApi(object):
             path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
+        for key in opts:
+            query_params.append([key, opts.get(key)])
 
         header_params = {}
 
@@ -148,7 +152,7 @@ class OrdersApi(object):
             collection_formats=collection_formats,
         )
 
-    def create_order(self, create_order_request, **kwargs):  # noqa: E501
+    def create_order(self, opts={}, create_order_request={}, **kwargs):  # noqa: E501
         """Creates an order  # noqa: E501
 
         Creates an order in the `placed` state. To create a `draft` order, create an estimate first.   # noqa: E501
@@ -159,6 +163,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param CreateOrderRequest create_order_request: (required)
+        :param dict opts: dictionary holding the optional arguments for the query (optional)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -172,10 +177,12 @@ class OrdersApi(object):
         """
         kwargs["_return_http_data_only"] = True
         return self.create_order_with_http_info(
-            create_order_request, **kwargs
+            opts, create_order_request, **kwargs
         )  # noqa: E501
 
-    def create_order_with_http_info(self, create_order_request, **kwargs):  # noqa: E501
+    def create_order_with_http_info(
+        self, opts, create_order_request, **kwargs
+    ):  # noqa: E501
         """Creates an order  # noqa: E501
 
         Creates an order in the `placed` state. To create a `draft` order, create an estimate first.   # noqa: E501
@@ -186,6 +193,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param CreateOrderRequest create_order_request: (required)
+        :param dict opts: dictionary holding the optional arguments for the query (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -230,6 +238,8 @@ class OrdersApi(object):
         path_params = {}
 
         query_params = []
+        for key in opts:
+            query_params.append([key, opts.get(key)])
 
         header_params = {}
 
@@ -274,7 +284,7 @@ class OrdersApi(object):
             collection_formats=collection_formats,
         )
 
-    def place_order(self, id, **kwargs):  # noqa: E501
+    def place_order(self, opts={}, id={}, **kwargs):  # noqa: E501
         """Place an order  # noqa: E501
 
         Placing an order confirms an order's allocation of offsets. Only orders that are in the `draft` state can be placed   # noqa: E501
@@ -285,6 +295,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
+        :param dict opts: dictionary holding the optional arguments for the query (optional)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -297,9 +308,9 @@ class OrdersApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.place_order_with_http_info(id, **kwargs)  # noqa: E501
+        return self.place_order_with_http_info(opts, id, **kwargs)  # noqa: E501
 
-    def place_order_with_http_info(self, id, **kwargs):  # noqa: E501
+    def place_order_with_http_info(self, opts, id, **kwargs):  # noqa: E501
         """Place an order  # noqa: E501
 
         Placing an order confirms an order's allocation of offsets. Only orders that are in the `draft` state can be placed   # noqa: E501
@@ -310,6 +321,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
+        :param dict opts: dictionary holding the optional arguments for the query (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -353,6 +365,8 @@ class OrdersApi(object):
             path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
+        for key in opts:
+            query_params.append([key, opts.get(key)])
 
         header_params = {}
 
@@ -388,7 +402,7 @@ class OrdersApi(object):
             collection_formats=collection_formats,
         )
 
-    def retrieve_order(self, id, **kwargs):  # noqa: E501
+    def retrieve_order(self, opts={}, id={}, **kwargs):  # noqa: E501
         """Retrieves an order  # noqa: E501
 
         Retrieves a given order and its allocation offsets or negative emissions. You can only retrieve orders associated with the organization you are querying for.   # noqa: E501
@@ -399,6 +413,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
+        :param dict opts: dictionary holding the optional arguments for the query (optional)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -411,9 +426,9 @@ class OrdersApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.retrieve_order_with_http_info(id, **kwargs)  # noqa: E501
+        return self.retrieve_order_with_http_info(opts, id, **kwargs)  # noqa: E501
 
-    def retrieve_order_with_http_info(self, id, **kwargs):  # noqa: E501
+    def retrieve_order_with_http_info(self, opts, id, **kwargs):  # noqa: E501
         """Retrieves an order  # noqa: E501
 
         Retrieves a given order and its allocation offsets or negative emissions. You can only retrieve orders associated with the organization you are querying for.   # noqa: E501
@@ -424,6 +439,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
+        :param dict opts: dictionary holding the optional arguments for the query (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -467,6 +483,8 @@ class OrdersApi(object):
             path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
+        for key in opts:
+            query_params.append([key, opts.get(key)])
 
         header_params = {}
 
@@ -502,7 +520,7 @@ class OrdersApi(object):
             collection_formats=collection_formats,
         )
 
-    def retrieve_orders(self, **kwargs):  # noqa: E501
+    def retrieve_orders(self, opts={}, **kwargs):  # noqa: E501
         """Retrieves a list of orders  # noqa: E501
 
         Retrieves a list of orders and its allocation offsets or negative emissions. You can only retrieve orders associated with the organization you are querying for.   # noqa: E501
@@ -513,6 +531,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
+        :param dict opts: dictionary holding the optional arguments for the query (optional)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -525,9 +544,9 @@ class OrdersApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.retrieve_orders_with_http_info(**kwargs)  # noqa: E501
+        return self.retrieve_orders_with_http_info(opts, **kwargs)  # noqa: E501
 
-    def retrieve_orders_with_http_info(self, **kwargs):  # noqa: E501
+    def retrieve_orders_with_http_info(self, opts, **kwargs):  # noqa: E501
         """Retrieves a list of orders  # noqa: E501
 
         Retrieves a list of orders and its allocation offsets or negative emissions. You can only retrieve orders associated with the organization you are querying for.   # noqa: E501
@@ -538,6 +557,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
+        :param dict opts: dictionary holding the optional arguments for the query (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -574,6 +594,8 @@ class OrdersApi(object):
         path_params = {}
 
         query_params = []
+        for key in opts:
+            query_params.append([key, opts.get(key)])
         if "page" in local_var_params:
             query_params.append(("page", local_var_params["page"]))  # noqa: E501
 

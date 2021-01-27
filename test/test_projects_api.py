@@ -25,10 +25,7 @@ class TestProjectsApi(unittest.TestCase):
     """ProjectsApi unit test stubs"""
 
     def setUp(self):
-        configuration = patch_api.Configuration(
-            api_key=os.environ.get("SANDBOX_API_KEY")
-        )
-        api_client = patch_api.ApiClient(configuration)
+        api_client = patch_api.ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
         self.api = ProjectsApi(api_client=api_client)  # noqa: E501
 
     def tearDown(self):

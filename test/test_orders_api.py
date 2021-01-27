@@ -18,7 +18,6 @@ import os
 
 import patch_api
 from patch_api.api.orders_api import OrdersApi  # noqa: E501
-from patch_api.models.create_order_request import CreateOrderRequest
 from patch_api.rest import ApiException
 
 
@@ -26,10 +25,7 @@ class TestOrdersApi(unittest.TestCase):
     """OrdersApi unit test stubs"""
 
     def setUp(self):
-        configuration = patch_api.Configuration(
-            api_key=os.environ.get("SANDBOX_API_KEY")
-        )
-        api_client = patch_api.ApiClient(configuration)
+        api_client = patch_api.ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
         self.api = OrdersApi(api_client=api_client)  # noqa: E501
 
     def tearDown(self):
@@ -41,15 +37,13 @@ class TestOrdersApi(unittest.TestCase):
 
         """Create an order
         """
-        create_order_request = CreateOrderRequest(mass_g=100)
-        order = self.api.create_order(create_order_request)
+        order = self.api.create_order(opts={"mass_g": 100})
 
         self.assertTrue(order)
 
         """Retrieve an order
         """
-        create_order_request = CreateOrderRequest(mass_g=100)
-        order = self.api.create_order(create_order_request=create_order_request)
+        order = self.api.create_order(opts={"mass_g": 100})
         retrieved_order = self.api.retrieve_order(id=order.data.id)
 
         self.assertTrue(retrieved_order)
