@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from patch_api.api_client import ApiClient
-from patch_api.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from patch_api.exceptions import ApiTypeError, ApiValueError
 
 
 class EstimatesApi(object):
@@ -92,15 +92,11 @@ class EstimatesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["create_mass_estimate_request"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["create_mass_estimate_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -111,10 +107,10 @@ class EstimatesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'create_mass_estimate_request' is set
-        if self.api_client.client_side_validation and (
+        if (
             "create_mass_estimate_request" not in local_var_params
-            or local_var_params["create_mass_estimate_request"] is None  # noqa: E501
-        ):  # noqa: E501
+            or local_var_params["create_mass_estimate_request"] is None
+        ):
             raise ApiValueError(
                 "Missing the required parameter `create_mass_estimate_request` when calling `create_mass_estimate`"
             )  # noqa: E501
@@ -220,15 +216,11 @@ class EstimatesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["id"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -239,9 +231,7 @@ class EstimatesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and (
-            "id" not in local_var_params or local_var_params["id"] is None  # noqa: E501
-        ):  # noqa: E501
+        if "id" not in local_var_params or local_var_params["id"] is None:
             raise ApiValueError(
                 "Missing the required parameter `id` when calling `retrieve_estimate`"
             )  # noqa: E501
@@ -340,15 +330,11 @@ class EstimatesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["page"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["page"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -364,9 +350,7 @@ class EstimatesApi(object):
         path_params = {}
 
         query_params = []
-        if (
-            "page" in local_var_params and local_var_params["page"] is not None
-        ):  # noqa: E501
+        if "page" in local_var_params:
             query_params.append(("page", local_var_params["page"]))  # noqa: E501
 
         header_params = {}

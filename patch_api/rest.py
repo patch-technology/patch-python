@@ -49,7 +49,7 @@ class RESTResponse(io.IOBase):
 
 
 class RESTClientObject(object):
-    def __init__(self, configuration, pools_size=4, maxsize=None):
+    def __init__(self, api_key, configuration, pools_size=4, maxsize=None):
         # urllib3.PoolManager will pass all kw parameters to connectionpool
         # https://github.com/shazow/urllib3/blob/f9409436f83aeb79fbaf090181cd81b784f1b8ce/urllib3/poolmanager.py#L75  # noqa: E501
         # https://github.com/shazow/urllib3/blob/f9409436f83aeb79fbaf090181cd81b784f1b8ce/urllib3/connectionpool.py#L680  # noqa: E501
@@ -62,7 +62,7 @@ class RESTClientObject(object):
         else:
             cert_reqs = ssl.CERT_NONE
 
-        self.configuration = configuration
+        self.api_key = api_key
 
         # ca_certs
         if configuration.ssl_ca_cert:
@@ -165,7 +165,7 @@ class RESTClientObject(object):
             headers["Content-Type"] = "application/json"
 
         if "Authorization" not in headers:
-            headers["Authorization"] = "Bearer " + self.configuration.api_key
+            headers["Authorization"] = "Bearer " + self.api_key
 
         try:
             # For `POST`, `PUT`, `PATCH`, `OPTIONS`, `DELETE`
