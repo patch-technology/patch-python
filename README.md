@@ -22,7 +22,7 @@ pip install
 
 Or install it directly with
 ```shell
-pip install patch
+pip install patch_api
 ```
 
 ### Requirements
@@ -63,41 +63,45 @@ fulfill the order for you.
 
 #### Examples
 ```python
+import patch_api
+from patch_api.api.orders_api import OrdersApi as Orders
+
+api_client = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
+orders_api = Orders(api_client=api_client)
+
 # Create an order - you can create an order
 # providing either mass_g or total_price_cents_usd, but not both
 
-from patch_api.api.orders_api import OrdersApi as Orders
-
 # Create order with mass
-Orders.create_order(opts={'mass_g': 1_000_000}) # Pass in the mass in grams (i.e. 1 metric tonne)
+orders_api.create_order(opts={'mass_g': 1_000_000}) # Pass in the mass in grams (i.e. 1 metric tonne)
 
 # Create an order with maximum total price
 total_price_cents_usd = 5_00 # Pass in the total price in cents (i.e. 5 dollars)
-Orders.create_order(opts={'total_price_cents_usd': total_price_cents_usd})
+orders_api.create_order(opts={'total_price_cents_usd': total_price_cents_usd})
 
 ## You can also specify a project-id field (optional) to be used instead of the preferred one
 project_id = 'pro_test_1234' # Pass in the project's ID
-Orders.create_order(opts={'project_id': project_id, 'mass_g': mass_g})
+orders_api.create_order(opts={'project_id': project_id, 'mass_g': mass_g})
 
 ## Orders also accept a metadata field (optional)
 metadata = {user: "john doe"}
-Orders.create_order(opts={'metadata': metadata, 'mass_g': mass_g})
+orders_api.create_order(opts={'metadata': metadata, 'mass_g': mass_g})
 
 # Retrieve an order
 order_id = 'ord_test_1234' # Pass in the order's id
-Orders.retrieve_order(id=order_id)
+orders_api.retrieve_order(id=order_id)
 
 # Place an order
 order_id = 'ord_test_1234' # Pass in the order's id
-Orders.place_order(id=order_id)
+orders_api.place_order(id=order_id)
 
 # Cancel an order
 order_id = 'ord_test_1234' # Pass in the order's id
-Orders.cancel_order(id=order_id)
+orders_api.cancel_order(id=order_id)
 
 # Retrieve a list of orders
 page = 1 # Pass in which page of orders you'd like
-Orders.retrieve_orders(page=page)
+orders_api.retrieve_orders(page=page)
 ```
 
 ### Estimates
@@ -107,23 +111,28 @@ Estimates allow API users to get a quote for the cost of compensating a certain 
 
 #### Examples
 ```python
-# Create an estimate
+import patch_api
 from patch_api.api.estimates_api import EstimatesApi as Estimates
 
+api_client = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
+estimates_api = Estimates(api_client=api_client)
+
+# Create an estimate
+
 mass_g = 1_000_000 # Pass in the mass in grams (i.e. 1 metric tonne)
-Estimates.create_estimate(opts={'mass_g': mass_g})
+estimates_api.create_estimate(opts={'mass_g': mass_g})
 
 ## You can also specify a project-id field (optional) to be used instead of the preferred one
 project_id = 'pro_test_1234' # Pass in the project's ID
-Estimates.create_estimate(opts={'mass_g': mass_g, 'project_id': project_id})
+estimates_api.create_estimate(opts={'mass_g': mass_g, 'project_id': project_id})
 
 # Retrieve an estimate
 estimate_id = 'est_test_1234'
-Estimates.retrieve_estimate(id=estimate_id)
+estimates_api.retrieve_estimate(id=estimate_id)
 
 # Retrieve a list of estimates
 page = 1 # Pass in which page of estimates you'd like
-Estimates.retrieve_estimates(page=page)
+estimates_api.retrieve_estimates(page=page)
 ```
 
 ### Projects
@@ -133,15 +142,19 @@ Projects are the ways Patch takes CO2 out of the air. They can represent refores
 
 #### Examples
 ```python
+import patch_api
 from patch_api.api.projects_api import ProjectsApi as Projects
+
+api_client = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
+projects_api = Projects(api_client=api_client)
 
 # Retrieve a project
 project_id = 'pro_test_1234' # Pass in the project's ID
-Projects.retrieve_project(id=project_id)
+projects_api.retrieve_project(id=project_id)
 
 # Retrieve a list of projects
 page = 1 # Pass in which page of projects you'd like
-Projects.retrieve_projects(page=page)
+projects_api.retrieve_projects(page=page)
 ```
 
 ### Preferences
@@ -151,43 +164,35 @@ Preferences are how you route your orders in Patch. If you don't have a preferen
 
 #### Examples
 ```python
-# Create a preference
+import patch_api
 from patch_api.api.preferences_api import PreferencesApi as Preferences
 
+api_client = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
+preferences_api = Preferences(api_client=api_client)
+
+# Create a preference
+
 project_id = 'pro_test_1234' # Pass in the project_id for your preference
-Preferences.create_preference(opts={'project_id': project_id})
+preferences_api.create_preference(opts={'project_id': project_id})
 
 # Retrieve a preference
 preference_id = 'pre_test_1234' # Pass in the preferences's id
-Preferences.retrieve_preference(preference_id=preference_id)
+preferences_api.retrieve_preference(preference_id=preference_id)
 
 # Delete a preference
 preference_id = 'pre_test_1234' # Pass in the preferences's id
-Preferences.delete_preference(preference_id=preference_id)
+preferences_api.delete_preference(preference_id=preference_id)
 
 # Retrieve a list of preferences
 page = 1 # Pass in which page of preferences you'd like
-Preferences.retrieve_preferences(page=page)
+preferences_api.retrieve_preferences(page=page)
 ```
 
 ## Development
 
-To build the library locally, run:
-```
-$ make build
-```
+### Running tests
 
-To test the library locally, create a python file in a sibling directory and add the following:
-```python
-import sys
-sys.path.append("../patch-python")
-
-import patch_api
-
-# ..... your Patch API code goes here
-```
-
-Set up required environment variables:
+Set up the required environment variable:
 ```
 $ export SANDBOX_API_KEY=<SANDBOX API KEY>
 ```
@@ -195,4 +200,46 @@ $ export SANDBOX_API_KEY=<SANDBOX API KEY>
 Run tests:
 ```
 $ make test
+```
+
+To run an individual test:
+```
+$ python -m unittest
+```
+
+### Testing the built package locally
+
+To build the library locally, run:
+```
+$ make build
+```
+
+In another directory, create a file called `patch.py` and install the local package in this directory:
+
+```
+$ touch patch.py
+$ pip install ../patch-python
+```
+
+Set up the required environment variable:
+```
+$ export SANDBOX_API_KEY=<SANDBOX API KEY>
+```
+
+To test the package locally, create a python file in a sibling directory and add the following:
+```python
+import os
+import patch_api
+
+# ..... your Patch API code goes here. See example below:
+
+from patch_api.api.orders_api import OrdersApi as Orders
+
+api_client = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
+orders = Orders(api_client=api_client)
+
+list_orders = orders.retrieve_orders(opts={'page': 1})
+
+# Prints your organization's orders
+print(list_orders)
 ```
