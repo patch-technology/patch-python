@@ -46,7 +46,6 @@ class TestEstimatesApi(unittest.TestCase):
 
         retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
         self.assertTrue(retrieved_estimate)
-        self.assertEqual(estimate.data.id, estimate.data.id)
 
 
 if __name__ == "__main__":

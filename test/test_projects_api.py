@@ -29,7 +29,7 @@ class TestProjectsApi(unittest.TestCase):
         self.api = ProjectsApi(api_client=api_client)  # noqa: E501
 
     def tearDown(self):
-        pass
+        self.api = None
 
     def test_retrieve_project(self):
         """Test case for retrieve_project
@@ -45,8 +45,22 @@ class TestProjectsApi(unittest.TestCase):
 
         Retrieves a list of projects  # noqa: E501
         """
-        projects = self.api.retrieve_projects()
-        self.assertTrue(isinstance(projects.data, list))
+        projects = self.api.retrieve_projects().data
+        self.assertTrue(isinstance(projects, list))
+
+        if len(projects) > 0:
+            project = projects[0]
+
+            self.assertEqual(project.production, False)
+            self.assertEqual(project.average_price_per_tonne_cents_usd, 0)
+            self.assertEqual(project.remaining_mass_g, 0)
+            self.assertEqual(project.standard, None)
+            self.assertEqual(project.name, "Carbo Culture Biochar")
+            self.assertTrue(project.description)
+            self.assertEqual(project.country, "US")
+            self.assertEqual(project.type, "biomass")
+            self.assertEqual(project.developer, "Carbo Culture Biochar")
+            self.assertTrue(isinstance(project.photos, list))
 
 
 if __name__ == "__main__":

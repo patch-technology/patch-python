@@ -43,8 +43,11 @@ class TestPreferencesApi(unittest.TestCase):
 
         if len(preferences.data) > 0:
             preference_id = preferences.data[0].id
-            preference = self.api.retrieve_preference(id=preference_id)
-            self.assertTrue(preference)
+            preference = self.api.retrieve_preference(id=preference_id).data
+
+            self.assertTrue(preference.allocation_percentage)
+            self.assertTrue(preference.id)
+            self.assertTrue(preference.project)
 
     def test_delete_and_create_preferences(self):
         """Test case for create_preference and delete_preference
@@ -54,11 +57,13 @@ class TestPreferencesApi(unittest.TestCase):
         if len(preferences.data) > 0:
             preference_id = preferences.data[0].id
             deleted_preference = self.api.delete_preference(id=preference_id)
+
             self.assertTrue(deleted_preference)
 
-        preference = self.api.create_preference(opts={"project_id": project_id})
-
-        self.assertTrue(preference)
+        preference = self.api.create_preference(opts={"project_id": project_id}).data
+        self.assertTrue(preference.allocation_percentage)
+        self.assertTrue(preference.id)
+        self.assertTrue(preference.project)
 
 
 if __name__ == "__main__":

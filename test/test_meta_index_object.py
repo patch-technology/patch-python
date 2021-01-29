@@ -37,7 +37,7 @@ class TestMetaIndexObject(unittest.TestCase):
             optional params are included """
         # model = patch_api.models.meta_index_object.MetaIndexObject()  # noqa: E501
         if include_optional:
-            return MetaIndexObject(prev_page=56, next_page=56)
+            return MetaIndexObject(prev_page=56, next_page=58)
         else:
             return MetaIndexObject()
 

@@ -59,8 +59,21 @@ class TestOrdersApi(unittest.TestCase):
 
         Retrieves a list of orders  # noqa: E501
         """
-        orders = self.api.retrieve_orders()
-        self.assertTrue(isinstance(orders.data, list))
+        orders = self.api.retrieve_orders().data
+        self.assertTrue(isinstance(orders, list))
+
+        if len(orders) > 1:
+            retrieved_order = orders[0]
+
+            self.assertTrue(retrieved_order.id)
+            self.assertEqual(retrieved_order.mass_g, 100)
+            self.assertEqual(retrieved_order.production, False)
+            self.assertEqual(retrieved_order.state, "placed")
+            self.assertEqual(retrieved_order.allocation_state, "allocated")
+            self.assertEqual(retrieved_order.price_cents_usd, "1.0")
+            self.assertEqual(retrieved_order.metadata, {})
+            self.assertEqual(retrieved_order.patch_fee_cents_usd, "0.0")
+            self.assertTrue(isinstance(retrieved_order.allocations, list))
 
 
 if __name__ == "__main__":
