@@ -26,7 +26,7 @@ pip install patch_api
 ```
 
 ### Requirements
-- Python 3.0.0
+- Python 3.6.0
 
 ## Usage
 
