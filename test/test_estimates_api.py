@@ -18,7 +18,6 @@ import os
 
 import patch_api
 from patch_api.api.estimates_api import EstimatesApi  # noqa: E501
-from patch_api.rest import ApiException
 
 
 class TestEstimatesApi(unittest.TestCase):

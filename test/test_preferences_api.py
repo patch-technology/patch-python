@@ -15,12 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 import os
-from urllib.error import HTTPError
 
 import patch_api
 from patch_api.api.preferences_api import PreferencesApi  # noqa: E501
-from patch_api.models.create_preference_request import CreatePreferenceRequest
-from patch_api.rest import ApiException
 
 
 class TestPreferencesApi(unittest.TestCase):
@@ -50,8 +47,7 @@ class TestPreferencesApi(unittest.TestCase):
             self.assertTrue(preference.project)
 
     def test_delete_and_create_preferences(self):
-        """Test case for create_preference and delete_preference
-        """
+        """Test case for create_preference and delete_preference"""
         project_id = "pro_test_0de1a59eed9ff8474e09077ddb3714b2"
         preferences = self.api.retrieve_preferences()
         if len(preferences.data) > 0:
