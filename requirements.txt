@@ -4,3 +4,5 @@ python_dateutil >= 2.5.3
 setuptools >= 21.0.0
 urllib3 >= 1.15.1
 pre-commit >= 2.9.3
+autopep8 >= 1.5.4
+flake8 >= 3.8.4

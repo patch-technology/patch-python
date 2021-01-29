@@ -65,8 +65,7 @@ class Configuration(object):
         password=None,
         discard_unknown_keys=False,
     ):
-        """Constructor
-        """
+        """Constructor"""
         self.host = host
         """Default Base url
         """

@@ -18,7 +18,6 @@ import os
 
 import patch_api
 from patch_api.api.orders_api import OrdersApi  # noqa: E501
-from patch_api.rest import ApiException
 
 
 class TestOrdersApi(unittest.TestCase):
@@ -32,8 +31,7 @@ class TestOrdersApi(unittest.TestCase):
         pass
 
     def test_interactions_with_an_order(self):
-        """Test case for create_order, retrieve_order, cancel_order
-        """
+        """Test case for create_order, retrieve_order, cancel_order"""
 
         """Create an order
         """
