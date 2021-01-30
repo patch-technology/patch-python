@@ -16,9 +16,6 @@ from __future__ import absolute_import
 
 # import models into model package
 from patch_api.models.allocation import Allocation
-from patch_api.models.create_mass_estimate_request import CreateMassEstimateRequest
-from patch_api.models.create_order_request import CreateOrderRequest
-from patch_api.models.create_preference_request import CreatePreferenceRequest
 from patch_api.models.error_response import ErrorResponse
 from patch_api.models.estimate import Estimate
 from patch_api.models.estimate_list_response import EstimateListResponse
