@@ -28,11 +28,13 @@ class EstimatesApi(object):
     Do not edit the class manually.
     """
 
+    ALLOWED_QUERY_PARAMS = ["mass_g", "price_cents_usd", "project_id", "page"]
+
     def __init__(self, api_client=None):
         self.api_client = api_client
 
     def create_mass_estimate(
-        self, opts={}, create_mass_estimate_request={}, **kwargs
+        self, create_mass_estimate_request={}, **kwargs
     ):  # noqa: E501
         """Create an estimate based on mass of CO2  # noqa: E501
 
@@ -44,7 +46,6 @@ class EstimatesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param CreateMassEstimateRequest create_mass_estimate_request: (required)
-        :param dict opts: dictionary holding the optional arguments for the query (optional)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -58,11 +59,11 @@ class EstimatesApi(object):
         """
         kwargs["_return_http_data_only"] = True
         return self.create_mass_estimate_with_http_info(
-            opts, create_mass_estimate_request, **kwargs
+            create_mass_estimate_request, **kwargs
         )  # noqa: E501
 
     def create_mass_estimate_with_http_info(
-        self, opts, create_mass_estimate_request, **kwargs
+        self, create_mass_estimate_request, **kwargs
     ):  # noqa: E501
         """Create an estimate based on mass of CO2  # noqa: E501
 
@@ -74,7 +75,6 @@ class EstimatesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param CreateMassEstimateRequest create_mass_estimate_request: (required)
-        :param dict opts: dictionary holding the optional arguments for the query (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -96,6 +96,10 @@ class EstimatesApi(object):
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -119,8 +123,8 @@ class EstimatesApi(object):
         path_params = {}
 
         query_params = []
-        for key in opts:
-            query_params.append([key, opts.get(key)])
+        for key in kwargs:
+            query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -165,7 +169,7 @@ class EstimatesApi(object):
             collection_formats=collection_formats,
         )
 
-    def retrieve_estimate(self, opts={}, id={}, **kwargs):  # noqa: E501
+    def retrieve_estimate(self, id={}, **kwargs):  # noqa: E501
         """Retrieves an estimate  # noqa: E501
 
         Retrieves a given estimate and its associated order. You can only retrieve estimates associated with the organization you are querying for.   # noqa: E501
@@ -176,7 +180,6 @@ class EstimatesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
-        :param dict opts: dictionary holding the optional arguments for the query (optional)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -189,9 +192,9 @@ class EstimatesApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.retrieve_estimate_with_http_info(opts, id, **kwargs)  # noqa: E501
+        return self.retrieve_estimate_with_http_info(id, **kwargs)  # noqa: E501
 
-    def retrieve_estimate_with_http_info(self, opts, id, **kwargs):  # noqa: E501
+    def retrieve_estimate_with_http_info(self, id, **kwargs):  # noqa: E501
         """Retrieves an estimate  # noqa: E501
 
         Retrieves a given estimate and its associated order. You can only retrieve estimates associated with the organization you are querying for.   # noqa: E501
@@ -202,7 +205,6 @@ class EstimatesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
-        :param dict opts: dictionary holding the optional arguments for the query (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -224,6 +226,10 @@ class EstimatesApi(object):
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -246,8 +252,8 @@ class EstimatesApi(object):
             path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
-        for key in opts:
-            query_params.append([key, opts.get(key)])
+        for key in kwargs:
+            query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -283,7 +289,7 @@ class EstimatesApi(object):
             collection_formats=collection_formats,
         )
 
-    def retrieve_estimates(self, opts={}, **kwargs):  # noqa: E501
+    def retrieve_estimates(self, **kwargs):  # noqa: E501
         """Retrieves a list of estimates  # noqa: E501
 
         Retrieves a list of estimates and their associated orders. You can only retrieve estimates associated with the organization you are querying for.   # noqa: E501
@@ -294,7 +300,6 @@ class EstimatesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
-        :param dict opts: dictionary holding the optional arguments for the query (optional)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -307,9 +312,9 @@ class EstimatesApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.retrieve_estimates_with_http_info(opts, **kwargs)  # noqa: E501
+        return self.retrieve_estimates_with_http_info(**kwargs)  # noqa: E501
 
-    def retrieve_estimates_with_http_info(self, opts, **kwargs):  # noqa: E501
+    def retrieve_estimates_with_http_info(self, **kwargs):  # noqa: E501
         """Retrieves a list of estimates  # noqa: E501
 
         Retrieves a list of estimates and their associated orders. You can only retrieve estimates associated with the organization you are querying for.   # noqa: E501
@@ -320,7 +325,6 @@ class EstimatesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
-        :param dict opts: dictionary holding the optional arguments for the query (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -342,6 +346,10 @@ class EstimatesApi(object):
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -357,8 +365,8 @@ class EstimatesApi(object):
         path_params = {}
 
         query_params = []
-        for key in opts:
-            query_params.append([key, opts.get(key)])
+        for key in kwargs:
+            query_params.append([key, kwargs.get(key)])
         if "page" in local_var_params:
             query_params.append(("page", local_var_params["page"]))  # noqa: E501
 

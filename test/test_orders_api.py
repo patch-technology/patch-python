@@ -34,13 +34,13 @@ class TestOrdersApi(unittest.TestCase):
 
         """Create an order
         """
-        order = self.api.create_order(opts={"mass_g": 100})
+        order = self.api.create_order(mass_g=100)
 
         self.assertTrue(order)
 
         """Retrieve an order
         """
-        order = self.api.create_order(opts={"mass_g": 100})
+        order = self.api.create_order(mass_g=100)
         retrieved_order = self.api.retrieve_order(id=order.data.id)
 
         self.assertTrue(retrieved_order)

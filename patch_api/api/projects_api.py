@@ -28,10 +28,12 @@ class ProjectsApi(object):
     Do not edit the class manually.
     """
 
+    ALLOWED_QUERY_PARAMS = ["mass_g", "price_cents_usd", "project_id", "page"]
+
     def __init__(self, api_client=None):
         self.api_client = api_client
 
-    def retrieve_project(self, opts={}, id={}, **kwargs):  # noqa: E501
+    def retrieve_project(self, id={}, **kwargs):  # noqa: E501
         """Retrieves a project  # noqa: E501
 
         Retrieves a project available on Patch's platform.   # noqa: E501
@@ -42,7 +44,6 @@ class ProjectsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
-        :param dict opts: dictionary holding the optional arguments for the query (optional)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -55,9 +56,9 @@ class ProjectsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.retrieve_project_with_http_info(opts, id, **kwargs)  # noqa: E501
+        return self.retrieve_project_with_http_info(id, **kwargs)  # noqa: E501
 
-    def retrieve_project_with_http_info(self, opts, id, **kwargs):  # noqa: E501
+    def retrieve_project_with_http_info(self, id, **kwargs):  # noqa: E501
         """Retrieves a project  # noqa: E501
 
         Retrieves a project available on Patch's platform.   # noqa: E501
@@ -68,7 +69,6 @@ class ProjectsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
-        :param dict opts: dictionary holding the optional arguments for the query (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -90,6 +90,10 @@ class ProjectsApi(object):
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -112,8 +116,8 @@ class ProjectsApi(object):
             path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
-        for key in opts:
-            query_params.append([key, opts.get(key)])
+        for key in kwargs:
+            query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -149,7 +153,7 @@ class ProjectsApi(object):
             collection_formats=collection_formats,
         )
 
-    def retrieve_projects(self, opts={}, **kwargs):  # noqa: E501
+    def retrieve_projects(self, **kwargs):  # noqa: E501
         """Retrieves a list of projects  # noqa: E501
 
         Retrieves a list of projects available for purchase on Patch's platform.   # noqa: E501
@@ -160,7 +164,6 @@ class ProjectsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
-        :param dict opts: dictionary holding the optional arguments for the query (optional)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -173,9 +176,9 @@ class ProjectsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.retrieve_projects_with_http_info(opts, **kwargs)  # noqa: E501
+        return self.retrieve_projects_with_http_info(**kwargs)  # noqa: E501
 
-    def retrieve_projects_with_http_info(self, opts, **kwargs):  # noqa: E501
+    def retrieve_projects_with_http_info(self, **kwargs):  # noqa: E501
         """Retrieves a list of projects  # noqa: E501
 
         Retrieves a list of projects available for purchase on Patch's platform.   # noqa: E501
@@ -186,7 +189,6 @@ class ProjectsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
-        :param dict opts: dictionary holding the optional arguments for the query (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -208,6 +210,10 @@ class ProjectsApi(object):
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -223,8 +229,8 @@ class ProjectsApi(object):
         path_params = {}
 
         query_params = []
-        for key in opts:
-            query_params.append([key, opts.get(key)])
+        for key in kwargs:
+            query_params.append([key, kwargs.get(key)])
         if "page" in local_var_params:
             query_params.append(("page", local_var_params["page"]))  # noqa: E501
 

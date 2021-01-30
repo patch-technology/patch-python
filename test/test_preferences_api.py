@@ -55,7 +55,7 @@ class TestPreferencesApi(unittest.TestCase):
 
             self.assertTrue(deleted_preference)
 
-        preference = self.api.create_preference(opts={"project_id": project_id}).data
+        preference = self.api.create_preference(project_id=project_id).data
         self.assertTrue(preference.allocation_percentage)
         self.assertTrue(preference.id)
         self.assertTrue(preference.project)

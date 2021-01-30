@@ -62,19 +62,19 @@ patch = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
 # providing either mass_g or total_price_cents_usd, but not both
 
 # Create order with mass
-patch.orders.create_order(opts={'mass_g': 1_000_000}) # Pass in the mass in grams (i.e. 1 metric tonne)
+patch.orders.create_order(mass_g=1_000_000) # Pass in the mass in grams (i.e. 1 metric tonne)
 
 # Create an order with maximum total price
 total_price_cents_usd = 5_00 # Pass in the total price in cents (i.e. 5 dollars)
-patch.orders.create_order(opts={'total_price_cents_usd': total_price_cents_usd})
+patch.orders.create_order(total_price_cents_usd=total_price_cents_usd)
 
 ## You can also specify a project-id field (optional) to be used instead of the preferred one
 project_id = 'pro_test_1234' # Pass in the project's ID
-patch.orders.create_order(opts={'project_id': project_id, 'mass_g': mass_g})
+patch.orders.create_order(project_id=project_id, mass_g=mass_g)
 
 ## Orders also accept a metadata field (optional)
 metadata = {user: "john doe"}
-patch.orders.create_order(opts={'metadata': metadata, 'mass_g': mass_g})
+patch.orders.create_order(metadata=metadata, mass_g=mass_g)
 
 # Retrieve an order
 order_id = 'ord_test_1234' # Pass in the order's id
@@ -107,11 +107,11 @@ patch = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
 # Create an estimate
 
 mass_g = 1_000_000 # Pass in the mass in grams (i.e. 1 metric tonne)
-patch.estimates.create_estimate(opts={'mass_g': mass_g})
+patch.estimates.create_estimate(mass_g=mass_g)
 
 ## You can also specify a project-id field (optional) to be used instead of the preferred one
 project_id = 'pro_test_1234' # Pass in the project's ID
-patch.estimates.create_estimate(opts={'mass_g': mass_g, 'project_id': project_id})
+patch.estimates.create_estimate(mass_g=mass_g, project_id=project_id)
 
 # Retrieve an estimate
 estimate_id = 'est_test_1234'
@@ -156,7 +156,7 @@ patch = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
 # Create a preference
 
 project_id = 'pro_test_1234' # Pass in the project_id for your preference
-patch.preferences.create_preference(opts={'project_id': project_id})
+patch.preferences.create_preference(project_id=project_id)
 
 # Retrieve a preference
 preference_id = 'pre_test_1234' # Pass in the preferences's id
@@ -215,7 +215,7 @@ import os
 import patch_api
 
 patch = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
-orders = patch.orders.retrieve_orders(opts={'page': 1})
+orders = patch.orders.retrieve_orders(page=1)
 
 print(orders)
 ```

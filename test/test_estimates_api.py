@@ -36,9 +36,7 @@ class TestEstimatesApi(unittest.TestCase):
         """
         mass_g = 100
         project_id = "pro_test_2b67b11a030b66e0a6dd61a56b49079a"
-        estimate = self.api.create_mass_estimate(
-            opts={"mass_g": mass_g, "project_id": project_id}
-        )
+        estimate = self.api.create_mass_estimate(mass_g=mass_g, project_id=project_id)
         self.assertTrue(estimate)
         self.assertEqual(estimate.data.order.mass_g, mass_g)
 
