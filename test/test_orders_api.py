@@ -16,19 +16,18 @@ from __future__ import absolute_import
 import unittest
 import os
 
-import patch_api
-from patch_api.api.orders_api import OrdersApi  # noqa: E501
+from patch_api.api_client import ApiClient
 
 
 class TestOrdersApi(unittest.TestCase):
     """OrdersApi unit test stubs"""
 
     def setUp(self):
-        api_client = patch_api.ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
-        self.api = OrdersApi(api_client=api_client)  # noqa: E501
+        api_client = ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
+        self.api = api_client.orders  # noqa: E501
 
     def tearDown(self):
-        pass
+        self.api = None
 
     def test_interactions_with_an_order(self):
         """Test case for create_order, retrieve_order, cancel_order"""

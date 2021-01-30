@@ -16,19 +16,18 @@ from __future__ import absolute_import
 import unittest
 import os
 
-import patch_api
-from patch_api.api.preferences_api import PreferencesApi  # noqa: E501
+from patch_api.api_client import ApiClient
 
 
 class TestPreferencesApi(unittest.TestCase):
     """PreferencesApi unit test stubs"""
 
     def setUp(self):
-        api_client = patch_api.ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
-        self.api = PreferencesApi(api_client=api_client)  # noqa: E501
+        api_client = ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
+        self.api = api_client.preferences  # noqa: E501
 
     def tearDown(self):
-        pass
+        self.api = None
 
     def test_retrieve_preferences_and_preference(self):
         """Test case for retrieve_preferences and retrieve_preference

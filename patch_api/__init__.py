@@ -25,3 +25,7 @@ from patch_api.exceptions import ApiTypeError
 from patch_api.exceptions import ApiValueError
 from patch_api.exceptions import ApiKeyError
 from patch_api.exceptions import ApiException
+
+from patch_api.api import *
+
+from patch_api.models import *

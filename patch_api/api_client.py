@@ -25,6 +25,10 @@ from six.moves.urllib.parse import quote
 
 from patch_api.configuration import Configuration
 import patch_api.models
+from patch_api.api.projects_api import ProjectsApi
+from patch_api.api.orders_api import OrdersApi
+from patch_api.api.preferences_api import PreferencesApi
+from patch_api.api.estimates_api import EstimatesApi
 from patch_api import rest
 from patch_api.exceptions import ApiValueError
 
@@ -93,6 +97,15 @@ class ApiClient(object):
             self._pool.close()
             self._pool.join()
             self._pool = None
+
+    def __getattr__(self, method):
+        resource = {
+            "projects": ProjectsApi,
+            "orders": OrdersApi,
+            "preferences": PreferencesApi,
+            "estimates": EstimatesApi,
+        }[method]
+        return resource(api_client=self)
 
     @property
     def pool(self):

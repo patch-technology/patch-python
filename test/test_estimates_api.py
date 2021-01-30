@@ -16,16 +16,15 @@ from __future__ import absolute_import
 import unittest
 import os
 
-import patch_api
-from patch_api.api.estimates_api import EstimatesApi  # noqa: E501
+from patch_api.api_client import ApiClient
 
 
 class TestEstimatesApi(unittest.TestCase):
     """EstimatesApi unit test stubs"""
 
     def setUp(self):
-        api_client = patch_api.ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
-        self.api = EstimatesApi(api_client=api_client)  # noqa: E501
+        api_client = ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
+        self.api = api_client.estimates  # noqa: E501
 
     def tearDown(self):
         self.api = None

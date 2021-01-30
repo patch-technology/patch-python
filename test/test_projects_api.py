@@ -16,17 +16,15 @@ from __future__ import absolute_import
 import unittest
 import os
 
-import patch_api
-from patch_api.api.projects_api import ProjectsApi  # noqa: E501
-from patch_api.rest import ApiException
+from patch_api.api_client import ApiClient
 
 
 class TestProjectsApi(unittest.TestCase):
     """ProjectsApi unit test stubs"""
 
     def setUp(self):
-        api_client = patch_api.ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
-        self.api = ProjectsApi(api_client=api_client)  # noqa: E501
+        api_client = ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
+        self.api = api_client.projects  # noqa: E501
 
     def tearDown(self):
         self.api = None
@@ -37,8 +35,10 @@ class TestProjectsApi(unittest.TestCase):
         Retrieves a project  # noqa: E501
         """
         project_id = "pro_test_2b67b11a030b66e0a6dd61a56b49079a"
-        project = self.api.retrieve_project(id=project_id)
+        project = self.api.retrieve_project(id=project_id).data
         self.assertTrue(project)
+        self.assertEqual(project.production, False)
+        self.assertTrue(isinstance(project.photos, list))
 
     def test_retrieve_projects(self):
         """Test case for retrieve_projects

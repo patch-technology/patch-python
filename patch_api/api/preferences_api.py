@@ -18,7 +18,6 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from patch_api.api_client import ApiClient
 from patch_api.exceptions import ApiTypeError, ApiValueError
 
 
@@ -30,8 +29,6 @@ class PreferencesApi(object):
     """
 
     def __init__(self, api_client=None):
-        if api_client is None:
-            api_client = ApiClient()
         self.api_client = api_client
 
     def create_preference(
