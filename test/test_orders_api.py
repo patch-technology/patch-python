@@ -30,7 +30,7 @@ class TestOrdersApi(unittest.TestCase):
         self.api = None
 
     def test_interactions_with_an_order(self):
-        """Test case for create_order, retrieve_order, cancel_order"""
+        """Test case for create_order, retrieve_order"""
 
         """Create an order
         """
@@ -45,12 +45,6 @@ class TestOrdersApi(unittest.TestCase):
 
         self.assertTrue(retrieved_order)
 
-        """Cancel an order
-        """
-        cancelled_order = self.api.retrieve_order(id=order.data.id)
-
-        self.assertTrue(cancelled_order)
-
     def test_retrieve_orders(self):
         """Test case for retrieve_orders
 
@@ -63,13 +57,10 @@ class TestOrdersApi(unittest.TestCase):
             retrieved_order = orders[0]
 
             self.assertTrue(retrieved_order.id)
-            self.assertEqual(retrieved_order.mass_g, 100)
             self.assertEqual(retrieved_order.production, False)
             self.assertEqual(retrieved_order.state, "placed")
             self.assertEqual(retrieved_order.allocation_state, "allocated")
-            self.assertEqual(retrieved_order.price_cents_usd, "1.0")
             self.assertEqual(retrieved_order.metadata, {})
-            self.assertEqual(retrieved_order.patch_fee_cents_usd, "0.0")
             self.assertTrue(isinstance(retrieved_order.allocations, list))
 
 
