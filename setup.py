@@ -38,6 +38,6 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     long_description="""\
-    The core API used to integrate with Patch&#39;s service  # noqa: E501
+    The core API used to integrate with Patch&#39;s service.
     """,
 )
