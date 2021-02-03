@@ -16,14 +16,30 @@ jobs:
         with:
           python-version: '3.6'
 
-      - name: Install dependencies
-        run: make build
-
       - name: Run tests
         env:
           SANDBOX_API_KEY: ${{ secrets.SANDBOX_API_KEY }}
         run: make test
 
-      - name: Publish to PyPi
-        run: make publish
+      - name: Install pypa/build
+        run: >-
+          python -m
+          pip install
+          build
+          --user
 
+      - name: Build a binary wheel and a source tarball
+        run: >-
+          python -m
+          build
+          --sdist
+          --wheel
+          --outdir dist/
+          .
+
+      - name: Publish a Python distribution to PyPI
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
