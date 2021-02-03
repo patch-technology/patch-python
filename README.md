@@ -17,12 +17,12 @@ patch_api >= 1.0.0
 
 Then run:
 ```shell
-pip install
+pip install -r requirements.txt
 ```
 
 Or install it directly with
 ```shell
-pip install patch_api
+pip install patch-api
 ```
 
 ### Requirements
