@@ -16,9 +16,6 @@ jobs:
         with:
           python-version: '3.6'
 
-      - name: Install dependencies
-        run: make build
-
       - name: Run tests
         env:
           SANDBOX_API_KEY: ${{ secrets.SANDBOX_API_KEY }}
