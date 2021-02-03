@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "patch-api"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -37,4 +37,5 @@ setup(
     long_description="""\
     The core API used to integrate with Patch&#39;s service.
     """,
+    long_description_content_type="text/x-rst",
 )
