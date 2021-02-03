@@ -9,6 +9,7 @@ lint:
 
 test:
 	pip install -r test-requirements.txt && \
+	pip install -r requirements.txt && \
 	python -m unittest discover test/
 
 publish:
