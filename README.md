@@ -1,6 +1,6 @@
 # Patch Python SDK
 ![Test](https://github.com/patch-technology/patch-python/workflows/Test/badge.svg)
-[![Library Version](https://badge.fury.io/rb/patch_ruby.svg)](https://badge.fury.io/rb/patch_ruby)
+[![PyPI version](https://badge.fury.io/py/patch-api.svg)](https://badge.fury.io/py/patch-api)
 [![Discord](https://img.shields.io/discord/733029448558837792)](https://discord.gg/AU8543D)
 
 The official Python library for the [Patch API](https://www.usepatch.com).
@@ -12,17 +12,17 @@ For a complete API reference, check out [Patch's API Reference.](https://docs.us
 
 Add the library to your `requirements.txt` file:
 ```txt
-patch >= 1.0.0
+patch_api >= 1.0.0
 ```
 
 Then run:
 ```shell
-pip install
+pip install -r requirements.txt
 ```
 
 Or install it directly with
 ```shell
-pip install patch_api
+pip install patch-api
 ```
 
 ### Requirements
