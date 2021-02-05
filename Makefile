@@ -1,7 +1,7 @@
 SHELL = /bin/bash
 
 build:
-	pip install -r requirements.txt \
+	pip install -r requirements.txt && \
 	python setup.py install
 
 lint:
@@ -12,4 +12,4 @@ test:
 	pip install -r requirements.txt && \
 	python -m unittest discover test/
 
-.PHONY: build test lint publish
+.PHONY: build lint test

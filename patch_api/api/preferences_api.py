@@ -28,7 +28,16 @@ class PreferencesApi(object):
     Do not edit the class manually.
     """
 
-    ALLOWED_QUERY_PARAMS = ["mass_g", "price_cents_usd", "project_id", "page"]
+    ALLOWED_QUERY_PARAMS = [
+        "mass_g",
+        "price_cents_usd",
+        "project_id",
+        "page",
+        "distance_m",
+        "transportation_method",
+        "package_weight_g",
+        "create_order",
+    ]
 
     def __init__(self, api_client=None):
         self.api_client = api_client
@@ -98,6 +107,10 @@ class PreferencesApi(object):
         all_params.append("price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_weight_g")
+        all_params.append("create_order")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -228,6 +241,10 @@ class PreferencesApi(object):
         all_params.append("price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_weight_g")
+        all_params.append("create_order")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -348,6 +365,10 @@ class PreferencesApi(object):
         all_params.append("price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_weight_g")
+        all_params.append("create_order")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -468,6 +489,10 @@ class PreferencesApi(object):
         all_params.append("price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_weight_g")
+        all_params.append("create_order")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

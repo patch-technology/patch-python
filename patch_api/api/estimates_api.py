@@ -28,10 +28,159 @@ class EstimatesApi(object):
     Do not edit the class manually.
     """
 
-    ALLOWED_QUERY_PARAMS = ["mass_g", "price_cents_usd", "project_id", "page"]
+    ALLOWED_QUERY_PARAMS = [
+        "mass_g",
+        "price_cents_usd",
+        "project_id",
+        "page",
+        "distance_m",
+        "transportation_method",
+        "package_weight_g",
+        "create_order",
+    ]
 
     def __init__(self, api_client=None):
         self.api_client = api_client
+
+    def create_flight_estimate(
+        self, create_flight_estimate_request={}, **kwargs
+    ):  # noqa: E501
+        """Create a flight estimate given the distance traveled in meters  # noqa: E501
+
+        Creates a flight estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_flight_estimate(create_flight_estimate_request, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param CreateFlightEstimateRequest create_flight_estimate_request: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: EstimateResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.create_flight_estimate_with_http_info(
+            create_flight_estimate_request, **kwargs
+        )  # noqa: E501
+
+    def create_flight_estimate_with_http_info(
+        self, create_flight_estimate_request, **kwargs
+    ):  # noqa: E501
+        """Create a flight estimate given the distance traveled in meters  # noqa: E501
+
+        Creates a flight estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_flight_estimate_with_http_info(create_flight_estimate_request, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param CreateFlightEstimateRequest create_flight_estimate_request: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(EstimateResponse, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ["create_flight_estimate_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_weight_g")
+        all_params.append("create_order")
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_flight_estimate" % key
+                )
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'create_flight_estimate_request' is set
+        if (
+            "create_flight_estimate_request" not in local_var_params
+            or local_var_params["create_flight_estimate_request"] is None
+        ):
+            raise ApiValueError(
+                "Missing the required parameter `create_flight_estimate_request` when calling `create_flight_estimate`"
+            )  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        for key in kwargs:
+            query_params.append([key, kwargs.get(key)])
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "create_flight_estimate_request" in local_var_params:
+            body_params = local_var_params["create_flight_estimate_request"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["bearer_auth"]  # noqa: E501
+
+        return self.api_client.call_api(
+            "/v1/estimates/flight",
+            "POST",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type="EstimateResponse",  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def create_mass_estimate(
         self, create_mass_estimate_request={}, **kwargs
@@ -100,6 +249,10 @@ class EstimatesApi(object):
         all_params.append("price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_weight_g")
+        all_params.append("create_order")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -230,6 +383,10 @@ class EstimatesApi(object):
         all_params.append("price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_weight_g")
+        all_params.append("create_order")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -350,6 +507,10 @@ class EstimatesApi(object):
         all_params.append("price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_weight_g")
+        all_params.append("create_order")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

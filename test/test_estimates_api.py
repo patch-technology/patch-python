@@ -43,6 +43,19 @@ class TestEstimatesApi(unittest.TestCase):
         retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
         self.assertTrue(retrieved_estimate)
 
+    def test_create_and_retrieve_flight_estimate(self):
+        """Test case for create_mass_estimate
+
+        Create an estimate based on mass of CO2  # noqa: E501
+        """
+        distance_m = 100
+        estimate = self.api.create_mass_estimate(distance_m=distance_m)
+        self.assertTrue(estimate)
+        self.assertEqual(estimate.data.order.distance_m, distance_m)
+
+        retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
+        self.assertTrue(retrieved_estimate)
+
 
 if __name__ == "__main__":
     unittest.main()
