@@ -73,7 +73,8 @@ class Estimate(object):
         self.id = id
         self.production = production
         self.type = type
-        self.mass_g = mass_g
+        if mass_g is not None:
+            self.mass_g = mass_g
         self.order = order
 
     @property

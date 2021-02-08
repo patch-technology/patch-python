@@ -35,8 +35,11 @@ class ProjectsApi(object):
         "page",
         "distance_m",
         "transportation_method",
-        "package_weight_g",
+        "package_mass_g",
         "create_order",
+        "model",
+        "make",
+        "year",
     ]
 
     def __init__(self, api_client=None):
@@ -105,8 +108,11 @@ class ProjectsApi(object):
         all_params.append("metadata")
         all_params.append("distance_m")
         all_params.append("transportation_method")
-        all_params.append("package_weight_g")
+        all_params.append("package_mass_g")
         all_params.append("create_order")
+        all_params.append("make")
+        all_params.append("model")
+        all_params.append("year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -229,8 +235,11 @@ class ProjectsApi(object):
         all_params.append("metadata")
         all_params.append("distance_m")
         all_params.append("transportation_method")
-        all_params.append("package_weight_g")
+        all_params.append("package_mass_g")
         all_params.append("create_order")
+        all_params.append("make")
+        all_params.append("model")
+        all_params.append("year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
