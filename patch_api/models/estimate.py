@@ -33,12 +33,19 @@ class Estimate(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "production": "bool", "type": "str", "order": "Order"}
+    openapi_types = {
+        "id": "str",
+        "production": "bool",
+        "type": "str",
+        "mass_g": "int",
+        "order": "Order",
+    }
 
     attribute_map = {
         "id": "id",
         "production": "production",
         "type": "type",
+        "mass_g": "mass_g",
         "order": "order",
     }
 
@@ -47,6 +54,7 @@ class Estimate(object):
         id=None,
         production=None,
         type=None,
+        mass_g=None,
         order=None,
         local_vars_configuration=None,
     ):  # noqa: E501
@@ -58,12 +66,15 @@ class Estimate(object):
         self._id = None
         self._production = None
         self._type = None
+        self._mass_g = None
         self._order = None
         self.discriminator = None
 
         self.id = id
         self.production = production
         self.type = type
+        if mass_g is not None:
+            self.mass_g = mass_g
         self.order = order
 
     @property
@@ -126,7 +137,7 @@ class Estimate(object):
     def type(self):
         """Gets the type of this Estimate.  # noqa: E501
 
-        The type of estimate. Currently mass is the only supported value.  # noqa: E501
+        The type of estimate. Available types are mass, flight, shipping, and vehicle.  # noqa: E501
 
         :return: The type of this Estimate.  # noqa: E501
         :rtype: str
@@ -137,7 +148,7 @@ class Estimate(object):
     def type(self, type):
         """Sets the type of this Estimate.
 
-        The type of estimate. Currently mass is the only supported value.  # noqa: E501
+        The type of estimate. Available types are mass, flight, shipping, and vehicle.  # noqa: E501
 
         :param type: The type of this Estimate.  # noqa: E501
         :type: str
@@ -150,6 +161,29 @@ class Estimate(object):
             )  # noqa: E501
 
         self._type = type
+
+    @property
+    def mass_g(self):
+        """Gets the mass_g of this Estimate.  # noqa: E501
+
+        The estimated mass in grams for this estimate.  # noqa: E501
+
+        :return: The mass_g of this Estimate.  # noqa: E501
+        :rtype: int
+        """
+        return self._mass_g
+
+    @mass_g.setter
+    def mass_g(self, mass_g):
+        """Sets the mass_g of this Estimate.
+
+        The estimated mass in grams for this estimate.  # noqa: E501
+
+        :param mass_g: The mass_g of this Estimate.  # noqa: E501
+        :type: int
+        """
+
+        self._mass_g = mass_g
 
     @property
     def order(self):

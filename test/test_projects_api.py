@@ -59,7 +59,7 @@ class TestProjectsApi(unittest.TestCase):
             self.assertTrue(project.description)
             self.assertEqual(project.country, "US")
             self.assertEqual(project.type, "biomass")
-            self.assertEqual(project.developer, "Carbo Culture Biochar")
+            self.assertEqual(project.developer, "Carbo Culture")
             self.assertTrue(isinstance(project.photos, list))
 
 
