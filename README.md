@@ -12,7 +12,7 @@ For a complete API reference, check out [Patch's API Reference.](https://docs.us
 
 Add the library to your `requirements.txt` file:
 ```txt
-patch_api >= 1.3.0
+patch_api >= 1.3.1
 ```
 
 Then run:

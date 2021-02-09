@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "patch-api"
-VERSION = "1.3.0"
+VERSION = "1.3.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -23,6 +23,7 @@ VERSION = "1.3.0"
 REQUIRES = [
     "urllib3 >= 1.25.3",
     "python-dateutil",
+    "certifi"
 ]
 
 setup(
