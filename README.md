@@ -106,28 +106,28 @@ patch = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
 
 # Create an estimate
 mass_g = 1_000_000 # Pass in the mass in grams (i.e. 1 metric tonne)
-patch.estimates.create_estimate(mass_g=mass_g)
+patch.estimates.create_mass_estimate(mass_g=mass_g)
 
 ## You can also specify a project-id field (optional) to be used instead of the preferred one
 project_id = 'pro_test_1234' # Pass in the project's ID
-patch.estimates.create_estimate(mass_g=mass_g, project_id=project_id)
+patch.estimates.create_mass_estimate(mass_g=mass_g, project_id=project_id)
 
 # Create a flight estimate
 distance_m = 1_000_000 # Pass in the distance traveled in meters
-patch.estimates.create_estimate(distance_m=distance_m)
+patch.estimates.create_mass_estimate(distance_m=distance_m)
 
 # Create a shipping estimate
 distance_m = 1_000_000 # Pass in the distance traveled in meters
 transportation_method = "rail"
 package_mass_g = 5000
-patch.estimates.create_estimate(distance_m=distance_m, transportation_method=transportation_method, package_mass_g=package_mass_g)
+patch.estimates.create_mass_estimate(distance_m=distance_m, transportation_method=transportation_method, package_mass_g=package_mass_g)
 
 # Create a vehicle estimate
 distance_m = 1_000_000 # Pass in the distance traveled in meters
 make = "Toyota"
 model = "Corolla"
 year = 1995
-patch.estimates.create_estimate(distance_m=distance_m, make=make, model=model, year=year)
+patch.estimates.create_mass_estimate(distance_m=distance_m, make=make, model=model, year=year)
 
 # Retrieve an estimate
 estimate_id = 'est_test_1234'
