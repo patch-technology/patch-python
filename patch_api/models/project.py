@@ -34,36 +34,51 @@ class Project(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'production': 'bool',
-        'name': 'str',
-        'description': 'str',
-        'type': 'str',
-        'country': 'str',
-        'developer': 'str',
-        'photos': 'list[Photo]',
-        'average_price_per_tonne_cents_usd': 'int',
-        'remaining_mass_g': 'int',
-        'standard': 'Standard',
-        'sdgs': 'list[Sdg]'
+        "id": "str",
+        "production": "bool",
+        "name": "str",
+        "description": "str",
+        "type": "str",
+        "country": "str",
+        "developer": "str",
+        "photos": "list[Photo]",
+        "average_price_per_tonne_cents_usd": "int",
+        "remaining_mass_g": "int",
+        "standard": "Standard",
+        "sdgs": "list[Sdg]",
     }
 
     attribute_map = {
-        'id': 'id',
-        'production': 'production',
-        'name': 'name',
-        'description': 'description',
-        'type': 'type',
-        'country': 'country',
-        'developer': 'developer',
-        'photos': 'photos',
-        'average_price_per_tonne_cents_usd': 'average_price_per_tonne_cents_usd',
-        'remaining_mass_g': 'remaining_mass_g',
-        'standard': 'standard',
-        'sdgs': 'sdgs'
+        "id": "id",
+        "production": "production",
+        "name": "name",
+        "description": "description",
+        "type": "type",
+        "country": "country",
+        "developer": "developer",
+        "photos": "photos",
+        "average_price_per_tonne_cents_usd": "average_price_per_tonne_cents_usd",
+        "remaining_mass_g": "remaining_mass_g",
+        "standard": "standard",
+        "sdgs": "sdgs",
     }
 
-    def __init__(self, id=None, production=None, name=None, description=None, type=None, country=None, developer=None, photos=None, average_price_per_tonne_cents_usd=None, remaining_mass_g=None, standard=None, sdgs=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        production=None,
+        name=None,
+        description=None,
+        type=None,
+        country=None,
+        developer=None,
+        photos=None,
+        average_price_per_tonne_cents_usd=None,
+        remaining_mass_g=None,
+        standard=None,
+        sdgs=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -117,7 +132,9 @@ class Project(object):
         :param id: The id of this Project.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -142,8 +159,12 @@ class Project(object):
         :param production: The production of this Project.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and production is None:  # noqa: E501
-            raise ValueError("Invalid value for `production`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and production is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `production`, must not be `None`"
+            )  # noqa: E501
 
         self._production = production
 
@@ -167,8 +188,12 @@ class Project(object):
         :param name: The name of this Project.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -192,8 +217,12 @@ class Project(object):
         :param description: The description of this Project.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and description is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `description`, must not be `None`"
+            )  # noqa: E501
 
         self._description = description
 
@@ -217,11 +246,22 @@ class Project(object):
         :param type: The type of this Project.  # noqa: E501
         :type: str
         """
-        allowed_values = ["biomass", "dac", "forestry", "mineralization", "ocean", "soil"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+        allowed_values = [
+            "biomass",
+            "dac",
+            "forestry",
+            "mineralization",
+            "ocean",
+            "soil",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and type not in allowed_values
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
+                "Invalid value for `type` ({0}), must be one of {1}".format(  # noqa: E501
+                    type, allowed_values
+                )
             )
 
         self._type = type
@@ -246,8 +286,12 @@ class Project(object):
         :param country: The country of this Project.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and country is None:  # noqa: E501
-            raise ValueError("Invalid value for `country`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and country is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `country`, must not be `None`"
+            )  # noqa: E501
 
         self._country = country
 
@@ -271,8 +315,12 @@ class Project(object):
         :param developer: The developer of this Project.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and developer is None:  # noqa: E501
-            raise ValueError("Invalid value for `developer`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and developer is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `developer`, must not be `None`"
+            )  # noqa: E501
 
         self._developer = developer
 
@@ -319,8 +367,13 @@ class Project(object):
         :param average_price_per_tonne_cents_usd: The average_price_per_tonne_cents_usd of this Project.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and average_price_per_tonne_cents_usd is None:  # noqa: E501
-            raise ValueError("Invalid value for `average_price_per_tonne_cents_usd`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and average_price_per_tonne_cents_usd is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `average_price_per_tonne_cents_usd`, must not be `None`"
+            )  # noqa: E501
 
         self._average_price_per_tonne_cents_usd = average_price_per_tonne_cents_usd
 
@@ -344,8 +397,13 @@ class Project(object):
         :param remaining_mass_g: The remaining_mass_g of this Project.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and remaining_mass_g is None:  # noqa: E501
-            raise ValueError("Invalid value for `remaining_mass_g`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and remaining_mass_g is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `remaining_mass_g`, must not be `None`"
+            )  # noqa: E501
 
         self._remaining_mass_g = remaining_mass_g
 
@@ -402,18 +460,20 @@ class Project(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 
