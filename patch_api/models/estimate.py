@@ -34,30 +34,22 @@ class Estimate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "production": "bool",
-        "type": "str",
-        "mass_g": "int",
-        "order": "Order",
+        'id': 'str',
+        'production': 'bool',
+        'type': 'str',
+        'mass_g': 'int',
+        'order': 'Order'
     }
 
     attribute_map = {
-        "id": "id",
-        "production": "production",
-        "type": "type",
-        "mass_g": "mass_g",
-        "order": "order",
+        'id': 'id',
+        'production': 'production',
+        'type': 'type',
+        'mass_g': 'mass_g',
+        'order': 'order'
     }
 
-    def __init__(
-        self,
-        id=None,
-        production=None,
-        type=None,
-        mass_g=None,
-        order=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, id=None, production=None, type=None, mass_g=None, order=None, local_vars_configuration=None):  # noqa: E501
         """Estimate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -97,9 +89,7 @@ class Estimate(object):
         :param id: The id of this Estimate.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -124,12 +114,8 @@ class Estimate(object):
         :param production: The production of this Estimate.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and production is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `production`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and production is None:  # noqa: E501
+            raise ValueError("Invalid value for `production`, must not be `None`")  # noqa: E501
 
         self._production = production
 
@@ -153,12 +139,8 @@ class Estimate(object):
         :param type: The type of this Estimate.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
         self._type = type
 
@@ -215,20 +197,18 @@ class Estimate(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 
