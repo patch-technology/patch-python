@@ -53,8 +53,8 @@ class TestEstimatesApi(unittest.TestCase):
             distance_m=distance_m, create_order=True
         )
         self.assertEqual(estimate.data.type, "flight")
-        self.assertEqual(estimate.data.order.mass_g, 1032000)
-        self.assertEqual(estimate.data.mass_g, 1032000)
+        self.assertEqual(estimate.data.order.mass_g, 1031697)
+        self.assertEqual(estimate.data.mass_g, 1031697)
 
         retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
         self.assertTrue(retrieved_estimate)

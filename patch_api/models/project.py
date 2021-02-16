@@ -45,6 +45,7 @@ class Project(object):
         "average_price_per_tonne_cents_usd": "int",
         "remaining_mass_g": "int",
         "standard": "Standard",
+        "sdgs": "list[Sdg]",
     }
 
     attribute_map = {
@@ -59,6 +60,7 @@ class Project(object):
         "average_price_per_tonne_cents_usd": "average_price_per_tonne_cents_usd",
         "remaining_mass_g": "remaining_mass_g",
         "standard": "standard",
+        "sdgs": "sdgs",
     }
 
     def __init__(
@@ -74,6 +76,7 @@ class Project(object):
         average_price_per_tonne_cents_usd=None,
         remaining_mass_g=None,
         standard=None,
+        sdgs=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
@@ -92,6 +95,7 @@ class Project(object):
         self._average_price_per_tonne_cents_usd = None
         self._remaining_mass_g = None
         self._standard = None
+        self._sdgs = None
         self.discriminator = None
 
         self.id = id
@@ -106,6 +110,7 @@ class Project(object):
         self.average_price_per_tonne_cents_usd = average_price_per_tonne_cents_usd
         self.remaining_mass_g = remaining_mass_g
         self.standard = standard
+        self.sdgs = sdgs
 
     @property
     def id(self):
@@ -424,6 +429,29 @@ class Project(object):
         """
 
         self._standard = standard
+
+    @property
+    def sdgs(self):
+        """Gets the sdgs of this Project.  # noqa: E501
+
+        An array returning the UN Sustainable Development Goals associated with this project.  # noqa: E501
+
+        :return: The sdgs of this Project.  # noqa: E501
+        :rtype: list[Sdg]
+        """
+        return self._sdgs
+
+    @sdgs.setter
+    def sdgs(self, sdgs):
+        """Sets the sdgs of this Project.
+
+        An array returning the UN Sustainable Development Goals associated with this project.  # noqa: E501
+
+        :param sdgs: The sdgs of this Project.  # noqa: E501
+        :type: list[Sdg]
+        """
+
+        self._sdgs = sdgs
 
     def to_dict(self):
         """Returns the model properties as a dict"""
