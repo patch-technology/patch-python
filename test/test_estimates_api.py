@@ -53,8 +53,8 @@ class TestEstimatesApi(unittest.TestCase):
             distance_m=distance_m, create_order=True
         )
         self.assertEqual(estimate.data.type, "flight")
-        self.assertEqual(estimate.data.order.mass_g, 1032000)
-        self.assertEqual(estimate.data.mass_g, 1032000)
+        self.assertEqual(estimate.data.order.mass_g, 1031697)
+        self.assertEqual(estimate.data.mass_g, 1031697)
 
         retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
         self.assertTrue(retrieved_estimate)
@@ -94,6 +94,23 @@ class TestEstimatesApi(unittest.TestCase):
         )
         self.assertEqual(estimate.data.type, "vehicle")
         self.assertEqual(estimate.data.mass_g, 5719674)
+
+        retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
+        self.assertTrue(retrieved_estimate)
+
+    def test_create_and_retrieve_vehicle_estimate_best_match(self):
+        """Test case for create_vehicle_estimate
+
+        Create an estimate based on the vehicle with partial information  # noqa: E501
+        """
+        distance_m = 10000000
+        make = "Toyota"
+        model = "Corolla"
+        estimate = self.api.create_vehicle_estimate(
+            distance_m=distance_m, model=model, make=make
+        )
+        self.assertEqual(estimate.data.type, "vehicle")
+        self.assertEqual(estimate.data.mass_g, 6499629)
 
         retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
         self.assertTrue(retrieved_estimate)
