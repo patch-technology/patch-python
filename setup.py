@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "patch-api"
-VERSION = "1.3.2"
+VERSION = "1.4.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -21,9 +21,9 @@ VERSION = "1.3.2"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = [
-    "urllib3 >= 1.25.3",
-    "python-dateutil",
-    "certifi",
+  "urllib3 >= 1.25.3",
+  "python-dateutil",
+  "certifi",
 ]
 
 setup(
@@ -40,5 +40,5 @@ setup(
     include_package_data=True,
     long_description="""\
     The core API used to integrate with Patch&#39;s service  # noqa: E501
-    """,
+    """
 )
