@@ -62,6 +62,30 @@ class TestProjectsApi(unittest.TestCase):
             self.assertEqual(project.developer, "Carbo Culture")
             self.assertTrue(isinstance(project.photos, list))
 
+    def test_retrieve_biomass_projects(self):
+        """Test case for retrieve_projects with a type filter
+
+        Retrieves a list of projects  # noqa: E501
+        """
+        project_type = "biomass"
+        projects = self.api.retrieve_projects(type=project_type).data
+        self.assertTrue(isinstance(projects, list))
+
+        for project in projects:
+            self.assertEqual(project.type, project_type)
+
+    def test_retrieve_american_projects(self):
+        """Test case for retrieve_projects with a country filter
+
+        Retrieves a list of projects  # noqa: E501
+        """
+        project_country = "US"
+        projects = self.api.retrieve_projects(country=project_country).data
+        self.assertTrue(isinstance(projects, list))
+
+        for project in projects:
+            self.assertEqual(project.country, project_country)
+
 
 if __name__ == "__main__":
     unittest.main()
