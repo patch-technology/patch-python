@@ -40,8 +40,6 @@ class ProjectsApi(object):
         "model",
         "make",
         "year",
-        "type",
-        "country",
     ]
 
     def __init__(self, api_client=None):
@@ -115,8 +113,6 @@ class ProjectsApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
-        all_params.append("type")
-        all_params.append("country")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -187,6 +183,8 @@ class ProjectsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
+        :param str country:
+        :param str type:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -212,6 +210,8 @@ class ProjectsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
+        :param str country:
+        :param str type:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -228,7 +228,7 @@ class ProjectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["page"]  # noqa: E501
+        all_params = ["page", "country", "type"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -244,8 +244,6 @@ class ProjectsApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
-        all_params.append("type")
-        all_params.append("country")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -265,6 +263,10 @@ class ProjectsApi(object):
             query_params.append([key, kwargs.get(key)])
         if "page" in local_var_params:
             query_params.append(("page", local_var_params["page"]))  # noqa: E501
+        if "country" in local_var_params:
+            query_params.append(("country", local_var_params["country"]))  # noqa: E501
+        if "type" in local_var_params:
+            query_params.append(("type", local_var_params["type"]))  # noqa: E501
 
         header_params = {}
 

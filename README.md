@@ -1,4 +1,5 @@
 # Patch Python SDK
+
 ![Test](https://github.com/patch-technology/patch-python/workflows/Test/badge.svg)
 [![PyPI version](https://badge.fury.io/py/patch-api.svg)](https://badge.fury.io/py/patch-api)
 [![Discord](https://img.shields.io/discord/733029448558837792)](https://discord.gg/AU8543D)
@@ -6,27 +7,32 @@
 The official Python library for the [Patch API](https://www.usepatch.com).
 
 ## Documentation
+
 For a complete API reference, check out [Patch's API Reference.](https://docs.usepatch.com/).
 
 ## Installation
 
 Add the library to your `requirements.txt` file:
+
 ```txt
-patch_api >= 1.3.1
+patch_api >= 1.4.0
 ```
 
 Then run:
+
 ```shell
 pip install -r requirements.txt
 ```
 
 Or install it directly with
+
 ```shell
 pip install patch-api
 ```
 
 ### Requirements
-- Python 3.6.0
+
+- Python 3.6.1
 
 ## Usage
 
@@ -42,6 +48,7 @@ orders = patch.orders.retrieve_orders()
 ```
 
 ### Orders
+
 In Patch, orders represent a purchase of carbon offsets or negative emissions by mass. Place orders directly if you know the amount of carbon dioxide you would like to sequester. If you do not know how much to purchase, use an estimate.
 
 In Patch, orders represent a purchase of carbon offsets or negative emissions by mass.
@@ -53,6 +60,7 @@ fulfill the order for you.
 [API Reference](https://docs.usepatch.com/#/?id=orders)
 
 #### Examples
+
 ```python
 import patch_api
 
@@ -94,11 +102,13 @@ patch.orders.retrieve_orders(page=page)
 ```
 
 ### Estimates
+
 Estimates allow API users to get a quote for the cost of compensating a certain amount of CO2. When creating an estimate, an order in the `draft` state will also be created, reserving the allocation of a project for 5 minutes. If you don't place your draft order within those 5 minutes, the order will automatically be cancelled.
 
 [API Reference](https://docs.usepatch.com/#/?id=estimates)
 
 #### Examples
+
 ```python
 import patch_api
 
@@ -139,6 +149,7 @@ patch.estimates.retrieve_estimates(page=page)
 ```
 
 ### Projects
+
 Projects are the ways Patch takes CO2 out of the air. They can represent reforestation, enhanced weathering, direct air carbon capture, etc. When you place an order via Patch, it is allocated to a project.
 
 When fetching projects, you can supply filters to the query to narrow your result. Currently supported filters are:
@@ -148,6 +159,7 @@ When fetching projects, you can supply filters to the query to narrow your resul
 [API Reference](https://docs.usepatch.com/#/?id=projects)
 
 #### Examples
+
 ```python
 import patch_api
 
@@ -169,11 +181,13 @@ patch.projects.retrieve_projects(country="CA")
 ```
 
 ### Preferences
+
 Preferences are how you route your orders in Patch. If you don't have a preference, Patch will allocate your order to the least expensive option. If you do have a preference, all of your orders will be sent to that project. You can set your preferences via API, or through the [Patch Dashboard](https://dashboard.usepatch.com/projects).
 
 [API Reference](https://docs.usepatch.com/#/?id=preferences)
 
 #### Examples
+
 ```python
 import patch_api
 
@@ -202,16 +216,19 @@ patch.preferences.retrieve_preferences(page=page)
 ### Running tests
 
 Set up the required environment variable:
+
 ```
 $ export SANDBOX_API_KEY=<SANDBOX API KEY>
 ```
 
 Run tests:
+
 ```
 $ make test
 ```
 
 To run an individual test:
+
 ```
 $ python -m unittest
 ```
@@ -219,6 +236,7 @@ $ python -m unittest
 ### Testing the built package locally
 
 To build the library locally, run:
+
 ```
 $ make build
 ```
@@ -231,11 +249,13 @@ $ pip install ../patch-python
 ```
 
 Set up the required environment variable:
+
 ```
 $ export SANDBOX_API_KEY=<SANDBOX API KEY>
 ```
 
 To test the package locally, create a python file in a sibling directory and add the following:
+
 ```python
 import os
 import patch_api

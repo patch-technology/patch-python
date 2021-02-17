@@ -40,8 +40,6 @@ class PreferencesApi(object):
         "model",
         "make",
         "year",
-        "type",
-        "country",
     ]
 
     def __init__(self, api_client=None):
@@ -119,8 +117,6 @@ class PreferencesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
-        all_params.append("type")
-        all_params.append("country")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -258,8 +254,6 @@ class PreferencesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
-        all_params.append("type")
-        all_params.append("country")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -387,8 +381,6 @@ class PreferencesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
-        all_params.append("type")
-        all_params.append("country")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -516,8 +508,6 @@ class PreferencesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
-        all_params.append("type")
-        all_params.append("country")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
