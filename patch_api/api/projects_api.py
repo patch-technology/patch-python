@@ -185,6 +185,7 @@ class ProjectsApi(object):
         :param int page:
         :param str country:
         :param str type:
+        :param int remainaing_mass_g:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -212,6 +213,7 @@ class ProjectsApi(object):
         :param int page:
         :param str country:
         :param str type:
+        :param int remainaing_mass_g:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -228,7 +230,7 @@ class ProjectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["page", "country", "type"]  # noqa: E501
+        all_params = ["page", "country", "type", "remainaing_mass_g"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -267,6 +269,10 @@ class ProjectsApi(object):
             query_params.append(("country", local_var_params["country"]))  # noqa: E501
         if "type" in local_var_params:
             query_params.append(("type", local_var_params["type"]))  # noqa: E501
+        if "remainaing_mass_g" in local_var_params:
+            query_params.append(
+                ("remainaing_mass_g", local_var_params["remainaing_mass_g"])
+            )  # noqa: E501
 
         header_params = {}
 
