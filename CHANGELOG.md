@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Adds Sustainable Development Goals (SDGs) field to projects
-- Adds the ability to filter Projects on country, type
+- Adds the ability to filter Projects on country, type, minimum_available_mass
 
 ### Changed
 

@@ -59,7 +59,6 @@ class TestOrdersApi(unittest.TestCase):
             self.assertTrue(retrieved_order.id)
             self.assertEqual(retrieved_order.production, False)
             self.assertEqual(retrieved_order.state, "placed")
-            self.assertEqual(retrieved_order.allocation_state, "allocated")
             self.assertEqual(retrieved_order.metadata, {})
             self.assertTrue(isinstance(retrieved_order.allocations, list))
 

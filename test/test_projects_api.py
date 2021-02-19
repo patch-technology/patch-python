@@ -86,6 +86,20 @@ class TestProjectsApi(unittest.TestCase):
         for project in projects:
             self.assertEqual(project.country, project_country)
 
+    def test_retrieve_projects_with_more_than_100_grams_of_inventory(self):
+        """Test case for retrieve_projects with a country filter
+
+        Retrieves a list of projects  # noqa: E501
+        """
+        minimum_available_mass = 100
+        projects = self.api.retrieve_projects(
+            minimum_available_mass=minimum_available_mass
+        ).data
+        self.assertTrue(isinstance(projects, list))
+
+        for project in projects:
+            self.assertTrue(project.remaining_mass_g >= minimum_available_mass)
+
 
 if __name__ == "__main__":
     unittest.main()

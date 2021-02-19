@@ -155,6 +155,7 @@ Projects are the ways Patch takes CO2 out of the air. They can represent refores
 When fetching projects, you can supply filters to the query to narrow your result. Currently supported filters are:
 - `country`
 - `type`
+- `minimum_available_mass`
 
 [API Reference](https://docs.usepatch.com/#/?id=projects)
 
@@ -178,6 +179,9 @@ patch.projects.retrieve_projects(type="biomass")
 
 # Retrieve a list of projects from Canada
 patch.projects.retrieve_projects(country="CA")
+
+# Retrieve a list of projects with at least 100 grams of available offsets
+patch.projects.retrieve_projects(minimum_available_mass=100)
 ```
 
 ### Preferences
