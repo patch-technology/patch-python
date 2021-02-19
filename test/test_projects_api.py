@@ -91,12 +91,14 @@ class TestProjectsApi(unittest.TestCase):
 
         Retrieves a list of projects  # noqa: E501
         """
-        remainaing_mass_g = 100
-        projects = self.api.retrieve_projects(remainaing_mass_g=remainaing_mass_g).data
+        minimum_available_mass = 100
+        projects = self.api.retrieve_projects(
+            minimum_available_mass=minimum_available_mass
+        ).data
         self.assertTrue(isinstance(projects, list))
 
         for project in projects:
-            self.assertTrue(project.remaining_mass_g >= remainaing_mass_g)
+            self.assertTrue(project.remaining_mass_g >= minimum_available_mass)
 
 
 if __name__ == "__main__":
