@@ -58,7 +58,7 @@ class Configuration(object):
 
     def __init__(
         self,
-        host="https://api.usepatch.com",
+        host="https://api.patch.io",
         api_key=None,
         api_key_prefix=None,
         username=None,
@@ -341,7 +341,7 @@ class Configuration(object):
             "OS: {env}\n"
             "Python Version: {pyversion}\n"
             "Version of the API: v1\n"
-            "SDK Package Version: 1.4.0".format(env=sys.platform, pyversion=sys.version)
+            "SDK Package Version: 1.5.0".format(env=sys.platform, pyversion=sys.version)
         )
 
     def get_host_settings(self):
@@ -356,7 +356,7 @@ class Configuration(object):
                 "variables": {
                     "defaultHost": {
                         "description": "No description provided",
-                        "default_value": "api.usepatch.com",
+                        "default_value": "api.patch.io",
                     }
                 },
             }
