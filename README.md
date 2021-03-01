@@ -4,18 +4,18 @@
 [![PyPI version](https://badge.fury.io/py/patch-api.svg)](https://badge.fury.io/py/patch-api)
 [![Discord](https://img.shields.io/discord/733029448558837792)](https://discord.gg/AU8543D)
 
-The official Python library for the [Patch API](https://www.usepatch.com).
+The official Python library for the [Patch API](https://www.patch.io).
 
 ## Documentation
 
-For a complete API reference, check out [Patch's API Reference.](https://docs.usepatch.com/).
+For a complete API reference, check out [Patch's API Reference.](https://docs.patch.io/).
 
 ## Installation
 
 Add the library to your `requirements.txt` file:
 
 ```txt
-patch_api >= 1.4.0
+patch_api >= 1.5.0
 ```
 
 Then run:
@@ -153,6 +153,7 @@ patch.estimates.retrieve_estimates(page=page)
 Projects are the ways Patch takes CO2 out of the air. They can represent reforestation, enhanced weathering, direct air carbon capture, etc. When you place an order via Patch, it is allocated to a project.
 
 When fetching projects, you can supply filters to the query to narrow your result. Currently supported filters are:
+
 - `country`
 - `type`
 - `minimum_available_mass`
