@@ -32,3 +32,4 @@ from patch_api.models.project import Project
 from patch_api.models.project_list_response import ProjectListResponse
 from patch_api.models.project_response import ProjectResponse
 from patch_api.models.standard import Standard
+from patch_api.models.sdg import Sdg
