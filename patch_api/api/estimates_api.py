@@ -30,7 +30,7 @@ class EstimatesApi(object):
 
     ALLOWED_QUERY_PARAMS = [
         "mass_g",
-        "price_cents_usd",
+        "total_price_cents_usd",
         "project_id",
         "page",
         "distance_m",
@@ -109,7 +109,7 @@ class EstimatesApi(object):
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
         all_params.append("mass_g")
-        all_params.append("price_cents_usd")
+        all_params.append("total_price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
         all_params.append("distance_m")
@@ -252,7 +252,7 @@ class EstimatesApi(object):
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
         all_params.append("mass_g")
-        all_params.append("price_cents_usd")
+        all_params.append("total_price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
         all_params.append("distance_m")
@@ -395,7 +395,7 @@ class EstimatesApi(object):
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
         all_params.append("mass_g")
-        all_params.append("price_cents_usd")
+        all_params.append("total_price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
         all_params.append("distance_m")
@@ -538,7 +538,7 @@ class EstimatesApi(object):
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
         all_params.append("mass_g")
-        all_params.append("price_cents_usd")
+        all_params.append("total_price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
         all_params.append("distance_m")
@@ -675,7 +675,7 @@ class EstimatesApi(object):
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
         all_params.append("mass_g")
-        all_params.append("price_cents_usd")
+        all_params.append("total_price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
         all_params.append("distance_m")
@@ -802,7 +802,7 @@ class EstimatesApi(object):
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
         all_params.append("mass_g")
-        all_params.append("price_cents_usd")
+        all_params.append("total_price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
         all_params.append("distance_m")

@@ -230,7 +230,7 @@ class Project(object):
     def type(self):
         """Gets the type of this Project.  # noqa: E501
 
-        The type of carbon removal project, currently available project types are Biomass, Dac, Forestry, Mineralization, Ocean, Soil.  # noqa: E501
+        The type of carbon removal project, currently available project types are Biomass, Dac, Forestry, Mineralization, Ocean, Renewables, Soil.  # noqa: E501
 
         :return: The type of this Project.  # noqa: E501
         :rtype: str
@@ -241,7 +241,7 @@ class Project(object):
     def type(self, type):
         """Sets the type of this Project.
 
-        The type of carbon removal project, currently available project types are Biomass, Dac, Forestry, Mineralization, Ocean, Soil.  # noqa: E501
+        The type of carbon removal project, currently available project types are Biomass, Dac, Forestry, Mineralization, Ocean, Renewables, Soil.  # noqa: E501
 
         :param type: The type of this Project.  # noqa: E501
         :type: str
@@ -252,6 +252,7 @@ class Project(object):
             "forestry",
             "mineralization",
             "ocean",
+            "renewables",
             "soil",
         ]  # noqa: E501
         if (
