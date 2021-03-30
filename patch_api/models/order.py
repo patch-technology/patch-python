@@ -160,10 +160,10 @@ class Order(object):
         if (
             self.local_vars_configuration.client_side_validation
             and mass_g is not None
-            and mass_g < 1
+            and mass_g < 0
         ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `mass_g`, must be a value greater than or equal to `1`"
+                "Invalid value for `mass_g`, must be a value greater than or equal to `0`"
             )  # noqa: E501
 
         self._mass_g = mass_g
