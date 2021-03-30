@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixes [#23](https://github.com/patch-technology/patch-python/issues/23) by allowing the expected parameter `total_price_cents_usd`
+
+## [1.5.1] - 2021-03-02
+
+### Fixed
+
 - Fixed an `AttributeError` that was thrown when Projects with Sustainable Development Goals were retrieved.
 
 ## [1.5.0] - 2021-03-01
