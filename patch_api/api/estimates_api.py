@@ -30,7 +30,7 @@ class EstimatesApi(object):
 
     ALLOWED_QUERY_PARAMS = [
         "mass_g",
-        "price_cents_usd",
+        "total_price_cents_usd",
         "project_id",
         "page",
         "distance_m",
