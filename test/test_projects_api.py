@@ -52,8 +52,8 @@ class TestProjectsApi(unittest.TestCase):
             project = projects[0]
 
             self.assertEqual(project.production, False)
-            self.assertEqual(project.average_price_per_tonne_cents_usd, 0)
-            self.assertEqual(project.remaining_mass_g, 0)
+            self.assertGreater(project.average_price_per_tonne_cents_usd, 0)
+            self.assertGreater(project.remaining_mass_g, 0)
             self.assertEqual(project.standard, None)
             self.assertEqual(project.name, "Carbo Culture Biochar")
             self.assertTrue(project.description)
