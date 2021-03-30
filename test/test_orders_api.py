@@ -38,6 +38,12 @@ class TestOrdersApi(unittest.TestCase):
 
         self.assertTrue(order)
 
+        """Create an order on price
+        """
+        order = self.api.create_order(total_price_cents_usd=100)
+
+        self.assertTrue(order)
+
         """Retrieve an order
         """
         order = self.api.create_order(mass_g=100)
