@@ -139,6 +139,10 @@ model = "Corolla"
 year = 1995
 patch.estimates.create_mass_estimate(distance_m=distance_m, make=make, model=model, year=year)
 
+# Create a bitcoin estimate
+transaction_value_btc_sats = 1000; # [Optional] Pass in the transaction value in satoshis
+patch.estimates.create_bitcoin_estimate(transaction_value_btc_sats=transaction_value_btc_sats)
+
 # Retrieve an estimate
 estimate_id = 'est_test_1234'
 patch.estimates.retrieve_estimate(id=estimate_id)
@@ -222,41 +226,41 @@ patch.preferences.retrieve_preferences(page=page)
 
 Set up the required environment variable:
 
-```
-$ export SANDBOX_API_KEY=<SANDBOX API KEY>
+```bash
+export SANDBOX_API_KEY=<SANDBOX API KEY>
 ```
 
 Run tests:
 
-```
-$ make test
+```bash
+make test
 ```
 
 To run an individual test:
 
-```
-$ python -m unittest
+```bash
+python -m unittest
 ```
 
 ### Testing the built package locally
 
 To build the library locally, run:
 
-```
-$ make build
+```bash
+make build
 ```
 
 In another directory, create a file called `patch.py` and install the local package in this directory:
 
-```
-$ touch patch.py
-$ pip install ../patch-python
+```bash
+touch patch.py
+pip install ../patch-python
 ```
 
 Set up the required environment variable:
 
-```
-$ export SANDBOX_API_KEY=<SANDBOX API KEY>
+```bash
+export SANDBOX_API_KEY=<SANDBOX API KEY>
 ```
 
 To test the package locally, create a python file in a sibling directory and add the following:

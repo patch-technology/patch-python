@@ -55,11 +55,11 @@ class TestProjectsApi(unittest.TestCase):
             self.assertGreater(project.average_price_per_tonne_cents_usd, 0)
             self.assertGreater(project.remaining_mass_g, 0)
             self.assertEqual(project.standard, None)
-            self.assertEqual(project.name, "Carbo Culture Biochar")
+            self.assertEqual(project.name, "Patch's Biomass Test Offset Project")
             self.assertTrue(project.description)
             self.assertEqual(project.country, "US")
             self.assertEqual(project.type, "biomass")
-            self.assertEqual(project.developer, "Carbo Culture")
+            self.assertEqual(project.developer, "Patch Sandbox Supplier Test")
             self.assertTrue(isinstance(project.photos, list))
 
     def test_retrieve_biomass_projects(self):
