@@ -39,8 +39,8 @@ class Order(object):
         "production": "bool",
         "state": "str",
         "allocation_state": "str",
-        "price_cents_usd": "str",
-        "patch_fee_cents_usd": "str",
+        "price_cents_usd": "int",
+        "patch_fee_cents_usd": "int",
         "allocations": "list[Allocation]",
         "registry_url": "str",
         "metadata": "object",
@@ -295,7 +295,7 @@ class Order(object):
         The total price in cents USD of the carbon offsets purchased through this order.  # noqa: E501
 
         :return: The price_cents_usd of this Order.  # noqa: E501
-        :rtype: str
+        :rtype: int
         """
         return self._price_cents_usd
 
@@ -306,7 +306,7 @@ class Order(object):
         The total price in cents USD of the carbon offsets purchased through this order.  # noqa: E501
 
         :param price_cents_usd: The price_cents_usd of this Order.  # noqa: E501
-        :type: str
+        :type: int
         """
 
         self._price_cents_usd = price_cents_usd
@@ -318,7 +318,7 @@ class Order(object):
         The Patch Fee in cents USD for this order.  # noqa: E501
 
         :return: The patch_fee_cents_usd of this Order.  # noqa: E501
-        :rtype: str
+        :rtype: int
         """
         return self._patch_fee_cents_usd
 
@@ -329,7 +329,7 @@ class Order(object):
         The Patch Fee in cents USD for this order.  # noqa: E501
 
         :param patch_fee_cents_usd: The patch_fee_cents_usd of this Order.  # noqa: E501
-        :type: str
+        :type: int
         """
 
         self._patch_fee_cents_usd = patch_fee_cents_usd
