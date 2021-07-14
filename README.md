@@ -222,6 +222,13 @@ patch.preferences.retrieve_preferences(page=page)
 
 ## Development
 
+### Pre-commit
+
+This project uses pre-commit to automatically lint code on commit. Set-up lint commit the first time around using
+```
+pre-commit install
+```
+
 ### Linter
 
 This project uses black for code formatting. To run the automatic formatting, run:
