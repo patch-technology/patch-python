@@ -124,7 +124,9 @@ class TestEstimatesApi(unittest.TestCase):
 
         estimate = self.api.create_bitcoin_estimate()
         self.assertEqual(estimate.data.type, "bitcoin")
-        self.assertGreater(estimate.data.mass_g, 200) # not setting an exact value since this is changing daily
+        self.assertGreater(
+            estimate.data.mass_g, 200
+        )  # not setting an exact value since this is changing daily
 
     def test_create_bitcoin_estimate_transaction_value(self):
         """Test case for create_bitcoin_estimate
@@ -137,7 +139,10 @@ class TestEstimatesApi(unittest.TestCase):
             transaction_value_btc_sats=transaction_value_btc_sats
         )
         self.assertEqual(estimate.data.type, "bitcoin")
-        self.assertGreater(estimate.data.mass_g, 200) # not setting an exact value since this is changing daily
+        self.assertGreater(
+            estimate.data.mass_g, 200
+        )  # not setting an exact value since this is changing daily
+
 
 if __name__ == "__main__":
     unittest.main()
