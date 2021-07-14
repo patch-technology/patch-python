@@ -120,7 +120,6 @@ class TestEstimatesApi(unittest.TestCase):
 
         Create an estimate based on a transaction amount  # noqa: E501
         """
-        transaction_value_btc_sats = 100000
 
         estimate = self.api.create_bitcoin_estimate()
         self.assertEqual(estimate.data.type, "bitcoin")
