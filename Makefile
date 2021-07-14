@@ -5,7 +5,7 @@ build:
 	python setup.py install
 
 lint:
-	pip install -r test-requirements.txt && \
+	pip install black && \
 	black .
 
 test:

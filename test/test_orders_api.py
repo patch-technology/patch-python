@@ -30,7 +30,7 @@ class TestOrdersApi(unittest.TestCase):
         self.api = None
 
     def test_interactions_with_an_order(self):
-        """Test case for create_order, retrieve_order"""
+        """Test case for create_order"""
 
         """Create an order
         """
@@ -38,11 +38,19 @@ class TestOrdersApi(unittest.TestCase):
 
         self.assertTrue(order)
 
+        self.assertEqual(order.data.mass_g, 100)
+
         """Create an order on price
         """
         order = self.api.create_order(total_price_cents_usd=100)
 
         self.assertTrue(order)
+        self.assertEqual(
+            order.data.price_cents_usd + order.data.patch_fee_cents_usd, 100
+        )
+
+    def test_retrieve_order(self):
+        """Test case for retrieve_order"""
 
         """Retrieve an order
         """
@@ -50,6 +58,7 @@ class TestOrdersApi(unittest.TestCase):
         retrieved_order = self.api.retrieve_order(id=order.data.id)
 
         self.assertTrue(retrieved_order)
+        self.assertEqual(retrieved_order.data.mass_g, 100)
 
     def test_retrieve_orders(self):
         """Test case for retrieve_orders
