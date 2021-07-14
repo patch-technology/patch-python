@@ -222,6 +222,14 @@ patch.preferences.retrieve_preferences(page=page)
 
 ## Development
 
+### Linter
+
+This project uses black for code formatting. To run the automatic formatting, run:
+
+```bash
+make lint
+```
+
 ### Running tests
 
 Set up the required environment variable:
