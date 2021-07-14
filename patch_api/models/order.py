@@ -42,6 +42,7 @@ class Order(object):
         "price_cents_usd": "str",
         "patch_fee_cents_usd": "str",
         "allocations": "list[Allocation]",
+        "registry_url": "str",
         "metadata": "object",
     }
 
@@ -54,6 +55,7 @@ class Order(object):
         "price_cents_usd": "price_cents_usd",
         "patch_fee_cents_usd": "patch_fee_cents_usd",
         "allocations": "allocations",
+        "registry_url": "registry_url",
         "metadata": "metadata",
     }
 
@@ -67,6 +69,7 @@ class Order(object):
         price_cents_usd=None,
         patch_fee_cents_usd=None,
         allocations=None,
+        registry_url=None,
         metadata=None,
         local_vars_configuration=None,
     ):  # noqa: E501
@@ -83,6 +86,7 @@ class Order(object):
         self._price_cents_usd = None
         self._patch_fee_cents_usd = None
         self._allocations = None
+        self._registry_url = None
         self._metadata = None
         self.discriminator = None
 
@@ -94,6 +98,8 @@ class Order(object):
         self.price_cents_usd = price_cents_usd
         self.patch_fee_cents_usd = patch_fee_cents_usd
         self.allocations = allocations
+        if registry_url is not None:
+            self.registry_url = registry_url
         self.metadata = metadata
 
     @property
@@ -223,7 +229,13 @@ class Order(object):
             raise ValueError(
                 "Invalid value for `state`, must not be `None`"
             )  # noqa: E501
-        allowed_values = ["draft", "placed", "complete", "cancelled"]  # noqa: E501
+        allowed_values = [
+            "draft",
+            "placed",
+            "processing",
+            "complete",
+            "cancelled",
+        ]  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
             and state not in allowed_values
@@ -350,6 +362,29 @@ class Order(object):
             )  # noqa: E501
 
         self._allocations = allocations
+
+    @property
+    def registry_url(self):
+        """Gets the registry_url of this Order.  # noqa: E501
+
+        The url of this order in the public registry.  # noqa: E501
+
+        :return: The registry_url of this Order.  # noqa: E501
+        :rtype: str
+        """
+        return self._registry_url
+
+    @registry_url.setter
+    def registry_url(self, registry_url):
+        """Sets the registry_url of this Order.
+
+        The url of this order in the public registry.  # noqa: E501
+
+        :param registry_url: The registry_url of this Order.  # noqa: E501
+        :type: str
+        """
+
+        self._registry_url = registry_url
 
     @property
     def metadata(self):

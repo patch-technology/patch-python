@@ -40,6 +40,8 @@ class OrdersApi(object):
         "model",
         "make",
         "year",
+        "transaction_value_btc_sats",
+        "timestamp",
     ]
 
     def __init__(self, api_client=None):
@@ -48,7 +50,7 @@ class OrdersApi(object):
     def cancel_order(self, id={}, **kwargs):  # noqa: E501
         """Cancel an order  # noqa: E501
 
-        Cancelling an order removes the associated offset allocation from an order. You will not be charged for cancelled orders. Only orders in the `draft` state can be cancelled.   # noqa: E501
+        Cancelling an order removes the associated offset allocation from an order. You will not be charged for cancelled orders. Only orders in the `draft` or `placed` state can be cancelled.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.cancel_order(id, async_req=True)
@@ -73,7 +75,7 @@ class OrdersApi(object):
     def cancel_order_with_http_info(self, id, **kwargs):  # noqa: E501
         """Cancel an order  # noqa: E501
 
-        Cancelling an order removes the associated offset allocation from an order. You will not be charged for cancelled orders. Only orders in the `draft` state can be cancelled.   # noqa: E501
+        Cancelling an order removes the associated offset allocation from an order. You will not be charged for cancelled orders. Only orders in the `draft` or `placed` state can be cancelled.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.cancel_order_with_http_info(id, async_req=True)
@@ -113,6 +115,8 @@ class OrdersApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -242,6 +246,8 @@ class OrdersApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -379,6 +385,8 @@ class OrdersApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -506,6 +514,8 @@ class OrdersApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -633,6 +643,8 @@ class OrdersApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

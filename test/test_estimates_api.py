@@ -115,6 +115,33 @@ class TestEstimatesApi(unittest.TestCase):
         retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
         self.assertTrue(retrieved_estimate)
 
+    def test_create_bitcoin_estimate_no_params(self):
+        """Test case for create_bitcoin_estimate
+
+        Create an estimate based on a transaction amount  # noqa: E501
+        """
+
+        estimate = self.api.create_bitcoin_estimate()
+        self.assertEqual(estimate.data.type, "bitcoin")
+        self.assertGreater(
+            estimate.data.mass_g, 200
+        )  # not setting an exact value since this is changing daily
+
+    def test_create_bitcoin_estimate_transaction_value(self):
+        """Test case for create_bitcoin_estimate
+
+        Create an estimate based on a transaction amount  # noqa: E501
+        """
+        transaction_value_btc_sats = 100000
+
+        estimate = self.api.create_bitcoin_estimate(
+            transaction_value_btc_sats=transaction_value_btc_sats
+        )
+        self.assertEqual(estimate.data.type, "bitcoin")
+        self.assertGreater(
+            estimate.data.mass_g, 200
+        )  # not setting an exact value since this is changing daily
+
 
 if __name__ == "__main__":
     unittest.main()
