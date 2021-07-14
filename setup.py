@@ -21,9 +21,9 @@ VERSION = "1.6.0"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = [
-  "urllib3 >= 1.25.3",
-  "python-dateutil",
-  "certifi",
+    "urllib3 >= 1.25.3",
+    "python-dateutil",
+    "certifi",
 ]
 
 setup(
@@ -40,5 +40,5 @@ setup(
     include_package_data=True,
     long_description="""\
     The core API used to integrate with Patch&#39;s service  # noqa: E501
-    """
+    """,
 )
