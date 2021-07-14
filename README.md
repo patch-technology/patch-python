@@ -140,7 +140,7 @@ year = 1995
 patch.estimates.create_mass_estimate(distance_m=distance_m, make=make, model=model, year=year)
 
 # Create a bitcoin estimate
-transaction_value_btc_sats = 1000; # [Optional] Pass in the transaction value in satoshis
+transaction_value_btc_sats = 1000 # [Optional] Pass in the transaction value in satoshis
 patch.estimates.create_bitcoin_estimate(transaction_value_btc_sats=transaction_value_btc_sats)
 
 # Retrieve an estimate
