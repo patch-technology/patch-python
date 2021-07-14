@@ -247,7 +247,7 @@ make test
 To run an individual test:
 
 ```bash
-python -m unittest
+python -m unittest test/xxx_test.py
 ```
 
 ### Testing the built package locally

@@ -40,6 +40,8 @@ class EstimatesApi(object):
         "model",
         "make",
         "year",
+        "transaction_value_btc_sats",
+        "timestamp",
     ]
 
     def __init__(self, api_client=None):
@@ -119,6 +121,8 @@ class EstimatesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -262,6 +266,8 @@ class EstimatesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -405,6 +411,8 @@ class EstimatesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -548,6 +556,8 @@ class EstimatesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -691,6 +701,8 @@ class EstimatesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -828,6 +840,8 @@ class EstimatesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -955,6 +969,8 @@ class EstimatesApi(object):
         all_params.append("make")
         all_params.append("model")
         all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
