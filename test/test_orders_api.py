@@ -38,7 +38,6 @@ class TestOrdersApi(unittest.TestCase):
 
         self.assertTrue(order)
 
-        print(order)
         self.assertEqual(order.mass_g, 100)
 
         """Create an order on price
