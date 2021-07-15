@@ -142,6 +142,18 @@ class TestEstimatesApi(unittest.TestCase):
             estimate.data.mass_g, 200
         )  # not setting an exact value since this is changing daily
 
+    def test_create_ethereum_estimate_transaction_value(self):
+        """Test case for create_ethereum_estimate
+
+        Create an estimate based on a transaction amount  # noqa: E501
+        """
+
+        estimate = self.api.create_ethereum_estimate(gas_used=1000)
+        self.assertEqual(estimate.data.type, "ethereum")
+        self.assertGreater(
+            estimate.data.mass_g, 1
+        )  # not setting an exact value since this is changing daily
+
 
 if __name__ == "__main__":
     unittest.main()
