@@ -42,6 +42,7 @@ class PreferencesApi(object):
         "year",
         "transaction_value_btc_sats",
         "timestamp",
+        "gas_used",
     ]
 
     def __init__(self, api_client=None):
@@ -121,6 +122,7 @@ class PreferencesApi(object):
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
         all_params.append("timestamp")
+        all_params.append("gas_used")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -260,6 +262,7 @@ class PreferencesApi(object):
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
         all_params.append("timestamp")
+        all_params.append("gas_used")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -389,6 +392,7 @@ class PreferencesApi(object):
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
         all_params.append("timestamp")
+        all_params.append("gas_used")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -518,6 +522,7 @@ class PreferencesApi(object):
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
         all_params.append("timestamp")
+        all_params.append("gas_used")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
