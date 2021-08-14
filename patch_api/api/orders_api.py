@@ -562,6 +562,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
+        :param str metadata:
         :param str metadata_ext_id:
         :param str metadata_disregarded:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -589,6 +590,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
+        :param str metadata:
         :param str metadata_ext_id:
         :param str metadata_disregarded:
         :param _return_http_data_only: response data without head status code
@@ -607,7 +609,7 @@ class OrdersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['page', 'metadata_ext_id', 'metadata_disregarded']  # noqa: E501
+        all_params = ['page', 'metadata', 'metadata_ext_id', 'metadata_disregarded']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -645,6 +647,8 @@ class OrdersApi(object):
             query_params.append([key, kwargs.get(key)])
         if 'page' in local_var_params:
             query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'metadata' in local_var_params:
+            query_params.append(('metadata', local_var_params['metadata']))  # noqa: E501
         if 'metadata_ext_id' in local_var_params:
             query_params.append(('metadata[ext_id]', local_var_params['metadata_ext_id']))  # noqa: E501
         if 'metadata_disregarded' in local_var_params:

@@ -68,6 +68,7 @@ class TestOrdersApi(unittest.TestCase):
         orders = self.api.retrieve_orders().data
         self.assertTrue(isinstance(orders, list))
 
+        import pdb; pdb.set_trace()
         if len(orders) > 1:
             retrieved_order = orders[0]
 

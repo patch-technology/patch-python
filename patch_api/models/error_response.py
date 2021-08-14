@@ -35,7 +35,7 @@ class ErrorResponse(object):
     """
     openapi_types = {
         'success': 'bool',
-        'error': 'Error',
+        'error': 'object',
         'data': 'object'
     }
 
@@ -89,7 +89,7 @@ class ErrorResponse(object):
 
 
         :return: The error of this ErrorResponse.  # noqa: E501
-        :rtype: Error
+        :rtype: object
         """
         return self._error
 
@@ -99,7 +99,7 @@ class ErrorResponse(object):
 
 
         :param error: The error of this ErrorResponse.  # noqa: E501
-        :type: Error
+        :type: object
         """
         if self.local_vars_configuration.client_side_validation and error is None:  # noqa: E501
             raise ValueError("Invalid value for `error`, must not be `None`")  # noqa: E501
