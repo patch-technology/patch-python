@@ -109,12 +109,7 @@ class RESTClientObject(object):
                 **addition_pool_args
             )
 
-
-
-
-
-    @staticmethod
-    def recursive_urlencode(d):
+    def recursive_urlencode(self, d):
         """URL-encode a multidimensional dictionary.
 
         >>> data = {'a': 'b&c', 'd': {'e': {'f&g': 'h*i'}}, 'j': 'k'}
@@ -141,9 +136,22 @@ class RESTClientObject(object):
 
         return '&'.join(recursion(d))
 
+    def encoded_query_params(self, query_params):
+        if not query_params:
+            return ''
 
+        final_query_params = ''
+        for key, value in query_params:
+            if isinstance(value, dict):
+                nested_param = {}
+                nested_param[key] = value
+                final_query_params += self.recursive_urlencode(nested_param)
+                query_params.remove((key, value))
 
+        if query_params:
+            final_query_params += '&' + urlencode(query_params)
 
+        return '?' + final_query_params
 
     def request(self, method, url, query_params=None, headers=None,
                 body=None, post_params=None, _preload_content=True,
@@ -196,26 +204,7 @@ class RESTClientObject(object):
         try:
             # For `POST`, `PUT`, `PATCH`, `OPTIONS`, `DELETE`
             if method in ['POST', 'PUT', 'PATCH', 'OPTIONS', 'DELETE']:
-                if query_params:
-                    final_query_params = ''
-                    for key, value in query_params:
-                        if isinstance(value, dict):
-                            nested_param = {}
-                            nested_param[key] = value
-                            final_query_params += self.recursive_urlencode(nested_param)
-                            query_params.remove((key, value))
-
-                    final_query_params += '&' + urlencode(query_params)
-                    url += '?' + final_query_params
-                    # declare empty string
-                    # for each query param,
-                    #   if dict
-                    #       add to string recursive_urlencode
-                    #   else
-                    #       add to string urlencode
-                    # add to url
-                    # url += '?' + urlencode(query_params)
-                    # url += '?' + self.recursive_urlencode(query_params)
+                url += self.encoded_query_params(query_params)
                 if re.search('json', headers['Content-Type'], re.IGNORECASE):
                     request_body = None
                     if body is not None:
@@ -265,8 +254,8 @@ class RESTClientObject(object):
                     raise ApiException(status=0, reason=msg)
             # For `GET`, `HEAD`
             else:
+                url += self.encoded_query_params(query_params)
                 r = self.pool_manager.request(method, url,
-                                              fields=query_params,
                                               preload_content=_preload_content,
                                               timeout=timeout,
                                               headers=headers)

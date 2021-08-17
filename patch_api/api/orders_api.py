@@ -644,9 +644,6 @@ class OrdersApi(object):
         path_params = {}
 
         query_params = []
-        for key in kwargs:
-            # this adds the params twice. once from kwargs and once from the named metadata
-            query_params.append([key, kwargs.get(key)])
         if 'page' in local_var_params:
             query_params.append(('page', local_var_params['page']))  # noqa: E501
         if 'metadata' in local_var_params:
@@ -655,7 +652,15 @@ class OrdersApi(object):
             query_params.append(('metadata[ext_id]', local_var_params['metadata_ext_id']))  # noqa: E501
         if 'metadata_disregarded' in local_var_params:
             query_params.append(('metadata[disregarded]', local_var_params['metadata_disregarded']))  # noqa: E501
-        # import pdb; pdb.set_trace()
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
+        for key in kwargs:
+            if not key in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
 
         header_params = {}
