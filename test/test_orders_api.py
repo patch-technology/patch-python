@@ -80,17 +80,19 @@ class TestOrdersApi(unittest.TestCase):
     def test_create_and_retrieve_order_via_metadata(self):
         """Test case for create_order and retrieve_orders with metadata"""
         mass_g = 100
-        metadata = { 'external_id': 'abc-123' }
+        metadata = {"external_id": "abc-123"}
         order = self.api.create_order(mass_g=mass_g, metadata=metadata)
 
         self.assertTrue(order)
         self.assertEqual(order.data.mass_g, 100)
-        self.assertEqual(order.data.metadata, { 'external_id': 'abc-123' })
+        self.assertEqual(order.data.metadata, {"external_id": "abc-123"})
 
-        retrieved_orders = self.api.retrieve_orders(metadata={ 'external_id': 'abc-' }).data
+        retrieved_orders = self.api.retrieve_orders(
+            metadata={"external_id": "abc-"}
+        ).data
         self.assertGreater(len(retrieved_orders), 0)
         for retrieved_order in retrieved_orders:
-            self.assertTrue('external_id' in retrieved_order.metadata)
+            self.assertTrue("external_id" in retrieved_order.metadata)
 
 
 if __name__ == "__main__":

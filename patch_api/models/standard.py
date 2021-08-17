@@ -33,19 +33,13 @@ class Standard(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'type': 'str',
-        'acronym': 'str',
-        'description': 'str'
-    }
+    openapi_types = {"type": "str", "acronym": "str", "description": "str"}
 
-    attribute_map = {
-        'type': 'type',
-        'acronym': 'acronym',
-        'description': 'description'
-    }
+    attribute_map = {"type": "type", "acronym": "acronym", "description": "description"}
 
-    def __init__(self, type=None, acronym=None, description=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, type=None, acronym=None, description=None, local_vars_configuration=None
+    ):  # noqa: E501
         """Standard - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -80,8 +74,12 @@ class Standard(object):
         :param type: The type of this Standard.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and type is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `type`, must not be `None`"
+            )  # noqa: E501
 
         self._type = type
 
@@ -105,8 +103,12 @@ class Standard(object):
         :param acronym: The acronym of this Standard.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and acronym is None:  # noqa: E501
-            raise ValueError("Invalid value for `acronym`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and acronym is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `acronym`, must not be `None`"
+            )  # noqa: E501
 
         self._acronym = acronym
 
@@ -130,8 +132,12 @@ class Standard(object):
         :param description: The description of this Standard.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and description is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `description`, must not be `None`"
+            )  # noqa: E501
 
         self._description = description
 
@@ -142,18 +148,20 @@ class Standard(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

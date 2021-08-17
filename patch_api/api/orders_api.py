@@ -17,12 +17,8 @@ import re  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
-from collections import OrderedDict
 
-from patch_api.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from patch_api.exceptions import ApiTypeError, ApiValueError
 
 
 class OrdersApi(object):
@@ -33,20 +29,20 @@ class OrdersApi(object):
     """
 
     ALLOWED_QUERY_PARAMS = [
-            "mass_g",
-            "total_price_cents_usd",
-            "project_id",
-            "page",
-            "distance_m",
-            "transportation_method",
-            "package_mass_g",
-            "create_order",
-            "model",
-            "make",
-            "year",
-            "transaction_value_btc_sats",
-            "timestamp",
-            "gas_used"
+        "mass_g",
+        "total_price_cents_usd",
+        "project_id",
+        "page",
+        "distance_m",
+        "transportation_method",
+        "package_mass_g",
+        "create_order",
+        "model",
+        "make",
+        "year",
+        "transaction_value_btc_sats",
+        "timestamp",
+        "gas_used",
     ]
 
     def __init__(self, api_client=None):
@@ -74,7 +70,7 @@ class OrdersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.cancel_order_with_http_info(id, **kwargs)  # noqa: E501
 
     def cancel_order_with_http_info(self, id, **kwargs):  # noqa: E501
@@ -104,48 +100,56 @@ class OrdersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-        all_params.append('mass_g')
-        all_params.append('total_price_cents_usd')
-        all_params.append('project_id')
-        all_params.append('metadata')
-        all_params.append('distance_m')
-        all_params.append('transportation_method')
-        all_params.append('package_mass_g')
-        all_params.append('create_order')
-        all_params.append('make')
-        all_params.append('model')
-        all_params.append('year')
-        all_params.append('transaction_value_btc_sats')
-        all_params.append('timestamp')
-        all_params.append('gas_used')
+        all_params = ["id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("total_price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_mass_g")
+        all_params.append("create_order")
+        all_params.append("make")
+        all_params.append("model")
+        all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
+        all_params.append("gas_used")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method cancel_order" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'id' is set
-        if ('id' not in local_var_params or
-                local_var_params['id'] is None):
-            raise ApiValueError("Missing the required parameter `id` when calling `cancel_order`")  # noqa: E501
+        if "id" not in local_var_params or local_var_params["id"] is None:
+            raise ApiValueError(
+                "Missing the required parameter `id` when calling `cancel_order`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+        if "id" in local_var_params:
+            path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
         for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -154,27 +158,32 @@ class OrdersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['bearer_auth']  # noqa: E501
+        auth_settings = ["bearer_auth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/orders/{id}/cancel', 'PATCH',
+            "/v1/orders/{id}/cancel",
+            "PATCH",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='OrderResponse',  # noqa: E501
+            response_type="OrderResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def create_order(self, create_order_request={}, **kwargs):  # noqa: E501
         """Creates an order  # noqa: E501
@@ -198,8 +207,10 @@ class OrdersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.create_order_with_http_info(create_order_request, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.create_order_with_http_info(
+            create_order_request, **kwargs
+        )  # noqa: E501
 
     def create_order_with_http_info(self, create_order_request, **kwargs):  # noqa: E501
         """Creates an order  # noqa: E501
@@ -228,46 +239,57 @@ class OrdersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['create_order_request']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-        all_params.append('mass_g')
-        all_params.append('total_price_cents_usd')
-        all_params.append('project_id')
-        all_params.append('metadata')
-        all_params.append('distance_m')
-        all_params.append('transportation_method')
-        all_params.append('package_mass_g')
-        all_params.append('create_order')
-        all_params.append('make')
-        all_params.append('model')
-        all_params.append('year')
-        all_params.append('transaction_value_btc_sats')
-        all_params.append('timestamp')
-        all_params.append('gas_used')
+        all_params = ["create_order_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("total_price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_mass_g")
+        all_params.append("create_order")
+        all_params.append("make")
+        all_params.append("model")
+        all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
+        all_params.append("gas_used")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method create_order" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'create_order_request' is set
-        if ('create_order_request' not in local_var_params or
-                local_var_params['create_order_request'] is None):
-            raise ApiValueError("Missing the required parameter `create_order_request` when calling `create_order`")  # noqa: E501
+        if (
+            "create_order_request" not in local_var_params
+            or local_var_params["create_order_request"] is None
+        ):
+            raise ApiValueError(
+                "Missing the required parameter `create_order_request` when calling `create_order`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
         for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -275,34 +297,42 @@ class OrdersApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'create_order_request' in local_var_params:
-            body_params = local_var_params['create_order_request']
+        if "create_order_request" in local_var_params:
+            body_params = local_var_params["create_order_request"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['bearer_auth']  # noqa: E501
+        auth_settings = ["bearer_auth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/orders', 'POST',
+            "/v1/orders",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='OrderResponse',  # noqa: E501
+            response_type="OrderResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def place_order(self, id={}, **kwargs):  # noqa: E501
         """Place an order  # noqa: E501
@@ -326,7 +356,7 @@ class OrdersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.place_order_with_http_info(id, **kwargs)  # noqa: E501
 
     def place_order_with_http_info(self, id, **kwargs):  # noqa: E501
@@ -356,48 +386,56 @@ class OrdersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-        all_params.append('mass_g')
-        all_params.append('total_price_cents_usd')
-        all_params.append('project_id')
-        all_params.append('metadata')
-        all_params.append('distance_m')
-        all_params.append('transportation_method')
-        all_params.append('package_mass_g')
-        all_params.append('create_order')
-        all_params.append('make')
-        all_params.append('model')
-        all_params.append('year')
-        all_params.append('transaction_value_btc_sats')
-        all_params.append('timestamp')
-        all_params.append('gas_used')
+        all_params = ["id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("total_price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_mass_g")
+        all_params.append("create_order")
+        all_params.append("make")
+        all_params.append("model")
+        all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
+        all_params.append("gas_used")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method place_order" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'id' is set
-        if ('id' not in local_var_params or
-                local_var_params['id'] is None):
-            raise ApiValueError("Missing the required parameter `id` when calling `place_order`")  # noqa: E501
+        if "id" not in local_var_params or local_var_params["id"] is None:
+            raise ApiValueError(
+                "Missing the required parameter `id` when calling `place_order`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+        if "id" in local_var_params:
+            path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
         for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -406,27 +444,32 @@ class OrdersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['bearer_auth']  # noqa: E501
+        auth_settings = ["bearer_auth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/orders/{id}/place', 'PATCH',
+            "/v1/orders/{id}/place",
+            "PATCH",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='OrderResponse',  # noqa: E501
+            response_type="OrderResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def retrieve_order(self, id={}, **kwargs):  # noqa: E501
         """Retrieves an order  # noqa: E501
@@ -450,7 +493,7 @@ class OrdersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.retrieve_order_with_http_info(id, **kwargs)  # noqa: E501
 
     def retrieve_order_with_http_info(self, id, **kwargs):  # noqa: E501
@@ -480,48 +523,56 @@ class OrdersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-        all_params.append('mass_g')
-        all_params.append('total_price_cents_usd')
-        all_params.append('project_id')
-        all_params.append('metadata')
-        all_params.append('distance_m')
-        all_params.append('transportation_method')
-        all_params.append('package_mass_g')
-        all_params.append('create_order')
-        all_params.append('make')
-        all_params.append('model')
-        all_params.append('year')
-        all_params.append('transaction_value_btc_sats')
-        all_params.append('timestamp')
-        all_params.append('gas_used')
+        all_params = ["id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("total_price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_mass_g")
+        all_params.append("create_order")
+        all_params.append("make")
+        all_params.append("model")
+        all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
+        all_params.append("gas_used")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method retrieve_order" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'id' is set
-        if ('id' not in local_var_params or
-                local_var_params['id'] is None):
-            raise ApiValueError("Missing the required parameter `id` when calling `retrieve_order`")  # noqa: E501
+        if "id" not in local_var_params or local_var_params["id"] is None:
+            raise ApiValueError(
+                "Missing the required parameter `id` when calling `retrieve_order`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+        if "id" in local_var_params:
+            path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
         for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -530,27 +581,32 @@ class OrdersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['bearer_auth']  # noqa: E501
+        auth_settings = ["bearer_auth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/orders/{id}', 'GET',
+            "/v1/orders/{id}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='OrderResponse',  # noqa: E501
+            response_type="OrderResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def retrieve_orders(self, **kwargs):  # noqa: E501
         """Retrieves a list of orders  # noqa: E501
@@ -577,7 +633,7 @@ class OrdersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.retrieve_orders_with_http_info(**kwargs)  # noqa: E501
 
     def retrieve_orders_with_http_info(self, **kwargs):  # noqa: E501
@@ -610,48 +666,59 @@ class OrdersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['page', 'metadata', 'metadata_ext_id', 'metadata_disregarded']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-        all_params.append('mass_g')
-        all_params.append('total_price_cents_usd')
-        all_params.append('project_id')
-        all_params.append('metadata')
-        all_params.append('distance_m')
-        all_params.append('transportation_method')
-        all_params.append('package_mass_g')
-        all_params.append('create_order')
-        all_params.append('make')
-        all_params.append('model')
-        all_params.append('year')
-        all_params.append('transaction_value_btc_sats')
-        all_params.append('timestamp')
-        all_params.append('gas_used')
+        all_params = [
+            "page",
+            "metadata",
+            "metadata_ext_id",
+            "metadata_disregarded",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+        all_params.append("mass_g")
+        all_params.append("total_price_cents_usd")
+        all_params.append("project_id")
+        all_params.append("metadata")
+        all_params.append("distance_m")
+        all_params.append("transportation_method")
+        all_params.append("package_mass_g")
+        all_params.append("create_order")
+        all_params.append("make")
+        all_params.append("model")
+        all_params.append("year")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("timestamp")
+        all_params.append("gas_used")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method retrieve_orders" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'page' in local_var_params:
-            query_params.append(('page', local_var_params['page']))  # noqa: E501
-        if 'metadata' in local_var_params:
-            query_params.append(('metadata', local_var_params['metadata']))  # noqa: E501
-        if 'metadata_ext_id' in local_var_params:
-            query_params.append(('metadata[ext_id]', local_var_params['metadata_ext_id']))  # noqa: E501
-        if 'metadata_disregarded' in local_var_params:
-            query_params.append(('metadata[disregarded]', local_var_params['metadata_disregarded']))  # noqa: E501
+        if "page" in local_var_params:
+            query_params.append(("page", local_var_params["page"]))  # noqa: E501
+        if "metadata" in local_var_params:
+            query_params.append(
+                ("metadata", local_var_params["metadata"])
+            )  # noqa: E501
+        if "metadata_ext_id" in local_var_params:
+            query_params.append(
+                ("metadata[ext_id]", local_var_params["metadata_ext_id"])
+            )  # noqa: E501
+        if "metadata_disregarded" in local_var_params:
+            query_params.append(
+                ("metadata[disregarded]", local_var_params["metadata_disregarded"])
+            )  # noqa: E501
 
         # do not add duplicate keys to query_params list
         existing_keys = []
@@ -659,9 +726,8 @@ class OrdersApi(object):
             existing_keys.append(param[0])
 
         for key in kwargs:
-            if not key in existing_keys:
+            if key not in existing_keys:
                 query_params.append([key, kwargs.get(key)])
-
 
         header_params = {}
 
@@ -670,24 +736,29 @@ class OrdersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['bearer_auth']  # noqa: E501
+        auth_settings = ["bearer_auth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/orders', 'GET',
+            "/v1/orders",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='OrderListResponse',  # noqa: E501
+            response_type="OrderListResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
