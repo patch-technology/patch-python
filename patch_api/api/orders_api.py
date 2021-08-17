@@ -17,6 +17,7 @@ import re  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
+from collections import OrderedDict
 
 from patch_api.exceptions import (
     ApiTypeError,
@@ -644,6 +645,7 @@ class OrdersApi(object):
 
         query_params = []
         for key in kwargs:
+            # this adds the params twice. once from kwargs and once from the named metadata
             query_params.append([key, kwargs.get(key)])
         if 'page' in local_var_params:
             query_params.append(('page', local_var_params['page']))  # noqa: E501
@@ -653,6 +655,8 @@ class OrdersApi(object):
             query_params.append(('metadata[ext_id]', local_var_params['metadata_ext_id']))  # noqa: E501
         if 'metadata_disregarded' in local_var_params:
             query_params.append(('metadata[disregarded]', local_var_params['metadata_disregarded']))  # noqa: E501
+        # import pdb; pdb.set_trace()
+
 
         header_params = {}
 

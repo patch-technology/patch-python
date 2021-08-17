@@ -29,54 +29,65 @@ class TestOrdersApi(unittest.TestCase):
     def tearDown(self):
         self.api = None
 
-    def test_interactions_with_an_order(self):
-        """Test case for create_order"""
+    # def test_interactions_with_an_order(self):
+    #     """Test case for create_order"""
+    #
+    #     """Create an order
+    #     """
+    #     order = self.api.create_order(mass_g=100)
+    #
+    #     self.assertTrue(order)
+    #
+    #     self.assertEqual(order.data.mass_g, 100)
+    #
+    #     """Create an order on price
+    #     """
+    #     order = self.api.create_order(total_price_cents_usd=100)
+    #
+    #     self.assertTrue(order)
+    #     self.assertEqual(
+    #         order.data.price_cents_usd + order.data.patch_fee_cents_usd, 100
+    #     )
+    #
+    # def test_retrieve_order(self):
+    #     """Test case for retrieve_order"""
+    #
+    #     """Retrieve an order
+    #     """
+    #     order = self.api.create_order(mass_g=100)
+    #     retrieved_order = self.api.retrieve_order(id=order.data.id)
+    #
+    #     self.assertTrue(retrieved_order)
+    #     self.assertEqual(retrieved_order.data.mass_g, 100)
+    #
+    # def test_retrieve_orders(self):
+    #     """Test case for retrieve_orders
+    #
+    #     Retrieves a list of orders  # noqa: E501
+    #     """
+    #     orders = self.api.retrieve_orders().data
+    #     self.assertTrue(isinstance(orders, list))
+    #
+    #     if len(orders) > 1:
+    #         retrieved_order = orders[0]
+    #
+    #         self.assertTrue(retrieved_order.id)
+    #         self.assertEqual(retrieved_order.production, False)
+    #         self.assertEqual(retrieved_order.state, "placed")
+    #         self.assertEqual(retrieved_order.metadata, {})
+    #         self.assertTrue(isinstance(retrieved_order.allocations, list))
 
-        """Create an order
-        """
-        order = self.api.create_order(mass_g=100)
+    def test_create_and_retrieve_order_via_metadata(self):
+        """Test case for create_order and retrieve_orders with metadata"""
+        # mass_g = 100
+        # metadata = { 'user': 'john doe' }
+        # order = self.api.create_order(mass_g=mass_g, metadata=metadata)
+        #
+        # self.assertTrue(order)
+        # self.assertEqual(order.data.metadata, { 'user': 'john doe' })
 
-        self.assertTrue(order)
-
-        self.assertEqual(order.data.mass_g, 100)
-
-        """Create an order on price
-        """
-        order = self.api.create_order(total_price_cents_usd=100)
-
-        self.assertTrue(order)
-        self.assertEqual(
-            order.data.price_cents_usd + order.data.patch_fee_cents_usd, 100
-        )
-
-    def test_retrieve_order(self):
-        """Test case for retrieve_order"""
-
-        """Retrieve an order
-        """
-        order = self.api.create_order(mass_g=100)
-        retrieved_order = self.api.retrieve_order(id=order.data.id)
-
-        self.assertTrue(retrieved_order)
-        self.assertEqual(retrieved_order.data.mass_g, 100)
-
-    def test_retrieve_orders(self):
-        """Test case for retrieve_orders
-
-        Retrieves a list of orders  # noqa: E501
-        """
-        orders = self.api.retrieve_orders().data
-        self.assertTrue(isinstance(orders, list))
-
-        import pdb; pdb.set_trace()
-        if len(orders) > 1:
-            retrieved_order = orders[0]
-
-            self.assertTrue(retrieved_order.id)
-            self.assertEqual(retrieved_order.production, False)
-            self.assertEqual(retrieved_order.state, "placed")
-            self.assertEqual(retrieved_order.metadata, {})
-            self.assertTrue(isinstance(retrieved_order.allocations, list))
+        retrieved_order = self.api.retrieve_orders(metadata={ 'user': 'john' }).data[0]
+        self.assertTrue(retrieved_order.data.metadata, { 'user': 'john doe' })
 
 
 if __name__ == "__main__":

@@ -56,7 +56,7 @@ class Configuration(object):
 
     _default = None
 
-    def __init__(self, host="https://api.patch.io",
+    def __init__(self, host="http://api.patch.test:3000",
                  api_key=None, api_key_prefix=None,
                  username=None, password=None,
                  discard_unknown_keys=False,
