@@ -8,6 +8,7 @@ import os
 
 from patch_api.api_client import ApiClient
 
+
 class TestRESTClientObject(unittest.TestCase):
     def test_recursive_urlencode(self):
         """Test that the correct query params get encoded"""
@@ -30,9 +31,7 @@ class TestRESTClientObject(unittest.TestCase):
         )
         self.assertEqual(encoded_params, "multiple=values&top=level")
 
-        encoded_params = client.recursive_urlencode(
-            {"metadata": {"some": "arg"}}
-        )
+        encoded_params = client.recursive_urlencode({"metadata": {"some": "arg"}})
         self.assertEqual(encoded_params, "metadata[some]=arg")
 
         encoded_params = client.recursive_urlencode(
@@ -50,12 +49,10 @@ class TestRESTClientObject(unittest.TestCase):
         encoded_params = client.encoded_query_params([])
         self.assertEqual(encoded_params, "")
 
-        encoded_params = client.encoded_query_params([('mass_g', 100)])
+        encoded_params = client.encoded_query_params([("mass_g", 100)])
         self.assertEqual(encoded_params, "?mass_g=100")
 
         encoded_params = client.encoded_query_params(
-            [('mass_g', 100), ('metadata', {'external_id': 'abc-123'})]
+            [("mass_g", 100), ("metadata", {"external_id": "abc-123"})]
         )
-        self.assertEqual(
-            encoded_params, "?metadata[external_id]=abc-123&mass_g=100"
-        )
+        self.assertEqual(encoded_params, "?metadata[external_id]=abc-123&mass_g=100")
