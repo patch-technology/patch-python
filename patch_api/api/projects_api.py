@@ -141,8 +141,15 @@ class ProjectsApi(object):
             path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
         for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -270,8 +277,6 @@ class ProjectsApi(object):
         path_params = {}
 
         query_params = []
-        for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
         if "page" in local_var_params:
             query_params.append(("page", local_var_params["page"]))  # noqa: E501
         if "country" in local_var_params:
@@ -282,6 +287,15 @@ class ProjectsApi(object):
             query_params.append(
                 ("minimum_available_mass", local_var_params["minimum_available_mass"])
             )  # noqa: E501
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
+        for key in kwargs:
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
