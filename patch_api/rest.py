@@ -159,7 +159,9 @@ class RESTClientObject(object):
                 query_params.remove((key, value))
 
         if query_params:
-            final_query_params += "&" + urlencode(query_params)
+            if final_query_params:
+                final_query_params += "&"
+            final_query_params += urlencode(query_params)
 
         return "?" + final_query_params
 

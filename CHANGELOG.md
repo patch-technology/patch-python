@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed ability to create Orders with `metadata`
 - Add support for querying Orders by `metadata`
+- Added `transaction_value_eth_gwei` as an alternative way to compute transaction level emissions for ethereum
 
 ## [1.8.0] - 2021-07-20
 

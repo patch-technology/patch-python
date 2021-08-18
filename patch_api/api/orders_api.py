@@ -620,8 +620,8 @@ class OrdersApi(object):
         :param async_req bool: execute request asynchronously
         :param int page:
         :param str metadata:
-        :param str metadata_ext_id:
-        :param str metadata_disregarded:
+        :param str metadata_example1:
+        :param str metadata_example2:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -648,8 +648,8 @@ class OrdersApi(object):
         :param async_req bool: execute request asynchronously
         :param int page:
         :param str metadata:
-        :param str metadata_ext_id:
-        :param str metadata_disregarded:
+        :param str metadata_example1:
+        :param str metadata_example2:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -669,8 +669,8 @@ class OrdersApi(object):
         all_params = [
             "page",
             "metadata",
-            "metadata_ext_id",
-            "metadata_disregarded",
+            "metadata_example1",
+            "metadata_example2",
         ]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
@@ -711,13 +711,13 @@ class OrdersApi(object):
             query_params.append(
                 ("metadata", local_var_params["metadata"])
             )  # noqa: E501
-        if "metadata_ext_id" in local_var_params:
+        if "metadata_example1" in local_var_params:
             query_params.append(
-                ("metadata[ext_id]", local_var_params["metadata_ext_id"])
+                ("metadata[example1]", local_var_params["metadata_example1"])
             )  # noqa: E501
-        if "metadata_disregarded" in local_var_params:
+        if "metadata_example2" in local_var_params:
             query_params.append(
-                ("metadata[disregarded]", local_var_params["metadata_disregarded"])
+                ("metadata[example2]", local_var_params["metadata_example2"])
             )  # noqa: E501
 
         # do not add duplicate keys to query_params list
