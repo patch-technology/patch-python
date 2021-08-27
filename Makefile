@@ -1,6 +1,8 @@
 SHELL = /bin/bash
 
-build:
+build: install lint
+
+install:
 	pip install -r requirements.txt && \
 	python setup.py install
 
