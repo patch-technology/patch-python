@@ -51,8 +51,6 @@ class TestProjectsApi(unittest.TestCase):
         if len(projects) > 0:
             project = projects[0]
 
-            print(project)
-
             self.assertEqual(project.production, False)
             self.assertGreater(project.average_price_per_tonne_cents_usd, 0)
             self.assertGreater(project.remaining_mass_g, 0)
