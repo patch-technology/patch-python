@@ -57,7 +57,7 @@ class TestProjectsApi(unittest.TestCase):
             self.assertGreater(project.average_price_per_tonne_cents_usd, 0)
             self.assertGreater(project.remaining_mass_g, 0)
             self.assertEqual(project.standard, None)
-            self.assertEqual(project.name, "Patch's Biomass Test Offset Project")
+            self.assertRegex(project.name, r"Test Offset Project")
             self.assertTrue(project.description)
             self.assertEqual(project.country, "US")
             self.assertEqual(project.type, "biomass")

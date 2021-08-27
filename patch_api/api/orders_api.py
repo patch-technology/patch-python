@@ -141,8 +141,15 @@ class OrdersApi(object):
             path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
         for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -274,8 +281,15 @@ class OrdersApi(object):
         path_params = {}
 
         query_params = []
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
         for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -413,8 +427,15 @@ class OrdersApi(object):
             path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
         for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -543,8 +564,15 @@ class OrdersApi(object):
             path_params["id"] = local_var_params["id"]  # noqa: E501
 
         query_params = []
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
         for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
@@ -591,6 +619,9 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
+        :param str metadata:
+        :param str metadata_example1:
+        :param str metadata_example2:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -616,6 +647,9 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param int page:
+        :param str metadata:
+        :param str metadata_example1:
+        :param str metadata_example2:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -632,7 +666,12 @@ class OrdersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["page"]  # noqa: E501
+        all_params = [
+            "page",
+            "metadata",
+            "metadata_example1",
+            "metadata_example2",
+        ]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -666,10 +705,29 @@ class OrdersApi(object):
         path_params = {}
 
         query_params = []
-        for key in kwargs:
-            query_params.append([key, kwargs.get(key)])
         if "page" in local_var_params:
             query_params.append(("page", local_var_params["page"]))  # noqa: E501
+        if "metadata" in local_var_params:
+            query_params.append(
+                ("metadata", local_var_params["metadata"])
+            )  # noqa: E501
+        if "metadata_example1" in local_var_params:
+            query_params.append(
+                ("metadata[example1]", local_var_params["metadata_example1"])
+            )  # noqa: E501
+        if "metadata_example2" in local_var_params:
+            query_params.append(
+                ("metadata[example2]", local_var_params["metadata_example2"])
+            )  # noqa: E501
+
+        # do not add duplicate keys to query_params list
+        existing_keys = []
+        for param in query_params:
+            existing_keys.append(param[0])
+
+        for key in kwargs:
+            if key not in existing_keys:
+                query_params.append([key, kwargs.get(key)])
 
         header_params = {}
 
