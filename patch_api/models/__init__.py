@@ -16,6 +16,23 @@ from __future__ import absolute_import
 
 # import models into model package
 from patch_api.models.allocation import Allocation
+from patch_api.models.create_bitcoin_estimate_request import (
+    CreateBitcoinEstimateRequest,
+)
+from patch_api.models.create_ethereum_estimate_request import (
+    CreateEthereumEstimateRequest,
+)
+from patch_api.models.create_flight_estimate_request import CreateFlightEstimateRequest
+from patch_api.models.create_mass_estimate_request import CreateMassEstimateRequest
+from patch_api.models.create_order_request import CreateOrderRequest
+from patch_api.models.create_preference_request import CreatePreferenceRequest
+from patch_api.models.create_shipping_estimate_request import (
+    CreateShippingEstimateRequest,
+)
+from patch_api.models.create_success_response import CreateSuccessResponse
+from patch_api.models.create_vehicle_estimate_request import (
+    CreateVehicleEstimateRequest,
+)
 from patch_api.models.error_response import ErrorResponse
 from patch_api.models.estimate import Estimate
 from patch_api.models.estimate_list_response import EstimateListResponse
@@ -31,5 +48,5 @@ from patch_api.models.preference_response import PreferenceResponse
 from patch_api.models.project import Project
 from patch_api.models.project_list_response import ProjectListResponse
 from patch_api.models.project_response import ProjectResponse
-from patch_api.models.standard import Standard
 from patch_api.models.sdg import Sdg
+from patch_api.models.standard import Standard
