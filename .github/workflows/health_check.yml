@@ -6,7 +6,10 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    name: Python Library tests
+    name: Run tests
+    strategy:
+      matrix:
+        python: ['3.6']
     steps:
       - name: Check out code
         uses: actions/checkout@v2
@@ -14,15 +17,17 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.6'
+          python-version: ${{ matrix.python }}
+
       - name: Run tests
         env:
           SANDBOX_API_KEY: ${{ secrets.SANDBOX_API_KEY }}
         run: make test
 
-      - name: Notify Slack
+      - name: Notify slack
         uses: kpritam/slack-job-status-action@v1
         with:
+          if: ${{ failure() }}
           job-status: ${{ job.status }}
           slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
-          channel: github-actions
+          channel: eng-notifications
