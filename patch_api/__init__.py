@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.11.0"
+__version__ = "1.10.2"
 
 # import ApiClient
 from patch_api.api_client import ApiClient

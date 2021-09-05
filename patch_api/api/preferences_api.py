@@ -43,11 +43,6 @@ class PreferencesApi(object):
         "transaction_value_btc_sats",
         "timestamp",
         "gas_used",
-        "origin_aiport",
-        "destination_aiport",
-        "aircraft_code",
-        "cabin_class",
-        "passenger_count",
     ]
 
     def __init__(self, api_client=None):
@@ -128,11 +123,6 @@ class PreferencesApi(object):
         all_params.append("transaction_value_btc_sats")
         all_params.append("timestamp")
         all_params.append("gas_used")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -280,11 +270,6 @@ class PreferencesApi(object):
         all_params.append("transaction_value_btc_sats")
         all_params.append("timestamp")
         all_params.append("gas_used")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -422,11 +407,6 @@ class PreferencesApi(object):
         all_params.append("transaction_value_btc_sats")
         all_params.append("timestamp")
         all_params.append("gas_used")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -564,11 +544,6 @@ class PreferencesApi(object):
         all_params.append("transaction_value_btc_sats")
         all_params.append("timestamp")
         all_params.append("gas_used")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
