@@ -59,6 +59,19 @@ class TestEstimatesApi(unittest.TestCase):
         retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
         self.assertTrue(retrieved_estimate)
 
+    def test_create_and_retrieve_flight_estimate_with_airports(self):
+        """Test case for create_flight_estimate
+
+        Create an estimate based on the distance in meters flown by an airplane # noqa: E501
+        """
+        estimate_short = self.api.create_flight_estimate(
+            origin_airport="SFO", destination_airport="LAX"
+        )
+        estimate_long = self.api.create_flight_estimate(
+            origin_airport="SFO", destination_airport="JFK"
+        )
+        self.assertGreater(estimate_long.data.mass_g, estimate_short.data.mass_g)
+
     def test_create_and_retrieve_shipping_estimate(self):
         """Test case for create_shipping_estimate
 
