@@ -34,7 +34,7 @@ class CreateBitcoinEstimateRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "timestamp": "str",
+        "timestamp": "datetime",
         "transaction_value_btc_sats": "int",
         "project_id": "str",
         "create_order": "bool",
@@ -77,7 +77,7 @@ class CreateBitcoinEstimateRequest(object):
 
 
         :return: The timestamp of this CreateBitcoinEstimateRequest.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._timestamp
 
@@ -87,7 +87,7 @@ class CreateBitcoinEstimateRequest(object):
 
 
         :param timestamp: The timestamp of this CreateBitcoinEstimateRequest.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._timestamp = timestamp

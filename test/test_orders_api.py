@@ -15,6 +15,7 @@ from __future__ import absolute_import
 
 import unittest
 import os
+import datetime
 
 from patch_api.api_client import ApiClient
 
@@ -37,6 +38,8 @@ class TestOrdersApi(unittest.TestCase):
         order = self.api.create_order(mass_g=100)
 
         self.assertTrue(order)
+
+        self.assertIsInstance(order.data.created_at, datetime.datetime)
 
         self.assertEqual(order.data.mass_g, 100)
 
