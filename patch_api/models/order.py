@@ -35,6 +35,7 @@ class Order(object):
     """
     openapi_types = {
         "id": "str",
+        "created_at": "datetime",
         "mass_g": "int",
         "production": "bool",
         "state": "str",
@@ -48,6 +49,7 @@ class Order(object):
 
     attribute_map = {
         "id": "id",
+        "created_at": "created_at",
         "mass_g": "mass_g",
         "production": "production",
         "state": "state",
@@ -62,6 +64,7 @@ class Order(object):
     def __init__(
         self,
         id=None,
+        created_at=None,
         mass_g=None,
         production=None,
         state=None,
@@ -79,6 +82,7 @@ class Order(object):
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
+        self._created_at = None
         self._mass_g = None
         self._production = None
         self._state = None
@@ -91,6 +95,8 @@ class Order(object):
         self.discriminator = None
 
         self.id = id
+        if created_at is not None:
+            self.created_at = created_at
         self.mass_g = mass_g
         self.production = production
         self.state = state
@@ -128,6 +134,29 @@ class Order(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this Order.  # noqa: E501
+
+        The timestamp at which the order was created  # noqa: E501
+
+        :return: The created_at of this Order.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this Order.
+
+        The timestamp at which the order was created  # noqa: E501
+
+        :param created_at: The created_at of this Order.  # noqa: E501
+        :type: datetime
+        """
+
+        self._created_at = created_at
 
     @property
     def mass_g(self):
