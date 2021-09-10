@@ -36,6 +36,7 @@ class CreateBitcoinEstimateRequest(object):
     openapi_types = {
         "timestamp": "datetime",
         "transaction_value_btc_sats": "int",
+        "average_daily_balance_btc_sats": "int",
         "project_id": "str",
         "create_order": "bool",
     }
@@ -43,6 +44,7 @@ class CreateBitcoinEstimateRequest(object):
     attribute_map = {
         "timestamp": "timestamp",
         "transaction_value_btc_sats": "transaction_value_btc_sats",
+        "average_daily_balance_btc_sats": "average_daily_balance_btc_sats",
         "project_id": "project_id",
         "create_order": "create_order",
     }
@@ -51,8 +53,9 @@ class CreateBitcoinEstimateRequest(object):
         self,
         timestamp=None,
         transaction_value_btc_sats=None,
+        average_daily_balance_btc_sats=None,
         project_id=None,
-        create_order=None,
+        create_order=False,
         local_vars_configuration=None,
     ):  # noqa: E501
         """CreateBitcoinEstimateRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -62,12 +65,14 @@ class CreateBitcoinEstimateRequest(object):
 
         self._timestamp = None
         self._transaction_value_btc_sats = None
+        self._average_daily_balance_btc_sats = None
         self._project_id = None
         self._create_order = None
         self.discriminator = None
 
         self.timestamp = timestamp
         self.transaction_value_btc_sats = transaction_value_btc_sats
+        self.average_daily_balance_btc_sats = average_daily_balance_btc_sats
         self.project_id = project_id
         self.create_order = create_order
 
@@ -112,6 +117,27 @@ class CreateBitcoinEstimateRequest(object):
         """
 
         self._transaction_value_btc_sats = transaction_value_btc_sats
+
+    @property
+    def average_daily_balance_btc_sats(self):
+        """Gets the average_daily_balance_btc_sats of this CreateBitcoinEstimateRequest.  # noqa: E501
+
+
+        :return: The average_daily_balance_btc_sats of this CreateBitcoinEstimateRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._average_daily_balance_btc_sats
+
+    @average_daily_balance_btc_sats.setter
+    def average_daily_balance_btc_sats(self, average_daily_balance_btc_sats):
+        """Sets the average_daily_balance_btc_sats of this CreateBitcoinEstimateRequest.
+
+
+        :param average_daily_balance_btc_sats: The average_daily_balance_btc_sats of this CreateBitcoinEstimateRequest.  # noqa: E501
+        :type: int
+        """
+
+        self._average_daily_balance_btc_sats = average_daily_balance_btc_sats
 
     @property
     def project_id(self):

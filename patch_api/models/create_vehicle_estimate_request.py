@@ -58,7 +58,7 @@ class CreateVehicleEstimateRequest(object):
         model=None,
         year=None,
         project_id=None,
-        create_order=None,
+        create_order=False,
         local_vars_configuration=None,
     ):  # noqa: E501
         """CreateVehicleEstimateRequest - a model defined in OpenAPI"""  # noqa: E501

@@ -41,8 +41,11 @@ class EstimatesApi(object):
         "make",
         "year",
         "transaction_value_btc_sats",
-        "timestamp",
+        "transaction_value_eth_gwei",
         "gas_used",
+        "average_daily_balance_btc_sats",
+        "average_daily_balance_eth_gwei",
+        "timestamp",
         "origin_aiport",
         "destination_aiport",
         "aircraft_code",
@@ -128,8 +131,12 @@ class EstimatesApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -214,7 +221,7 @@ class EstimatesApi(object):
     def create_ethereum_estimate(
         self, create_ethereum_estimate_request={}, **kwargs
     ):  # noqa: E501
-        """Create an ethereum estimate given a timestamp and gas used  # noqa: E501
+        """Create an ethereum estimate  # noqa: E501
 
         Creates an ethereum estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -243,7 +250,7 @@ class EstimatesApi(object):
     def create_ethereum_estimate_with_http_info(
         self, create_ethereum_estimate_request, **kwargs
     ):  # noqa: E501
-        """Create an ethereum estimate given a timestamp and gas used  # noqa: E501
+        """Create an ethereum estimate  # noqa: E501
 
         Creates an ethereum estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -286,8 +293,12 @@ class EstimatesApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -444,8 +455,12 @@ class EstimatesApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -602,8 +617,12 @@ class EstimatesApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -760,8 +779,12 @@ class EstimatesApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -918,8 +941,12 @@ class EstimatesApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -1070,8 +1097,12 @@ class EstimatesApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -1212,8 +1243,12 @@ class EstimatesApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
