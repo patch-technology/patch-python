@@ -44,7 +44,7 @@ class CreateMassEstimateRequest(object):
     def __init__(
         self,
         mass_g=None,
-        create_order=None,
+        create_order=False,
         project_id=None,
         local_vars_configuration=None,
     ):  # noqa: E501

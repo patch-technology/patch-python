@@ -157,6 +157,20 @@ class TestEstimatesApi(unittest.TestCase):
             estimate.data.mass_g, 200
         )  # not setting an exact value since this is changing daily
 
+    def test_create_bitcoin_estimate_transaction_value(self):
+        """Test case for create_bitcoin_estimate
+
+        Create an estimate based on an average daily balance  # noqa: E501
+        """
+        estimate1 = self.api.create_bitcoin_estimate(
+            average_daily_balance_btc_sats=100000
+        )
+        estimate2 = self.api.create_bitcoin_estimate(
+            average_daily_balance_btc_sats=1000000
+        )
+        self.assertEqual(estimate1.data.type, "bitcoin")
+        self.assertGreater(estimate2.data.mass_g, estimate1.data.mass_g)
+
     def test_create_ethereum_estimate_transaction_value(self):
         """Test case for create_ethereum_estimate
 

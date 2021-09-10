@@ -41,8 +41,11 @@ class OrdersApi(object):
         "make",
         "year",
         "transaction_value_btc_sats",
-        "timestamp",
+        "transaction_value_eth_gwei",
         "gas_used",
+        "average_daily_balance_btc_sats",
+        "average_daily_balance_eth_gwei",
+        "timestamp",
         "origin_aiport",
         "destination_aiport",
         "aircraft_code",
@@ -122,8 +125,12 @@ class OrdersApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -266,8 +273,12 @@ class OrdersApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -418,8 +429,12 @@ class OrdersApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -560,8 +575,12 @@ class OrdersApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")
@@ -713,8 +732,12 @@ class OrdersApi(object):
         all_params.append("model")
         all_params.append("year")
         all_params.append("transaction_value_btc_sats")
-        all_params.append("timestamp")
+        all_params.append("transaction_value_eth_gwei")
         all_params.append("gas_used")
+        all_params.append("transaction_value_btc_sats")
+        all_params.append("average_daily_balance_btc_sats")
+        all_params.append("average_daily_balance_eth_gwei")
+        all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
         all_params.append("aircraft_code")

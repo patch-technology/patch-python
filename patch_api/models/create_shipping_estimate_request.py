@@ -55,7 +55,7 @@ class CreateShippingEstimateRequest(object):
         package_mass_g=None,
         transportation_method=None,
         project_id=None,
-        create_order=None,
+        create_order=False,
         local_vars_configuration=None,
     ):  # noqa: E501
         """CreateShippingEstimateRequest - a model defined in OpenAPI"""  # noqa: E501

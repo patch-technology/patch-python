@@ -37,6 +37,7 @@ class CreateEthereumEstimateRequest(object):
         "timestamp": "str",
         "gas_used": "int",
         "transaction_value_eth_gwei": "int",
+        "average_daily_balance_eth_gwei": "int",
         "project_id": "str",
         "create_order": "bool",
     }
@@ -45,6 +46,7 @@ class CreateEthereumEstimateRequest(object):
         "timestamp": "timestamp",
         "gas_used": "gas_used",
         "transaction_value_eth_gwei": "transaction_value_eth_gwei",
+        "average_daily_balance_eth_gwei": "average_daily_balance_eth_gwei",
         "project_id": "project_id",
         "create_order": "create_order",
     }
@@ -54,8 +56,9 @@ class CreateEthereumEstimateRequest(object):
         timestamp=None,
         gas_used=None,
         transaction_value_eth_gwei=None,
+        average_daily_balance_eth_gwei=None,
         project_id=None,
-        create_order=None,
+        create_order=False,
         local_vars_configuration=None,
     ):  # noqa: E501
         """CreateEthereumEstimateRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -66,6 +69,7 @@ class CreateEthereumEstimateRequest(object):
         self._timestamp = None
         self._gas_used = None
         self._transaction_value_eth_gwei = None
+        self._average_daily_balance_eth_gwei = None
         self._project_id = None
         self._create_order = None
         self.discriminator = None
@@ -73,6 +77,7 @@ class CreateEthereumEstimateRequest(object):
         self.timestamp = timestamp
         self.gas_used = gas_used
         self.transaction_value_eth_gwei = transaction_value_eth_gwei
+        self.average_daily_balance_eth_gwei = average_daily_balance_eth_gwei
         self.project_id = project_id
         self.create_order = create_order
 
@@ -138,6 +143,27 @@ class CreateEthereumEstimateRequest(object):
         """
 
         self._transaction_value_eth_gwei = transaction_value_eth_gwei
+
+    @property
+    def average_daily_balance_eth_gwei(self):
+        """Gets the average_daily_balance_eth_gwei of this CreateEthereumEstimateRequest.  # noqa: E501
+
+
+        :return: The average_daily_balance_eth_gwei of this CreateEthereumEstimateRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._average_daily_balance_eth_gwei
+
+    @average_daily_balance_eth_gwei.setter
+    def average_daily_balance_eth_gwei(self, average_daily_balance_eth_gwei):
+        """Sets the average_daily_balance_eth_gwei of this CreateEthereumEstimateRequest.
+
+
+        :param average_daily_balance_eth_gwei: The average_daily_balance_eth_gwei of this CreateEthereumEstimateRequest.  # noqa: E501
+        :type: int
+        """
+
+        self._average_daily_balance_eth_gwei = average_daily_balance_eth_gwei
 
     @property
     def project_id(self):
