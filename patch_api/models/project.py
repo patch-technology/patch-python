@@ -39,13 +39,19 @@ class Project(object):
         "name": "str",
         "description": "str",
         "type": "str",
+        "mechanism": "str",
         "country": "str",
+        "state": "str",
+        "latitude": "float",
+        "longitude": "float",
         "developer": "str",
         "photos": "list[Photo]",
         "average_price_per_tonne_cents_usd": "int",
         "remaining_mass_g": "int",
         "standard": "Standard",
         "sdgs": "list[Sdg]",
+        "technology_type": "TechnologyType",
+        "tagline": "str",
     }
 
     attribute_map = {
@@ -54,13 +60,19 @@ class Project(object):
         "name": "name",
         "description": "description",
         "type": "type",
+        "mechanism": "mechanism",
         "country": "country",
+        "state": "state",
+        "latitude": "latitude",
+        "longitude": "longitude",
         "developer": "developer",
         "photos": "photos",
         "average_price_per_tonne_cents_usd": "average_price_per_tonne_cents_usd",
         "remaining_mass_g": "remaining_mass_g",
         "standard": "standard",
         "sdgs": "sdgs",
+        "technology_type": "technology_type",
+        "tagline": "tagline",
     }
 
     def __init__(
@@ -70,13 +82,19 @@ class Project(object):
         name=None,
         description=None,
         type=None,
+        mechanism=None,
         country=None,
+        state=None,
+        latitude=None,
+        longitude=None,
         developer=None,
         photos=None,
         average_price_per_tonne_cents_usd=None,
         remaining_mass_g=None,
         standard=None,
         sdgs=None,
+        technology_type=None,
+        tagline=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
@@ -89,13 +107,19 @@ class Project(object):
         self._name = None
         self._description = None
         self._type = None
+        self._mechanism = None
         self._country = None
+        self._state = None
+        self._latitude = None
+        self._longitude = None
         self._developer = None
         self._photos = None
         self._average_price_per_tonne_cents_usd = None
         self._remaining_mass_g = None
         self._standard = None
         self._sdgs = None
+        self._technology_type = None
+        self._tagline = None
         self.discriminator = None
 
         self.id = id
@@ -104,13 +128,21 @@ class Project(object):
         self.description = description
         if type is not None:
             self.type = type
+        if mechanism is not None:
+            self.mechanism = mechanism
         self.country = country
+        self.state = state
+        self.latitude = latitude
+        self.longitude = longitude
         self.developer = developer
         self.photos = photos
         self.average_price_per_tonne_cents_usd = average_price_per_tonne_cents_usd
         self.remaining_mass_g = remaining_mass_g
         self.standard = standard
         self.sdgs = sdgs
+        if technology_type is not None:
+            self.technology_type = technology_type
+        self.tagline = tagline
 
     @property
     def id(self):
@@ -268,6 +300,39 @@ class Project(object):
         self._type = type
 
     @property
+    def mechanism(self):
+        """Gets the mechanism of this Project.  # noqa: E501
+
+        The mechanism of the project. removal or avoidance.  # noqa: E501
+
+        :return: The mechanism of this Project.  # noqa: E501
+        :rtype: str
+        """
+        return self._mechanism
+
+    @mechanism.setter
+    def mechanism(self, mechanism):
+        """Sets the mechanism of this Project.
+
+        The mechanism of the project. removal or avoidance.  # noqa: E501
+
+        :param mechanism: The mechanism of this Project.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["removal", "avoidance"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and mechanism not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `mechanism` ({0}), must be one of {1}".format(  # noqa: E501
+                    mechanism, allowed_values
+                )
+            )
+
+        self._mechanism = mechanism
+
+    @property
     def country(self):
         """Gets the country of this Project.  # noqa: E501
 
@@ -295,6 +360,75 @@ class Project(object):
             )  # noqa: E501
 
         self._country = country
+
+    @property
+    def state(self):
+        """Gets the state of this Project.  # noqa: E501
+
+        The state where this project is located.  # noqa: E501
+
+        :return: The state of this Project.  # noqa: E501
+        :rtype: str
+        """
+        return self._state
+
+    @state.setter
+    def state(self, state):
+        """Sets the state of this Project.
+
+        The state where this project is located.  # noqa: E501
+
+        :param state: The state of this Project.  # noqa: E501
+        :type: str
+        """
+
+        self._state = state
+
+    @property
+    def latitude(self):
+        """Gets the latitude of this Project.  # noqa: E501
+
+        The latitude at which this project is located.  # noqa: E501
+
+        :return: The latitude of this Project.  # noqa: E501
+        :rtype: float
+        """
+        return self._latitude
+
+    @latitude.setter
+    def latitude(self, latitude):
+        """Sets the latitude of this Project.
+
+        The latitude at which this project is located.  # noqa: E501
+
+        :param latitude: The latitude of this Project.  # noqa: E501
+        :type: float
+        """
+
+        self._latitude = latitude
+
+    @property
+    def longitude(self):
+        """Gets the longitude of this Project.  # noqa: E501
+
+        The longitude at which this project is located.  # noqa: E501
+
+        :return: The longitude of this Project.  # noqa: E501
+        :rtype: float
+        """
+        return self._longitude
+
+    @longitude.setter
+    def longitude(self, longitude):
+        """Sets the longitude of this Project.
+
+        The longitude at which this project is located.  # noqa: E501
+
+        :param longitude: The longitude of this Project.  # noqa: E501
+        :type: float
+        """
+
+        self._longitude = longitude
 
     @property
     def developer(self):
@@ -453,6 +587,50 @@ class Project(object):
         """
 
         self._sdgs = sdgs
+
+    @property
+    def technology_type(self):
+        """Gets the technology_type of this Project.  # noqa: E501
+
+
+        :return: The technology_type of this Project.  # noqa: E501
+        :rtype: TechnologyType
+        """
+        return self._technology_type
+
+    @technology_type.setter
+    def technology_type(self, technology_type):
+        """Sets the technology_type of this Project.
+
+
+        :param technology_type: The technology_type of this Project.  # noqa: E501
+        :type: TechnologyType
+        """
+
+        self._technology_type = technology_type
+
+    @property
+    def tagline(self):
+        """Gets the tagline of this Project.  # noqa: E501
+
+        A short description of the project  # noqa: E501
+
+        :return: The tagline of this Project.  # noqa: E501
+        :rtype: str
+        """
+        return self._tagline
+
+    @tagline.setter
+    def tagline(self, tagline):
+        """Sets the tagline of this Project.
+
+        A short description of the project  # noqa: E501
+
+        :param tagline: The tagline of this Project.  # noqa: E501
+        :type: str
+        """
+
+        self._tagline = tagline
 
     def to_dict(self):
         """Returns the model properties as a dict"""

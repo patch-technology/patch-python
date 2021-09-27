@@ -40,6 +40,21 @@ class TestProjectsApi(unittest.TestCase):
         self.assertEqual(project.production, False)
         self.assertTrue(isinstance(project.photos, list))
 
+        self.assertTrue(hasattr(project, "tagline"))
+        self.assertTrue(hasattr(project, "latitude"))
+        self.assertTrue(hasattr(project, "longitude"))
+
+        self.assertTrue(isinstance(project.mechanism, str))
+        self.assertTrue(isinstance(project.state, str))
+
+        technology_type = project.technology_type
+        self.assertTrue(isinstance(technology_type.name, str))
+        self.assertTrue(isinstance(technology_type.slug, str))
+
+        parent_technology_type = technology_type.parent_technology_type
+        self.assertTrue(isinstance(parent_technology_type.name, str))
+        self.assertTrue(isinstance(parent_technology_type.slug, str))
+
     def test_retrieve_projects(self):
         """Test case for retrieve_projects
 
