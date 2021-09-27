@@ -51,7 +51,7 @@ class TestProjectsApi(unittest.TestCase):
         self.assertTrue(isinstance(technology_type.name, str))
         self.assertTrue(isinstance(technology_type.slug, str))
 
-        parent_technology_type = project.parent_technology_type
+        parent_technology_type = technology_type.parent_technology_type
         self.assertTrue(isinstance(parent_technology_type.name, str))
         self.assertTrue(isinstance(parent_technology_type.slug, str))
 
