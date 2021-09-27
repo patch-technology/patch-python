@@ -41,11 +41,11 @@ class TestProjectsApi(unittest.TestCase):
         self.assertTrue(isinstance(project.photos, list))
 
         self.assertTrue(hasattr(project, "tagline"))
+        self.assertTrue(hasattr(project, "latitude"))
+        self.assertTrue(hasattr(project, "longitude"))
 
         self.assertTrue(isinstance(project.mechanism, str))
         self.assertTrue(isinstance(project.state, str))
-        self.assertTrue(isinstance(project.longitude, int))
-        self.assertTrue(isinstance(project.latitude, int))
 
         technology_type = project.technology_type
         self.assertTrue(isinstance(technology_type.name, str))
