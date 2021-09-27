@@ -41,6 +41,7 @@ from patch_api.models.meta_index_object import MetaIndexObject
 from patch_api.models.order import Order
 from patch_api.models.order_list_response import OrderListResponse
 from patch_api.models.order_response import OrderResponse
+from patch_api.models.parent_technology_type import ParentTechnologyType
 from patch_api.models.photo import Photo
 from patch_api.models.preference import Preference
 from patch_api.models.preference_list_response import PreferenceListResponse
@@ -50,3 +51,4 @@ from patch_api.models.project_list_response import ProjectListResponse
 from patch_api.models.project_response import ProjectResponse
 from patch_api.models.sdg import Sdg
 from patch_api.models.standard import Standard
+from patch_api.models.technology_type import TechnologyType
