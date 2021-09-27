@@ -40,7 +40,7 @@ class TestProjectsApi(unittest.TestCase):
         self.assertEqual(project.production, False)
         self.assertTrue(isinstance(project.photos, list))
 
-        self.assertTrue(hasattr(project, 'tagline'))
+        self.assertTrue(hasattr(project, "tagline"))
 
         self.assertTrue(isinstance(project.mechanism, str))
         self.assertTrue(isinstance(project.state, str))
