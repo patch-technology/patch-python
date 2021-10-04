@@ -52,3 +52,4 @@ from patch_api.models.project_response import ProjectResponse
 from patch_api.models.sdg import Sdg
 from patch_api.models.standard import Standard
 from patch_api.models.technology_type import TechnologyType
+from patch_api.models.technology_type_list_response import TechnologyTypeListResponse

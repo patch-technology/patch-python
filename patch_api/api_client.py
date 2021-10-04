@@ -29,6 +29,7 @@ from patch_api.api.estimates_api import EstimatesApi
 from patch_api.api.orders_api import OrdersApi
 from patch_api.api.preferences_api import PreferencesApi
 from patch_api.api.projects_api import ProjectsApi
+from patch_api.api.technology_types_api import TechnologyTypesApi
 
 from patch_api import rest
 from patch_api.exceptions import ApiValueError
@@ -91,7 +92,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = "patch-python/1.14.0"
+        self.user_agent = "patch-python/1.15.0"
 
     def __del__(self):
         if self._pool:
@@ -105,6 +106,7 @@ class ApiClient(object):
             "orders": OrdersApi,
             "preferences": PreferencesApi,
             "estimates": EstimatesApi,
+            "technology_types": TechnologyTypesApi,
         }[method]
         return resource(api_client=self)
 

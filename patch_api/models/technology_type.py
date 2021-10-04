@@ -62,10 +62,8 @@ class TechnologyType(object):
         self._parent_technology_type = None
         self.discriminator = None
 
-        if slug is not None:
-            self.slug = slug
-        if name is not None:
-            self.name = name
+        self.slug = slug
+        self.name = name
         if parent_technology_type is not None:
             self.parent_technology_type = parent_technology_type
 
@@ -89,6 +87,12 @@ class TechnologyType(object):
         :param slug: The slug of this TechnologyType.  # noqa: E501
         :type: str
         """
+        if (
+            self.local_vars_configuration.client_side_validation and slug is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `slug`, must not be `None`"
+            )  # noqa: E501
 
         self._slug = slug
 
@@ -96,7 +100,7 @@ class TechnologyType(object):
     def name(self):
         """Gets the name of this TechnologyType.  # noqa: E501
 
-        Name of this technology type.  # noqa: E501
+        Display name of this technology type.  # noqa: E501
 
         :return: The name of this TechnologyType.  # noqa: E501
         :rtype: str
@@ -107,11 +111,17 @@ class TechnologyType(object):
     def name(self, name):
         """Sets the name of this TechnologyType.
 
-        Name of this technology type.  # noqa: E501
+        Display name of this technology type.  # noqa: E501
 
         :param name: The name of this TechnologyType.  # noqa: E501
         :type: str
         """
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
