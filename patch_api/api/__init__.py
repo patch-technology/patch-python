@@ -7,3 +7,4 @@ from patch_api.api.estimates_api import EstimatesApi
 from patch_api.api.orders_api import OrdersApi
 from patch_api.api.preferences_api import PreferencesApi
 from patch_api.api.projects_api import ProjectsApi
+from patch_api.api.technology_types_api import TechnologyTypesApi

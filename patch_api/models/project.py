@@ -50,8 +50,8 @@ class Project(object):
         "remaining_mass_g": "int",
         "standard": "Standard",
         "sdgs": "list[Sdg]",
-        "technology_type": "TechnologyType",
         "tagline": "str",
+        "technology_type": "TechnologyType",
     }
 
     attribute_map = {
@@ -71,8 +71,8 @@ class Project(object):
         "remaining_mass_g": "remaining_mass_g",
         "standard": "standard",
         "sdgs": "sdgs",
-        "technology_type": "technology_type",
         "tagline": "tagline",
+        "technology_type": "technology_type",
     }
 
     def __init__(
@@ -93,8 +93,8 @@ class Project(object):
         remaining_mass_g=None,
         standard=None,
         sdgs=None,
-        technology_type=None,
         tagline=None,
+        technology_type=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
@@ -118,8 +118,8 @@ class Project(object):
         self._remaining_mass_g = None
         self._standard = None
         self._sdgs = None
-        self._technology_type = None
         self._tagline = None
+        self._technology_type = None
         self.discriminator = None
 
         self.id = id
@@ -140,9 +140,9 @@ class Project(object):
         self.remaining_mass_g = remaining_mass_g
         self.standard = standard
         self.sdgs = sdgs
-        if technology_type is not None:
-            self.technology_type = technology_type
-        self.tagline = tagline
+        if tagline is not None:
+            self.tagline = tagline
+        self.technology_type = technology_type
 
     @property
     def id(self):
@@ -262,7 +262,7 @@ class Project(object):
     def type(self):
         """Gets the type of this Project.  # noqa: E501
 
-        The type of carbon removal project, currently available project types are Biomass, Dac, Forestry, Mineralization, Ocean, Renewables, Soil.  # noqa: E501
+        Deprecated. Favor the technology_type field instead.  # noqa: E501
 
         :return: The type of this Project.  # noqa: E501
         :rtype: str
@@ -273,29 +273,11 @@ class Project(object):
     def type(self, type):
         """Sets the type of this Project.
 
-        The type of carbon removal project, currently available project types are Biomass, Dac, Forestry, Mineralization, Ocean, Renewables, Soil.  # noqa: E501
+        Deprecated. Favor the technology_type field instead.  # noqa: E501
 
         :param type: The type of this Project.  # noqa: E501
         :type: str
         """
-        allowed_values = [
-            "biomass",
-            "dac",
-            "forestry",
-            "mineralization",
-            "ocean",
-            "renewables",
-            "soil",
-        ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}".format(  # noqa: E501
-                    type, allowed_values
-                )
-            )
 
         self._type = type
 
@@ -303,7 +285,7 @@ class Project(object):
     def mechanism(self):
         """Gets the mechanism of this Project.  # noqa: E501
 
-        The mechanism of the project. removal or avoidance.  # noqa: E501
+        The mechanism of the project. Either removal or avoidance.  # noqa: E501
 
         :return: The mechanism of this Project.  # noqa: E501
         :rtype: str
@@ -314,7 +296,7 @@ class Project(object):
     def mechanism(self, mechanism):
         """Sets the mechanism of this Project.
 
-        The mechanism of the project. removal or avoidance.  # noqa: E501
+        The mechanism of the project. Either removal or avoidance.  # noqa: E501
 
         :param mechanism: The mechanism of this Project.  # noqa: E501
         :type: str
@@ -589,6 +571,29 @@ class Project(object):
         self._sdgs = sdgs
 
     @property
+    def tagline(self):
+        """Gets the tagline of this Project.  # noqa: E501
+
+        A short description of the project.  # noqa: E501
+
+        :return: The tagline of this Project.  # noqa: E501
+        :rtype: str
+        """
+        return self._tagline
+
+    @tagline.setter
+    def tagline(self, tagline):
+        """Sets the tagline of this Project.
+
+        A short description of the project.  # noqa: E501
+
+        :param tagline: The tagline of this Project.  # noqa: E501
+        :type: str
+        """
+
+        self._tagline = tagline
+
+    @property
     def technology_type(self):
         """Gets the technology_type of this Project.  # noqa: E501
 
@@ -606,31 +611,15 @@ class Project(object):
         :param technology_type: The technology_type of this Project.  # noqa: E501
         :type: TechnologyType
         """
+        if (
+            self.local_vars_configuration.client_side_validation
+            and technology_type is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `technology_type`, must not be `None`"
+            )  # noqa: E501
 
         self._technology_type = technology_type
-
-    @property
-    def tagline(self):
-        """Gets the tagline of this Project.  # noqa: E501
-
-        A short description of the project  # noqa: E501
-
-        :return: The tagline of this Project.  # noqa: E501
-        :rtype: str
-        """
-        return self._tagline
-
-    @tagline.setter
-    def tagline(self, tagline):
-        """Sets the tagline of this Project.
-
-        A short description of the project  # noqa: E501
-
-        :param tagline: The tagline of this Project.  # noqa: E501
-        :type: str
-        """
-
-        self._tagline = tagline
 
     def to_dict(self):
         """Returns the model properties as a dict"""
