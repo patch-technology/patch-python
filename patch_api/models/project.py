@@ -48,6 +48,7 @@ class Project(object):
         "photos": "list[Photo]",
         "average_price_per_tonne_cents_usd": "int",
         "remaining_mass_g": "int",
+        "verifier": "str",
         "standard": "Standard",
         "sdgs": "list[Sdg]",
         "tagline": "str",
@@ -69,6 +70,7 @@ class Project(object):
         "photos": "photos",
         "average_price_per_tonne_cents_usd": "average_price_per_tonne_cents_usd",
         "remaining_mass_g": "remaining_mass_g",
+        "verifier": "verifier",
         "standard": "standard",
         "sdgs": "sdgs",
         "tagline": "tagline",
@@ -91,6 +93,7 @@ class Project(object):
         photos=None,
         average_price_per_tonne_cents_usd=None,
         remaining_mass_g=None,
+        verifier=None,
         standard=None,
         sdgs=None,
         tagline=None,
@@ -116,6 +119,7 @@ class Project(object):
         self._photos = None
         self._average_price_per_tonne_cents_usd = None
         self._remaining_mass_g = None
+        self._verifier = None
         self._standard = None
         self._sdgs = None
         self._tagline = None
@@ -138,6 +142,8 @@ class Project(object):
         self.photos = photos
         self.average_price_per_tonne_cents_usd = average_price_per_tonne_cents_usd
         self.remaining_mass_g = remaining_mass_g
+        if verifier is not None:
+            self.verifier = verifier
         self.standard = standard
         self.sdgs = sdgs
         if tagline is not None:
@@ -525,10 +531,33 @@ class Project(object):
         self._remaining_mass_g = remaining_mass_g
 
     @property
+    def verifier(self):
+        """Gets the verifier of this Project.  # noqa: E501
+
+        The name of the project verifier. A verifier is the organization that verifies the calculations of the actual amount of greenhouse gas emissions that have been avoided or sequestered through implementation of the project.  # noqa: E501
+
+        :return: The verifier of this Project.  # noqa: E501
+        :rtype: str
+        """
+        return self._verifier
+
+    @verifier.setter
+    def verifier(self, verifier):
+        """Sets the verifier of this Project.
+
+        The name of the project verifier. A verifier is the organization that verifies the calculations of the actual amount of greenhouse gas emissions that have been avoided or sequestered through implementation of the project.  # noqa: E501
+
+        :param verifier: The verifier of this Project.  # noqa: E501
+        :type: str
+        """
+
+        self._verifier = verifier
+
+    @property
     def standard(self):
         """Gets the standard of this Project.  # noqa: E501
 
-        An object returning the Standard associated with this project.  # noqa: E501
+        An object returning the Standard associated with this project. Standards provide guidance on GHG quantification, monitoring, and reporting. Standards can include protocols/methodologies and guidance documents.  # noqa: E501
 
         :return: The standard of this Project.  # noqa: E501
         :rtype: Standard
@@ -539,7 +568,7 @@ class Project(object):
     def standard(self, standard):
         """Sets the standard of this Project.
 
-        An object returning the Standard associated with this project.  # noqa: E501
+        An object returning the Standard associated with this project. Standards provide guidance on GHG quantification, monitoring, and reporting. Standards can include protocols/methodologies and guidance documents.  # noqa: E501
 
         :param standard: The standard of this Project.  # noqa: E501
         :type: Standard
