@@ -281,7 +281,7 @@ class Order(object):
     def allocation_state(self):
         """Gets the allocation_state of this Order.  # noqa: E501
 
-        The current state of the allocated carbon offsets of the order.  # noqa: E501
+        DEPRECATED. Indicates if the order has been fully allocated to projects.  # noqa: E501
 
         :return: The allocation_state of this Order.  # noqa: E501
         :rtype: str
@@ -292,7 +292,7 @@ class Order(object):
     def allocation_state(self, allocation_state):
         """Sets the allocation_state of this Order.
 
-        The current state of the allocated carbon offsets of the order.  # noqa: E501
+        DEPRECATED. Indicates if the order has been fully allocated to projects.  # noqa: E501
 
         :param allocation_state: The allocation_state of this Order.  # noqa: E501
         :type: str
