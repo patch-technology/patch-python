@@ -34,30 +34,22 @@ class CreateShippingEstimateRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "distance_m": "int",
-        "package_mass_g": "int",
-        "transportation_method": "str",
-        "project_id": "str",
-        "create_order": "bool",
+        'distance_m': 'int',
+        'package_mass_g': 'int',
+        'transportation_method': 'str',
+        'project_id': 'str',
+        'create_order': 'bool'
     }
 
     attribute_map = {
-        "distance_m": "distance_m",
-        "package_mass_g": "package_mass_g",
-        "transportation_method": "transportation_method",
-        "project_id": "project_id",
-        "create_order": "create_order",
+        'distance_m': 'distance_m',
+        'package_mass_g': 'package_mass_g',
+        'transportation_method': 'transportation_method',
+        'project_id': 'project_id',
+        'create_order': 'create_order'
     }
 
-    def __init__(
-        self,
-        distance_m=None,
-        package_mass_g=None,
-        transportation_method=None,
-        project_id=None,
-        create_order=False,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, distance_m=None, package_mass_g=None, transportation_method=None, project_id=None, create_order=False, local_vars_configuration=None):  # noqa: E501
         """CreateShippingEstimateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -94,28 +86,14 @@ class CreateShippingEstimateRequest(object):
         :param distance_m: The distance_m of this CreateShippingEstimateRequest.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and distance_m is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must not be `None`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and distance_m is not None
-            and distance_m > 400000000
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must be a value less than or equal to `400000000`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and distance_m is not None
-            and distance_m < 0
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must be a value greater than or equal to `0`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and distance_m is None:  # noqa: E501
+            raise ValueError("Invalid value for `distance_m`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                distance_m is not None and distance_m > 400000000):  # noqa: E501
+            raise ValueError("Invalid value for `distance_m`, must be a value less than or equal to `400000000`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                distance_m is not None and distance_m < 0):  # noqa: E501
+            raise ValueError("Invalid value for `distance_m`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._distance_m = distance_m
 
@@ -137,29 +115,14 @@ class CreateShippingEstimateRequest(object):
         :param package_mass_g: The package_mass_g of this CreateShippingEstimateRequest.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and package_mass_g is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `package_mass_g`, must not be `None`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and package_mass_g is not None
-            and package_mass_g > 2000000000
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `package_mass_g`, must be a value less than or equal to `2000000000`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and package_mass_g is not None
-            and package_mass_g < 0
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `package_mass_g`, must be a value greater than or equal to `0`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and package_mass_g is None:  # noqa: E501
+            raise ValueError("Invalid value for `package_mass_g`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                package_mass_g is not None and package_mass_g > 2000000000):  # noqa: E501
+            raise ValueError("Invalid value for `package_mass_g`, must be a value less than or equal to `2000000000`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                package_mass_g is not None and package_mass_g < 0):  # noqa: E501
+            raise ValueError("Invalid value for `package_mass_g`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._package_mass_g = package_mass_g
 
@@ -181,22 +144,13 @@ class CreateShippingEstimateRequest(object):
         :param transportation_method: The transportation_method of this CreateShippingEstimateRequest.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and transportation_method is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `transportation_method`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and transportation_method is None:  # noqa: E501
+            raise ValueError("Invalid value for `transportation_method`, must not be `None`")  # noqa: E501
         allowed_values = ["air", "rail", "road", "sea"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and transportation_method not in allowed_values
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and transportation_method not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `transportation_method` ({0}), must be one of {1}".format(  # noqa: E501
-                    transportation_method, allowed_values
-                )
+                "Invalid value for `transportation_method` ({0}), must be one of {1}"  # noqa: E501
+                .format(transportation_method, allowed_values)
             )
 
         self._transportation_method = transportation_method
@@ -250,20 +204,18 @@ class CreateShippingEstimateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -34,30 +34,22 @@ class CreateBitcoinEstimateRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "timestamp": "datetime",
-        "transaction_value_btc_sats": "int",
-        "average_daily_balance_btc_sats": "int",
-        "project_id": "str",
-        "create_order": "bool",
+        'timestamp': 'datetime',
+        'transaction_value_btc_sats': 'int',
+        'average_daily_balance_btc_sats': 'int',
+        'project_id': 'str',
+        'create_order': 'bool'
     }
 
     attribute_map = {
-        "timestamp": "timestamp",
-        "transaction_value_btc_sats": "transaction_value_btc_sats",
-        "average_daily_balance_btc_sats": "average_daily_balance_btc_sats",
-        "project_id": "project_id",
-        "create_order": "create_order",
+        'timestamp': 'timestamp',
+        'transaction_value_btc_sats': 'transaction_value_btc_sats',
+        'average_daily_balance_btc_sats': 'average_daily_balance_btc_sats',
+        'project_id': 'project_id',
+        'create_order': 'create_order'
     }
 
-    def __init__(
-        self,
-        timestamp=None,
-        transaction_value_btc_sats=None,
-        average_daily_balance_btc_sats=None,
-        project_id=None,
-        create_order=False,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, timestamp=None, transaction_value_btc_sats=None, average_daily_balance_btc_sats=None, project_id=None, create_order=False, local_vars_configuration=None):  # noqa: E501
         """CreateBitcoinEstimateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -188,20 +180,18 @@ class CreateBitcoinEstimateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

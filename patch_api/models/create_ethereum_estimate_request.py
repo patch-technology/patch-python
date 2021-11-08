@@ -34,33 +34,24 @@ class CreateEthereumEstimateRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "timestamp": "str",
-        "gas_used": "int",
-        "transaction_value_eth_gwei": "int",
-        "average_daily_balance_eth_gwei": "int",
-        "project_id": "str",
-        "create_order": "bool",
+        'timestamp': 'str',
+        'gas_used': 'int',
+        'transaction_value_eth_gwei': 'int',
+        'average_daily_balance_eth_gwei': 'int',
+        'project_id': 'str',
+        'create_order': 'bool'
     }
 
     attribute_map = {
-        "timestamp": "timestamp",
-        "gas_used": "gas_used",
-        "transaction_value_eth_gwei": "transaction_value_eth_gwei",
-        "average_daily_balance_eth_gwei": "average_daily_balance_eth_gwei",
-        "project_id": "project_id",
-        "create_order": "create_order",
+        'timestamp': 'timestamp',
+        'gas_used': 'gas_used',
+        'transaction_value_eth_gwei': 'transaction_value_eth_gwei',
+        'average_daily_balance_eth_gwei': 'average_daily_balance_eth_gwei',
+        'project_id': 'project_id',
+        'create_order': 'create_order'
     }
 
-    def __init__(
-        self,
-        timestamp=None,
-        gas_used=None,
-        transaction_value_eth_gwei=None,
-        average_daily_balance_eth_gwei=None,
-        project_id=None,
-        create_order=False,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, timestamp=None, gas_used=None, transaction_value_eth_gwei=None, average_daily_balance_eth_gwei=None, project_id=None, create_order=False, local_vars_configuration=None):  # noqa: E501
         """CreateEthereumEstimateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -214,20 +205,18 @@ class CreateEthereumEstimateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

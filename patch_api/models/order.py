@@ -34,48 +34,34 @@ class Order(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "created_at": "datetime",
-        "mass_g": "int",
-        "production": "bool",
-        "state": "str",
-        "allocation_state": "str",
-        "price_cents_usd": "int",
-        "patch_fee_cents_usd": "int",
-        "allocations": "list[Allocation]",
-        "registry_url": "str",
-        "metadata": "object",
+        'id': 'str',
+        'created_at': 'datetime',
+        'mass_g': 'int',
+        'production': 'bool',
+        'state': 'str',
+        'allocation_state': 'str',
+        'price_cents_usd': 'int',
+        'patch_fee_cents_usd': 'int',
+        'allocations': 'list[Allocation]',
+        'registry_url': 'str',
+        'metadata': 'object'
     }
 
     attribute_map = {
-        "id": "id",
-        "created_at": "created_at",
-        "mass_g": "mass_g",
-        "production": "production",
-        "state": "state",
-        "allocation_state": "allocation_state",
-        "price_cents_usd": "price_cents_usd",
-        "patch_fee_cents_usd": "patch_fee_cents_usd",
-        "allocations": "allocations",
-        "registry_url": "registry_url",
-        "metadata": "metadata",
+        'id': 'id',
+        'created_at': 'created_at',
+        'mass_g': 'mass_g',
+        'production': 'production',
+        'state': 'state',
+        'allocation_state': 'allocation_state',
+        'price_cents_usd': 'price_cents_usd',
+        'patch_fee_cents_usd': 'patch_fee_cents_usd',
+        'allocations': 'allocations',
+        'registry_url': 'registry_url',
+        'metadata': 'metadata'
     }
 
-    def __init__(
-        self,
-        id=None,
-        created_at=None,
-        mass_g=None,
-        production=None,
-        state=None,
-        allocation_state=None,
-        price_cents_usd=None,
-        patch_fee_cents_usd=None,
-        allocations=None,
-        registry_url=None,
-        metadata=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, id=None, created_at=None, mass_g=None, production=None, state=None, allocation_state=None, price_cents_usd=None, patch_fee_cents_usd=None, allocations=None, registry_url=None, metadata=None, local_vars_configuration=None):  # noqa: E501
         """Order - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -128,9 +114,7 @@ class Order(object):
         :param id: The id of this Order.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -178,28 +162,14 @@ class Order(object):
         :param mass_g: The mass_g of this Order.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and mass_g is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `mass_g`, must not be `None`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and mass_g is not None
-            and mass_g > 2000000000
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `mass_g`, must be a value less than or equal to `2000000000`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and mass_g is not None
-            and mass_g < 0
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `mass_g`, must be a value greater than or equal to `0`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and mass_g is None:  # noqa: E501
+            raise ValueError("Invalid value for `mass_g`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                mass_g is not None and mass_g > 2000000000):  # noqa: E501
+            raise ValueError("Invalid value for `mass_g`, must be a value less than or equal to `2000000000`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                mass_g is not None and mass_g < 0):  # noqa: E501
+            raise ValueError("Invalid value for `mass_g`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._mass_g = mass_g
 
@@ -223,12 +193,8 @@ class Order(object):
         :param production: The production of this Order.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and production is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `production`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and production is None:  # noqa: E501
+            raise ValueError("Invalid value for `production`, must not be `None`")  # noqa: E501
 
         self._production = production
 
@@ -252,27 +218,13 @@ class Order(object):
         :param state: The state of this Order.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and state is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and state is None:  # noqa: E501
+            raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
+        allowed_values = ["draft", "placed", "processing", "complete", "cancelled"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and state not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `state`, must not be `None`"
-            )  # noqa: E501
-        allowed_values = [
-            "draft",
-            "placed",
-            "processing",
-            "complete",
-            "cancelled",
-        ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and state not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `state` ({0}), must be one of {1}".format(  # noqa: E501
-                    state, allowed_values
-                )
+                "Invalid value for `state` ({0}), must be one of {1}"  # noqa: E501
+                .format(state, allowed_values)
             )
 
         self._state = state
@@ -297,22 +249,13 @@ class Order(object):
         :param allocation_state: The allocation_state of this Order.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and allocation_state is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `allocation_state`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and allocation_state is None:  # noqa: E501
+            raise ValueError("Invalid value for `allocation_state`, must not be `None`")  # noqa: E501
         allowed_values = ["pending", "partially_allocated", "allocated"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and allocation_state not in allowed_values
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and allocation_state not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `allocation_state` ({0}), must be one of {1}".format(  # noqa: E501
-                    allocation_state, allowed_values
-                )
+                "Invalid value for `allocation_state` ({0}), must be one of {1}"  # noqa: E501
+                .format(allocation_state, allowed_values)
             )
 
         self._allocation_state = allocation_state
@@ -383,12 +326,8 @@ class Order(object):
         :param allocations: The allocations of this Order.  # noqa: E501
         :type: list[Allocation]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and allocations is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `allocations`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and allocations is None:  # noqa: E501
+            raise ValueError("Invalid value for `allocations`, must not be `None`")  # noqa: E501
 
         self._allocations = allocations
 
@@ -435,12 +374,8 @@ class Order(object):
         :param metadata: The metadata of this Order.  # noqa: E501
         :type: object
         """
-        if (
-            self.local_vars_configuration.client_side_validation and metadata is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `metadata`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and metadata is None:  # noqa: E501
+            raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
 
         self._metadata = metadata
 
@@ -451,20 +386,18 @@ class Order(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

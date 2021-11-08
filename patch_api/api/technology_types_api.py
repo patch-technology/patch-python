@@ -18,7 +18,10 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from patch_api.exceptions import ApiTypeError, ApiValueError
+from patch_api.exceptions import (
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class TechnologyTypesApi(object):
@@ -29,28 +32,28 @@ class TechnologyTypesApi(object):
     """
 
     ALLOWED_QUERY_PARAMS = [
-        "mass_g",
-        "total_price_cents_usd",
-        "project_id",
-        "page",
-        "distance_m",
-        "transportation_method",
-        "package_mass_g",
-        "create_order",
-        "model",
-        "make",
-        "year",
-        "transaction_value_btc_sats",
-        "transaction_value_eth_gwei",
-        "gas_used",
-        "average_daily_balance_btc_sats",
-        "average_daily_balance_eth_gwei",
-        "timestamp",
-        "origin_aiport",
-        "destination_aiport",
-        "aircraft_code",
-        "cabin_class",
-        "passenger_count",
+            "mass_g",
+            "total_price_cents_usd",
+            "project_id",
+            "page",
+            "distance_m",
+            "transportation_method",
+            "package_mass_g",
+            "create_order",
+            "model",
+            "make",
+            "year",
+            "transaction_value_btc_sats",
+            "transaction_value_eth_gwei",
+            "gas_used",
+            "average_daily_balance_btc_sats",
+            "average_daily_balance_eth_gwei",
+            "timestamp",
+            "origin_aiport",
+            "destination_aiport",
+            "aircraft_code",
+            "cabin_class",
+            "passenger_count"
     ]
 
     def __init__(self, api_client=None):
@@ -77,7 +80,7 @@ class TechnologyTypesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.retrieve_technology_types_with_http_info(**kwargs)  # noqa: E501
 
     def retrieve_technology_types_with_http_info(self, **kwargs):  # noqa: E501
@@ -107,42 +110,42 @@ class TechnologyTypesApi(object):
         local_var_params = locals()
 
         all_params = []  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+        all_params.append('mass_g')
+        all_params.append('total_price_cents_usd')
+        all_params.append('project_id')
+        all_params.append('metadata')
+        all_params.append('distance_m')
+        all_params.append('transportation_method')
+        all_params.append('package_mass_g')
+        all_params.append('create_order')
+        all_params.append('make')
+        all_params.append('model')
+        all_params.append('year')
+        all_params.append('transaction_value_btc_sats')
+        all_params.append('transaction_value_eth_gwei')
+        all_params.append('gas_used')
+        all_params.append('transaction_value_btc_sats')
+        all_params.append('average_daily_balance_btc_sats')
+        all_params.append('average_daily_balance_eth_gwei')
+        all_params.append('timestamp')
+        all_params.append('origin_airport')
+        all_params.append('destination_airport')
+        all_params.append('aircraft_code')
+        all_params.append('cabin_class')
+        all_params.append('passenger_count')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method retrieve_technology_types" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
 
         collection_formats = {}
 
@@ -166,29 +169,24 @@ class TechnologyTypesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
+        auth_settings = ['bearer_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            "/v1/projects/technology_types",
-            "GET",
+            '/v1/projects/technology_types', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="TechnologyTypeListResponse",  # noqa: E501
+            response_type='TechnologyTypeListResponse',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

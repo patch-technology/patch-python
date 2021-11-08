@@ -33,21 +33,19 @@ class Preference(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "allocation_percentage": "int", "project": "Project"}
-
-    attribute_map = {
-        "id": "id",
-        "allocation_percentage": "allocation_percentage",
-        "project": "project",
+    openapi_types = {
+        'id': 'str',
+        'allocation_percentage': 'int',
+        'project': 'Project'
     }
 
-    def __init__(
-        self,
-        id=None,
-        allocation_percentage=None,
-        project=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    attribute_map = {
+        'id': 'id',
+        'allocation_percentage': 'allocation_percentage',
+        'project': 'project'
+    }
+
+    def __init__(self, id=None, allocation_percentage=None, project=None, local_vars_configuration=None):  # noqa: E501
         """Preference - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -82,9 +80,7 @@ class Preference(object):
         :param id: The id of this Preference.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -109,13 +105,8 @@ class Preference(object):
         :param allocation_percentage: The allocation_percentage of this Preference.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and allocation_percentage is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `allocation_percentage`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and allocation_percentage is None:  # noqa: E501
+            raise ValueError("Invalid value for `allocation_percentage`, must not be `None`")  # noqa: E501
 
         self._allocation_percentage = allocation_percentage
 
@@ -139,12 +130,8 @@ class Preference(object):
         :param project: The project of this Preference.  # noqa: E501
         :type: Project
         """
-        if (
-            self.local_vars_configuration.client_side_validation and project is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `project`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and project is None:  # noqa: E501
+            raise ValueError("Invalid value for `project`, must not be `None`")  # noqa: E501
 
         self._project = project
 
@@ -155,20 +142,18 @@ class Preference(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -34,33 +34,24 @@ class CreateVehicleEstimateRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "distance_m": "int",
-        "make": "str",
-        "model": "str",
-        "year": "int",
-        "project_id": "str",
-        "create_order": "bool",
+        'distance_m': 'int',
+        'make': 'str',
+        'model': 'str',
+        'year': 'int',
+        'project_id': 'str',
+        'create_order': 'bool'
     }
 
     attribute_map = {
-        "distance_m": "distance_m",
-        "make": "make",
-        "model": "model",
-        "year": "year",
-        "project_id": "project_id",
-        "create_order": "create_order",
+        'distance_m': 'distance_m',
+        'make': 'make',
+        'model': 'model',
+        'year': 'year',
+        'project_id': 'project_id',
+        'create_order': 'create_order'
     }
 
-    def __init__(
-        self,
-        distance_m=None,
-        make=None,
-        model=None,
-        year=None,
-        project_id=None,
-        create_order=False,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, distance_m=None, make=None, model=None, year=None, project_id=None, create_order=False, local_vars_configuration=None):  # noqa: E501
         """CreateVehicleEstimateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -99,28 +90,14 @@ class CreateVehicleEstimateRequest(object):
         :param distance_m: The distance_m of this CreateVehicleEstimateRequest.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and distance_m is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must not be `None`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and distance_m is not None
-            and distance_m > 400000000
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must be a value less than or equal to `400000000`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and distance_m is not None
-            and distance_m < 0
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must be a value greater than or equal to `0`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and distance_m is None:  # noqa: E501
+            raise ValueError("Invalid value for `distance_m`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                distance_m is not None and distance_m > 400000000):  # noqa: E501
+            raise ValueError("Invalid value for `distance_m`, must be a value less than or equal to `400000000`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                distance_m is not None and distance_m < 0):  # noqa: E501
+            raise ValueError("Invalid value for `distance_m`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._distance_m = distance_m
 
@@ -184,14 +161,9 @@ class CreateVehicleEstimateRequest(object):
         :param year: The year of this CreateVehicleEstimateRequest.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and year is not None
-            and year < 1900
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `year`, must be a value greater than or equal to `1900`"
-            )  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                year is not None and year < 1900):  # noqa: E501
+            raise ValueError("Invalid value for `year`, must be a value greater than or equal to `1900`")  # noqa: E501
 
         self._year = year
 
@@ -244,20 +216,18 @@ class CreateVehicleEstimateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 
