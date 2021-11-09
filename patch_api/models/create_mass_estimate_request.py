@@ -33,19 +33,21 @@ class CreateMassEstimateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'mass_g': 'int',
-        'create_order': 'bool',
-        'project_id': 'str'
-    }
+    openapi_types = {"mass_g": "int", "create_order": "bool", "project_id": "str"}
 
     attribute_map = {
-        'mass_g': 'mass_g',
-        'create_order': 'create_order',
-        'project_id': 'project_id'
+        "mass_g": "mass_g",
+        "create_order": "create_order",
+        "project_id": "project_id",
     }
 
-    def __init__(self, mass_g=None, create_order=False, project_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        mass_g=None,
+        create_order=False,
+        project_id=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """CreateMassEstimateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -79,14 +81,28 @@ class CreateMassEstimateRequest(object):
         :param mass_g: The mass_g of this CreateMassEstimateRequest.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and mass_g is None:  # noqa: E501
-            raise ValueError("Invalid value for `mass_g`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                mass_g is not None and mass_g > 2000000000):  # noqa: E501
-            raise ValueError("Invalid value for `mass_g`, must be a value less than or equal to `2000000000`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                mass_g is not None and mass_g < 0):  # noqa: E501
-            raise ValueError("Invalid value for `mass_g`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and mass_g is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `mass_g`, must not be `None`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and mass_g is not None
+            and mass_g > 2000000000
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `mass_g`, must be a value less than or equal to `2000000000`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and mass_g is not None
+            and mass_g < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `mass_g`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._mass_g = mass_g
 
@@ -139,18 +155,20 @@ class CreateMassEstimateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

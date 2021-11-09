@@ -34,20 +34,27 @@ class ProjectListResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'success': 'bool',
-        'error': 'object',
-        'data': 'list[Project]',
-        'meta': 'MetaIndexObject'
+        "success": "bool",
+        "error": "object",
+        "data": "list[Project]",
+        "meta": "MetaIndexObject",
     }
 
     attribute_map = {
-        'success': 'success',
-        'error': 'error',
-        'data': 'data',
-        'meta': 'meta'
+        "success": "success",
+        "error": "error",
+        "data": "data",
+        "meta": "meta",
     }
 
-    def __init__(self, success=None, error=None, data=None, meta=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        success=None,
+        error=None,
+        data=None,
+        meta=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """ProjectListResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -82,8 +89,12 @@ class ProjectListResponse(object):
         :param success: The success of this ProjectListResponse.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and success is None:  # noqa: E501
-            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and success is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `success`, must not be `None`"
+            )  # noqa: E501
 
         self._success = success
 
@@ -126,8 +137,12 @@ class ProjectListResponse(object):
         :param data: The data of this ProjectListResponse.  # noqa: E501
         :type: list[Project]
         """
-        if self.local_vars_configuration.client_side_validation and data is None:  # noqa: E501
-            raise ValueError("Invalid value for `data`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and data is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `data`, must not be `None`"
+            )  # noqa: E501
 
         self._data = data
 
@@ -149,8 +164,12 @@ class ProjectListResponse(object):
         :param meta: The meta of this ProjectListResponse.  # noqa: E501
         :type: MetaIndexObject
         """
-        if self.local_vars_configuration.client_side_validation and meta is None:  # noqa: E501
-            raise ValueError("Invalid value for `meta`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and meta is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `meta`, must not be `None`"
+            )  # noqa: E501
 
         self._meta = meta
 
@@ -161,18 +180,20 @@ class ProjectListResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

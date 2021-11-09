@@ -34,20 +34,27 @@ class Sdg(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'title': 'str',
-        'number': 'int',
-        'description': 'str',
-        'url': 'str'
+        "title": "str",
+        "number": "int",
+        "description": "str",
+        "url": "str",
     }
 
     attribute_map = {
-        'title': 'title',
-        'number': 'number',
-        'description': 'description',
-        'url': 'url'
+        "title": "title",
+        "number": "number",
+        "description": "description",
+        "url": "url",
     }
 
-    def __init__(self, title=None, number=None, description=None, url=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        title=None,
+        number=None,
+        description=None,
+        url=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """Sdg - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -84,8 +91,12 @@ class Sdg(object):
         :param title: The title of this Sdg.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
-            raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and title is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `title`, must not be `None`"
+            )  # noqa: E501
 
         self._title = title
 
@@ -109,8 +120,12 @@ class Sdg(object):
         :param number: The number of this Sdg.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and number is None:  # noqa: E501
-            raise ValueError("Invalid value for `number`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and number is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `number`, must not be `None`"
+            )  # noqa: E501
 
         self._number = number
 
@@ -134,8 +149,12 @@ class Sdg(object):
         :param description: The description of this Sdg.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and description is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `description`, must not be `None`"
+            )  # noqa: E501
 
         self._description = description
 
@@ -159,8 +178,12 @@ class Sdg(object):
         :param url: The url of this Sdg.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and url is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `url`, must not be `None`"
+            )  # noqa: E501
 
         self._url = url
 
@@ -171,18 +194,20 @@ class Sdg(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 
