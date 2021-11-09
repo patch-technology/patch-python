@@ -1,18 +1,19 @@
 SHELL = /bin/bash
 
-build: install lint
+build: lint install
 
 install:
-	pip install -r requirements.txt && \
-	python setup.py install
+	docker build --target build . -t patch-python-build && \
+	docker run --rm -v $(PWD)/build:/build patch-python-lint .
 
 lint:
-	pip install black && \
-	black .
+	docker build --target lint . -t patch-python-lint && \
+	docker run --rm -v $(PWD):/data patch-python-lint .
 
 test:
-	pip install -r test-requirements.txt && \
-	pip install -r requirements.txt && \
-	python -m unittest discover test/
+	docker build --target test . -t patch-python-test && \
+	docker run --rm \
+		-e SANDBOX_API_KEY=${SANDBOX_API_KEY} \
+		patch-python-test
 
 .PHONY: build lint test
