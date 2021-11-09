@@ -87,7 +87,7 @@ class TestOrdersApi(unittest.TestCase):
 
         self.assertTrue(order)
         self.assertEqual(order.data.mass_g, 100)
-        self.assertEqual(order.data.metadata, {'external_id': "abc-123"})
+        self.assertEqual(order.data.metadata, {"external_id": "abc-123"})
 
         retrieved_orders = self.api.retrieve_orders(
             metadata={"external_id": "abc-"}
