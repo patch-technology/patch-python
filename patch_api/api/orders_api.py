@@ -139,7 +139,8 @@ class OrdersApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
                     " to method cancel_order" % key
                 )
             local_var_params[key] = val
