@@ -141,7 +141,7 @@ class OrdersApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method cancel_order" % key
+                    ' to method cancel_order' % key
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
