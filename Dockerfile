@@ -9,15 +9,20 @@ WORKDIR /data
 ENTRYPOINT ["black"]
 
 
-FROM base AS build
+FROM base AS dependencies
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-CMD [ "python", "setup.py", "install" ]
+
+FROM dependencies AS build
+
+COPY . .
+
+ENTRYPOINT [ "python", "setup.py", "install" ]
 
 
-FROM build as test
+FROM dependencies as test
 
 COPY test-requirements.txt . 
 RUN pip install -r test-requirements.txt

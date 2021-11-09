@@ -4,7 +4,7 @@ build: lint install
 
 install:
 	docker build --target build . -t patch-python-build && \
-	docker run --rm -v $(PWD)/build:/build patch-python-lint .
+	docker run --rm -v $(PWD)/build:/build patch-python-build
 
 lint:
 	docker build --target lint . -t patch-python-lint && \
