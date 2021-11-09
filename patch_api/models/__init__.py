@@ -37,6 +37,7 @@ from patch_api.models.error_response import ErrorResponse
 from patch_api.models.estimate import Estimate
 from patch_api.models.estimate_list_response import EstimateListResponse
 from patch_api.models.estimate_response import EstimateResponse
+from patch_api.models.highlight import Highlight
 from patch_api.models.meta_index_object import MetaIndexObject
 from patch_api.models.order import Order
 from patch_api.models.order_list_response import OrderListResponse
