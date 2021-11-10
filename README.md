@@ -220,7 +220,11 @@ page = 1 # Pass in which page of preferences you'd like
 patch.preferences.retrieve_preferences(page=page)
 ```
 
-## Development
+## Contributing
+
+While we value open-source contributions to this SDK, the core of this library is generated programmatically. Complex additions made directly to the library would have to be moved over to our generation code, otherwise they would be overwritten upon the next generated release. Feel free to open a PR as a proof of concept, but know that we will not be able to merge it as-is. We suggest opening an issue first to discuss with us!
+
+On the other hand, contributions to the README, as well as new test cases are always very welcome!
 
 ### Pre-commit
 
