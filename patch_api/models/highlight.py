@@ -33,12 +33,12 @@ class Highlight(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"slug": "str", "title": "str"}
+    openapi_types = {"slug": "str", "title": "str", "icon_url": "str"}
 
-    attribute_map = {"slug": "slug", "title": "title"}
+    attribute_map = {"slug": "slug", "title": "title", "icon_url": "icon_url"}
 
     def __init__(
-        self, slug=None, title=None, local_vars_configuration=None
+        self, slug=None, title=None, icon_url=None, local_vars_configuration=None
     ):  # noqa: E501
         """Highlight - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
@@ -47,16 +47,18 @@ class Highlight(object):
 
         self._slug = None
         self._title = None
+        self._icon_url = None
         self.discriminator = None
 
         self.slug = slug
         self.title = title
+        self.icon_url = icon_url
 
     @property
     def slug(self):
         """Gets the slug of this Highlight.  # noqa: E501
 
-        A unique identifier for each highlight  # noqa: E501
+        A unique identifier for each highlight.  # noqa: E501
 
         :return: The slug of this Highlight.  # noqa: E501
         :rtype: str
@@ -67,7 +69,7 @@ class Highlight(object):
     def slug(self, slug):
         """Sets the slug of this Highlight.
 
-        A unique identifier for each highlight  # noqa: E501
+        A unique identifier for each highlight.  # noqa: E501
 
         :param slug: The slug of this Highlight.  # noqa: E501
         :type: str
@@ -109,6 +111,35 @@ class Highlight(object):
             )  # noqa: E501
 
         self._title = title
+
+    @property
+    def icon_url(self):
+        """Gets the icon_url of this Highlight.  # noqa: E501
+
+        A URL for the corresponding icon.  # noqa: E501
+
+        :return: The icon_url of this Highlight.  # noqa: E501
+        :rtype: str
+        """
+        return self._icon_url
+
+    @icon_url.setter
+    def icon_url(self, icon_url):
+        """Sets the icon_url of this Highlight.
+
+        A URL for the corresponding icon.  # noqa: E501
+
+        :param icon_url: The icon_url of this Highlight.  # noqa: E501
+        :type: str
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and icon_url is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `icon_url`, must not be `None`"
+            )  # noqa: E501
+
+        self._icon_url = icon_url
 
     def to_dict(self):
         """Returns the model properties as a dict"""
