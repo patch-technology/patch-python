@@ -53,6 +53,7 @@ class Project(object):
         "sdgs": "list[Sdg]",
         "tagline": "str",
         "technology_type": "TechnologyType",
+        "highlights": "list[Highlight]",
     }
 
     attribute_map = {
@@ -75,6 +76,7 @@ class Project(object):
         "sdgs": "sdgs",
         "tagline": "tagline",
         "technology_type": "technology_type",
+        "highlights": "highlights",
     }
 
     def __init__(
@@ -98,6 +100,7 @@ class Project(object):
         sdgs=None,
         tagline=None,
         technology_type=None,
+        highlights=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
@@ -124,6 +127,7 @@ class Project(object):
         self._sdgs = None
         self._tagline = None
         self._technology_type = None
+        self._highlights = None
         self.discriminator = None
 
         self.id = id
@@ -149,6 +153,7 @@ class Project(object):
         if tagline is not None:
             self.tagline = tagline
         self.technology_type = technology_type
+        self.highlights = highlights
 
     @property
     def id(self):
@@ -649,6 +654,35 @@ class Project(object):
             )  # noqa: E501
 
         self._technology_type = technology_type
+
+    @property
+    def highlights(self):
+        """Gets the highlights of this Project.  # noqa: E501
+
+        An array of objects containing the highlight's slug and title.  A highlight's title is a short string that spotlights a characteristic about the project.  # noqa: E501
+
+        :return: The highlights of this Project.  # noqa: E501
+        :rtype: list[Highlight]
+        """
+        return self._highlights
+
+    @highlights.setter
+    def highlights(self, highlights):
+        """Sets the highlights of this Project.
+
+        An array of objects containing the highlight's slug and title.  A highlight's title is a short string that spotlights a characteristic about the project.  # noqa: E501
+
+        :param highlights: The highlights of this Project.  # noqa: E501
+        :type: list[Highlight]
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and highlights is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `highlights`, must not be `None`"
+            )  # noqa: E501
+
+        self._highlights = highlights
 
     def to_dict(self):
         """Returns the model properties as a dict"""

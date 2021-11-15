@@ -43,6 +43,7 @@ class TestProjectsApi(unittest.TestCase):
         self.assertTrue(hasattr(project, "tagline"))
         self.assertTrue(hasattr(project, "latitude"))
         self.assertTrue(hasattr(project, "longitude"))
+        self.assertTrue(hasattr(project, "highlights"))
 
         self.assertTrue(isinstance(project.mechanism, str))
         self.assertTrue(isinstance(project.state, str))
