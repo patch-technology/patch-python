@@ -43,7 +43,6 @@ from patch_api.models.order_list_response import OrderListResponse
 from patch_api.models.order_response import OrderResponse
 from patch_api.models.parent_technology_type import ParentTechnologyType
 from patch_api.models.photo import Photo
-from patch_api.models.preference import Preference
 from patch_api.models.project import Project
 from patch_api.models.project_list_response import ProjectListResponse
 from patch_api.models.project_response import ProjectResponse
