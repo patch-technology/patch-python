@@ -3,4 +3,5 @@
 # W504 is the "line break before binary operator" error and is disabled since we use
 # the black code formatter.
 # W503 is disabled by default, but must be disabled explicitly when using `ignore`.
-ignore = E501, W503, W504
+# F401 is "unused import", which is hard to fix without modifying the templates
+ignore = E501, W503, W504, F401
