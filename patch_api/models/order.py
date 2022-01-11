@@ -103,7 +103,8 @@ class Order(object):
         self.allocation_state = allocation_state
         self.price_cents_usd = price_cents_usd
         self.patch_fee_cents_usd = patch_fee_cents_usd
-        self.allocations = allocations
+        if allocations is not None:
+            self.allocations = allocations
         if registry_url is not None:
             self.registry_url = registry_url
         self.metadata = metadata
@@ -304,7 +305,7 @@ class Order(object):
             raise ValueError(
                 "Invalid value for `allocation_state`, must not be `None`"
             )  # noqa: E501
-        allowed_values = ["pending", "partially_allocated", "allocated"]  # noqa: E501
+        allowed_values = ["pending", "allocated"]  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
             and allocation_state not in allowed_values
@@ -367,7 +368,7 @@ class Order(object):
     def allocations(self):
         """Gets the allocations of this Order.  # noqa: E501
 
-        An array containing the inventory allocations for this order.  # noqa: E501
+        DEPRECATED. An array containing the inventory allocations for this order.  # noqa: E501
 
         :return: The allocations of this Order.  # noqa: E501
         :rtype: list[Allocation]
@@ -378,17 +379,11 @@ class Order(object):
     def allocations(self, allocations):
         """Sets the allocations of this Order.
 
-        An array containing the inventory allocations for this order.  # noqa: E501
+        DEPRECATED. An array containing the inventory allocations for this order.  # noqa: E501
 
         :param allocations: The allocations of this Order.  # noqa: E501
         :type: list[Allocation]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and allocations is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `allocations`, must not be `None`"
-            )  # noqa: E501
 
         self._allocations = allocations
 
