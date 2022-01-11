@@ -273,7 +273,7 @@ class Project(object):
     def type(self):
         """Gets the type of this Project.  # noqa: E501
 
-        Deprecated. Favor the technology_type field instead.  # noqa: E501
+        DEPRECATED. Favor the technology_type field instead.  # noqa: E501
 
         :return: The type of this Project.  # noqa: E501
         :rtype: str
@@ -284,7 +284,7 @@ class Project(object):
     def type(self, type):
         """Sets the type of this Project.
 
-        Deprecated. Favor the technology_type field instead.  # noqa: E501
+        DEPRECATED. Favor the technology_type field instead.  # noqa: E501
 
         :param type: The type of this Project.  # noqa: E501
         :type: str
