@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Patch API V1
 
@@ -11,14 +9,22 @@
 """
 
 
-from __future__ import absolute_import
-
 import re  # noqa: F401
+import sys  # noqa: F401
 
-# python 2 and python 3 compatibility library
-import six
-
-from patch_api.exceptions import ApiTypeError, ApiValueError
+from patch_api.api_client import ApiClient, Endpoint as _Endpoint
+from patch_api.model_utils import (  # noqa: F401
+    check_allowed_values,
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types,
+)
+from patch_api.model.error_response import ErrorResponse
+from patch_api.model.project_list_response import ProjectListResponse
+from patch_api.model.project_response import ProjectResponse
 
 
 class ProjectsApi(object):
@@ -28,331 +34,220 @@ class ProjectsApi(object):
     Do not edit the class manually.
     """
 
-    ALLOWED_QUERY_PARAMS = [
-        "mass_g",
-        "total_price_cents_usd",
-        "project_id",
-        "page",
-        "distance_m",
-        "transportation_method",
-        "package_mass_g",
-        "create_order",
-        "model",
-        "make",
-        "year",
-        "transaction_value_btc_sats",
-        "transaction_value_eth_gwei",
-        "gas_used",
-        "average_daily_balance_btc_sats",
-        "average_daily_balance_eth_gwei",
-        "timestamp",
-        "origin_aiport",
-        "destination_aiport",
-        "aircraft_code",
-        "cabin_class",
-        "passenger_count",
-    ]
-
     def __init__(self, api_client=None):
+        if api_client is None:
+            api_client = ApiClient()
         self.api_client = api_client
+        self.retrieve_project_endpoint = _Endpoint(
+            settings={
+                "response_type": (ProjectResponse,),
+                "auth": ["bearer_auth"],
+                "endpoint_path": "/v1/projects/{id}",
+                "operation_id": "retrieve_project",
+                "http_method": "GET",
+                "servers": None,
+            },
+            params_map={
+                "all": [
+                    "id",
+                ],
+                "required": [
+                    "id",
+                ],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
+            },
+            root_map={
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {
+                    "id": (str,),
+                },
+                "attribute_map": {
+                    "id": "id",
+                },
+                "location_map": {
+                    "id": "path",
+                },
+                "collection_format_map": {},
+            },
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
+            api_client=api_client,
+        )
+        self.retrieve_projects_endpoint = _Endpoint(
+            settings={
+                "response_type": (ProjectListResponse,),
+                "auth": ["bearer_auth"],
+                "endpoint_path": "/v1/projects",
+                "operation_id": "retrieve_projects",
+                "http_method": "GET",
+                "servers": None,
+            },
+            params_map={
+                "all": [
+                    "page",
+                    "country",
+                    "type",
+                    "minimum_available_mass",
+                ],
+                "required": [],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
+            },
+            root_map={
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {
+                    "page": (int,),
+                    "country": (str,),
+                    "type": (str,),
+                    "minimum_available_mass": (int,),
+                },
+                "attribute_map": {
+                    "page": "page",
+                    "country": "country",
+                    "type": "type",
+                    "minimum_available_mass": "minimum_available_mass",
+                },
+                "location_map": {
+                    "page": "query",
+                    "country": "query",
+                    "type": "query",
+                    "minimum_available_mass": "query",
+                },
+                "collection_format_map": {},
+            },
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
+            api_client=api_client,
+        )
 
-    def retrieve_project(self, id={}, **kwargs):  # noqa: E501
+    def retrieve_project(self, id, **kwargs):
         """Retrieves a project  # noqa: E501
 
         Retrieves a project available on Patch's platform.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.retrieve_project(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: ProjectResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.retrieve_project_with_http_info(id, **kwargs)  # noqa: E501
+        Args:
+            id (str):
 
-    def retrieve_project_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Retrieves a project  # noqa: E501
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
 
-        Retrieves a project available on Patch's platform.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.retrieve_project_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(ProjectResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Returns:
+            ProjectResponse
+                If the method is called asynchronously, returns the request
+                thread.
         """
 
-        local_var_params = locals()
+        args = {}
 
-        all_params = ["id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
+        args["async_req"] = kwargs.get("async_req", False)
+        args["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        args["_preload_content"] = kwargs.get("_preload_content", True)
+        args["_request_timeout"] = kwargs.get("_request_timeout", None)
+        args["_check_input_type"] = kwargs.get("_check_input_type", True)
+        args["_check_return_type"] = kwargs.get("_check_return_type", True)
+        args["_content_type"] = kwargs.get("_content_type")
+        args["_host_index"] = kwargs.get("_host_index")
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method retrieve_project" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'id' is set
-        if "id" not in local_var_params or local_var_params["id"] is None:
-            raise ApiValueError(
-                "Missing the required parameter `id` when calling `retrieve_project`"
-            )  # noqa: E501
+        args["id"] = id
+        return self.retrieve_project_endpoint.call_with_http_info(**args)
 
-        collection_formats = {}
-
-        path_params = {}
-        if "id" in local_var_params:
-            path_params["id"] = local_var_params["id"]  # noqa: E501
-
-        query_params = []
-
-        # do not add duplicate keys to query_params list
-        existing_keys = []
-        for param in query_params:
-            existing_keys.append(param[0])
-
-        for key in kwargs:
-            if key not in existing_keys:
-                query_params.append([key, kwargs.get(key)])
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/v1/projects/{id}",
-            "GET",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="ProjectResponse",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def retrieve_projects(self, **kwargs):  # noqa: E501
+    def retrieve_projects(self, **kwargs):
         """Retrieves a list of projects  # noqa: E501
 
         Retrieves a list of projects available for purchase on Patch's platform.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.retrieve_projects(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int page:
-        :param str country:
-        :param str type:
-        :param int minimum_available_mass:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: ProjectListResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.retrieve_projects_with_http_info(**kwargs)  # noqa: E501
 
-    def retrieve_projects_with_http_info(self, **kwargs):  # noqa: E501
-        """Retrieves a list of projects  # noqa: E501
+        Keyword Args:
+            page (int): [optional]
+            country (str): [optional]
+            type (str): [optional]
+            minimum_available_mass (int): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
 
-        Retrieves a list of projects available for purchase on Patch's platform.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.retrieve_projects_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int page:
-        :param str country:
-        :param str type:
-        :param int minimum_available_mass:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(ProjectListResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Returns:
+            ProjectListResponse
+                If the method is called asynchronously, returns the request
+                thread.
         """
 
-        local_var_params = locals()
+        args = {}
+        if kwargs.get("page"):
+            args["page"] = kwargs.get("page")
+        if kwargs.get("country"):
+            args["country"] = kwargs.get("country")
+        if kwargs.get("type"):
+            args["type"] = kwargs.get("type")
+        if kwargs.get("minimum_available_mass"):
+            args["minimum_available_mass"] = kwargs.get("minimum_available_mass")
 
-        all_params = ["page", "country", "type", "minimum_available_mass"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
+        args["async_req"] = kwargs.get("async_req", False)
+        args["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        args["_preload_content"] = kwargs.get("_preload_content", True)
+        args["_request_timeout"] = kwargs.get("_request_timeout", None)
+        args["_check_input_type"] = kwargs.get("_check_input_type", True)
+        args["_check_return_type"] = kwargs.get("_check_return_type", True)
+        args["_content_type"] = kwargs.get("_content_type")
+        args["_host_index"] = kwargs.get("_host_index")
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method retrieve_projects" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if "page" in local_var_params:
-            query_params.append(("page", local_var_params["page"]))  # noqa: E501
-        if "country" in local_var_params:
-            query_params.append(("country", local_var_params["country"]))  # noqa: E501
-        if "type" in local_var_params:
-            query_params.append(("type", local_var_params["type"]))  # noqa: E501
-        if "minimum_available_mass" in local_var_params:
-            query_params.append(
-                ("minimum_available_mass", local_var_params["minimum_available_mass"])
-            )  # noqa: E501
-
-        # do not add duplicate keys to query_params list
-        existing_keys = []
-        for param in query_params:
-            existing_keys.append(param[0])
-
-        for key in kwargs:
-            if key not in existing_keys:
-                query_params.append([key, kwargs.get(key)])
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/v1/projects",
-            "GET",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="ProjectListResponse",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+        return self.retrieve_projects_endpoint.call_with_http_info(**args)

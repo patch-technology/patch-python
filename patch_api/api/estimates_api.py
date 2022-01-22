@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Patch API V1
 
@@ -11,14 +9,32 @@
 """
 
 
-from __future__ import absolute_import
-
 import re  # noqa: F401
+import sys  # noqa: F401
 
-# python 2 and python 3 compatibility library
-import six
-
-from patch_api.exceptions import ApiTypeError, ApiValueError
+from patch_api.api_client import ApiClient, Endpoint as _Endpoint
+from patch_api.model_utils import (  # noqa: F401
+    check_allowed_values,
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types,
+)
+from patch_api.model.create_bitcoin_estimate_request import CreateBitcoinEstimateRequest
+from patch_api.model.create_ethereum_estimate_request import (
+    CreateEthereumEstimateRequest,
+)
+from patch_api.model.create_flight_estimate_request import CreateFlightEstimateRequest
+from patch_api.model.create_mass_estimate_request import CreateMassEstimateRequest
+from patch_api.model.create_shipping_estimate_request import (
+    CreateShippingEstimateRequest,
+)
+from patch_api.model.create_vehicle_estimate_request import CreateVehicleEstimateRequest
+from patch_api.model.error_response import ErrorResponse
+from patch_api.model.estimate_list_response import EstimateListResponse
+from patch_api.model.estimate_response import EstimateResponse
 
 
 class EstimatesApi(object):
@@ -28,1289 +44,779 @@ class EstimatesApi(object):
     Do not edit the class manually.
     """
 
-    ALLOWED_QUERY_PARAMS = [
-        "mass_g",
-        "total_price_cents_usd",
-        "project_id",
-        "page",
-        "distance_m",
-        "transportation_method",
-        "package_mass_g",
-        "create_order",
-        "model",
-        "make",
-        "year",
-        "transaction_value_btc_sats",
-        "transaction_value_eth_gwei",
-        "gas_used",
-        "average_daily_balance_btc_sats",
-        "average_daily_balance_eth_gwei",
-        "timestamp",
-        "origin_aiport",
-        "destination_aiport",
-        "aircraft_code",
-        "cabin_class",
-        "passenger_count",
-    ]
-
     def __init__(self, api_client=None):
+        if api_client is None:
+            api_client = ApiClient()
         self.api_client = api_client
+        self.create_bitcoin_estimate_endpoint = _Endpoint(
+            settings={
+                "response_type": (EstimateResponse,),
+                "auth": ["bearer_auth"],
+                "endpoint_path": "/v1/estimates/crypto/btc",
+                "operation_id": "create_bitcoin_estimate",
+                "http_method": "POST",
+                "servers": None,
+            },
+            params_map={
+                "all": [
+                    "create_bitcoin_estimate_request",
+                ],
+                "required": [
+                    "create_bitcoin_estimate_request",
+                ],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
+            },
+            root_map={
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {
+                    "create_bitcoin_estimate_request": (CreateBitcoinEstimateRequest,),
+                },
+                "attribute_map": {},
+                "location_map": {
+                    "create_bitcoin_estimate_request": "body",
+                },
+                "collection_format_map": {},
+            },
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": ["application/json"],
+            },
+            api_client=api_client,
+        )
+        self.create_ethereum_estimate_endpoint = _Endpoint(
+            settings={
+                "response_type": (EstimateResponse,),
+                "auth": ["bearer_auth"],
+                "endpoint_path": "/v1/estimates/crypto/eth",
+                "operation_id": "create_ethereum_estimate",
+                "http_method": "POST",
+                "servers": None,
+            },
+            params_map={
+                "all": [
+                    "create_ethereum_estimate_request",
+                ],
+                "required": [
+                    "create_ethereum_estimate_request",
+                ],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
+            },
+            root_map={
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {
+                    "create_ethereum_estimate_request": (
+                        CreateEthereumEstimateRequest,
+                    ),
+                },
+                "attribute_map": {},
+                "location_map": {
+                    "create_ethereum_estimate_request": "body",
+                },
+                "collection_format_map": {},
+            },
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": ["application/json"],
+            },
+            api_client=api_client,
+        )
+        self.create_flight_estimate_endpoint = _Endpoint(
+            settings={
+                "response_type": (EstimateResponse,),
+                "auth": ["bearer_auth"],
+                "endpoint_path": "/v1/estimates/flight",
+                "operation_id": "create_flight_estimate",
+                "http_method": "POST",
+                "servers": None,
+            },
+            params_map={
+                "all": [
+                    "create_flight_estimate_request",
+                ],
+                "required": [
+                    "create_flight_estimate_request",
+                ],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
+            },
+            root_map={
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {
+                    "create_flight_estimate_request": (CreateFlightEstimateRequest,),
+                },
+                "attribute_map": {},
+                "location_map": {
+                    "create_flight_estimate_request": "body",
+                },
+                "collection_format_map": {},
+            },
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": ["application/json"],
+            },
+            api_client=api_client,
+        )
+        self.create_mass_estimate_endpoint = _Endpoint(
+            settings={
+                "response_type": (EstimateResponse,),
+                "auth": ["bearer_auth"],
+                "endpoint_path": "/v1/estimates/mass",
+                "operation_id": "create_mass_estimate",
+                "http_method": "POST",
+                "servers": None,
+            },
+            params_map={
+                "all": [
+                    "create_mass_estimate_request",
+                ],
+                "required": [
+                    "create_mass_estimate_request",
+                ],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
+            },
+            root_map={
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {
+                    "create_mass_estimate_request": (CreateMassEstimateRequest,),
+                },
+                "attribute_map": {},
+                "location_map": {
+                    "create_mass_estimate_request": "body",
+                },
+                "collection_format_map": {},
+            },
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": ["application/json"],
+            },
+            api_client=api_client,
+        )
+        self.create_shipping_estimate_endpoint = _Endpoint(
+            settings={
+                "response_type": (EstimateResponse,),
+                "auth": ["bearer_auth"],
+                "endpoint_path": "/v1/estimates/shipping",
+                "operation_id": "create_shipping_estimate",
+                "http_method": "POST",
+                "servers": None,
+            },
+            params_map={
+                "all": [
+                    "create_shipping_estimate_request",
+                ],
+                "required": [
+                    "create_shipping_estimate_request",
+                ],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
+            },
+            root_map={
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {
+                    "create_shipping_estimate_request": (
+                        CreateShippingEstimateRequest,
+                    ),
+                },
+                "attribute_map": {},
+                "location_map": {
+                    "create_shipping_estimate_request": "body",
+                },
+                "collection_format_map": {},
+            },
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": ["application/json"],
+            },
+            api_client=api_client,
+        )
+        self.create_vehicle_estimate_endpoint = _Endpoint(
+            settings={
+                "response_type": (EstimateResponse,),
+                "auth": ["bearer_auth"],
+                "endpoint_path": "/v1/estimates/vehicle",
+                "operation_id": "create_vehicle_estimate",
+                "http_method": "POST",
+                "servers": None,
+            },
+            params_map={
+                "all": [
+                    "create_vehicle_estimate_request",
+                ],
+                "required": [
+                    "create_vehicle_estimate_request",
+                ],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
+            },
+            root_map={
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {
+                    "create_vehicle_estimate_request": (CreateVehicleEstimateRequest,),
+                },
+                "attribute_map": {},
+                "location_map": {
+                    "create_vehicle_estimate_request": "body",
+                },
+                "collection_format_map": {},
+            },
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": ["application/json"],
+            },
+            api_client=api_client,
+        )
+        self.retrieve_estimate_endpoint = _Endpoint(
+            settings={
+                "response_type": (EstimateResponse,),
+                "auth": ["bearer_auth"],
+                "endpoint_path": "/v1/estimates/{id}",
+                "operation_id": "retrieve_estimate",
+                "http_method": "GET",
+                "servers": None,
+            },
+            params_map={
+                "all": [
+                    "id",
+                ],
+                "required": [
+                    "id",
+                ],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
+            },
+            root_map={
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {
+                    "id": (str,),
+                },
+                "attribute_map": {
+                    "id": "id",
+                },
+                "location_map": {
+                    "id": "path",
+                },
+                "collection_format_map": {},
+            },
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
+            api_client=api_client,
+        )
+        self.retrieve_estimates_endpoint = _Endpoint(
+            settings={
+                "response_type": (EstimateListResponse,),
+                "auth": ["bearer_auth"],
+                "endpoint_path": "/v1/estimates",
+                "operation_id": "retrieve_estimates",
+                "http_method": "GET",
+                "servers": None,
+            },
+            params_map={
+                "all": [
+                    "page",
+                ],
+                "required": [],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
+            },
+            root_map={
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {
+                    "page": (int,),
+                },
+                "attribute_map": {
+                    "page": "page",
+                },
+                "location_map": {
+                    "page": "query",
+                },
+                "collection_format_map": {},
+            },
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
+            api_client=api_client,
+        )
 
-    def create_bitcoin_estimate(
-        self, create_bitcoin_estimate_request={}, **kwargs
-    ):  # noqa: E501
+    def create_bitcoin_estimate(self, **kwargs):
         """Create a bitcoin estimate given a timestamp and transaction value  # noqa: E501
 
         Creates a bitcoin estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_bitcoin_estimate(create_bitcoin_estimate_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param CreateBitcoinEstimateRequest create_bitcoin_estimate_request: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: EstimateResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            create_bitcoin_estimate_request (CreateBitcoinEstimateRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            EstimateResponse
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_bitcoin_estimate_with_http_info(
-            create_bitcoin_estimate_request, **kwargs
-        )  # noqa: E501
+        create_bitcoin_estimate_request = CreateBitcoinEstimateRequest(**kwargs)
 
-    def create_bitcoin_estimate_with_http_info(
-        self, create_bitcoin_estimate_request, **kwargs
-    ):  # noqa: E501
-        """Create a bitcoin estimate given a timestamp and transaction value  # noqa: E501
+        args = {}
 
-        Creates a bitcoin estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_bitcoin_estimate_with_http_info(create_bitcoin_estimate_request, async_req=True)
-        >>> result = thread.get()
+        args["async_req"] = kwargs.get("async_req", False)
+        args["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        args["_preload_content"] = kwargs.get("_preload_content", True)
+        args["_request_timeout"] = kwargs.get("_request_timeout", None)
+        args["_check_input_type"] = kwargs.get("_check_input_type", True)
+        args["_check_return_type"] = kwargs.get("_check_return_type", True)
+        args["_content_type"] = kwargs.get("_content_type")
+        args["_host_index"] = kwargs.get("_host_index")
 
-        :param async_req bool: execute request asynchronously
-        :param CreateBitcoinEstimateRequest create_bitcoin_estimate_request: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(EstimateResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
+        args["create_bitcoin_estimate_request"] = create_bitcoin_estimate_request
+        return self.create_bitcoin_estimate_endpoint.call_with_http_info(**args)
 
-        local_var_params = locals()
-
-        all_params = ["create_bitcoin_estimate_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_bitcoin_estimate" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'create_bitcoin_estimate_request' is set
-        if (
-            "create_bitcoin_estimate_request" not in local_var_params
-            or local_var_params["create_bitcoin_estimate_request"] is None
-        ):
-            raise ApiValueError(
-                "Missing the required parameter `create_bitcoin_estimate_request` when calling `create_bitcoin_estimate`"
-            )  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        # do not add duplicate keys to query_params list
-        existing_keys = []
-        for param in query_params:
-            existing_keys.append(param[0])
-
-        for key in kwargs:
-            if key not in existing_keys:
-                query_params.append([key, kwargs.get(key)])
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "create_bitcoin_estimate_request" in local_var_params:
-            body_params = local_var_params["create_bitcoin_estimate_request"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/v1/estimates/crypto/btc",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="EstimateResponse",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def create_ethereum_estimate(
-        self, create_ethereum_estimate_request={}, **kwargs
-    ):  # noqa: E501
+    def create_ethereum_estimate(self, **kwargs):
         """Create an ethereum estimate  # noqa: E501
 
         Creates an ethereum estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_ethereum_estimate(create_ethereum_estimate_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param CreateEthereumEstimateRequest create_ethereum_estimate_request: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: EstimateResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            create_ethereum_estimate_request (CreateEthereumEstimateRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            EstimateResponse
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_ethereum_estimate_with_http_info(
-            create_ethereum_estimate_request, **kwargs
-        )  # noqa: E501
+        create_ethereum_estimate_request = CreateEthereumEstimateRequest(**kwargs)
 
-    def create_ethereum_estimate_with_http_info(
-        self, create_ethereum_estimate_request, **kwargs
-    ):  # noqa: E501
-        """Create an ethereum estimate  # noqa: E501
+        args = {}
 
-        Creates an ethereum estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_ethereum_estimate_with_http_info(create_ethereum_estimate_request, async_req=True)
-        >>> result = thread.get()
+        args["async_req"] = kwargs.get("async_req", False)
+        args["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        args["_preload_content"] = kwargs.get("_preload_content", True)
+        args["_request_timeout"] = kwargs.get("_request_timeout", None)
+        args["_check_input_type"] = kwargs.get("_check_input_type", True)
+        args["_check_return_type"] = kwargs.get("_check_return_type", True)
+        args["_content_type"] = kwargs.get("_content_type")
+        args["_host_index"] = kwargs.get("_host_index")
 
-        :param async_req bool: execute request asynchronously
-        :param CreateEthereumEstimateRequest create_ethereum_estimate_request: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(EstimateResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
+        args["create_ethereum_estimate_request"] = create_ethereum_estimate_request
+        return self.create_ethereum_estimate_endpoint.call_with_http_info(**args)
 
-        local_var_params = locals()
-
-        all_params = ["create_ethereum_estimate_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_ethereum_estimate" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'create_ethereum_estimate_request' is set
-        if (
-            "create_ethereum_estimate_request" not in local_var_params
-            or local_var_params["create_ethereum_estimate_request"] is None
-        ):
-            raise ApiValueError(
-                "Missing the required parameter `create_ethereum_estimate_request` when calling `create_ethereum_estimate`"
-            )  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        # do not add duplicate keys to query_params list
-        existing_keys = []
-        for param in query_params:
-            existing_keys.append(param[0])
-
-        for key in kwargs:
-            if key not in existing_keys:
-                query_params.append([key, kwargs.get(key)])
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "create_ethereum_estimate_request" in local_var_params:
-            body_params = local_var_params["create_ethereum_estimate_request"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/v1/estimates/crypto/eth",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="EstimateResponse",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def create_flight_estimate(
-        self, create_flight_estimate_request={}, **kwargs
-    ):  # noqa: E501
+    def create_flight_estimate(self, **kwargs):
         """Create a flight estimate given the distance traveled in meters  # noqa: E501
 
         Creates a flight estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_flight_estimate(create_flight_estimate_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param CreateFlightEstimateRequest create_flight_estimate_request: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: EstimateResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            create_flight_estimate_request (CreateFlightEstimateRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            EstimateResponse
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_flight_estimate_with_http_info(
-            create_flight_estimate_request, **kwargs
-        )  # noqa: E501
+        create_flight_estimate_request = CreateFlightEstimateRequest(**kwargs)
 
-    def create_flight_estimate_with_http_info(
-        self, create_flight_estimate_request, **kwargs
-    ):  # noqa: E501
-        """Create a flight estimate given the distance traveled in meters  # noqa: E501
+        args = {}
 
-        Creates a flight estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_flight_estimate_with_http_info(create_flight_estimate_request, async_req=True)
-        >>> result = thread.get()
+        args["async_req"] = kwargs.get("async_req", False)
+        args["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        args["_preload_content"] = kwargs.get("_preload_content", True)
+        args["_request_timeout"] = kwargs.get("_request_timeout", None)
+        args["_check_input_type"] = kwargs.get("_check_input_type", True)
+        args["_check_return_type"] = kwargs.get("_check_return_type", True)
+        args["_content_type"] = kwargs.get("_content_type")
+        args["_host_index"] = kwargs.get("_host_index")
 
-        :param async_req bool: execute request asynchronously
-        :param CreateFlightEstimateRequest create_flight_estimate_request: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(EstimateResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
+        args["create_flight_estimate_request"] = create_flight_estimate_request
+        return self.create_flight_estimate_endpoint.call_with_http_info(**args)
 
-        local_var_params = locals()
-
-        all_params = ["create_flight_estimate_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_flight_estimate" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'create_flight_estimate_request' is set
-        if (
-            "create_flight_estimate_request" not in local_var_params
-            or local_var_params["create_flight_estimate_request"] is None
-        ):
-            raise ApiValueError(
-                "Missing the required parameter `create_flight_estimate_request` when calling `create_flight_estimate`"
-            )  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        # do not add duplicate keys to query_params list
-        existing_keys = []
-        for param in query_params:
-            existing_keys.append(param[0])
-
-        for key in kwargs:
-            if key not in existing_keys:
-                query_params.append([key, kwargs.get(key)])
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "create_flight_estimate_request" in local_var_params:
-            body_params = local_var_params["create_flight_estimate_request"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/v1/estimates/flight",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="EstimateResponse",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def create_mass_estimate(
-        self, create_mass_estimate_request={}, **kwargs
-    ):  # noqa: E501
+    def create_mass_estimate(self, **kwargs):
         """Create an estimate based on mass of CO2  # noqa: E501
 
         Creates an estimate for the mass of CO2 to be compensated. An order in the `draft` state will also be created, linked to the estimate.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_mass_estimate(create_mass_estimate_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param CreateMassEstimateRequest create_mass_estimate_request: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: EstimateResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            create_mass_estimate_request (CreateMassEstimateRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            EstimateResponse
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_mass_estimate_with_http_info(
-            create_mass_estimate_request, **kwargs
-        )  # noqa: E501
+        create_mass_estimate_request = CreateMassEstimateRequest(**kwargs)
 
-    def create_mass_estimate_with_http_info(
-        self, create_mass_estimate_request, **kwargs
-    ):  # noqa: E501
-        """Create an estimate based on mass of CO2  # noqa: E501
+        args = {}
 
-        Creates an estimate for the mass of CO2 to be compensated. An order in the `draft` state will also be created, linked to the estimate.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_mass_estimate_with_http_info(create_mass_estimate_request, async_req=True)
-        >>> result = thread.get()
+        args["async_req"] = kwargs.get("async_req", False)
+        args["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        args["_preload_content"] = kwargs.get("_preload_content", True)
+        args["_request_timeout"] = kwargs.get("_request_timeout", None)
+        args["_check_input_type"] = kwargs.get("_check_input_type", True)
+        args["_check_return_type"] = kwargs.get("_check_return_type", True)
+        args["_content_type"] = kwargs.get("_content_type")
+        args["_host_index"] = kwargs.get("_host_index")
 
-        :param async_req bool: execute request asynchronously
-        :param CreateMassEstimateRequest create_mass_estimate_request: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(EstimateResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
+        args["create_mass_estimate_request"] = create_mass_estimate_request
+        return self.create_mass_estimate_endpoint.call_with_http_info(**args)
 
-        local_var_params = locals()
-
-        all_params = ["create_mass_estimate_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_mass_estimate" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'create_mass_estimate_request' is set
-        if (
-            "create_mass_estimate_request" not in local_var_params
-            or local_var_params["create_mass_estimate_request"] is None
-        ):
-            raise ApiValueError(
-                "Missing the required parameter `create_mass_estimate_request` when calling `create_mass_estimate`"
-            )  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        # do not add duplicate keys to query_params list
-        existing_keys = []
-        for param in query_params:
-            existing_keys.append(param[0])
-
-        for key in kwargs:
-            if key not in existing_keys:
-                query_params.append([key, kwargs.get(key)])
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "create_mass_estimate_request" in local_var_params:
-            body_params = local_var_params["create_mass_estimate_request"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/v1/estimates/mass",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="EstimateResponse",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def create_shipping_estimate(
-        self, create_shipping_estimate_request={}, **kwargs
-    ):  # noqa: E501
+    def create_shipping_estimate(self, **kwargs):
         """Create a shipping estimate given the distance traveled in meters, package weight, and transportation method.  # noqa: E501
 
         Creates a shipping estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_shipping_estimate(create_shipping_estimate_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param CreateShippingEstimateRequest create_shipping_estimate_request: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: EstimateResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            create_shipping_estimate_request (CreateShippingEstimateRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            EstimateResponse
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_shipping_estimate_with_http_info(
-            create_shipping_estimate_request, **kwargs
-        )  # noqa: E501
+        create_shipping_estimate_request = CreateShippingEstimateRequest(**kwargs)
 
-    def create_shipping_estimate_with_http_info(
-        self, create_shipping_estimate_request, **kwargs
-    ):  # noqa: E501
-        """Create a shipping estimate given the distance traveled in meters, package weight, and transportation method.  # noqa: E501
+        args = {}
 
-        Creates a shipping estimate for the amount of CO2 to be compensated. An order in the `draft` state may be created based on the parameters.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_shipping_estimate_with_http_info(create_shipping_estimate_request, async_req=True)
-        >>> result = thread.get()
+        args["async_req"] = kwargs.get("async_req", False)
+        args["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        args["_preload_content"] = kwargs.get("_preload_content", True)
+        args["_request_timeout"] = kwargs.get("_request_timeout", None)
+        args["_check_input_type"] = kwargs.get("_check_input_type", True)
+        args["_check_return_type"] = kwargs.get("_check_return_type", True)
+        args["_content_type"] = kwargs.get("_content_type")
+        args["_host_index"] = kwargs.get("_host_index")
 
-        :param async_req bool: execute request asynchronously
-        :param CreateShippingEstimateRequest create_shipping_estimate_request: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(EstimateResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
+        args["create_shipping_estimate_request"] = create_shipping_estimate_request
+        return self.create_shipping_estimate_endpoint.call_with_http_info(**args)
 
-        local_var_params = locals()
-
-        all_params = ["create_shipping_estimate_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_shipping_estimate" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'create_shipping_estimate_request' is set
-        if (
-            "create_shipping_estimate_request" not in local_var_params
-            or local_var_params["create_shipping_estimate_request"] is None
-        ):
-            raise ApiValueError(
-                "Missing the required parameter `create_shipping_estimate_request` when calling `create_shipping_estimate`"
-            )  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        # do not add duplicate keys to query_params list
-        existing_keys = []
-        for param in query_params:
-            existing_keys.append(param[0])
-
-        for key in kwargs:
-            if key not in existing_keys:
-                query_params.append([key, kwargs.get(key)])
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "create_shipping_estimate_request" in local_var_params:
-            body_params = local_var_params["create_shipping_estimate_request"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/v1/estimates/shipping",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="EstimateResponse",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def create_vehicle_estimate(
-        self, create_vehicle_estimate_request={}, **kwargs
-    ):  # noqa: E501
+    def create_vehicle_estimate(self, **kwargs):
         """Create a vehicle estimate given the distance traveled in meters and the type of vehicle  # noqa: E501
 
         Creates an estimate and calculates the amount of CO2 to be compensated depending on the distance and the vehicle. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_vehicle_estimate(create_vehicle_estimate_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param CreateVehicleEstimateRequest create_vehicle_estimate_request: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: EstimateResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            create_vehicle_estimate_request (CreateVehicleEstimateRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            EstimateResponse
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_vehicle_estimate_with_http_info(
-            create_vehicle_estimate_request, **kwargs
-        )  # noqa: E501
+        create_vehicle_estimate_request = CreateVehicleEstimateRequest(**kwargs)
 
-    def create_vehicle_estimate_with_http_info(
-        self, create_vehicle_estimate_request, **kwargs
-    ):  # noqa: E501
-        """Create a vehicle estimate given the distance traveled in meters and the type of vehicle  # noqa: E501
+        args = {}
 
-        Creates an estimate and calculates the amount of CO2 to be compensated depending on the distance and the vehicle. An order in the `draft` state may be created based on the parameters, linked to the estimate.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_vehicle_estimate_with_http_info(create_vehicle_estimate_request, async_req=True)
-        >>> result = thread.get()
+        args["async_req"] = kwargs.get("async_req", False)
+        args["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        args["_preload_content"] = kwargs.get("_preload_content", True)
+        args["_request_timeout"] = kwargs.get("_request_timeout", None)
+        args["_check_input_type"] = kwargs.get("_check_input_type", True)
+        args["_check_return_type"] = kwargs.get("_check_return_type", True)
+        args["_content_type"] = kwargs.get("_content_type")
+        args["_host_index"] = kwargs.get("_host_index")
 
-        :param async_req bool: execute request asynchronously
-        :param CreateVehicleEstimateRequest create_vehicle_estimate_request: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(EstimateResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
+        args["create_vehicle_estimate_request"] = create_vehicle_estimate_request
+        return self.create_vehicle_estimate_endpoint.call_with_http_info(**args)
 
-        local_var_params = locals()
-
-        all_params = ["create_vehicle_estimate_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_vehicle_estimate" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'create_vehicle_estimate_request' is set
-        if (
-            "create_vehicle_estimate_request" not in local_var_params
-            or local_var_params["create_vehicle_estimate_request"] is None
-        ):
-            raise ApiValueError(
-                "Missing the required parameter `create_vehicle_estimate_request` when calling `create_vehicle_estimate`"
-            )  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        # do not add duplicate keys to query_params list
-        existing_keys = []
-        for param in query_params:
-            existing_keys.append(param[0])
-
-        for key in kwargs:
-            if key not in existing_keys:
-                query_params.append([key, kwargs.get(key)])
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "create_vehicle_estimate_request" in local_var_params:
-            body_params = local_var_params["create_vehicle_estimate_request"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/v1/estimates/vehicle",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="EstimateResponse",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def retrieve_estimate(self, id={}, **kwargs):  # noqa: E501
+    def retrieve_estimate(self, id, **kwargs):
         """Retrieves an estimate  # noqa: E501
 
         Retrieves a given estimate and its associated order. You can only retrieve estimates associated with the organization you are querying for.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.retrieve_estimate(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: EstimateResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.retrieve_estimate_with_http_info(id, **kwargs)  # noqa: E501
+        Args:
+            id (str):
 
-    def retrieve_estimate_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Retrieves an estimate  # noqa: E501
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
 
-        Retrieves a given estimate and its associated order. You can only retrieve estimates associated with the organization you are querying for.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.retrieve_estimate_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(EstimateResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Returns:
+            EstimateResponse
+                If the method is called asynchronously, returns the request
+                thread.
         """
 
-        local_var_params = locals()
+        args = {}
 
-        all_params = ["id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
+        args["async_req"] = kwargs.get("async_req", False)
+        args["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        args["_preload_content"] = kwargs.get("_preload_content", True)
+        args["_request_timeout"] = kwargs.get("_request_timeout", None)
+        args["_check_input_type"] = kwargs.get("_check_input_type", True)
+        args["_check_return_type"] = kwargs.get("_check_return_type", True)
+        args["_content_type"] = kwargs.get("_content_type")
+        args["_host_index"] = kwargs.get("_host_index")
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method retrieve_estimate" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'id' is set
-        if "id" not in local_var_params or local_var_params["id"] is None:
-            raise ApiValueError(
-                "Missing the required parameter `id` when calling `retrieve_estimate`"
-            )  # noqa: E501
+        args["id"] = id
+        return self.retrieve_estimate_endpoint.call_with_http_info(**args)
 
-        collection_formats = {}
-
-        path_params = {}
-        if "id" in local_var_params:
-            path_params["id"] = local_var_params["id"]  # noqa: E501
-
-        query_params = []
-
-        # do not add duplicate keys to query_params list
-        existing_keys = []
-        for param in query_params:
-            existing_keys.append(param[0])
-
-        for key in kwargs:
-            if key not in existing_keys:
-                query_params.append([key, kwargs.get(key)])
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/v1/estimates/{id}",
-            "GET",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="EstimateResponse",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def retrieve_estimates(self, **kwargs):  # noqa: E501
+    def retrieve_estimates(self, **kwargs):
         """Retrieves a list of estimates  # noqa: E501
 
         Retrieves a list of estimates and their associated orders. You can only retrieve estimates associated with the organization you are querying for.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.retrieve_estimates(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int page:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: EstimateListResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.retrieve_estimates_with_http_info(**kwargs)  # noqa: E501
 
-    def retrieve_estimates_with_http_info(self, **kwargs):  # noqa: E501
-        """Retrieves a list of estimates  # noqa: E501
+        Keyword Args:
+            page (int): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
 
-        Retrieves a list of estimates and their associated orders. You can only retrieve estimates associated with the organization you are querying for.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.retrieve_estimates_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int page:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(EstimateListResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Returns:
+            EstimateListResponse
+                If the method is called asynchronously, returns the request
+                thread.
         """
 
-        local_var_params = locals()
+        args = {}
+        if kwargs.get("page"):
+            args["page"] = kwargs.get("page")
 
-        all_params = ["page"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-        all_params.append("mass_g")
-        all_params.append("total_price_cents_usd")
-        all_params.append("project_id")
-        all_params.append("metadata")
-        all_params.append("distance_m")
-        all_params.append("transportation_method")
-        all_params.append("package_mass_g")
-        all_params.append("create_order")
-        all_params.append("make")
-        all_params.append("model")
-        all_params.append("year")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("transaction_value_eth_gwei")
-        all_params.append("gas_used")
-        all_params.append("transaction_value_btc_sats")
-        all_params.append("average_daily_balance_btc_sats")
-        all_params.append("average_daily_balance_eth_gwei")
-        all_params.append("timestamp")
-        all_params.append("origin_airport")
-        all_params.append("destination_airport")
-        all_params.append("aircraft_code")
-        all_params.append("cabin_class")
-        all_params.append("passenger_count")
+        args["async_req"] = kwargs.get("async_req", False)
+        args["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        args["_preload_content"] = kwargs.get("_preload_content", True)
+        args["_request_timeout"] = kwargs.get("_request_timeout", None)
+        args["_check_input_type"] = kwargs.get("_check_input_type", True)
+        args["_check_return_type"] = kwargs.get("_check_return_type", True)
+        args["_content_type"] = kwargs.get("_content_type")
+        args["_host_index"] = kwargs.get("_host_index")
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method retrieve_estimates" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if "page" in local_var_params:
-            query_params.append(("page", local_var_params["page"]))  # noqa: E501
-
-        # do not add duplicate keys to query_params list
-        existing_keys = []
-        for param in query_params:
-            existing_keys.append(param[0])
-
-        for key in kwargs:
-            if key not in existing_keys:
-                query_params.append([key, kwargs.get(key)])
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["bearer_auth"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/v1/estimates",
-            "GET",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="EstimateListResponse",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+        return self.retrieve_estimates_endpoint.call_with_http_info(**args)

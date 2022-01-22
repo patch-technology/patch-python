@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 
 """
@@ -13,19 +11,18 @@
 """
 
 
-from __future__ import absolute_import
-
-__version__ = "1.16.0"
+__version__ = "1.17.0"
 
 # import ApiClient
 from patch_api.api_client import ApiClient
+
+# import Configuration
 from patch_api.configuration import Configuration
+
+# import exceptions
 from patch_api.exceptions import OpenApiException
+from patch_api.exceptions import ApiAttributeError
 from patch_api.exceptions import ApiTypeError
 from patch_api.exceptions import ApiValueError
 from patch_api.exceptions import ApiKeyError
 from patch_api.exceptions import ApiException
-
-from patch_api.api import *
-
-from patch_api.models import *

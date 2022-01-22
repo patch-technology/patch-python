@@ -1,9 +1,3 @@
-from __future__ import absolute_import
-
-# flake8: noqa
-
-# import apis into api package
-from patch_api.api.estimates_api import EstimatesApi
-from patch_api.api.orders_api import OrdersApi
-from patch_api.api.projects_api import ProjectsApi
-from patch_api.api.technology_types_api import TechnologyTypesApi
+# do not import all apis into this module because that uses a lot of memory and stack frames
+# if you need the ability to import all apis from one package, import them with
+# from patch_api.apis import EstimatesApi

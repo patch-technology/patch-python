@@ -1,6 +1,4 @@
-certifi >= 14.05.14
-six >= 1.10
 python_dateutil >= 2.5.3
 setuptools >= 21.0.0
-urllib3 >= 1.15.1
-pre-commit >= 2.10.0
+urllib3 >= 1.25.3
+pre-commit >= 2.16.0
