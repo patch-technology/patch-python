@@ -57,7 +57,7 @@ If you do not know how much to purchase, use an estimate.
 You can also create an order with a maximum desired price, and we'll allocate enough mass to
 fulfill the order for you.
 
-[API Reference](https://docs.usepatch.com/#/?id=orders)
+[API Reference](https://docs.patch.io/#/orders)
 
 #### Examples
 
@@ -105,7 +105,7 @@ patch.orders.retrieve_orders(page=page)
 
 Estimates allow API users to get a quote for the cost of compensating a certain amount of CO2. When creating an estimate, an order in the `draft` state will also be created, reserving the allocation of a project for 5 minutes. If you don't place your draft order within those 5 minutes, the order will automatically be cancelled.
 
-[API Reference](https://docs.usepatch.com/#/?id=estimates)
+[API Reference](https://docs.patch.io/#/estimates)
 
 #### Examples
 
@@ -162,7 +162,7 @@ When fetching projects, you can supply filters to the query to narrow your resul
 - `type`
 - `minimum_available_mass`
 
-[API Reference](https://docs.usepatch.com/#/?id=projects)
+[API Reference](https://docs.patch.io/#/projects)
 
 #### Examples
 
@@ -187,37 +187,6 @@ patch.projects.retrieve_projects(country="CA")
 
 # Retrieve a list of projects with at least 100 grams of available offsets
 patch.projects.retrieve_projects(minimum_available_mass=100)
-```
-
-### Preferences
-
-Preferences are how you route your orders in Patch. If you don't have a preference, Patch will allocate your order to the least expensive option. If you do have a preference, all of your orders will be sent to that project. You can set your preferences via API, or through the [Patch Dashboard](https://dashboard.usepatch.com/projects).
-
-[API Reference](https://docs.usepatch.com/#/?id=preferences)
-
-#### Examples
-
-```python
-import patch_api
-
-patch = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
-
-# Create a preference
-
-project_id = 'pro_test_1234' # Pass in the project_id for your preference
-patch.preferences.create_preference(project_id=project_id)
-
-# Retrieve a preference
-preference_id = 'pre_test_1234' # Pass in the preferences's id
-patch.preferences.retrieve_preference(preference_id=preference_id)
-
-# Delete a preference
-preference_id = 'pre_test_1234' # Pass in the preferences's id
-patch.preferences.delete_preference(preference_id=preference_id)
-
-# Retrieve a list of preferences
-page = 1 # Pass in which page of preferences you'd like
-patch.preferences.retrieve_preferences(page=page)
 ```
 
 ## Contributing
