@@ -189,37 +189,6 @@ patch.projects.retrieve_projects(country="CA")
 patch.projects.retrieve_projects(minimum_available_mass=100)
 ```
 
-### Preferences
-
-Preferences are how you route your orders in Patch. If you don't have a preference, Patch will allocate your order to the least expensive option. If you do have a preference, all of your orders will be sent to that project. You can set your preferences via API, or through the [Patch Dashboard](https://dashboard.usepatch.com/projects).
-
-[API Reference](https://docs.patch.io/#/preferences)
-
-#### Examples
-
-```python
-import patch_api
-
-patch = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
-
-# Create a preference
-
-project_id = 'pro_test_1234' # Pass in the project_id for your preference
-patch.preferences.create_preference(project_id=project_id)
-
-# Retrieve a preference
-preference_id = 'pre_test_1234' # Pass in the preferences's id
-patch.preferences.retrieve_preference(preference_id=preference_id)
-
-# Delete a preference
-preference_id = 'pre_test_1234' # Pass in the preferences's id
-patch.preferences.delete_preference(preference_id=preference_id)
-
-# Retrieve a list of preferences
-page = 1 # Pass in which page of preferences you'd like
-patch.preferences.retrieve_preferences(page=page)
-```
-
 ## Contributing
 
 While we value open-source contributions to this SDK, the core of this library is generated programmatically. Complex additions made directly to the library would have to be moved over to our generation code, otherwise they would be overwritten upon the next generated release. Feel free to open a PR as a proof of concept, but know that we will not be able to merge it as-is. We suggest opening an issue first to discuss with us!
