@@ -38,6 +38,7 @@ class CreateOrderRequest(object):
         "total_price_cents_usd": "int",
         "project_id": "str",
         "metadata": "object",
+        "state": "str",
     }
 
     attribute_map = {
@@ -45,6 +46,7 @@ class CreateOrderRequest(object):
         "total_price_cents_usd": "total_price_cents_usd",
         "project_id": "project_id",
         "metadata": "metadata",
+        "state": "state",
     }
 
     def __init__(
@@ -53,6 +55,7 @@ class CreateOrderRequest(object):
         total_price_cents_usd=None,
         project_id=None,
         metadata=None,
+        state=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """CreateOrderRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -64,6 +67,7 @@ class CreateOrderRequest(object):
         self._total_price_cents_usd = None
         self._project_id = None
         self._metadata = None
+        self._state = None
         self.discriminator = None
 
         if mass_g is not None:
@@ -74,6 +78,8 @@ class CreateOrderRequest(object):
             self.project_id = project_id
         if metadata is not None:
             self.metadata = metadata
+        if state is not None:
+            self.state = state
 
     @property
     def mass_g(self):
@@ -182,6 +188,37 @@ class CreateOrderRequest(object):
         """
 
         self._metadata = metadata
+
+    @property
+    def state(self):
+        """Gets the state of this CreateOrderRequest.  # noqa: E501
+
+
+        :return: The state of this CreateOrderRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._state
+
+    @state.setter
+    def state(self, state):
+        """Sets the state of this CreateOrderRequest.
+
+
+        :param state: The state of this CreateOrderRequest.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["draft", "placed"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and state not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `state` ({0}), must be one of {1}".format(  # noqa: E501
+                    state, allowed_values
+                )
+            )
+
+        self._state = state
 
     def to_dict(self):
         """Returns the model properties as a dict"""

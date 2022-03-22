@@ -51,6 +51,14 @@ class TestOrdersApi(unittest.TestCase):
             order.data.price_cents_usd + order.data.patch_fee_cents_usd, 100
         )
 
+        """Create an order in draft state
+        """
+        order = self.api.create_order(mass_g=100, state="draft")
+
+        self.assertTrue(order)
+        self.assertEqual(order.data.mass_g, 100)
+        self.assertEqual(order.data.state, "draft")
+
     def test_retrieve_order(self):
         """Test case for retrieve_order"""
 
