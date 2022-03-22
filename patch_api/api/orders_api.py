@@ -51,6 +51,7 @@ class OrdersApi(object):
         "aircraft_code",
         "cabin_class",
         "passenger_count",
+        "state",
     ]
 
     def __init__(self, api_client=None):
@@ -136,6 +137,7 @@ class OrdersApi(object):
         all_params.append("aircraft_code")
         all_params.append("cabin_class")
         all_params.append("passenger_count")
+        all_params.append("state")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -284,6 +286,7 @@ class OrdersApi(object):
         all_params.append("aircraft_code")
         all_params.append("cabin_class")
         all_params.append("passenger_count")
+        all_params.append("state")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -440,6 +443,7 @@ class OrdersApi(object):
         all_params.append("aircraft_code")
         all_params.append("cabin_class")
         all_params.append("passenger_count")
+        all_params.append("state")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -586,6 +590,7 @@ class OrdersApi(object):
         all_params.append("aircraft_code")
         all_params.append("cabin_class")
         all_params.append("passenger_count")
+        all_params.append("state")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -743,6 +748,7 @@ class OrdersApi(object):
         all_params.append("aircraft_code")
         all_params.append("cabin_class")
         all_params.append("passenger_count")
+        all_params.append("state")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
