@@ -205,7 +205,7 @@ class OrdersApi(object):
     def create_order(self, create_order_request={}, **kwargs):  # noqa: E501
         """Creates an order  # noqa: E501
 
-        Creates an order in the `placed` state. To create a `draft` order, create an estimate first.   # noqa: E501
+        Creates an order in the `placed` or `draft` state.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_order(create_order_request, async_req=True)
@@ -232,7 +232,7 @@ class OrdersApi(object):
     def create_order_with_http_info(self, create_order_request, **kwargs):  # noqa: E501
         """Creates an order  # noqa: E501
 
-        Creates an order in the `placed` state. To create a `draft` order, create an estimate first.   # noqa: E501
+        Creates an order in the `placed` or `draft` state.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_order_with_http_info(create_order_request, async_req=True)
