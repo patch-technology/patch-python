@@ -55,7 +55,8 @@ class OrdersApi(object):
         "country_code",
         "city",
         "region",
-        "star_rating" "number_of_nights",
+        "star_rating",
+        "number_of_nights",
         "number_of_rooms",
     ]
 
