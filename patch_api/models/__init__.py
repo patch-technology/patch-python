@@ -23,6 +23,7 @@ from patch_api.models.create_ethereum_estimate_request import (
     CreateEthereumEstimateRequest,
 )
 from patch_api.models.create_flight_estimate_request import CreateFlightEstimateRequest
+from patch_api.models.create_hotel_estimate_request import CreateHotelEstimateRequest
 from patch_api.models.create_mass_estimate_request import CreateMassEstimateRequest
 from patch_api.models.create_order_request import CreateOrderRequest
 from patch_api.models.create_shipping_estimate_request import (

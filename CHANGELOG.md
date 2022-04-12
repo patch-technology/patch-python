@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.19.0] - 2022-04-11
+### Added
+
+- Adds ability to create hotel estimates via `api_client.estimates.create_hotel_estimate()`
+
 ## [1.18.0] - 2022-03-22
 ### Changed
 
@@ -62,7 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Adds support for airports, aircracts, cabin class and passenger count in flight estimates
+- Adds support for airports, aircrafts, cabin class and passenger count in flight estimates
 
 ## [1.10.0] - 2021-08-27
 
