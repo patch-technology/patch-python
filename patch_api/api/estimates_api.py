@@ -52,6 +52,11 @@ class EstimatesApi(object):
         "cabin_class",
         "passenger_count",
         "state",
+        "country_code",
+        "city",
+        "region",
+        "star_rating" "number_of_nights",
+        "number_of_rooms",
     ]
 
     def __init__(self, api_client=None):
@@ -144,6 +149,12 @@ class EstimatesApi(object):
         all_params.append("cabin_class")
         all_params.append("passenger_count")
         all_params.append("state")
+        all_params.append("country_code")
+        all_params.append("city")
+        all_params.append("region")
+        all_params.append("star_rating")
+        all_params.append("number_of_nights")
+        all_params.append("number_of_rooms")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -307,6 +318,12 @@ class EstimatesApi(object):
         all_params.append("cabin_class")
         all_params.append("passenger_count")
         all_params.append("state")
+        all_params.append("country_code")
+        all_params.append("city")
+        all_params.append("region")
+        all_params.append("star_rating")
+        all_params.append("number_of_nights")
+        all_params.append("number_of_rooms")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -470,6 +487,12 @@ class EstimatesApi(object):
         all_params.append("cabin_class")
         all_params.append("passenger_count")
         all_params.append("state")
+        all_params.append("country_code")
+        all_params.append("city")
+        all_params.append("region")
+        all_params.append("star_rating")
+        all_params.append("number_of_nights")
+        all_params.append("number_of_rooms")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -633,6 +656,12 @@ class EstimatesApi(object):
         all_params.append("cabin_class")
         all_params.append("passenger_count")
         all_params.append("state")
+        all_params.append("country_code")
+        all_params.append("city")
+        all_params.append("region")
+        all_params.append("star_rating")
+        all_params.append("number_of_nights")
+        all_params.append("number_of_rooms")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -796,6 +825,12 @@ class EstimatesApi(object):
         all_params.append("cabin_class")
         all_params.append("passenger_count")
         all_params.append("state")
+        all_params.append("country_code")
+        all_params.append("city")
+        all_params.append("region")
+        all_params.append("star_rating")
+        all_params.append("number_of_nights")
+        all_params.append("number_of_rooms")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -959,6 +994,12 @@ class EstimatesApi(object):
         all_params.append("cabin_class")
         all_params.append("passenger_count")
         all_params.append("state")
+        all_params.append("country_code")
+        all_params.append("city")
+        all_params.append("region")
+        all_params.append("star_rating")
+        all_params.append("number_of_nights")
+        all_params.append("number_of_rooms")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1122,6 +1163,12 @@ class EstimatesApi(object):
         all_params.append("cabin_class")
         all_params.append("passenger_count")
         all_params.append("state")
+        all_params.append("country_code")
+        all_params.append("city")
+        all_params.append("region")
+        all_params.append("star_rating")
+        all_params.append("number_of_nights")
+        all_params.append("number_of_rooms")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1279,6 +1326,12 @@ class EstimatesApi(object):
         all_params.append("cabin_class")
         all_params.append("passenger_count")
         all_params.append("state")
+        all_params.append("country_code")
+        all_params.append("city")
+        all_params.append("region")
+        all_params.append("star_rating")
+        all_params.append("number_of_nights")
+        all_params.append("number_of_rooms")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1426,6 +1479,12 @@ class EstimatesApi(object):
         all_params.append("cabin_class")
         all_params.append("passenger_count")
         all_params.append("state")
+        all_params.append("country_code")
+        all_params.append("city")
+        all_params.append("region")
+        all_params.append("star_rating")
+        all_params.append("number_of_nights")
+        all_params.append("number_of_rooms")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

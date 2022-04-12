@@ -192,7 +192,7 @@ class TestEstimatesApi(unittest.TestCase):
         estimate = self.api.create_hotel_estimate(country_code="US")
         self.assertEqual(estimate.data.type, "hotel")
         self.assertGreater(
-            estimate.data.mass_g, 1_000
+            estimate.data.mass_g, 15_000
         )  # not setting an exact value since this is changing daily
 
 
