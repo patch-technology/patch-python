@@ -104,6 +104,14 @@ class TestOrdersApi(unittest.TestCase):
         for retrieved_order in retrieved_orders:
             self.assertTrue("external_id" in retrieved_order.metadata)
 
+    def test_cancel_order_in_draft_state(self):
+        """Test case for cancel_order on draft orders"""
+        order = self.api.create_order(mass_g=100, state="draft")
+        self.assertEqual(order.data.state, "draft")
+
+        cancelled_order = self.api.cancel_order(id=order.data.id)
+        self.assertEqual(cancelled_order.data.state, "cancelled")
+
 
 if __name__ == "__main__":
     unittest.main()
