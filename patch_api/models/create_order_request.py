@@ -39,6 +39,7 @@ class CreateOrderRequest(object):
         "project_id": "str",
         "metadata": "object",
         "state": "str",
+        "vintage_year": "int",
     }
 
     attribute_map = {
@@ -47,6 +48,7 @@ class CreateOrderRequest(object):
         "project_id": "project_id",
         "metadata": "metadata",
         "state": "state",
+        "vintage_year": "vintage_year",
     }
 
     def __init__(
@@ -56,6 +58,7 @@ class CreateOrderRequest(object):
         project_id=None,
         metadata=None,
         state=None,
+        vintage_year=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """CreateOrderRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -68,18 +71,15 @@ class CreateOrderRequest(object):
         self._project_id = None
         self._metadata = None
         self._state = None
+        self._vintage_year = None
         self.discriminator = None
 
-        if mass_g is not None:
-            self.mass_g = mass_g
-        if total_price_cents_usd is not None:
-            self.total_price_cents_usd = total_price_cents_usd
-        if project_id is not None:
-            self.project_id = project_id
-        if metadata is not None:
-            self.metadata = metadata
-        if state is not None:
-            self.state = state
+        self.mass_g = mass_g
+        self.total_price_cents_usd = total_price_cents_usd
+        self.project_id = project_id
+        self.metadata = metadata
+        self.state = state
+        self.vintage_year = vintage_year
 
     @property
     def mass_g(self):
@@ -207,7 +207,7 @@ class CreateOrderRequest(object):
         :param state: The state of this CreateOrderRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = ["draft", "placed"]  # noqa: E501
+        allowed_values = [None, "draft", "placed"]  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
             and state not in allowed_values
@@ -219,6 +219,43 @@ class CreateOrderRequest(object):
             )
 
         self._state = state
+
+    @property
+    def vintage_year(self):
+        """Gets the vintage_year of this CreateOrderRequest.  # noqa: E501
+
+
+        :return: The vintage_year of this CreateOrderRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._vintage_year
+
+    @vintage_year.setter
+    def vintage_year(self, vintage_year):
+        """Sets the vintage_year of this CreateOrderRequest.
+
+
+        :param vintage_year: The vintage_year of this CreateOrderRequest.  # noqa: E501
+        :type: int
+        """
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vintage_year is not None
+            and vintage_year > 2100
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vintage_year`, must be a value less than or equal to `2100`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vintage_year is not None
+            and vintage_year < 1900
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vintage_year`, must be a value greater than or equal to `1900`"
+            )  # noqa: E501
+
+        self._vintage_year = vintage_year
 
     def to_dict(self):
         """Returns the model properties as a dict"""

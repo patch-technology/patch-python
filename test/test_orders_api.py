@@ -112,6 +112,12 @@ class TestOrdersApi(unittest.TestCase):
         cancelled_order = self.api.cancel_order(id=order.data.id)
         self.assertEqual(cancelled_order.data.state, "cancelled")
 
+    def test_create_order_with_vintage_year(self):
+        """Test case for vintage_year on create order"""
+        order = self.api.create_order(mass_g=100, vintage_year=2022)
+
+        self.assertTrue(order)
+
 
 if __name__ == "__main__":
     unittest.main()
