@@ -58,6 +58,7 @@ class ProjectsApi(object):
         "star_rating",
         "number_of_nights",
         "number_of_rooms",
+        "vintage_year",
     ]
 
     def __init__(self, api_client=None):
@@ -150,6 +151,7 @@ class ProjectsApi(object):
         all_params.append("star_rating")
         all_params.append("number_of_nights")
         all_params.append("number_of_rooms")
+        all_params.append("vintage_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -309,6 +311,7 @@ class ProjectsApi(object):
         all_params.append("star_rating")
         all_params.append("number_of_nights")
         all_params.append("number_of_rooms")
+        all_params.append("vintage_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
