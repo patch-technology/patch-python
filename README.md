@@ -49,8 +49,6 @@ orders = patch.orders.retrieve_orders()
 
 ### Orders
 
-In Patch, orders represent a purchase of carbon offsets or negative emissions by mass. Place orders directly if you know the amount of carbon dioxide you would like to sequester. If you do not know how much to purchase, use an estimate.
-
 In Patch, orders represent a purchase of carbon offsets or negative emissions by mass.
 Place orders directly if you know the amount of carbon dioxide you would like to sequester.
 If you do not know how much to purchase, use an estimate.
