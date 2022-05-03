@@ -39,12 +39,18 @@ class Order(object):
         "mass_g": "int",
         "production": "bool",
         "state": "str",
+        "amount": "int",
+        "unit": "str",
+        "price": "int",
+        "patch_fee": "int",
+        "currency": "str",
         "allocation_state": "str",
         "price_cents_usd": "int",
         "patch_fee_cents_usd": "int",
         "allocations": "list[Allocation]",
         "registry_url": "str",
         "metadata": "object",
+        "inventory": "list[OrderInventory]",
     }
 
     attribute_map = {
@@ -53,12 +59,18 @@ class Order(object):
         "mass_g": "mass_g",
         "production": "production",
         "state": "state",
+        "amount": "amount",
+        "unit": "unit",
+        "price": "price",
+        "patch_fee": "patch_fee",
+        "currency": "currency",
         "allocation_state": "allocation_state",
         "price_cents_usd": "price_cents_usd",
         "patch_fee_cents_usd": "patch_fee_cents_usd",
         "allocations": "allocations",
         "registry_url": "registry_url",
         "metadata": "metadata",
+        "inventory": "inventory",
     }
 
     def __init__(
@@ -68,12 +80,18 @@ class Order(object):
         mass_g=None,
         production=None,
         state=None,
+        amount=None,
+        unit=None,
+        price=None,
+        patch_fee=None,
+        currency=None,
         allocation_state=None,
         price_cents_usd=None,
         patch_fee_cents_usd=None,
         allocations=None,
         registry_url=None,
         metadata=None,
+        inventory=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """Order - a model defined in OpenAPI"""  # noqa: E501
@@ -86,12 +104,18 @@ class Order(object):
         self._mass_g = None
         self._production = None
         self._state = None
+        self._amount = None
+        self._unit = None
+        self._price = None
+        self._patch_fee = None
+        self._currency = None
         self._allocation_state = None
         self._price_cents_usd = None
         self._patch_fee_cents_usd = None
         self._allocations = None
         self._registry_url = None
         self._metadata = None
+        self._inventory = None
         self.discriminator = None
 
         self.id = id
@@ -100,6 +124,11 @@ class Order(object):
         self.mass_g = mass_g
         self.production = production
         self.state = state
+        self.amount = amount
+        self.unit = unit
+        self.price = price
+        self.patch_fee = patch_fee
+        self.currency = currency
         self.allocation_state = allocation_state
         self.price_cents_usd = price_cents_usd
         self.patch_fee_cents_usd = patch_fee_cents_usd
@@ -108,6 +137,8 @@ class Order(object):
         if registry_url is not None:
             self.registry_url = registry_url
         self.metadata = metadata
+        if inventory is not None:
+            self.inventory = inventory
 
     @property
     def id(self):
@@ -163,7 +194,7 @@ class Order(object):
     def mass_g(self):
         """Gets the mass_g of this Order.  # noqa: E501
 
-        The amount of carbon offsets in grams purchased through this order.  # noqa: E501
+        DEPRECATED, use `amount` and `unit` fields instead. The amount of carbon offsets in grams purchased through this order.  # noqa: E501
 
         :return: The mass_g of this Order.  # noqa: E501
         :rtype: int
@@ -174,7 +205,7 @@ class Order(object):
     def mass_g(self, mass_g):
         """Sets the mass_g of this Order.
 
-        The amount of carbon offsets in grams purchased through this order.  # noqa: E501
+        DEPRECATED, use `amount` and `unit` fields instead. The amount of carbon offsets in grams purchased through this order.  # noqa: E501
 
         :param mass_g: The mass_g of this Order.  # noqa: E501
         :type: int
@@ -279,6 +310,167 @@ class Order(object):
         self._state = state
 
     @property
+    def amount(self):
+        """Gets the amount of this Order.  # noqa: E501
+
+        The amount in `unit`s purchased through this order.  # noqa: E501
+
+        :return: The amount of this Order.  # noqa: E501
+        :rtype: int
+        """
+        return self._amount
+
+    @amount.setter
+    def amount(self, amount):
+        """Sets the amount of this Order.
+
+        The amount in `unit`s purchased through this order.  # noqa: E501
+
+        :param amount: The amount of this Order.  # noqa: E501
+        :type: int
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and amount is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `amount`, must not be `None`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and amount is not None
+            and amount > 100000000000
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `amount`, must be a value less than or equal to `100000000000`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and amount is not None
+            and amount < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `amount`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
+
+        self._amount = amount
+
+    @property
+    def unit(self):
+        """Gets the unit of this Order.  # noqa: E501
+
+        The unit of measurement (ie \"g\" or \"Wh\") for the `amount` ordered.  # noqa: E501
+
+        :return: The unit of this Order.  # noqa: E501
+        :rtype: str
+        """
+        return self._unit
+
+    @unit.setter
+    def unit(self, unit):
+        """Sets the unit of this Order.
+
+        The unit of measurement (ie \"g\" or \"Wh\") for the `amount` ordered.  # noqa: E501
+
+        :param unit: The unit of this Order.  # noqa: E501
+        :type: str
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and unit is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `unit`, must not be `None`"
+            )  # noqa: E501
+
+        self._unit = unit
+
+    @property
+    def price(self):
+        """Gets the price of this Order.  # noqa: E501
+
+        The total price for the `amount` ordered. Prices are always represented in the smallest currency unit (ie cents for USD).  # noqa: E501
+
+        :return: The price of this Order.  # noqa: E501
+        :rtype: int
+        """
+        return self._price
+
+    @price.setter
+    def price(self, price):
+        """Sets the price of this Order.
+
+        The total price for the `amount` ordered. Prices are always represented in the smallest currency unit (ie cents for USD).  # noqa: E501
+
+        :param price: The price of this Order.  # noqa: E501
+        :type: int
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and price is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `price`, must not be `None`"
+            )  # noqa: E501
+
+        self._price = price
+
+    @property
+    def patch_fee(self):
+        """Gets the patch_fee of this Order.  # noqa: E501
+
+        The Patch Fee for this order. Patch Fee is always represented in the smallest currency unit (ie cents for USD).  # noqa: E501
+
+        :return: The patch_fee of this Order.  # noqa: E501
+        :rtype: int
+        """
+        return self._patch_fee
+
+    @patch_fee.setter
+    def patch_fee(self, patch_fee):
+        """Sets the patch_fee of this Order.
+
+        The Patch Fee for this order. Patch Fee is always represented in the smallest currency unit (ie cents for USD).  # noqa: E501
+
+        :param patch_fee: The patch_fee of this Order.  # noqa: E501
+        :type: int
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and patch_fee is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `patch_fee`, must not be `None`"
+            )  # noqa: E501
+
+        self._patch_fee = patch_fee
+
+    @property
+    def currency(self):
+        """Gets the currency of this Order.  # noqa: E501
+
+        The currency code for the `price` and `patch_fee`.  # noqa: E501
+
+        :return: The currency of this Order.  # noqa: E501
+        :rtype: str
+        """
+        return self._currency
+
+    @currency.setter
+    def currency(self, currency):
+        """Sets the currency of this Order.
+
+        The currency code for the `price` and `patch_fee`.  # noqa: E501
+
+        :param currency: The currency of this Order.  # noqa: E501
+        :type: str
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and currency is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `currency`, must not be `None`"
+            )  # noqa: E501
+
+        self._currency = currency
+
+    @property
     def allocation_state(self):
         """Gets the allocation_state of this Order.  # noqa: E501
 
@@ -322,7 +514,7 @@ class Order(object):
     def price_cents_usd(self):
         """Gets the price_cents_usd of this Order.  # noqa: E501
 
-        The total price in cents USD of the carbon offsets purchased through this order.  # noqa: E501
+        DEPRECATED, use the `price` and `currency` fields instead. The total price in cents USD of the carbon offsets purchased through this order.  # noqa: E501
 
         :return: The price_cents_usd of this Order.  # noqa: E501
         :rtype: int
@@ -333,7 +525,7 @@ class Order(object):
     def price_cents_usd(self, price_cents_usd):
         """Sets the price_cents_usd of this Order.
 
-        The total price in cents USD of the carbon offsets purchased through this order.  # noqa: E501
+        DEPRECATED, use the `price` and `currency` fields instead. The total price in cents USD of the carbon offsets purchased through this order.  # noqa: E501
 
         :param price_cents_usd: The price_cents_usd of this Order.  # noqa: E501
         :type: int
@@ -345,7 +537,7 @@ class Order(object):
     def patch_fee_cents_usd(self):
         """Gets the patch_fee_cents_usd of this Order.  # noqa: E501
 
-        The Patch Fee in cents USD for this order.  # noqa: E501
+        DEPRECATED, use the `patch_fee` and `currency` fields instead. The Patch Fee in cents USD for this order.  # noqa: E501
 
         :return: The patch_fee_cents_usd of this Order.  # noqa: E501
         :rtype: int
@@ -356,7 +548,7 @@ class Order(object):
     def patch_fee_cents_usd(self, patch_fee_cents_usd):
         """Sets the patch_fee_cents_usd of this Order.
 
-        The Patch Fee in cents USD for this order.  # noqa: E501
+        DEPRECATED, use the `patch_fee` and `currency` fields instead. The Patch Fee in cents USD for this order.  # noqa: E501
 
         :param patch_fee_cents_usd: The patch_fee_cents_usd of this Order.  # noqa: E501
         :type: int
@@ -438,6 +630,29 @@ class Order(object):
             )  # noqa: E501
 
         self._metadata = metadata
+
+    @property
+    def inventory(self):
+        """Gets the inventory of this Order.  # noqa: E501
+
+        An array containing the inventory allocated for this order. Inventory is grouped by project, vintage year, and price.  # noqa: E501
+
+        :return: The inventory of this Order.  # noqa: E501
+        :rtype: list[OrderInventory]
+        """
+        return self._inventory
+
+    @inventory.setter
+    def inventory(self, inventory):
+        """Sets the inventory of this Order.
+
+        An array containing the inventory allocated for this order. Inventory is grouped by project, vintage year, and price.  # noqa: E501
+
+        :param inventory: The inventory of this Order.  # noqa: E501
+        :type: list[OrderInventory]
+        """
+
+        self._inventory = inventory
 
     def to_dict(self):
         """Returns the model properties as a dict"""

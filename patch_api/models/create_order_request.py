@@ -40,6 +40,10 @@ class CreateOrderRequest(object):
         "metadata": "object",
         "state": "str",
         "vintage_year": "int",
+        "total_price": "int",
+        "currency": "str",
+        "amount": "int",
+        "unit": "str",
     }
 
     attribute_map = {
@@ -49,6 +53,10 @@ class CreateOrderRequest(object):
         "metadata": "metadata",
         "state": "state",
         "vintage_year": "vintage_year",
+        "total_price": "total_price",
+        "currency": "currency",
+        "amount": "amount",
+        "unit": "unit",
     }
 
     def __init__(
@@ -59,6 +67,10 @@ class CreateOrderRequest(object):
         metadata=None,
         state=None,
         vintage_year=None,
+        total_price=None,
+        currency=None,
+        amount=None,
+        unit=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """CreateOrderRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -72,6 +84,10 @@ class CreateOrderRequest(object):
         self._metadata = None
         self._state = None
         self._vintage_year = None
+        self._total_price = None
+        self._currency = None
+        self._amount = None
+        self._unit = None
         self.discriminator = None
 
         self.mass_g = mass_g
@@ -80,6 +96,10 @@ class CreateOrderRequest(object):
         self.metadata = metadata
         self.state = state
         self.vintage_year = vintage_year
+        self.total_price = total_price
+        self.currency = currency
+        self.amount = amount
+        self.unit = unit
 
     @property
     def mass_g(self):
@@ -256,6 +276,124 @@ class CreateOrderRequest(object):
             )  # noqa: E501
 
         self._vintage_year = vintage_year
+
+    @property
+    def total_price(self):
+        """Gets the total_price of this CreateOrderRequest.  # noqa: E501
+
+
+        :return: The total_price of this CreateOrderRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._total_price
+
+    @total_price.setter
+    def total_price(self, total_price):
+        """Sets the total_price of this CreateOrderRequest.
+
+
+        :param total_price: The total_price of this CreateOrderRequest.  # noqa: E501
+        :type: int
+        """
+        if (
+            self.local_vars_configuration.client_side_validation
+            and total_price is not None
+            and total_price < 1
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `total_price`, must be a value greater than or equal to `1`"
+            )  # noqa: E501
+
+        self._total_price = total_price
+
+    @property
+    def currency(self):
+        """Gets the currency of this CreateOrderRequest.  # noqa: E501
+
+
+        :return: The currency of this CreateOrderRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._currency
+
+    @currency.setter
+    def currency(self, currency):
+        """Sets the currency of this CreateOrderRequest.
+
+
+        :param currency: The currency of this CreateOrderRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._currency = currency
+
+    @property
+    def amount(self):
+        """Gets the amount of this CreateOrderRequest.  # noqa: E501
+
+
+        :return: The amount of this CreateOrderRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._amount
+
+    @amount.setter
+    def amount(self, amount):
+        """Sets the amount of this CreateOrderRequest.
+
+
+        :param amount: The amount of this CreateOrderRequest.  # noqa: E501
+        :type: int
+        """
+        if (
+            self.local_vars_configuration.client_side_validation
+            and amount is not None
+            and amount > 100000000000
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `amount`, must be a value less than or equal to `100000000000`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and amount is not None
+            and amount < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `amount`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
+
+        self._amount = amount
+
+    @property
+    def unit(self):
+        """Gets the unit of this CreateOrderRequest.  # noqa: E501
+
+
+        :return: The unit of this CreateOrderRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._unit
+
+    @unit.setter
+    def unit(self, unit):
+        """Sets the unit of this CreateOrderRequest.
+
+
+        :param unit: The unit of this CreateOrderRequest.  # noqa: E501
+        :type: str
+        """
+        allowed_values = [None, "g", "Wh"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and unit not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `unit` ({0}), must be one of {1}".format(  # noqa: E501
+                    unit, allowed_values
+                )
+            )
+
+        self._unit = unit
 
     def to_dict(self):
         """Returns the model properties as a dict"""

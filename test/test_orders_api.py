@@ -11,6 +11,7 @@
 """
 
 from __future__ import absolute_import
+from locale import currency
 
 import unittest
 import os
@@ -117,6 +118,23 @@ class TestOrdersApi(unittest.TestCase):
         order = self.api.create_order(mass_g=100, vintage_year=2022)
 
         self.assertTrue(order)
+
+    def test_create_order_with_amount_and_unit(self):
+        """Test case for amount and unit on create order"""
+        order = self.api.create_order(amount=100, unit="g")
+
+        self.assertTrue(order)
+        self.assertEqual(order.data.amount, 100)
+        self.assertEqual(order.data.unit, "g")
+        self.assertEqual(order.data.inventory[0].unit, "g")
+
+    def test_create_order_with_total_price_and_currency(self):
+        """Test case for total price and currency on create order"""
+        order = self.api.create_order(total_price=100, currency="EUR")
+
+        self.assertTrue(order)
+        self.assertTrue(99 <= (order.data.price + order.data.patch_fee) <= 101)
+        self.assertEqual(order.data.currency, "EUR")
 
 
 if __name__ == "__main__":
