@@ -17,6 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Deprecates `mass_g` and `total_price_cents_usd` fields
+- Deprecates `average_price_per_tonne_cents_usd` and `remaining_mass_g` from `project ` responses
+
+## [1.20.0] - 2022-04-18
+
+### Added
+
+- Adds optional `vintage_year` field to `order` creation
 
 ## [1.19.0] - 2022-04-11
 ### Added
