@@ -65,22 +65,25 @@ import patch_api
 patch = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
 
 # Create an order - you can create an order
-# providing either mass_g or total_price_cents_usd, but not both
+# providing either amount (and unit) or total_price (and currency), but not both
 
-# Create order with mass
-patch.orders.create_order(mass_g=1_000_000) # Pass in the mass in grams (i.e. 1 metric tonne)
+# Create order with amount
+amount = 1_000_000 # Pass in the amount in unit specified
+unit = "g"
+patch.orders.create_order(amount=amount, unit=unit)
 
-# Create an order with maximum total price
-total_price_cents_usd = 5_00 # Pass in the total price in cents (i.e. 5 dollars)
-patch.orders.create_order(total_price_cents_usd=total_price_cents_usd)
+# Create an order with total price
+total_price = 5_00 # Pass in the total price in smallest currency unit (ie cents for USD).
+currency = "USD"
+patch.orders.create_order(total_price=total_price, currency=currency)
 
 ## You can also specify a project-id field (optional) to be used instead of the preferred one
 project_id = 'pro_test_1234' # Pass in the project's ID
-patch.orders.create_order(project_id=project_id, mass_g=mass_g)
+patch.orders.create_order(project_id=project_id, amount=amount, unit=unit)
 
 ## Orders also accept a metadata field (optional)
 metadata = {user: "john doe"}
-patch.orders.create_order(metadata=metadata, mass_g=mass_g)
+patch.orders.create_order(metadata=metadata, amount=amount, unit=unit)
 
 # Retrieve an order
 order_id = 'ord_test_1234' # Pass in the order's id

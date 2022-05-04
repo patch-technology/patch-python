@@ -54,6 +54,7 @@ class Project(object):
         "tagline": "str",
         "technology_type": "TechnologyType",
         "highlights": "list[Highlight]",
+        "inventory": "list[Inventory]",
     }
 
     attribute_map = {
@@ -77,6 +78,7 @@ class Project(object):
         "tagline": "tagline",
         "technology_type": "technology_type",
         "highlights": "highlights",
+        "inventory": "inventory",
     }
 
     def __init__(
@@ -101,6 +103,7 @@ class Project(object):
         tagline=None,
         technology_type=None,
         highlights=None,
+        inventory=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
@@ -128,6 +131,7 @@ class Project(object):
         self._tagline = None
         self._technology_type = None
         self._highlights = None
+        self._inventory = None
         self.discriminator = None
 
         self.id = id
@@ -154,6 +158,7 @@ class Project(object):
             self.tagline = tagline
         self.technology_type = technology_type
         self.highlights = highlights
+        self.inventory = inventory
 
     @property
     def id(self):
@@ -479,7 +484,7 @@ class Project(object):
     def average_price_per_tonne_cents_usd(self):
         """Gets the average_price_per_tonne_cents_usd of this Project.  # noqa: E501
 
-        The average price per tonne in USD cents for carbon offsets supplied by this project.  # noqa: E501
+        DEPRECATED. The average price per tonne in USD cents for carbon offsets supplied by this project.  # noqa: E501
 
         :return: The average_price_per_tonne_cents_usd of this Project.  # noqa: E501
         :rtype: int
@@ -490,7 +495,7 @@ class Project(object):
     def average_price_per_tonne_cents_usd(self, average_price_per_tonne_cents_usd):
         """Sets the average_price_per_tonne_cents_usd of this Project.
 
-        The average price per tonne in USD cents for carbon offsets supplied by this project.  # noqa: E501
+        DEPRECATED. The average price per tonne in USD cents for carbon offsets supplied by this project.  # noqa: E501
 
         :param average_price_per_tonne_cents_usd: The average_price_per_tonne_cents_usd of this Project.  # noqa: E501
         :type: int
@@ -509,7 +514,7 @@ class Project(object):
     def remaining_mass_g(self):
         """Gets the remaining_mass_g of this Project.  # noqa: E501
 
-        The remaining mass in grams available for purchase for this project.  # noqa: E501
+        DEPRECATED. The remaining mass in grams available for purchase for this project.  # noqa: E501
 
         :return: The remaining_mass_g of this Project.  # noqa: E501
         :rtype: int
@@ -520,7 +525,7 @@ class Project(object):
     def remaining_mass_g(self, remaining_mass_g):
         """Sets the remaining_mass_g of this Project.
 
-        The remaining mass in grams available for purchase for this project.  # noqa: E501
+        DEPRECATED. The remaining mass in grams available for purchase for this project.  # noqa: E501
 
         :param remaining_mass_g: The remaining_mass_g of this Project.  # noqa: E501
         :type: int
@@ -659,7 +664,7 @@ class Project(object):
     def highlights(self):
         """Gets the highlights of this Project.  # noqa: E501
 
-        An array of objects containing the highlight's slug, title, and a URL for the corresponding icon.  A highlight's title is a short string that spotlights a characteristic about the project.  # noqa: E501
+        An array of objects containing the highlight's slug, title, and a URL for the corresponding icon. A highlight's title is a short string that spotlights a characteristic about the project.  # noqa: E501
 
         :return: The highlights of this Project.  # noqa: E501
         :rtype: list[Highlight]
@@ -670,7 +675,7 @@ class Project(object):
     def highlights(self, highlights):
         """Sets the highlights of this Project.
 
-        An array of objects containing the highlight's slug, title, and a URL for the corresponding icon.  A highlight's title is a short string that spotlights a characteristic about the project.  # noqa: E501
+        An array of objects containing the highlight's slug, title, and a URL for the corresponding icon. A highlight's title is a short string that spotlights a characteristic about the project.  # noqa: E501
 
         :param highlights: The highlights of this Project.  # noqa: E501
         :type: list[Highlight]
@@ -683,6 +688,35 @@ class Project(object):
             )  # noqa: E501
 
         self._highlights = highlights
+
+    @property
+    def inventory(self):
+        """Gets the inventory of this Project.  # noqa: E501
+
+        An array of objects containing available inventory for a project. Available inventory is grouped by a project's vintage year and returns amount and pricing available for a given vintage year.  # noqa: E501
+
+        :return: The inventory of this Project.  # noqa: E501
+        :rtype: list[Inventory]
+        """
+        return self._inventory
+
+    @inventory.setter
+    def inventory(self, inventory):
+        """Sets the inventory of this Project.
+
+        An array of objects containing available inventory for a project. Available inventory is grouped by a project's vintage year and returns amount and pricing available for a given vintage year.  # noqa: E501
+
+        :param inventory: The inventory of this Project.  # noqa: E501
+        :type: list[Inventory]
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and inventory is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `inventory`, must not be `None`"
+            )  # noqa: E501
+
+        self._inventory = inventory
 
     def to_dict(self):
         """Returns the model properties as a dict"""

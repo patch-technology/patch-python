@@ -56,6 +56,14 @@ class TestProjectsApi(unittest.TestCase):
         self.assertTrue(isinstance(parent_technology_type.name, str))
         self.assertTrue(isinstance(parent_technology_type.slug, str))
 
+        inventory = project.inventory
+        self.assertTrue(isinstance(inventory, list))
+        self.assertTrue(isinstance(inventory[0].vintage_year, int))
+        self.assertTrue(isinstance(inventory[0].amount_available, int))
+        self.assertTrue(isinstance(inventory[0].price, int))
+        self.assertTrue(isinstance(inventory[0].currency, str))
+        self.assertTrue(isinstance(inventory[0].unit, str))
+
     def test_retrieve_projects(self):
         """Test case for retrieve_projects
 

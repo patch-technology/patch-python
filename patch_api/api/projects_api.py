@@ -59,6 +59,10 @@ class ProjectsApi(object):
         "number_of_nights",
         "number_of_rooms",
         "vintage_year",
+        "total_price",
+        "currency",
+        "amount",
+        "unit",
     ]
 
     def __init__(self, api_client=None):
@@ -152,6 +156,10 @@ class ProjectsApi(object):
         all_params.append("number_of_nights")
         all_params.append("number_of_rooms")
         all_params.append("vintage_year")
+        all_params.append("total_price")
+        all_params.append("currency")
+        all_params.append("amount")
+        all_params.append("unit")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -312,6 +320,10 @@ class ProjectsApi(object):
         all_params.append("number_of_nights")
         all_params.append("number_of_rooms")
         all_params.append("vintage_year")
+        all_params.append("total_price")
+        all_params.append("currency")
+        all_params.append("amount")
+        all_params.append("unit")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
