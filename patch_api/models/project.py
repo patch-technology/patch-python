@@ -484,7 +484,7 @@ class Project(object):
     def average_price_per_tonne_cents_usd(self):
         """Gets the average_price_per_tonne_cents_usd of this Project.  # noqa: E501
 
-        The average price per tonne in USD cents for carbon offsets supplied by this project.  # noqa: E501
+        DEPRECATED. The average price per tonne in USD cents for carbon offsets supplied by this project.  # noqa: E501
 
         :return: The average_price_per_tonne_cents_usd of this Project.  # noqa: E501
         :rtype: int
@@ -495,7 +495,7 @@ class Project(object):
     def average_price_per_tonne_cents_usd(self, average_price_per_tonne_cents_usd):
         """Sets the average_price_per_tonne_cents_usd of this Project.
 
-        The average price per tonne in USD cents for carbon offsets supplied by this project.  # noqa: E501
+        DEPRECATED. The average price per tonne in USD cents for carbon offsets supplied by this project.  # noqa: E501
 
         :param average_price_per_tonne_cents_usd: The average_price_per_tonne_cents_usd of this Project.  # noqa: E501
         :type: int
@@ -514,7 +514,7 @@ class Project(object):
     def remaining_mass_g(self):
         """Gets the remaining_mass_g of this Project.  # noqa: E501
 
-        The remaining mass in grams available for purchase for this project.  # noqa: E501
+        DEPRECATED. The remaining mass in grams available for purchase for this project.  # noqa: E501
 
         :return: The remaining_mass_g of this Project.  # noqa: E501
         :rtype: int
@@ -525,7 +525,7 @@ class Project(object):
     def remaining_mass_g(self, remaining_mass_g):
         """Sets the remaining_mass_g of this Project.
 
-        The remaining mass in grams available for purchase for this project.  # noqa: E501
+        DEPRECATED. The remaining mass in grams available for purchase for this project.  # noqa: E501
 
         :param remaining_mass_g: The remaining_mass_g of this Project.  # noqa: E501
         :type: int
