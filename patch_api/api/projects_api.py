@@ -79,6 +79,7 @@ class ProjectsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
+        :param str accept_language:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -104,6 +105,7 @@ class ProjectsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
+        :param str accept_language:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -120,7 +122,7 @@ class ProjectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["id"]  # noqa: E501
+        all_params = ["id", "accept_language"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -193,6 +195,10 @@ class ProjectsApi(object):
                 query_params.append([key, kwargs.get(key)])
 
         header_params = {}
+        if "accept_language" in local_var_params:
+            header_params["Accept-Language"] = local_var_params[
+                "accept_language"
+            ]  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -240,6 +246,7 @@ class ProjectsApi(object):
         :param str country:
         :param str type:
         :param int minimum_available_mass:
+        :param str accept_language:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -268,6 +275,7 @@ class ProjectsApi(object):
         :param str country:
         :param str type:
         :param int minimum_available_mass:
+        :param str accept_language:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -284,7 +292,13 @@ class ProjectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["page", "country", "type", "minimum_available_mass"]  # noqa: E501
+        all_params = [
+            "page",
+            "country",
+            "type",
+            "minimum_available_mass",
+            "accept_language",
+        ]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -360,6 +374,10 @@ class ProjectsApi(object):
                 query_params.append([key, kwargs.get(key)])
 
         header_params = {}
+        if "accept_language" in local_var_params:
+            header_params["Accept-Language"] = local_var_params[
+                "accept_language"
+            ]  # noqa: E501
 
         form_params = []
         local_var_files = {}

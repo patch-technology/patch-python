@@ -317,16 +317,6 @@ class Project(object):
         :param mechanism: The mechanism of this Project.  # noqa: E501
         :type: str
         """
-        allowed_values = ["removal", "avoidance"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and mechanism not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `mechanism` ({0}), must be one of {1}".format(  # noqa: E501
-                    mechanism, allowed_values
-                )
-            )
 
         self._mechanism = mechanism
 

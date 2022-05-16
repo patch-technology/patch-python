@@ -64,6 +64,15 @@ class TestProjectsApi(unittest.TestCase):
         self.assertTrue(isinstance(inventory[0].currency, str))
         self.assertTrue(isinstance(inventory[0].unit, str))
 
+    def test_retrieve_project_language(self):
+        """Test case for retrieve_project
+
+        Retrieves a project  # noqa: E501
+        """
+        project_id = "pro_test_2b67b11a030b66e0a6dd61a56b49079a"
+        project = self.api.retrieve_project(id=project_id, accept_language="fr").data
+        self.assertIn("Projet", project.name)  # French
+
     def test_retrieve_projects(self):
         """Test case for retrieve_projects
 
@@ -123,6 +132,16 @@ class TestProjectsApi(unittest.TestCase):
 
         for project in projects:
             self.assertTrue(project.remaining_mass_g >= minimum_available_mass)
+
+    def test_retrieve_projects_language(self):
+        """Test case for retrieve_projects with a type filter
+
+        Retrieves a list of projects  # noqa: E501
+        """
+        projects = self.api.retrieve_projects(accept_language="fr").data
+
+        for project in projects:
+            self.assertIn("Projet", project.name)  # French
 
 
 if __name__ == "__main__":
