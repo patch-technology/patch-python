@@ -188,6 +188,12 @@ patch.projects.retrieve_projects(country="CA")
 
 # Retrieve a list of projects with at least 100 grams of available offsets
 patch.projects.retrieve_projects(minimum_available_mass=100)
+
+# Retrieve a project / all projects in a different language
+# See http://docs.patch.test:3000/#/internationalization for more information and support
+patch.projects.retrieve_projects(accept_language='fr')
+project_id = 'pro_test_1234'
+patch.projects.retrieve_project(id=project_id, accept_language='fr')
 ```
 
 ## Contributing
