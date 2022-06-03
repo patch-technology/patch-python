@@ -44,6 +44,7 @@ class CreateOrderRequest(object):
         "currency": "str",
         "amount": "int",
         "unit": "str",
+        "issued_to": "V1OrdersIssuedTo",
     }
 
     attribute_map = {
@@ -57,6 +58,7 @@ class CreateOrderRequest(object):
         "currency": "currency",
         "amount": "amount",
         "unit": "unit",
+        "issued_to": "issued_to",
     }
 
     def __init__(
@@ -71,6 +73,7 @@ class CreateOrderRequest(object):
         currency=None,
         amount=None,
         unit=None,
+        issued_to=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """CreateOrderRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -88,6 +91,7 @@ class CreateOrderRequest(object):
         self._currency = None
         self._amount = None
         self._unit = None
+        self._issued_to = None
         self.discriminator = None
 
         self.mass_g = mass_g
@@ -100,6 +104,7 @@ class CreateOrderRequest(object):
         self.currency = currency
         self.amount = amount
         self.unit = unit
+        self.issued_to = issued_to
 
     @property
     def mass_g(self):
@@ -394,6 +399,27 @@ class CreateOrderRequest(object):
             )
 
         self._unit = unit
+
+    @property
+    def issued_to(self):
+        """Gets the issued_to of this CreateOrderRequest.  # noqa: E501
+
+
+        :return: The issued_to of this CreateOrderRequest.  # noqa: E501
+        :rtype: V1OrdersIssuedTo
+        """
+        return self._issued_to
+
+    @issued_to.setter
+    def issued_to(self, issued_to):
+        """Sets the issued_to of this CreateOrderRequest.
+
+
+        :param issued_to: The issued_to of this CreateOrderRequest.  # noqa: E501
+        :type: V1OrdersIssuedTo
+        """
+
+        self._issued_to = issued_to
 
     def to_dict(self):
         """Returns the model properties as a dict"""

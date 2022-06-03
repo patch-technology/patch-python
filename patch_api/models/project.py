@@ -191,7 +191,7 @@ class Project(object):
     def production(self):
         """Gets the production of this Project.  # noqa: E501
 
-        A boolean indicating if this project is a production or test mode project.  # noqa: E501
+        A boolean indicating if this project is a production or demo mode project.  # noqa: E501
 
         :return: The production of this Project.  # noqa: E501
         :rtype: bool
@@ -202,7 +202,7 @@ class Project(object):
     def production(self, production):
         """Sets the production of this Project.
 
-        A boolean indicating if this project is a production or test mode project.  # noqa: E501
+        A boolean indicating if this project is a production or demo mode project.  # noqa: E501
 
         :param production: The production of this Project.  # noqa: E501
         :type: bool

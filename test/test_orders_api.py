@@ -136,6 +136,25 @@ class TestOrdersApi(unittest.TestCase):
         self.assertTrue(99 <= (order.data.price + order.data.patch_fee) <= 101)
         self.assertEqual(order.data.currency, "EUR")
 
+    def test_create_order_with_issued_to(self):
+        """Test case for issued_to on create order"""
+        mass_g = 100
+        issued_to = {"email": "sustainability@companyb.com", "name": "Company B"}
+        order = self.api.create_order(mass_g=mass_g, issued_to=issued_to)
+
+        self.assertTrue(order)
+        self.assertEqual(order.data.mass_g, 100)
+        self.assertEqual(order.data.issued_to.email, "sustainability@companyb.com")
+        self.assertEqual(order.data.issued_to.name, "Company B")
+
+        retrieved_order = self.api.retrieve_order(id=order.data.id)
+        self.assertEqual(order.data.issued_to.email, "sustainability@companyb.com")
+        self.assertEqual(order.data.issued_to.name, "Company B")
+        self.assertEqual(
+            retrieved_order.data.issued_to.email, "sustainability@companyb.com"
+        )
+        self.assertEqual(retrieved_order.data.issued_to.name, "Company B")
+
 
 if __name__ == "__main__":
     unittest.main()

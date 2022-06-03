@@ -63,6 +63,7 @@ class OrdersApi(object):
         "currency",
         "amount",
         "unit",
+        "issued_to",
     ]
 
     def __init__(self, api_client=None):
@@ -160,6 +161,7 @@ class OrdersApi(object):
         all_params.append("currency")
         all_params.append("amount")
         all_params.append("unit")
+        all_params.append("issued_to")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -320,6 +322,7 @@ class OrdersApi(object):
         all_params.append("currency")
         all_params.append("amount")
         all_params.append("unit")
+        all_params.append("issued_to")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -407,6 +410,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
+        :param PlaceOrderRequest place_order_request:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -432,6 +436,7 @@ class OrdersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str id: (required)
+        :param PlaceOrderRequest place_order_request:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -448,7 +453,7 @@ class OrdersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["id"]  # noqa: E501
+        all_params = ["id", "place_order_request"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -488,6 +493,7 @@ class OrdersApi(object):
         all_params.append("currency")
         all_params.append("amount")
         all_params.append("unit")
+        all_params.append("issued_to")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -526,8 +532,17 @@ class OrdersApi(object):
         local_var_files = {}
 
         body_params = None
+        if "place_order_request" in local_var_params:
+            body_params = local_var_params["place_order_request"]
         # HTTP header `Accept`
         header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
             ["application/json"]
         )  # noqa: E501
 
@@ -646,6 +661,7 @@ class OrdersApi(object):
         all_params.append("currency")
         all_params.append("amount")
         all_params.append("unit")
+        all_params.append("issued_to")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -815,6 +831,7 @@ class OrdersApi(object):
         all_params.append("currency")
         all_params.append("amount")
         all_params.append("unit")
+        all_params.append("issued_to")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

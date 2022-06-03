@@ -108,7 +108,7 @@ class Estimate(object):
     def production(self):
         """Gets the production of this Estimate.  # noqa: E501
 
-        A boolean indicating if this estimate is a production or test mode estimate.  # noqa: E501
+        A boolean indicating if this estimate is a production or demo mode estimate.  # noqa: E501
 
         :return: The production of this Estimate.  # noqa: E501
         :rtype: bool
@@ -119,7 +119,7 @@ class Estimate(object):
     def production(self, production):
         """Sets the production of this Estimate.
 
-        A boolean indicating if this estimate is a production or test mode estimate.  # noqa: E501
+        A boolean indicating if this estimate is a production or demo mode estimate.  # noqa: E501
 
         :param production: The production of this Estimate.  # noqa: E501
         :type: bool
