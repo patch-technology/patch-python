@@ -51,6 +51,7 @@ class Order(object):
         "registry_url": "str",
         "metadata": "object",
         "inventory": "list[OrderInventory]",
+        "issued_to": "IssuedTo",
     }
 
     attribute_map = {
@@ -71,6 +72,7 @@ class Order(object):
         "registry_url": "registry_url",
         "metadata": "metadata",
         "inventory": "inventory",
+        "issued_to": "issued_to",
     }
 
     def __init__(
@@ -92,6 +94,7 @@ class Order(object):
         registry_url=None,
         metadata=None,
         inventory=None,
+        issued_to=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """Order - a model defined in OpenAPI"""  # noqa: E501
@@ -116,6 +119,7 @@ class Order(object):
         self._registry_url = None
         self._metadata = None
         self._inventory = None
+        self._issued_to = None
         self.discriminator = None
 
         self.id = id
@@ -139,6 +143,8 @@ class Order(object):
         self.metadata = metadata
         if inventory is not None:
             self.inventory = inventory
+        if issued_to is not None:
+            self.issued_to = issued_to
 
     @property
     def id(self):
@@ -239,7 +245,7 @@ class Order(object):
     def production(self):
         """Gets the production of this Order.  # noqa: E501
 
-        A boolean indicating if this order is a production or test mode order.  # noqa: E501
+        A boolean indicating if this order is a production or demo mode order.  # noqa: E501
 
         :return: The production of this Order.  # noqa: E501
         :rtype: bool
@@ -250,7 +256,7 @@ class Order(object):
     def production(self, production):
         """Sets the production of this Order.
 
-        A boolean indicating if this order is a production or test mode order.  # noqa: E501
+        A boolean indicating if this order is a production or demo mode order.  # noqa: E501
 
         :param production: The production of this Order.  # noqa: E501
         :type: bool
@@ -653,6 +659,27 @@ class Order(object):
         """
 
         self._inventory = inventory
+
+    @property
+    def issued_to(self):
+        """Gets the issued_to of this Order.  # noqa: E501
+
+
+        :return: The issued_to of this Order.  # noqa: E501
+        :rtype: IssuedTo
+        """
+        return self._issued_to
+
+    @issued_to.setter
+    def issued_to(self, issued_to):
+        """Sets the issued_to of this Order.
+
+
+        :param issued_to: The issued_to of this Order.  # noqa: E501
+        :type: IssuedTo
+        """
+
+        self._issued_to = issued_to
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -39,6 +39,7 @@ from patch_api.models.estimate_list_response import EstimateListResponse
 from patch_api.models.estimate_response import EstimateResponse
 from patch_api.models.highlight import Highlight
 from patch_api.models.inventory import Inventory
+from patch_api.models.issued_to import IssuedTo
 from patch_api.models.meta_index_object import MetaIndexObject
 from patch_api.models.order import Order
 from patch_api.models.order_inventory import OrderInventory
@@ -47,6 +48,7 @@ from patch_api.models.order_list_response import OrderListResponse
 from patch_api.models.order_response import OrderResponse
 from patch_api.models.parent_technology_type import ParentTechnologyType
 from patch_api.models.photo import Photo
+from patch_api.models.place_order_request import PlaceOrderRequest
 from patch_api.models.project import Project
 from patch_api.models.project_list_response import ProjectListResponse
 from patch_api.models.project_response import ProjectResponse
@@ -54,3 +56,4 @@ from patch_api.models.sdg import Sdg
 from patch_api.models.standard import Standard
 from patch_api.models.technology_type import TechnologyType
 from patch_api.models.technology_type_list_response import TechnologyTypeListResponse
+from patch_api.models.v1_orders_issued_to import V1OrdersIssuedTo

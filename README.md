@@ -82,8 +82,16 @@ project_id = 'pro_test_1234' # Pass in the project's ID
 patch.orders.create_order(project_id=project_id, amount=amount, unit=unit)
 
 ## Orders also accept a metadata field (optional)
-metadata = {user: "john doe"}
+metadata = {"user": "john doe"}
 patch.orders.create_order(metadata=metadata, amount=amount, unit=unit)
+
+## Orders also accept a metadata field (optional)
+metadata = {"user": "john doe"}
+patch.orders.create_order(metadata=metadata, amount=amount, unit=unit)
+
+## Orders also accept an issued_to field (optional)
+issued_to = {"name": "Company A", "email": "envimpact@companya.com"}
+patch.orders.create_order(issued_to=issued_to, amount=amount, unit=unit)
 
 # Retrieve an order
 order_id = 'ord_test_1234' # Pass in the order's id
@@ -92,6 +100,10 @@ patch.orders.retrieve_order(id=order_id)
 # Place an order
 order_id = 'ord_test_1234' # Pass in the order's id
 patch.orders.place_order(id=order_id)
+
+## Placing an order on behalf of another party
+issued_to = {"name": "Company A", "email": "envimpact@companya.com"}
+patch.orders.place_order(id=order_id, issued_to=issued_to)
 
 # Cancel an order
 order_id = 'ord_test_1234' # Pass in the order's id
