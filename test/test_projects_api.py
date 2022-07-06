@@ -71,7 +71,7 @@ class TestProjectsApi(unittest.TestCase):
         """
         project_id = "pro_test_2b67b11a030b66e0a6dd61a56b49079a"
         project = self.api.retrieve_project(id=project_id, accept_language="fr").data
-        self.assertIn("Projet", project.name)  # French
+        self.assertIn("Démo", project.name)  # French
 
     def test_retrieve_projects(self):
         """Test case for retrieve_projects
@@ -87,13 +87,13 @@ class TestProjectsApi(unittest.TestCase):
             self.assertEqual(project.production, False)
             self.assertGreater(project.average_price_per_tonne_cents_usd, 0)
             self.assertGreater(project.remaining_mass_g, 0)
-            self.assertEqual(project.standard, None)
+            self.assertIsInstance(project.standard, object)
             self.assertIsInstance(project.name, str)
             self.assertTrue(project.description)
             self.assertIsInstance(project.country, str)
             self.assertIsInstance(project.type, str)
             self.assertIsInstance(project.developer, str)
-            self.assertTrue(isinstance(project.photos, list))
+            self.assertIsInstance(project.photos, list)
 
     def test_retrieve_biomass_projects(self):
         """Test case for retrieve_projects with a type filter
@@ -141,7 +141,7 @@ class TestProjectsApi(unittest.TestCase):
         projects = self.api.retrieve_projects(accept_language="fr").data
 
         for project in projects:
-            self.assertIn("Projet", project.name)  # French
+            self.assertIn("Démo", project.name)  # French
 
 
 if __name__ == "__main__":
