@@ -201,8 +201,7 @@ class TestEstimatesApi(unittest.TestCase):
         Create an estimate based on distance_m  # noqa: E501
         """
         estimate = self.api.create_air_shipping_estimate(
-            distance_m=292_630,
-            freight_mass_g=24_091
+            distance_m=292_630, freight_mass_g=24_091
         )
         self.assertEqual(estimate.data.type, "shipping")
         self.assertGreater(
@@ -215,9 +214,7 @@ class TestEstimatesApi(unittest.TestCase):
         Create an estimate based on airport iata values  # noqa: E501
         """
         estimate = self.api.create_air_shipping_estimate(
-            destination_iata="JFK",
-            freight_mass_g=19_158,
-            origin_iata="ATL"
+            destination_iata="JFK", freight_mass_g=19_158, origin_iata="ATL"
         )
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping")
@@ -234,7 +231,7 @@ class TestEstimatesApi(unittest.TestCase):
             create_order=True,
             destination_iata="JFK",
             freight_mass_g=18_092,
-            origin_iata="ATL"
+            origin_iata="ATL",
         )
         self.assertGreater(estimate.data.order.amount, 2_000)
         self.assertEqual(estimate.data.type, "shipping")
@@ -248,8 +245,7 @@ class TestEstimatesApi(unittest.TestCase):
         Create an estimate based on distance_m  # noqa: E501
         """
         estimate = self.api.create_rail_shipping_estimate(
-            distance_m=1_231_994,
-            freight_mass_g=23_845
+            distance_m=1_231_994, freight_mass_g=23_845
         )
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping")
@@ -267,7 +263,7 @@ class TestEstimatesApi(unittest.TestCase):
             destination_postal_code="90210",
             freight_mass_g=18092,
             origin_country_code="US",
-            origin_postal_code="97209"
+            origin_postal_code="97209",
         )
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping")
@@ -281,9 +277,7 @@ class TestEstimatesApi(unittest.TestCase):
         Create an estimate based on locode values  # noqa: E501
         """
         estimate = self.api.create_rail_shipping_estimate(
-            destination_locode="USSD2",
-            freight_mass_g=18092,
-            origin_locode="USSEA"
+            destination_locode="USSD2", freight_mass_g=18092, origin_locode="USSEA"
         )
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping")
@@ -300,7 +294,7 @@ class TestEstimatesApi(unittest.TestCase):
             create_order=True,
             destination_locode="USSD2",
             freight_mass_g=19_217,
-            origin_locode="USSEA"
+            origin_locode="USSEA",
         )
         self.assertGreater(estimate.data.order.amount, 900)
         self.assertEqual(estimate.data.type, "shipping")
@@ -314,8 +308,7 @@ class TestEstimatesApi(unittest.TestCase):
         Create an estimate based on distance_m  # noqa: E501
         """
         estimate = self.api.create_road_shipping_estimate(
-            distance_m=1_300_167,
-            freight_mass_g=20_738
+            distance_m=1_300_167, freight_mass_g=20_738
         )
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping")
@@ -333,7 +326,7 @@ class TestEstimatesApi(unittest.TestCase):
             destination_postal_code="90210",
             freight_mass_g=19_166,
             origin_country_code="US",
-            origin_postal_code="97209"
+            origin_postal_code="97209",
         )
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping")
@@ -347,9 +340,7 @@ class TestEstimatesApi(unittest.TestCase):
         Create an estimate based on locode values  # noqa: E501
         """
         estimate = self.api.create_road_shipping_estimate(
-            destination_locode="USSD2",
-            freight_mass_g=16_907,
-            origin_locode="USSEA"
+            destination_locode="USSD2", freight_mass_g=16_907, origin_locode="USSEA"
         )
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping")
@@ -366,7 +357,7 @@ class TestEstimatesApi(unittest.TestCase):
             create_order=True,
             destination_locode="USSD2",
             freight_mass_g=21_933,
-            origin_locode="USSEA"
+            origin_locode="USSEA",
         )
         self.assertGreater(estimate.data.order.amount, 1_000)
         self.assertEqual(estimate.data.type, "shipping")
@@ -380,8 +371,7 @@ class TestEstimatesApi(unittest.TestCase):
         Create an estimate based on distance_m  # noqa: E501
         """
         estimate = self.api.create_sea_shipping_estimate(
-            distance_m=1_109_118,
-            freight_mass_g=20_197
+            distance_m=1_109_118, freight_mass_g=20_197
         )
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping")
@@ -399,7 +389,7 @@ class TestEstimatesApi(unittest.TestCase):
             destination_postal_code="90210",
             freight_mass_g=26_906,
             origin_country_code="US",
-            origin_postal_code="97209"
+            origin_postal_code="97209",
         )
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping")
@@ -413,9 +403,7 @@ class TestEstimatesApi(unittest.TestCase):
         Create an estimate based on locode values  # noqa: E501
         """
         estimate = self.api.create_sea_shipping_estimate(
-            destination_locode="USSD2",
-            freight_mass_g=17_311,
-            origin_locode="USSEA"
+            destination_locode="USSD2", freight_mass_g=17_311, origin_locode="USSEA"
         )
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping")
@@ -432,13 +420,14 @@ class TestEstimatesApi(unittest.TestCase):
             create_order=True,
             destination_locode="USSD2",
             freight_mass_g=22_210,
-            origin_locode="USSEA"
+            origin_locode="USSEA",
         )
         self.assertGreater(estimate.data.order.amount, 1_000)
         self.assertEqual(estimate.data.type, "shipping")
         self.assertGreater(
             estimate.data.mass_g, 800
         )  # not setting an exact value since the mock values returned are randomized
+
 
 if __name__ == "__main__":
     unittest.main()
