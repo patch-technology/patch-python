@@ -195,6 +195,250 @@ class TestEstimatesApi(unittest.TestCase):
             estimate.data.mass_g, 15_000
         )  # not setting an exact value since this is changing daily
 
+    def test_create_air_shipping_estimate_distance_m(self):
+        """Test case for create_air_shipping_estimate
+
+        Create an estimate based on distance_m  # noqa: E501
+        """
+        estimate = self.api.create_air_shipping_estimate(
+            distance_m=292_630,
+            freight_mass_g=24_091
+        )
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 5_000
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_air_shipping_estimate_airport_iatas(self):
+        """Test case for create_air_shipping_estimate
+
+        Create an estimate based on airport iata values  # noqa: E501
+        """
+        estimate = self.api.create_air_shipping_estimate(
+            destination_iata="JFK",
+            freight_mass_g=19_158,
+            origin_iata="ATL"
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 10_000
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_air_shipping_estimate_create_order(self):
+        """Test case for create_air_shipping_estimate
+
+        Create an estimate and an order  # noqa: E501
+        """
+        estimate = self.api.create_air_shipping_estimate(
+            create_order=True,
+            destination_iata="JFK",
+            freight_mass_g=18_092,
+            origin_iata="ATL"
+        )
+        self.assertGreater(estimate.data.order.amount, 2_000)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 10_000
+        )  # not setting an exact value since the mock values returned are randomized\
+
+    def test_create_rail_shipping_estimate_distance_m(self):
+        """Test case for create_rail_shipping_estimate
+
+        Create an estimate based on distance_m  # noqa: E501
+        """
+        estimate = self.api.create_rail_shipping_estimate(
+            distance_m=1_231_994,
+            freight_mass_g=23_845
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 400
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_rail_shipping_estimate_addresses(self):
+        """Test case for create_rail_shipping_estimate
+
+        Create an estimate based on locode values  # noqa: E501
+        """
+        estimate = self.api.create_rail_shipping_estimate(
+            destination_country_code="US",
+            destination_postal_code="90210",
+            freight_mass_g=18092,
+            origin_country_code="US",
+            origin_postal_code="97209"
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 300
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_rail_shipping_estimate_locodes(self):
+        """Test case for create_rail_shipping_estimate
+
+        Create an estimate based on locode values  # noqa: E501
+        """
+        estimate = self.api.create_rail_shipping_estimate(
+            destination_locode="USSD2",
+            freight_mass_g=18092,
+            origin_locode="USSEA"
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 800
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_rail_shipping_estimate_create_order(self):
+        """Test case for create_rail_shipping_estimate
+
+        Create an estimate and an order  # noqa: E501
+        """
+        estimate = self.api.create_rail_shipping_estimate(
+            create_order=True,
+            destination_locode="USSD2",
+            freight_mass_g=19_217,
+            origin_locode="USSEA"
+        )
+        self.assertGreater(estimate.data.order.amount, 900)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 800
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_road_shipping_estimate_distance_m(self):
+        """Test case for create_road_shipping_estimate
+
+        Create an estimate based on distance_m  # noqa: E501
+        """
+        estimate = self.api.create_road_shipping_estimate(
+            distance_m=1_300_167,
+            freight_mass_g=20_738
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 400
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_road_shipping_estimate_addresses(self):
+        """Test case for create_road_shipping_estimate
+
+        Create an estimate based on locode values  # noqa: E501
+        """
+        estimate = self.api.create_road_shipping_estimate(
+            destination_country_code="US",
+            destination_postal_code="90210",
+            freight_mass_g=19_166,
+            origin_country_code="US",
+            origin_postal_code="97209"
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 600
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_road_shipping_estimate_locodes(self):
+        """Test case for create_road_shipping_estimate
+
+        Create an estimate based on locode values  # noqa: E501
+        """
+        estimate = self.api.create_road_shipping_estimate(
+            destination_locode="USSD2",
+            freight_mass_g=16_907,
+            origin_locode="USSEA"
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 1_000
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_road_shipping_estimate_create_order(self):
+        """Test case for create_road_shipping_estimate
+
+        Create an estimate and an order  # noqa: E501
+        """
+        estimate = self.api.create_road_shipping_estimate(
+            create_order=True,
+            destination_locode="USSD2",
+            freight_mass_g=21_933,
+            origin_locode="USSEA"
+        )
+        self.assertGreater(estimate.data.order.amount, 1_000)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 800
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_sea_shipping_estimate_distance_m(self):
+        """Test case for create_sea_shipping_estimate
+
+        Create an estimate based on distance_m  # noqa: E501
+        """
+        estimate = self.api.create_sea_shipping_estimate(
+            distance_m=1_109_118,
+            freight_mass_g=20_197
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 400
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_sea_shipping_estimate_addresses(self):
+        """Test case for create_sea_shipping_estimate
+
+        Create an estimate based on address values  # noqa: E501
+        """
+        estimate = self.api.create_sea_shipping_estimate(
+            destination_country_code="US",
+            destination_postal_code="90210",
+            freight_mass_g=26_906,
+            origin_country_code="US",
+            origin_postal_code="97209"
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 600
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_sea_shipping_estimate_locodes(self):
+        """Test case for create_sea_shipping_estimate
+
+        Create an estimate based on locode values  # noqa: E501
+        """
+        estimate = self.api.create_sea_shipping_estimate(
+            destination_locode="USSD2",
+            freight_mass_g=17_311,
+            origin_locode="USSEA"
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 1_000
+        )  # not setting an exact value since the mock values returned are randomized
+
+    def test_create_sea_shipping_estimate_create_order(self):
+        """Test case for create_sea_shipping_estimate
+
+        Create an estimate and an order  # noqa: E501
+        """
+        estimate = self.api.create_sea_shipping_estimate(
+            create_order=True,
+            destination_locode="USSD2",
+            freight_mass_g=22_210,
+            origin_locode="USSEA"
+        )
+        self.assertGreater(estimate.data.order.amount, 1_000)
+        self.assertEqual(estimate.data.type, "shipping")
+        self.assertGreater(
+            estimate.data.mass_g, 800
+        )  # not setting an exact value since the mock values returned are randomized
 
 if __name__ == "__main__":
     unittest.main()

@@ -298,6 +298,7 @@ class Order(object):
             )  # noqa: E501
         allowed_values = [
             "draft",
+            "reserved",
             "placed",
             "processing",
             "complete",
