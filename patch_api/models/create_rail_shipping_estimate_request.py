@@ -256,7 +256,7 @@ class CreateRailShippingEstimateRequest(object):
         :param fuel_type: The fuel_type of this CreateRailShippingEstimateRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = [None, "DEFAULT", "DIESEL", "ELEC"]  # noqa: E501
+        allowed_values = [None, "default", "diesel", "elec"]  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
             and fuel_type not in allowed_values

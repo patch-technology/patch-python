@@ -34,9 +34,9 @@ class CreateAirShippingEstimateRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "destination_iata": "str",
-        "origin_iata": "str",
-        "aircraft_iata": "str",
+        "destination_airport": "str",
+        "origin_airport": "str",
+        "aircraft_code": "str",
         "aircraft_type": "str",
         "freight_mass_g": "int",
         "distance_m": "int",
@@ -46,9 +46,9 @@ class CreateAirShippingEstimateRequest(object):
     }
 
     attribute_map = {
-        "destination_iata": "destination_iata",
-        "origin_iata": "origin_iata",
-        "aircraft_iata": "aircraft_iata",
+        "destination_airport": "destination_airport",
+        "origin_airport": "origin_airport",
+        "aircraft_code": "aircraft_code",
         "aircraft_type": "aircraft_type",
         "freight_mass_g": "freight_mass_g",
         "distance_m": "distance_m",
@@ -59,10 +59,10 @@ class CreateAirShippingEstimateRequest(object):
 
     def __init__(
         self,
-        destination_iata=None,
-        origin_iata=None,
-        aircraft_iata=None,
-        aircraft_type="UNKNOWN",
+        destination_airport=None,
+        origin_airport=None,
+        aircraft_code=None,
+        aircraft_type="unknown",
         freight_mass_g=None,
         distance_m=None,
         emissions_scope="wtw",
@@ -75,9 +75,9 @@ class CreateAirShippingEstimateRequest(object):
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._destination_iata = None
-        self._origin_iata = None
-        self._aircraft_iata = None
+        self._destination_airport = None
+        self._origin_airport = None
+        self._aircraft_code = None
         self._aircraft_type = None
         self._freight_mass_g = None
         self._distance_m = None
@@ -86,9 +86,9 @@ class CreateAirShippingEstimateRequest(object):
         self._create_order = None
         self.discriminator = None
 
-        self.destination_iata = destination_iata
-        self.origin_iata = origin_iata
-        self.aircraft_iata = aircraft_iata
+        self.destination_airport = destination_airport
+        self.origin_airport = origin_airport
+        self.aircraft_code = aircraft_code
         self.aircraft_type = aircraft_type
         if freight_mass_g is not None:
             self.freight_mass_g = freight_mass_g
@@ -98,67 +98,67 @@ class CreateAirShippingEstimateRequest(object):
         self.create_order = create_order
 
     @property
-    def destination_iata(self):
-        """Gets the destination_iata of this CreateAirShippingEstimateRequest.  # noqa: E501
+    def destination_airport(self):
+        """Gets the destination_airport of this CreateAirShippingEstimateRequest.  # noqa: E501
 
 
-        :return: The destination_iata of this CreateAirShippingEstimateRequest.  # noqa: E501
+        :return: The destination_airport of this CreateAirShippingEstimateRequest.  # noqa: E501
         :rtype: str
         """
-        return self._destination_iata
+        return self._destination_airport
 
-    @destination_iata.setter
-    def destination_iata(self, destination_iata):
-        """Sets the destination_iata of this CreateAirShippingEstimateRequest.
+    @destination_airport.setter
+    def destination_airport(self, destination_airport):
+        """Sets the destination_airport of this CreateAirShippingEstimateRequest.
 
 
-        :param destination_iata: The destination_iata of this CreateAirShippingEstimateRequest.  # noqa: E501
+        :param destination_airport: The destination_airport of this CreateAirShippingEstimateRequest.  # noqa: E501
         :type: str
         """
 
-        self._destination_iata = destination_iata
+        self._destination_airport = destination_airport
 
     @property
-    def origin_iata(self):
-        """Gets the origin_iata of this CreateAirShippingEstimateRequest.  # noqa: E501
+    def origin_airport(self):
+        """Gets the origin_airport of this CreateAirShippingEstimateRequest.  # noqa: E501
 
 
-        :return: The origin_iata of this CreateAirShippingEstimateRequest.  # noqa: E501
+        :return: The origin_airport of this CreateAirShippingEstimateRequest.  # noqa: E501
         :rtype: str
         """
-        return self._origin_iata
+        return self._origin_airport
 
-    @origin_iata.setter
-    def origin_iata(self, origin_iata):
-        """Sets the origin_iata of this CreateAirShippingEstimateRequest.
+    @origin_airport.setter
+    def origin_airport(self, origin_airport):
+        """Sets the origin_airport of this CreateAirShippingEstimateRequest.
 
 
-        :param origin_iata: The origin_iata of this CreateAirShippingEstimateRequest.  # noqa: E501
+        :param origin_airport: The origin_airport of this CreateAirShippingEstimateRequest.  # noqa: E501
         :type: str
         """
 
-        self._origin_iata = origin_iata
+        self._origin_airport = origin_airport
 
     @property
-    def aircraft_iata(self):
-        """Gets the aircraft_iata of this CreateAirShippingEstimateRequest.  # noqa: E501
+    def aircraft_code(self):
+        """Gets the aircraft_code of this CreateAirShippingEstimateRequest.  # noqa: E501
 
 
-        :return: The aircraft_iata of this CreateAirShippingEstimateRequest.  # noqa: E501
+        :return: The aircraft_code of this CreateAirShippingEstimateRequest.  # noqa: E501
         :rtype: str
         """
-        return self._aircraft_iata
+        return self._aircraft_code
 
-    @aircraft_iata.setter
-    def aircraft_iata(self, aircraft_iata):
-        """Sets the aircraft_iata of this CreateAirShippingEstimateRequest.
+    @aircraft_code.setter
+    def aircraft_code(self, aircraft_code):
+        """Sets the aircraft_code of this CreateAirShippingEstimateRequest.
 
 
-        :param aircraft_iata: The aircraft_iata of this CreateAirShippingEstimateRequest.  # noqa: E501
+        :param aircraft_code: The aircraft_code of this CreateAirShippingEstimateRequest.  # noqa: E501
         :type: str
         """
 
-        self._aircraft_iata = aircraft_iata
+        self._aircraft_code = aircraft_code
 
     @property
     def aircraft_type(self):
@@ -178,7 +178,7 @@ class CreateAirShippingEstimateRequest(object):
         :param aircraft_type: The aircraft_type of this CreateAirShippingEstimateRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = [None, "PASSENGER", "CARGO", "UNKNOWN"]  # noqa: E501
+        allowed_values = [None, "passenger", "cargo", "unknown"]  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
             and aircraft_type not in allowed_values

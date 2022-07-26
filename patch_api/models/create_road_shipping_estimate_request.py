@@ -79,12 +79,12 @@ class CreateRoadShippingEstimateRequest(object):
         origin_country_code=None,
         origin_locode=None,
         origin_postal_code=None,
-        cargo_type="AVERAGE_MIXED",
+        cargo_type="average_mixed",
         container_size_code=None,
         distance_m=None,
         emissions_scope="wtw",
         freight_mass_g=None,
-        fuel_type="DIESEL",
+        fuel_type="diesel",
         number_of_containers=None,
         truck_weight_t=None,
         project_id=None,
@@ -278,7 +278,7 @@ class CreateRoadShippingEstimateRequest(object):
         :param cargo_type: The cargo_type of this CreateRoadShippingEstimateRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = ["AVERAGE_MIXED", "CONTAINER"]  # noqa: E501
+        allowed_values = ["average_mixed", "container"]  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
             and cargo_type not in allowed_values
@@ -445,7 +445,7 @@ class CreateRoadShippingEstimateRequest(object):
         :param fuel_type: The fuel_type of this CreateRoadShippingEstimateRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = [None, "CNG", "DIESEL", "LNG", "PETROL"]  # noqa: E501
+        allowed_values = [None, "cng", "diesel", "lng", "petrol"]  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
             and fuel_type not in allowed_values

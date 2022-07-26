@@ -133,14 +133,14 @@ class EstimatesApi(object):
         all_params.append("_preload_content")
         all_params.append("_request_timeout")
         all_params.append("_return_http_data_only")
-        all_params.append("aircraft_iata")
+        all_params.append("aircraft_code")
         all_params.append("aircraft_type")
         all_params.append("create_order")
-        all_params.append("destination_iata")
+        all_params.append("destination_airport")
         all_params.append("distance_m")
         all_params.append("emissions_scope")
         all_params.append("freight_mass_g")
-        all_params.append("origin_iata")
+        all_params.append("origin_airport")
         all_params.append("project_id")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
