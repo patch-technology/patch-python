@@ -195,19 +195,6 @@ class TestEstimatesApi(unittest.TestCase):
             estimate.data.mass_g, 15_000
         )  # not setting an exact value since this is changing daily
 
-    def test_create_air_shipping_estimate_distance_m(self):
-        """Test case for create_air_shipping_estimate
-
-        Create an estimate based on distance_m  # noqa: E501
-        """
-        estimate = self.api.create_air_shipping_estimate(
-            distance_m=292_630, freight_mass_g=24_091
-        )
-        self.assertEqual(estimate.data.type, "shipping_air")
-        self.assertGreater(
-            estimate.data.mass_g, 5_000
-        )  # not setting an exact value since the mock values returned are randomized
-
     def test_create_air_shipping_estimate_airport_iatas(self):
         """Test case for create_air_shipping_estimate
 
@@ -237,20 +224,6 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.type, "shipping_air")
         self.assertGreater(
             estimate.data.mass_g, 10_000
-        )  # not setting an exact value since the mock values returned are randomized\
-
-    def test_create_rail_shipping_estimate_distance_m(self):
-        """Test case for create_rail_shipping_estimate
-
-        Create an estimate based on distance_m  # noqa: E501
-        """
-        estimate = self.api.create_rail_shipping_estimate(
-            distance_m=1_231_994, freight_mass_g=23_845
-        )
-        self.assertEqual(estimate.data.order, None)
-        self.assertEqual(estimate.data.type, "shipping_rail")
-        self.assertGreater(
-            estimate.data.mass_g, 400
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_rail_shipping_estimate_addresses(self):
@@ -302,20 +275,6 @@ class TestEstimatesApi(unittest.TestCase):
             estimate.data.mass_g, 800
         )  # not setting an exact value since the mock values returned are randomized
 
-    def test_create_road_shipping_estimate_distance_m(self):
-        """Test case for create_road_shipping_estimate
-
-        Create an estimate based on distance_m  # noqa: E501
-        """
-        estimate = self.api.create_road_shipping_estimate(
-            distance_m=1_300_167, freight_mass_g=20_738
-        )
-        self.assertEqual(estimate.data.order, None)
-        self.assertEqual(estimate.data.type, "shipping_road")
-        self.assertGreater(
-            estimate.data.mass_g, 400
-        )  # not setting an exact value since the mock values returned are randomized
-
     def test_create_road_shipping_estimate_addresses(self):
         """Test case for create_road_shipping_estimate
 
@@ -363,20 +322,6 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.type, "shipping_road")
         self.assertGreater(
             estimate.data.mass_g, 800
-        )  # not setting an exact value since the mock values returned are randomized
-
-    def test_create_sea_shipping_estimate_distance_m(self):
-        """Test case for create_sea_shipping_estimate
-
-        Create an estimate based on distance_m  # noqa: E501
-        """
-        estimate = self.api.create_sea_shipping_estimate(
-            distance_m=1_109_118, freight_mass_g=20_197
-        )
-        self.assertEqual(estimate.data.order, None)
-        self.assertEqual(estimate.data.type, "shipping_sea")
-        self.assertGreater(
-            estimate.data.mass_g, 400
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_sea_shipping_estimate_addresses(self):

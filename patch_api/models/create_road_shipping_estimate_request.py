@@ -42,7 +42,6 @@ class CreateRoadShippingEstimateRequest(object):
         "origin_postal_code": "str",
         "cargo_type": "str",
         "container_size_code": "str",
-        "distance_m": "int",
         "emissions_scope": "str",
         "freight_mass_g": "int",
         "fuel_type": "str",
@@ -61,7 +60,6 @@ class CreateRoadShippingEstimateRequest(object):
         "origin_postal_code": "origin_postal_code",
         "cargo_type": "cargo_type",
         "container_size_code": "container_size_code",
-        "distance_m": "distance_m",
         "emissions_scope": "emissions_scope",
         "freight_mass_g": "freight_mass_g",
         "fuel_type": "fuel_type",
@@ -81,7 +79,6 @@ class CreateRoadShippingEstimateRequest(object):
         origin_postal_code=None,
         cargo_type="average_mixed",
         container_size_code=None,
-        distance_m=None,
         emissions_scope="wtw",
         freight_mass_g=None,
         fuel_type="diesel",
@@ -104,7 +101,6 @@ class CreateRoadShippingEstimateRequest(object):
         self._origin_postal_code = None
         self._cargo_type = None
         self._container_size_code = None
-        self._distance_m = None
         self._emissions_scope = None
         self._freight_mass_g = None
         self._fuel_type = None
@@ -124,7 +120,6 @@ class CreateRoadShippingEstimateRequest(object):
             self.cargo_type = cargo_type
         if container_size_code is not None:
             self.container_size_code = container_size_code
-        self.distance_m = distance_m
         self.emissions_scope = emissions_scope
         if freight_mass_g is not None:
             self.freight_mass_g = freight_mass_g
@@ -321,43 +316,6 @@ class CreateRoadShippingEstimateRequest(object):
             )
 
         self._container_size_code = container_size_code
-
-    @property
-    def distance_m(self):
-        """Gets the distance_m of this CreateRoadShippingEstimateRequest.  # noqa: E501
-
-
-        :return: The distance_m of this CreateRoadShippingEstimateRequest.  # noqa: E501
-        :rtype: int
-        """
-        return self._distance_m
-
-    @distance_m.setter
-    def distance_m(self, distance_m):
-        """Sets the distance_m of this CreateRoadShippingEstimateRequest.
-
-
-        :param distance_m: The distance_m of this CreateRoadShippingEstimateRequest.  # noqa: E501
-        :type: int
-        """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and distance_m is not None
-            and distance_m > 400000000
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must be a value less than or equal to `400000000`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and distance_m is not None
-            and distance_m < 0
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must be a value greater than or equal to `0`"
-            )  # noqa: E501
-
-        self._distance_m = distance_m
 
     @property
     def emissions_scope(self):

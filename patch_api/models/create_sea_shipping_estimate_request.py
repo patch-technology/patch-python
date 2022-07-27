@@ -41,7 +41,6 @@ class CreateSeaShippingEstimateRequest(object):
         "origin_locode": "str",
         "origin_postal_code": "str",
         "container_size_code": "str",
-        "distance_m": "int",
         "emissions_scope": "str",
         "freight_mass_g": "int",
         "freight_volume_cubic_m": "int",
@@ -59,7 +58,6 @@ class CreateSeaShippingEstimateRequest(object):
         "origin_locode": "origin_locode",
         "origin_postal_code": "origin_postal_code",
         "container_size_code": "container_size_code",
-        "distance_m": "distance_m",
         "emissions_scope": "emissions_scope",
         "freight_mass_g": "freight_mass_g",
         "freight_volume_cubic_m": "freight_volume_cubic_m",
@@ -78,7 +76,6 @@ class CreateSeaShippingEstimateRequest(object):
         origin_locode=None,
         origin_postal_code=None,
         container_size_code=None,
-        distance_m=None,
         emissions_scope="wtw",
         freight_mass_g=None,
         freight_volume_cubic_m=None,
@@ -100,7 +97,6 @@ class CreateSeaShippingEstimateRequest(object):
         self._origin_locode = None
         self._origin_postal_code = None
         self._container_size_code = None
-        self._distance_m = None
         self._emissions_scope = None
         self._freight_mass_g = None
         self._freight_volume_cubic_m = None
@@ -118,7 +114,6 @@ class CreateSeaShippingEstimateRequest(object):
         self.origin_postal_code = origin_postal_code
         if container_size_code is not None:
             self.container_size_code = container_size_code
-        self.distance_m = distance_m
         self.emissions_scope = emissions_scope
         if freight_mass_g is not None:
             self.freight_mass_g = freight_mass_g
@@ -284,43 +279,6 @@ class CreateSeaShippingEstimateRequest(object):
             )
 
         self._container_size_code = container_size_code
-
-    @property
-    def distance_m(self):
-        """Gets the distance_m of this CreateSeaShippingEstimateRequest.  # noqa: E501
-
-
-        :return: The distance_m of this CreateSeaShippingEstimateRequest.  # noqa: E501
-        :rtype: int
-        """
-        return self._distance_m
-
-    @distance_m.setter
-    def distance_m(self, distance_m):
-        """Sets the distance_m of this CreateSeaShippingEstimateRequest.
-
-
-        :param distance_m: The distance_m of this CreateSeaShippingEstimateRequest.  # noqa: E501
-        :type: int
-        """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and distance_m is not None
-            and distance_m > 400000000
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must be a value less than or equal to `400000000`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and distance_m is not None
-            and distance_m < 0
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must be a value greater than or equal to `0`"
-            )  # noqa: E501
-
-        self._distance_m = distance_m
 
     @property
     def emissions_scope(self):

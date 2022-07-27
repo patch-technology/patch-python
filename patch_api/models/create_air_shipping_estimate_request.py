@@ -39,7 +39,6 @@ class CreateAirShippingEstimateRequest(object):
         "aircraft_code": "str",
         "aircraft_type": "str",
         "freight_mass_g": "int",
-        "distance_m": "int",
         "emissions_scope": "str",
         "project_id": "str",
         "create_order": "bool",
@@ -51,7 +50,6 @@ class CreateAirShippingEstimateRequest(object):
         "aircraft_code": "aircraft_code",
         "aircraft_type": "aircraft_type",
         "freight_mass_g": "freight_mass_g",
-        "distance_m": "distance_m",
         "emissions_scope": "emissions_scope",
         "project_id": "project_id",
         "create_order": "create_order",
@@ -64,7 +62,6 @@ class CreateAirShippingEstimateRequest(object):
         aircraft_code=None,
         aircraft_type="unknown",
         freight_mass_g=None,
-        distance_m=None,
         emissions_scope="wtw",
         project_id=None,
         create_order=False,
@@ -80,7 +77,6 @@ class CreateAirShippingEstimateRequest(object):
         self._aircraft_code = None
         self._aircraft_type = None
         self._freight_mass_g = None
-        self._distance_m = None
         self._emissions_scope = None
         self._project_id = None
         self._create_order = None
@@ -92,7 +88,6 @@ class CreateAirShippingEstimateRequest(object):
         self.aircraft_type = aircraft_type
         if freight_mass_g is not None:
             self.freight_mass_g = freight_mass_g
-        self.distance_m = distance_m
         self.emissions_scope = emissions_scope
         self.project_id = project_id
         self.create_order = create_order
@@ -227,43 +222,6 @@ class CreateAirShippingEstimateRequest(object):
             )  # noqa: E501
 
         self._freight_mass_g = freight_mass_g
-
-    @property
-    def distance_m(self):
-        """Gets the distance_m of this CreateAirShippingEstimateRequest.  # noqa: E501
-
-
-        :return: The distance_m of this CreateAirShippingEstimateRequest.  # noqa: E501
-        :rtype: int
-        """
-        return self._distance_m
-
-    @distance_m.setter
-    def distance_m(self, distance_m):
-        """Sets the distance_m of this CreateAirShippingEstimateRequest.
-
-
-        :param distance_m: The distance_m of this CreateAirShippingEstimateRequest.  # noqa: E501
-        :type: int
-        """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and distance_m is not None
-            and distance_m > 400000000
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must be a value less than or equal to `400000000`"
-            )  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and distance_m is not None
-            and distance_m < 0
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `distance_m`, must be a value greater than or equal to `0`"
-            )  # noqa: E501
-
-        self._distance_m = distance_m
 
     @property
     def emissions_scope(self):
