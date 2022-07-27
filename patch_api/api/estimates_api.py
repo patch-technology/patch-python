@@ -157,6 +157,7 @@ class EstimatesApi(object):
         all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
+        all_params.append("freight_mass_g")
         all_params.append("aircraft_code")
         all_params.append("cabin_class")
         all_params.append("passenger_count")
