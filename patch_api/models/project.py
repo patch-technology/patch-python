@@ -301,7 +301,7 @@ class Project(object):
     def mechanism(self):
         """Gets the mechanism of this Project.  # noqa: E501
 
-        The mechanism of the project. Either removal or avoidance.  # noqa: E501
+        The mechanism of the project. One of: removal, avoidance, avoidance_and_removal.  # noqa: E501
 
         :return: The mechanism of this Project.  # noqa: E501
         :rtype: str
@@ -312,7 +312,7 @@ class Project(object):
     def mechanism(self, mechanism):
         """Sets the mechanism of this Project.
 
-        The mechanism of the project. Either removal or avoidance.  # noqa: E501
+        The mechanism of the project. One of: removal, avoidance, avoidance_and_removal.  # noqa: E501
 
         :param mechanism: The mechanism of this Project.  # noqa: E501
         :type: str

@@ -16,6 +16,9 @@ from __future__ import absolute_import
 
 # import models into model package
 from patch_api.models.allocation import Allocation
+from patch_api.models.create_air_shipping_estimate_request import (
+    CreateAirShippingEstimateRequest,
+)
 from patch_api.models.create_bitcoin_estimate_request import (
     CreateBitcoinEstimateRequest,
 )
@@ -26,6 +29,15 @@ from patch_api.models.create_flight_estimate_request import CreateFlightEstimate
 from patch_api.models.create_hotel_estimate_request import CreateHotelEstimateRequest
 from patch_api.models.create_mass_estimate_request import CreateMassEstimateRequest
 from patch_api.models.create_order_request import CreateOrderRequest
+from patch_api.models.create_rail_shipping_estimate_request import (
+    CreateRailShippingEstimateRequest,
+)
+from patch_api.models.create_road_shipping_estimate_request import (
+    CreateRoadShippingEstimateRequest,
+)
+from patch_api.models.create_sea_shipping_estimate_request import (
+    CreateSeaShippingEstimateRequest,
+)
 from patch_api.models.create_shipping_estimate_request import (
     CreateShippingEstimateRequest,
 )

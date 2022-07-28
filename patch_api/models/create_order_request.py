@@ -232,7 +232,7 @@ class CreateOrderRequest(object):
         :param state: The state of this CreateOrderRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = [None, "draft", "placed"]  # noqa: E501
+        allowed_values = [None, "draft", "reserved", "placed"]  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
             and state not in allowed_values
