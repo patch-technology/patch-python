@@ -51,7 +51,7 @@ class Order(object):
         "registry_url": "str",
         "metadata": "object",
         "inventory": "list[OrderInventory]",
-        "issued_to": "IssuedTo",
+        "issued_to": "OrderIssuedTo",
     }
 
     attribute_map = {
@@ -667,7 +667,7 @@ class Order(object):
 
 
         :return: The issued_to of this Order.  # noqa: E501
-        :rtype: IssuedTo
+        :rtype: OrderIssuedTo
         """
         return self._issued_to
 
@@ -677,7 +677,7 @@ class Order(object):
 
 
         :param issued_to: The issued_to of this Order.  # noqa: E501
-        :type: IssuedTo
+        :type: OrderIssuedTo
         """
 
         self._issued_to = issued_to
