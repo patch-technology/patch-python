@@ -64,6 +64,21 @@ class ProjectsApi(object):
         "amount",
         "unit",
         "issued_to",
+        "cargo_type",
+        "container_size_code",
+        "destination_country_code",
+        "destination_locode",
+        "destination_postal_code",
+        "emissions_scope",
+        "freight_mass_g",
+        "freight_volume_cubic_m",
+        "fuel_type",
+        "number_of_containers",
+        "origin_country_code",
+        "origin_locode",
+        "origin_postal_code",
+        "truck_weight_t",
+        "vessel_imo",
     ]
 
     def __init__(self, api_client=None):
@@ -164,6 +179,21 @@ class ProjectsApi(object):
         all_params.append("amount")
         all_params.append("unit")
         all_params.append("issued_to")
+        all_params.append("cargo_type")
+        all_params.append("container_size_code")
+        all_params.append("destination_country_code")
+        all_params.append("destination_locode")
+        all_params.append("destination_postal_code")
+        all_params.append("emissions_scope")
+        all_params.append("freight_mass_g")
+        all_params.append("freight_volume_cubic_m")
+        all_params.append("fuel_type")
+        all_params.append("number_of_containers")
+        all_params.append("origin_country_code")
+        all_params.append("origin_locode")
+        all_params.append("origin_postal_code")
+        all_params.append("truck_weight_t")
+        all_params.append("vessel_imo")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -341,6 +371,21 @@ class ProjectsApi(object):
         all_params.append("amount")
         all_params.append("unit")
         all_params.append("issued_to")
+        all_params.append("cargo_type")
+        all_params.append("container_size_code")
+        all_params.append("destination_country_code")
+        all_params.append("destination_locode")
+        all_params.append("destination_postal_code")
+        all_params.append("emissions_scope")
+        all_params.append("freight_mass_g")
+        all_params.append("freight_volume_cubic_m")
+        all_params.append("fuel_type")
+        all_params.append("number_of_containers")
+        all_params.append("origin_country_code")
+        all_params.append("origin_locode")
+        all_params.append("origin_postal_code")
+        all_params.append("truck_weight_t")
+        all_params.append("vessel_imo")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
