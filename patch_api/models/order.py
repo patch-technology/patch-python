@@ -51,7 +51,7 @@ class Order(object):
         "registry_url": "str",
         "metadata": "object",
         "inventory": "list[OrderInventory]",
-        "issued_to": "IssuedTo",
+        "issued_to": "OrderIssuedTo",
     }
 
     attribute_map = {
@@ -665,9 +665,10 @@ class Order(object):
     def issued_to(self):
         """Gets the issued_to of this Order.  # noqa: E501
 
+        An object containing the name & email of the party the inventory will be issued to.  # noqa: E501
 
         :return: The issued_to of this Order.  # noqa: E501
-        :rtype: IssuedTo
+        :rtype: OrderIssuedTo
         """
         return self._issued_to
 
@@ -675,9 +676,10 @@ class Order(object):
     def issued_to(self, issued_to):
         """Sets the issued_to of this Order.
 
+        An object containing the name & email of the party the inventory will be issued to.  # noqa: E501
 
         :param issued_to: The issued_to of this Order.  # noqa: E501
-        :type: IssuedTo
+        :type: OrderIssuedTo
         """
 
         self._issued_to = issued_to
