@@ -29,47 +29,41 @@ class EstimatesApi(object):
     """
 
     ALLOWED_QUERY_PARAMS = [
-        "aircraft_code",
-        "amount",
-        "average_daily_balance_btc_sats",
-        "average_daily_balance_eth_gwei",
-        "cabin_class",
-        "city",
-        "country_code",
-        "create_order",
-        "currency",
-        "destination_airport",
-        "destination_country_code",
-        "destination_locode",
-        "destination_postal_code",
-        "distance_m",
-        "freight_mass_g",
-        "gas_used",
-        "issued_to" "make",
         "mass_g",
-        "model",
-        "number_of_nights",
-        "number_of_rooms",
-        "origin_airport",
-        "origin_country_code",
-        "origin_locode",
-        "origin_postal_code",
-        "package_mass_g",
-        "page",
-        "passenger_count",
-        "project_id",
-        "region",
-        "star_rating",
-        "state",
-        "timestamp",
-        "total_price",
         "total_price_cents_usd",
+        "project_id",
+        "page",
+        "distance_m",
+        "transportation_method",
+        "package_mass_g",
+        "create_order",
+        "model",
+        "make",
+        "year",
         "transaction_value_btc_sats",
         "transaction_value_eth_gwei",
-        "transportation_method",
-        "unit",
+        "gas_used",
+        "average_daily_balance_btc_sats",
+        "average_daily_balance_eth_gwei",
+        "timestamp",
+        "origin_aiport",
+        "destination_aiport",
+        "aircraft_code",
+        "cabin_class",
+        "passenger_count",
+        "state",
+        "country_code",
+        "city",
+        "region",
+        "star_rating",
+        "number_of_nights",
+        "number_of_rooms",
         "vintage_year",
-        "year",
+        "total_price",
+        "currency",
+        "amount",
+        "unit",
+        "issued_to",
     ]
 
     def __init__(self, api_client=None):
@@ -142,6 +136,7 @@ class EstimatesApi(object):
         all_params.append("total_price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
         all_params.append("transportation_method")
         all_params.append("package_mass_g")
         all_params.append("create_order")
@@ -157,7 +152,6 @@ class EstimatesApi(object):
         all_params.append("timestamp")
         all_params.append("origin_airport")
         all_params.append("destination_airport")
-        all_params.append("freight_mass_g")
         all_params.append("aircraft_code")
         all_params.append("cabin_class")
         all_params.append("passenger_count")
@@ -1192,6 +1186,7 @@ class EstimatesApi(object):
         all_params.append("total_price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
         all_params.append("transportation_method")
         all_params.append("package_mass_g")
         all_params.append("create_order")
@@ -1205,13 +1200,8 @@ class EstimatesApi(object):
         all_params.append("average_daily_balance_btc_sats")
         all_params.append("average_daily_balance_eth_gwei")
         all_params.append("timestamp")
-        all_params.append("destination_country_code")
-        all_params.append("destination_locode")
-        all_params.append("destination_postal_code")
-        all_params.append("freight_mass_g")
-        all_params.append("origin_country_code")
-        all_params.append("origin_locode")
-        all_params.append("origin_postal_code")
+        all_params.append("origin_airport")
+        all_params.append("destination_airport")
         all_params.append("aircraft_code")
         all_params.append("cabin_class")
         all_params.append("passenger_count")
@@ -1371,6 +1361,7 @@ class EstimatesApi(object):
         all_params.append("total_price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
         all_params.append("transportation_method")
         all_params.append("package_mass_g")
         all_params.append("create_order")
@@ -1384,13 +1375,8 @@ class EstimatesApi(object):
         all_params.append("average_daily_balance_btc_sats")
         all_params.append("average_daily_balance_eth_gwei")
         all_params.append("timestamp")
-        all_params.append("destination_country_code")
-        all_params.append("destination_locode")
-        all_params.append("destination_postal_code")
-        all_params.append("freight_mass_g")
-        all_params.append("origin_country_code")
-        all_params.append("origin_locode")
-        all_params.append("origin_postal_code")
+        all_params.append("origin_airport")
+        all_params.append("destination_airport")
         all_params.append("aircraft_code")
         all_params.append("cabin_class")
         all_params.append("passenger_count")
@@ -1550,6 +1536,7 @@ class EstimatesApi(object):
         all_params.append("total_price_cents_usd")
         all_params.append("project_id")
         all_params.append("metadata")
+        all_params.append("distance_m")
         all_params.append("transportation_method")
         all_params.append("package_mass_g")
         all_params.append("create_order")
@@ -1563,13 +1550,8 @@ class EstimatesApi(object):
         all_params.append("average_daily_balance_btc_sats")
         all_params.append("average_daily_balance_eth_gwei")
         all_params.append("timestamp")
-        all_params.append("destination_country_code")
-        all_params.append("destination_locode")
-        all_params.append("destination_postal_code")
-        all_params.append("freight_mass_g")
-        all_params.append("origin_country_code")
-        all_params.append("origin_locode")
-        all_params.append("origin_postal_code")
+        all_params.append("origin_airport")
+        all_params.append("destination_airport")
         all_params.append("aircraft_code")
         all_params.append("cabin_class")
         all_params.append("passenger_count")
