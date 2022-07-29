@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "patch-api"
-VERSION = "1.24.0"
+VERSION = "1.24.1"
 # To install the library, run the following
 #
 # python setup.py install

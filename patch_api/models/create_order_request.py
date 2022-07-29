@@ -44,7 +44,7 @@ class CreateOrderRequest(object):
         "currency": "str",
         "amount": "int",
         "unit": "str",
-        "issued_to": "V1OrdersIssuedTo",
+        "issued_to": "OrderIssuedTo",
     }
 
     attribute_map = {
@@ -104,7 +104,8 @@ class CreateOrderRequest(object):
         self.currency = currency
         self.amount = amount
         self.unit = unit
-        self.issued_to = issued_to
+        if issued_to is not None:
+            self.issued_to = issued_to
 
     @property
     def mass_g(self):
@@ -406,7 +407,7 @@ class CreateOrderRequest(object):
 
 
         :return: The issued_to of this CreateOrderRequest.  # noqa: E501
-        :rtype: V1OrdersIssuedTo
+        :rtype: OrderIssuedTo
         """
         return self._issued_to
 
@@ -416,7 +417,7 @@ class CreateOrderRequest(object):
 
 
         :param issued_to: The issued_to of this CreateOrderRequest.  # noqa: E501
-        :type: V1OrdersIssuedTo
+        :type: OrderIssuedTo
         """
 
         self._issued_to = issued_to
