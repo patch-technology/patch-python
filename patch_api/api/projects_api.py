@@ -64,6 +64,21 @@ class ProjectsApi(object):
         "amount",
         "unit",
         "issued_to",
+        "cargo_type",
+        "container_size_code",
+        "destination_country_code",
+        "destination_locode",
+        "destination_postal_code",
+        "emissions_scope",
+        "freight_mass_g",
+        "freight_volume_cubic_m",
+        "fuel_type",
+        "number_of_containers",
+        "origin_country_code",
+        "origin_locode",
+        "origin_postal_code",
+        "truck_weight_t",
+        "vessel_imo",
     ]
 
     def __init__(self, api_client=None):
