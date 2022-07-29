@@ -56,6 +56,7 @@ from patch_api.models.meta_index_object import MetaIndexObject
 from patch_api.models.order import Order
 from patch_api.models.order_inventory import OrderInventory
 from patch_api.models.order_inventory_project import OrderInventoryProject
+from patch_api.models.order_issued_to import OrderIssuedTo
 from patch_api.models.order_list_response import OrderListResponse
 from patch_api.models.order_response import OrderResponse
 from patch_api.models.parent_technology_type import ParentTechnologyType
@@ -68,4 +69,3 @@ from patch_api.models.sdg import Sdg
 from patch_api.models.standard import Standard
 from patch_api.models.technology_type import TechnologyType
 from patch_api.models.technology_type_list_response import TechnologyTypeListResponse
-from patch_api.models.v1_orders_issued_to import V1OrdersIssuedTo

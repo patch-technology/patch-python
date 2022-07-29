@@ -44,7 +44,7 @@ class CreateOrderRequest(object):
         "currency": "str",
         "amount": "int",
         "unit": "str",
-        "issued_to": "V1OrdersIssuedTo",
+        "issued_to": "IssuedTo",
     }
 
     attribute_map = {
@@ -406,7 +406,7 @@ class CreateOrderRequest(object):
 
 
         :return: The issued_to of this CreateOrderRequest.  # noqa: E501
-        :rtype: V1OrdersIssuedTo
+        :rtype: IssuedTo
         """
         return self._issued_to
 
@@ -416,7 +416,7 @@ class CreateOrderRequest(object):
 
 
         :param issued_to: The issued_to of this CreateOrderRequest.  # noqa: E501
-        :type: V1OrdersIssuedTo
+        :type: IssuedTo
         """
 
         self._issued_to = issued_to

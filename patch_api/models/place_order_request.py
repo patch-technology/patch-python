@@ -33,7 +33,7 @@ class PlaceOrderRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"issued_to": "V1OrdersIssuedTo"}
+    openapi_types = {"issued_to": "IssuedTo"}
 
     attribute_map = {"issued_to": "issued_to"}
 
@@ -54,7 +54,7 @@ class PlaceOrderRequest(object):
 
 
         :return: The issued_to of this PlaceOrderRequest.  # noqa: E501
-        :rtype: V1OrdersIssuedTo
+        :rtype: IssuedTo
         """
         return self._issued_to
 
@@ -64,7 +64,7 @@ class PlaceOrderRequest(object):
 
 
         :param issued_to: The issued_to of this PlaceOrderRequest.  # noqa: E501
-        :type: V1OrdersIssuedTo
+        :type: IssuedTo
         """
 
         self._issued_to = issued_to
