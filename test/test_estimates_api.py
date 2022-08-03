@@ -206,7 +206,7 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping_air")
         self.assertGreater(
-            estimate.data.mass_g, 10_000
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_air_shipping_estimate_create_order(self):
@@ -223,7 +223,7 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertGreater(estimate.data.order.amount, 2_000)
         self.assertEqual(estimate.data.type, "shipping_air")
         self.assertGreater(
-            estimate.data.mass_g, 10_000
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_rail_shipping_estimate_addresses(self):
@@ -241,7 +241,7 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping_rail")
         self.assertGreater(
-            estimate.data.mass_g, 300
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_rail_shipping_estimate_locodes(self):
@@ -255,7 +255,7 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping_rail")
         self.assertGreater(
-            estimate.data.mass_g, 800
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_rail_shipping_estimate_create_order(self):
@@ -269,10 +269,10 @@ class TestEstimatesApi(unittest.TestCase):
             freight_mass_g=19_217,
             origin_locode="USSEA",
         )
-        self.assertGreater(estimate.data.order.amount, 900)
+        self.assertGreater(estimate.data.order.amount, 0)
         self.assertEqual(estimate.data.type, "shipping_rail")
         self.assertGreater(
-            estimate.data.mass_g, 800
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_road_shipping_estimate_addresses(self):
@@ -290,7 +290,7 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping_road")
         self.assertGreater(
-            estimate.data.mass_g, 600
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_road_shipping_estimate_locodes(self):
@@ -304,7 +304,7 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping_road")
         self.assertGreater(
-            estimate.data.mass_g, 1_000
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_road_shipping_estimate_create_order(self):
@@ -318,10 +318,10 @@ class TestEstimatesApi(unittest.TestCase):
             freight_mass_g=21_933,
             origin_locode="USSEA",
         )
-        self.assertGreater(estimate.data.order.amount, 1_000)
+        self.assertGreater(estimate.data.order.amount, 0)
         self.assertEqual(estimate.data.type, "shipping_road")
         self.assertGreater(
-            estimate.data.mass_g, 800
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_sea_shipping_estimate_addresses(self):
@@ -339,7 +339,7 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping_sea")
         self.assertGreater(
-            estimate.data.mass_g, 600
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_sea_shipping_estimate_locodes(self):
@@ -353,7 +353,7 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.order, None)
         self.assertEqual(estimate.data.type, "shipping_sea")
         self.assertGreater(
-            estimate.data.mass_g, 1_000
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
     def test_create_sea_shipping_estimate_create_order(self):
@@ -367,10 +367,10 @@ class TestEstimatesApi(unittest.TestCase):
             freight_mass_g=22_210,
             origin_locode="USSEA",
         )
-        self.assertGreater(estimate.data.order.amount, 1_000)
+        self.assertGreater(estimate.data.order.amount, 0)
         self.assertEqual(estimate.data.type, "shipping_sea")
         self.assertGreater(
-            estimate.data.mass_g, 800
+            estimate.data.mass_g, 0
         )  # not setting an exact value since the mock values returned are randomized
 
 
