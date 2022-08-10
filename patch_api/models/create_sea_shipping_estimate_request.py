@@ -76,7 +76,7 @@ class CreateSeaShippingEstimateRequest(object):
         origin_locode=None,
         origin_postal_code=None,
         container_size_code=None,
-        emissions_scope="wtw",
+        emissions_scope="ttw",
         freight_mass_g=None,
         freight_volume_cubic_m=None,
         number_of_containers=None,

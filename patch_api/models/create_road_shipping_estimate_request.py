@@ -79,7 +79,7 @@ class CreateRoadShippingEstimateRequest(object):
         origin_postal_code=None,
         cargo_type="average_mixed",
         container_size_code=None,
-        emissions_scope="wtw",
+        emissions_scope="ttw",
         freight_mass_g=None,
         fuel_type="diesel",
         number_of_containers=None,
