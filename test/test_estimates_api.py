@@ -195,6 +195,27 @@ class TestEstimatesApi(unittest.TestCase):
             estimate.data.mass_g, 15_000
         )  # not setting an exact value since this is changing daily
 
+    def test_create_and_retrieve_ecommerce_estimate(self):
+        """Test case for create_ecommerce_estimate
+
+        Create an estimate based on the shipping distance, transportation method, and package mass  # noqa: E501
+        """
+        distance_m = 10000000
+        package_mass_g = 1000
+        transportation_method = "sea"
+        estimate = self.api.create_ecommerce_estimate(
+            distance_m=distance_m,
+            package_mass_g=package_mass_g,
+            transportation_method=transportation_method,
+            create_order=False,
+        )
+        self.assertEqual(estimate.data.order, None)
+        self.assertEqual(estimate.data.type, "ecommerce")
+        self.assertGreater(estimate.data.mass_g, 200)
+
+        retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
+        self.assertTrue(retrieved_estimate)
+
     def test_create_air_shipping_estimate_airport_iatas(self):
         """Test case for create_air_shipping_estimate
 

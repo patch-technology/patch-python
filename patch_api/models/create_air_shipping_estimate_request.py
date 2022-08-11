@@ -62,7 +62,7 @@ class CreateAirShippingEstimateRequest(object):
         aircraft_code=None,
         aircraft_type="unknown",
         freight_mass_g=None,
-        emissions_scope="wtw",
+        emissions_scope="ttw",
         project_id=None,
         create_order=False,
         local_vars_configuration=None,

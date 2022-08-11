@@ -71,7 +71,7 @@ class CreateRailShippingEstimateRequest(object):
         origin_postal_code=None,
         fuel_type="default",
         freight_mass_g=None,
-        emissions_scope="wtw",
+        emissions_scope="ttw",
         project_id=None,
         create_order=False,
         local_vars_configuration=None,

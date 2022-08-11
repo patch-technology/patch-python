@@ -22,6 +22,9 @@ from patch_api.models.create_air_shipping_estimate_request import (
 from patch_api.models.create_bitcoin_estimate_request import (
     CreateBitcoinEstimateRequest,
 )
+from patch_api.models.create_ecommerce_estimate_request import (
+    CreateEcommerceEstimateRequest,
+)
 from patch_api.models.create_ethereum_estimate_request import (
     CreateEthereumEstimateRequest,
 )
