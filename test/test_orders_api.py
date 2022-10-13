@@ -26,6 +26,7 @@ class TestOrdersApi(unittest.TestCase):
     def setUp(self):
         api_client = ApiClient(api_key=os.environ.get("SANDBOX_API_KEY"))
         self.api = api_client.orders  # noqa: E501
+        self.line_items_api = api_client.order_line_items  # noqa: E501
 
     def tearDown(self):
         self.api = None
@@ -35,29 +36,29 @@ class TestOrdersApi(unittest.TestCase):
 
         """Create an order
         """
-        order = self.api.create_order(mass_g=100)
+        order = self.api.create_order(amount=100, unit="g")
 
         self.assertTrue(order)
 
         self.assertIsInstance(order.data.created_at, datetime.datetime)
 
-        self.assertEqual(order.data.mass_g, 100)
+        self.assertEqual(order.data.amount, 100)
+        self.assertEqual(order.data.unit, "g")
 
         """Create an order on price
         """
-        order = self.api.create_order(total_price_cents_usd=100)
+        order = self.api.create_order(total_price=100, currency="USD")
 
         self.assertTrue(order)
-        self.assertEqual(
-            order.data.price_cents_usd + order.data.patch_fee_cents_usd, 100
-        )
+        self.assertEqual(order.data.price + order.data.patch_fee, 100)
 
         """Create an order in draft state
         """
-        order = self.api.create_order(mass_g=100, state="draft")
+        order = self.api.create_order(amount=100, unit="g", state="draft")
 
         self.assertTrue(order)
-        self.assertEqual(order.data.mass_g, 100)
+        self.assertEqual(order.data.amount, 100)
+        self.assertEqual(order.data.unit, "g")
         self.assertEqual(order.data.state, "draft")
 
     def test_retrieve_order(self):
@@ -65,11 +66,11 @@ class TestOrdersApi(unittest.TestCase):
 
         """Retrieve an order
         """
-        order = self.api.create_order(mass_g=100)
+        order = self.api.create_order(amount=100, unit="g")
         retrieved_order = self.api.retrieve_order(id=order.data.id)
 
         self.assertTrue(retrieved_order)
-        self.assertEqual(retrieved_order.data.mass_g, 100)
+        self.assertEqual(retrieved_order.data.amount, 100)
 
     def test_retrieve_orders(self):
         """Test case for retrieve_orders
@@ -86,16 +87,15 @@ class TestOrdersApi(unittest.TestCase):
             self.assertEqual(retrieved_order.production, False)
             self.assertEqual(retrieved_order.state, "placed")
             self.assertEqual(retrieved_order.metadata, {})
-            self.assertTrue(isinstance(retrieved_order.allocations, list))
 
     def test_create_and_retrieve_order_via_metadata(self):
         """Test case for create_order and retrieve_orders with metadata"""
-        mass_g = 100
+        amount = 100
         metadata = {"external_id": "abc-123"}
-        order = self.api.create_order(mass_g=mass_g, metadata=metadata)
+        order = self.api.create_order(amount=amount, unit="g", metadata=metadata)
 
         self.assertTrue(order)
-        self.assertEqual(order.data.mass_g, 100)
+        self.assertEqual(order.data.amount, 100)
         self.assertEqual(order.data.metadata, {"external_id": "abc-123"})
 
         retrieved_orders = self.api.retrieve_orders(
@@ -107,7 +107,7 @@ class TestOrdersApi(unittest.TestCase):
 
     def test_cancel_order_in_draft_state(self):
         """Test case for cancel_order on draft orders"""
-        order = self.api.create_order(mass_g=100, state="draft")
+        order = self.api.create_order(amount=100, unit="g", state="draft")
         self.assertEqual(order.data.state, "draft")
 
         cancelled_order = self.api.cancel_order(id=order.data.id)
@@ -115,7 +115,7 @@ class TestOrdersApi(unittest.TestCase):
 
     def test_create_order_with_vintage_year(self):
         """Test case for vintage_year on create order"""
-        order = self.api.create_order(mass_g=100, vintage_year=2022)
+        order = self.api.create_order(amount=100, unit="g", vintage_year=2022)
 
         self.assertTrue(order)
 
@@ -126,7 +126,8 @@ class TestOrdersApi(unittest.TestCase):
         self.assertTrue(order)
         self.assertEqual(order.data.amount, 100)
         self.assertEqual(order.data.unit, "g")
-        self.assertEqual(order.data.inventory[0].unit, "g")
+        self.assertEqual(order.data.line_items[0].amount, 100)
+        self.assertEqual(order.data.line_items[0].unit, "g")
 
     def test_create_order_with_total_price_and_currency(self):
         """Test case for total price and currency on create order"""
@@ -138,12 +139,12 @@ class TestOrdersApi(unittest.TestCase):
 
     def test_create_order_with_issued_to(self):
         """Test case for issued_to on create order"""
-        mass_g = 100
+        amount = 100
         issued_to = {"email": "sustainability@companyb.com", "name": "Company B"}
-        order = self.api.create_order(mass_g=mass_g, issued_to=issued_to)
+        order = self.api.create_order(amount=amount, unit="g", issued_to=issued_to)
 
         self.assertTrue(order)
-        self.assertEqual(order.data.mass_g, 100)
+        self.assertEqual(order.data.amount, 100)
         self.assertEqual(order.data.issued_to.email, "sustainability@companyb.com")
         self.assertEqual(order.data.issued_to.name, "Company B")
 
@@ -154,6 +155,64 @@ class TestOrdersApi(unittest.TestCase):
             retrieved_order.data.issued_to.email, "sustainability@companyb.com"
         )
         self.assertEqual(retrieved_order.data.issued_to.name, "Company B")
+
+    def test_create_empty_order_add_line_items(self):
+        """Test case for creating an empty draft order and adding/editing line items"""
+        # Create empty order
+        create_order_response = self.api.create_order(state="draft")
+
+        self.assertTrue(create_order_response.success)
+        self.assertEqual(create_order_response.data.price, 0)
+        self.assertEqual(create_order_response.data.amount, 0)
+        self.assertEqual(len(create_order_response.data.line_items), 0)
+
+        # Add project to order
+        order_id = create_order_response.data.id
+        project_id = "pro_test_2b67b11a030b66e0a6dd61a56b49079a"
+
+        create_line_item_response = self.line_items_api.create_order_line_item(
+            order_id=order_id, create_order_line_item_request={"project_id": project_id}
+        )
+
+        self.assertTrue(create_line_item_response.success)
+        self.assertEqual(create_line_item_response.data.amount, 0)
+
+        # Update amount on line item
+        line_item_id = create_line_item_response.data.id
+        update_order_line_item_response = self.line_items_api.update_order_line_item(
+            order_id=order_id,
+            serial_number=line_item_id,
+            update_order_line_item_request={"amount": 1000, "unit": "g"},
+        )
+
+        self.assertTrue(update_order_line_item_response.success)
+        self.assertEqual(update_order_line_item_response.data.id, line_item_id)
+        self.assertEqual(update_order_line_item_response.data.amount, 1000)
+        self.assertGreater(update_order_line_item_response.data.price, 0)
+
+        # Fetch order and check line item matches
+        retrieve_order_response = self.api.retrieve_order(id=order_id)
+        self.assertEqual(retrieve_order_response.data.id, order_id)
+        self.assertEqual(len(retrieve_order_response.data.line_items), 1)
+        self.assertEqual(retrieve_order_response.data.line_items[0].id, line_item_id)
+        self.assertEqual(retrieve_order_response.data.line_items[0].amount, 1000)
+
+        # Delete line item
+        delete_line_item_response = self.line_items_api.delete_order_line_item(
+            order_id=order_id, serial_number=line_item_id
+        )
+        self.assertTrue(delete_line_item_response.success)
+        self.assertEqual(delete_line_item_response.data, line_item_id)
+
+        # Fetch order and see it has no line items
+        retrieve_order_response = self.api.retrieve_order(id=order_id)
+        self.assertEqual(retrieve_order_response.data.id, order_id)
+        self.assertEqual(len(retrieve_order_response.data.line_items), 0)
+
+        # Delete order
+        delete_order_response = self.api.delete_order(uid=order_id)
+        self.assertTrue(delete_order_response.success)
+        self.assertEqual(delete_order_response.data, order_id)
 
 
 if __name__ == "__main__":
