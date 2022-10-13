@@ -85,14 +85,11 @@ class TestProjectsApi(unittest.TestCase):
             project = projects[0]
 
             self.assertEqual(project.production, False)
-            self.assertGreater(project.average_price_per_tonne_cents_usd, 0)
-            self.assertGreater(project.remaining_mass_g, 0)
             self.assertIsInstance(project.standard, object)
             self.assertIsInstance(project.name, str)
             self.assertTrue(project.description)
             self.assertIsInstance(project.country, str)
-            self.assertIsInstance(project.type, str)
-            self.assertIsInstance(project.developer, str)
+            self.assertIsInstance(project.project_partner, str)
             self.assertIsInstance(project.photos, list)
 
     def test_retrieve_biomass_projects(self):
@@ -105,7 +102,7 @@ class TestProjectsApi(unittest.TestCase):
         self.assertTrue(isinstance(projects, list))
 
         for project in projects:
-            self.assertEqual(project.type, project_type)
+            self.assertEqual(project.technology_type.slug, project_type)
 
     def test_retrieve_american_projects(self):
         """Test case for retrieve_projects with a country filter
@@ -131,7 +128,8 @@ class TestProjectsApi(unittest.TestCase):
         self.assertTrue(isinstance(projects, list))
 
         for project in projects:
-            self.assertTrue(project.remaining_mass_g >= minimum_available_mass)
+            remaining_amount = sum(inv.amount_available for inv in project.inventory)
+            self.assertTrue(remaining_amount >= minimum_available_mass)
 
     def test_retrieve_projects_language(self):
         """Test case for retrieve_projects with a type filter
