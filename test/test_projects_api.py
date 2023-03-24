@@ -59,6 +59,8 @@ class TestProjectsApi(unittest.TestCase):
         inventory = project.inventory
         self.assertTrue(isinstance(inventory, list))
         self.assertTrue(isinstance(inventory[0].vintage_year, int))
+        self.assertTrue(isinstance(inventory[0].vintage_start_year, int))
+        self.assertTrue(isinstance(inventory[0].vintage_end_year, int))
         self.assertTrue(isinstance(inventory[0].amount_available, int))
         self.assertTrue(isinstance(inventory[0].price, int))
         self.assertTrue(isinstance(inventory[0].currency, str))

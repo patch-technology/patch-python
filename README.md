@@ -32,7 +32,7 @@ pip install patch-api
 
 ### Requirements
 
-- Python 3.6.1
+- Python 3.10
 
 ## Usage
 
