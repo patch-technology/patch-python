@@ -153,7 +153,7 @@ class OrderLineItem(object):
     def vintage_year(self):
         """Gets the vintage_year of this OrderLineItem.  # noqa: E501
 
-        The year in which the climate impacts of the project occurred, or will occur.  # noqa: E501
+        DEPRECATED The year in which the climate impacts of the project occurred, or will occur.  # noqa: E501
 
         :return: The vintage_year of this OrderLineItem.  # noqa: E501
         :rtype: int
@@ -164,7 +164,7 @@ class OrderLineItem(object):
     def vintage_year(self, vintage_year):
         """Sets the vintage_year of this OrderLineItem.
 
-        The year in which the climate impacts of the project occurred, or will occur.  # noqa: E501
+        DEPRECATED The year in which the climate impacts of the project occurred, or will occur.  # noqa: E501
 
         :param vintage_year: The vintage_year of this OrderLineItem.  # noqa: E501
         :type: int
