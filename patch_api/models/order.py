@@ -274,10 +274,10 @@ class Order(object):
         if (
             self.local_vars_configuration.client_side_validation
             and amount is not None
-            and amount > 100000000000
+            and amount > 100000000000000
         ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `amount`, must be a value less than or equal to `100000000000`"
+                "Invalid value for `amount`, must be a value less than or equal to `100000000000000`"
             )  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation

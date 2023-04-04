@@ -79,6 +79,8 @@ class EstimatesApi(object):
         "origin_postal_code",
         "truck_weight_t",
         "vessel_imo",
+        "vintage_start_year",
+        "vintage_end_year",
     ]
 
     def __init__(self, api_client=None):
@@ -203,6 +205,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -399,6 +403,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -598,6 +604,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -794,6 +802,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -990,6 +1000,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1186,6 +1198,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1382,6 +1396,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1581,6 +1597,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1780,6 +1798,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1979,6 +1999,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -2175,6 +2197,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -2371,6 +2395,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -2561,6 +2587,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -2741,6 +2769,8 @@ class EstimatesApi(object):
         all_params.append("origin_postal_code")
         all_params.append("truck_weight_t")
         all_params.append("vessel_imo")
+        all_params.append("vintage_start_year")
+        all_params.append("vintage_end_year")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

@@ -36,6 +36,8 @@ class CreateOrderLineItemRequest(object):
     openapi_types = {
         "project_id": "str",
         "vintage_year": "int",
+        "vintage_start_year": "int",
+        "vintage_end_year": "int",
         "price": "int",
         "currency": "str",
         "amount": "int",
@@ -45,6 +47,8 @@ class CreateOrderLineItemRequest(object):
     attribute_map = {
         "project_id": "project_id",
         "vintage_year": "vintage_year",
+        "vintage_start_year": "vintage_start_year",
+        "vintage_end_year": "vintage_end_year",
         "price": "price",
         "currency": "currency",
         "amount": "amount",
@@ -55,6 +59,8 @@ class CreateOrderLineItemRequest(object):
         self,
         project_id=None,
         vintage_year=None,
+        vintage_start_year=None,
+        vintage_end_year=None,
         price=None,
         currency=None,
         amount=None,
@@ -68,6 +74,8 @@ class CreateOrderLineItemRequest(object):
 
         self._project_id = None
         self._vintage_year = None
+        self._vintage_start_year = None
+        self._vintage_end_year = None
         self._price = None
         self._currency = None
         self._amount = None
@@ -77,6 +85,8 @@ class CreateOrderLineItemRequest(object):
         if project_id is not None:
             self.project_id = project_id
         self.vintage_year = vintage_year
+        self.vintage_start_year = vintage_start_year
+        self.vintage_end_year = vintage_end_year
         self.price = price
         self.currency = currency
         self.amount = amount
@@ -139,6 +149,80 @@ class CreateOrderLineItemRequest(object):
             )  # noqa: E501
 
         self._vintage_year = vintage_year
+
+    @property
+    def vintage_start_year(self):
+        """Gets the vintage_start_year of this CreateOrderLineItemRequest.  # noqa: E501
+
+
+        :return: The vintage_start_year of this CreateOrderLineItemRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._vintage_start_year
+
+    @vintage_start_year.setter
+    def vintage_start_year(self, vintage_start_year):
+        """Sets the vintage_start_year of this CreateOrderLineItemRequest.
+
+
+        :param vintage_start_year: The vintage_start_year of this CreateOrderLineItemRequest.  # noqa: E501
+        :type: int
+        """
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vintage_start_year is not None
+            and vintage_start_year > 2100
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vintage_start_year`, must be a value less than or equal to `2100`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vintage_start_year is not None
+            and vintage_start_year < 1900
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vintage_start_year`, must be a value greater than or equal to `1900`"
+            )  # noqa: E501
+
+        self._vintage_start_year = vintage_start_year
+
+    @property
+    def vintage_end_year(self):
+        """Gets the vintage_end_year of this CreateOrderLineItemRequest.  # noqa: E501
+
+
+        :return: The vintage_end_year of this CreateOrderLineItemRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._vintage_end_year
+
+    @vintage_end_year.setter
+    def vintage_end_year(self, vintage_end_year):
+        """Sets the vintage_end_year of this CreateOrderLineItemRequest.
+
+
+        :param vintage_end_year: The vintage_end_year of this CreateOrderLineItemRequest.  # noqa: E501
+        :type: int
+        """
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vintage_end_year is not None
+            and vintage_end_year > 2100
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vintage_end_year`, must be a value less than or equal to `2100`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vintage_end_year is not None
+            and vintage_end_year < 1900
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vintage_end_year`, must be a value greater than or equal to `1900`"
+            )  # noqa: E501
+
+        self._vintage_end_year = vintage_end_year
 
     @property
     def price(self):
@@ -211,10 +295,10 @@ class CreateOrderLineItemRequest(object):
         if (
             self.local_vars_configuration.client_side_validation
             and amount is not None
-            and amount > 100000000000
+            and amount > 100000000000000
         ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `amount`, must be a value less than or equal to `100000000000`"
+                "Invalid value for `amount`, must be a value less than or equal to `100000000000000`"
             )  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation

@@ -14,7 +14,13 @@ jobs:
       - uses: psf/black@stable
       
   build-and-test:
-    runs-on: ubuntu-latest
+    # 03/27/23: it looks like there are issues with the tarballs for all python 3.6 versions
+    # that are on ubuntu-22.04 (ubuntu-latest at the time). To maintain python compatibility
+    # we're pinning ubuntu-20.04 so that we can properly run install python 3.6.
+    #
+    # As soon as this issue is addressed, we should put the image back to ubuntu-latest:
+    # https://github.com/actions/setup-python/issues/544
+    runs-on: ubuntu-20.04
     name: Python Library tests
     steps:
       - name: Check out code
@@ -24,6 +30,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.6'
+
       - name: Run tests
         env:
           SANDBOX_API_KEY: ${{ secrets.SANDBOX_API_KEY }}

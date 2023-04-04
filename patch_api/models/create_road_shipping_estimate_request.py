@@ -47,6 +47,7 @@ class CreateRoadShippingEstimateRequest(object):
         "fuel_type": "str",
         "number_of_containers": "int",
         "truck_weight_t": "int",
+        "carrier_scac": "str",
         "project_id": "str",
         "create_order": "bool",
     }
@@ -65,6 +66,7 @@ class CreateRoadShippingEstimateRequest(object):
         "fuel_type": "fuel_type",
         "number_of_containers": "number_of_containers",
         "truck_weight_t": "truck_weight_t",
+        "carrier_scac": "carrier_scac",
         "project_id": "project_id",
         "create_order": "create_order",
     }
@@ -84,6 +86,7 @@ class CreateRoadShippingEstimateRequest(object):
         fuel_type="diesel",
         number_of_containers=None,
         truck_weight_t=None,
+        carrier_scac=None,
         project_id=None,
         create_order=False,
         local_vars_configuration=None,
@@ -106,6 +109,7 @@ class CreateRoadShippingEstimateRequest(object):
         self._fuel_type = None
         self._number_of_containers = None
         self._truck_weight_t = None
+        self._carrier_scac = None
         self._project_id = None
         self._create_order = None
         self.discriminator = None
@@ -126,6 +130,7 @@ class CreateRoadShippingEstimateRequest(object):
         self.fuel_type = fuel_type
         self.number_of_containers = number_of_containers
         self.truck_weight_t = truck_weight_t
+        self.carrier_scac = carrier_scac
         self.project_id = project_id
         self.create_order = create_order
 
@@ -481,6 +486,27 @@ class CreateRoadShippingEstimateRequest(object):
             )  # noqa: E501
 
         self._truck_weight_t = truck_weight_t
+
+    @property
+    def carrier_scac(self):
+        """Gets the carrier_scac of this CreateRoadShippingEstimateRequest.  # noqa: E501
+
+
+        :return: The carrier_scac of this CreateRoadShippingEstimateRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._carrier_scac
+
+    @carrier_scac.setter
+    def carrier_scac(self, carrier_scac):
+        """Sets the carrier_scac of this CreateRoadShippingEstimateRequest.
+
+
+        :param carrier_scac: The carrier_scac of this CreateRoadShippingEstimateRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._carrier_scac = carrier_scac
 
     @property
     def project_id(self):

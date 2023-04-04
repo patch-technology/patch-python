@@ -90,10 +90,10 @@ class CreateMassEstimateRequest(object):
         if (
             self.local_vars_configuration.client_side_validation
             and mass_g is not None
-            and mass_g > 100000000000
+            and mass_g > 100000000000000
         ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `mass_g`, must be a value less than or equal to `100000000000`"
+                "Invalid value for `mass_g`, must be a value less than or equal to `100000000000000`"
             )  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation

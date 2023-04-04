@@ -37,6 +37,8 @@ class OrderLineItem(object):
         "id": "str",
         "project": "OrderLineItemProject",
         "vintage_year": "int",
+        "vintage_start_year": "int",
+        "vintage_end_year": "int",
         "amount": "int",
         "unit": "str",
         "price": "int",
@@ -47,6 +49,8 @@ class OrderLineItem(object):
         "id": "id",
         "project": "project",
         "vintage_year": "vintage_year",
+        "vintage_start_year": "vintage_start_year",
+        "vintage_end_year": "vintage_end_year",
         "amount": "amount",
         "unit": "unit",
         "price": "price",
@@ -58,6 +62,8 @@ class OrderLineItem(object):
         id=None,
         project=None,
         vintage_year=None,
+        vintage_start_year=None,
+        vintage_end_year=None,
         amount=None,
         unit=None,
         price=None,
@@ -72,6 +78,8 @@ class OrderLineItem(object):
         self._id = None
         self._project = None
         self._vintage_year = None
+        self._vintage_start_year = None
+        self._vintage_end_year = None
         self._amount = None
         self._unit = None
         self._price = None
@@ -82,6 +90,8 @@ class OrderLineItem(object):
             self.id = id
         self.project = project
         self.vintage_year = vintage_year
+        self.vintage_start_year = vintage_start_year
+        self.vintage_end_year = vintage_end_year
         self.amount = amount
         self.unit = unit
         self.price = price
@@ -168,6 +178,66 @@ class OrderLineItem(object):
             )  # noqa: E501
 
         self._vintage_year = vintage_year
+
+    @property
+    def vintage_start_year(self):
+        """Gets the vintage_start_year of this OrderLineItem.  # noqa: E501
+
+        The starting_year in which the climate impacts of the project occurred, or will occur.  # noqa: E501
+
+        :return: The vintage_start_year of this OrderLineItem.  # noqa: E501
+        :rtype: int
+        """
+        return self._vintage_start_year
+
+    @vintage_start_year.setter
+    def vintage_start_year(self, vintage_start_year):
+        """Sets the vintage_start_year of this OrderLineItem.
+
+        The starting_year in which the climate impacts of the project occurred, or will occur.  # noqa: E501
+
+        :param vintage_start_year: The vintage_start_year of this OrderLineItem.  # noqa: E501
+        :type: int
+        """
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vintage_start_year is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vintage_start_year`, must not be `None`"
+            )  # noqa: E501
+
+        self._vintage_start_year = vintage_start_year
+
+    @property
+    def vintage_end_year(self):
+        """Gets the vintage_end_year of this OrderLineItem.  # noqa: E501
+
+        The ending year in which the climate impacts of the project occurred, or will occur.  # noqa: E501
+
+        :return: The vintage_end_year of this OrderLineItem.  # noqa: E501
+        :rtype: int
+        """
+        return self._vintage_end_year
+
+    @vintage_end_year.setter
+    def vintage_end_year(self, vintage_end_year):
+        """Sets the vintage_end_year of this OrderLineItem.
+
+        The ending year in which the climate impacts of the project occurred, or will occur.  # noqa: E501
+
+        :param vintage_end_year: The vintage_end_year of this OrderLineItem.  # noqa: E501
+        :type: int
+        """
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vintage_end_year is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vintage_end_year`, must not be `None`"
+            )  # noqa: E501
+
+        self._vintage_end_year = vintage_end_year
 
     @property
     def amount(self):

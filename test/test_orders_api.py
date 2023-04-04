@@ -119,6 +119,16 @@ class TestOrdersApi(unittest.TestCase):
 
         self.assertTrue(order)
 
+    def test_create_order_with_vintage_start_year_and_vintage_end_year(self):
+        """Test case for vintage_start_year and vintage_end_year on
+        create order
+        """
+        order = self.api.create_order(
+            amount=100, unit="g", vintage_start_year=2023, vintage_end_year=2025
+        )
+
+        self.assertTrue(order)
+
     def test_create_order_with_amount_and_unit(self):
         """Test case for amount and unit on create order"""
         order = self.api.create_order(amount=100, unit="g")
@@ -196,6 +206,46 @@ class TestOrdersApi(unittest.TestCase):
         self.assertEqual(len(retrieve_order_response.data.line_items), 1)
         self.assertEqual(retrieve_order_response.data.line_items[0].id, line_item_id)
         self.assertEqual(retrieve_order_response.data.line_items[0].amount, 1000)
+
+        # Delete line item
+        delete_line_item_response = self.line_items_api.delete_order_line_item(
+            order_id=order_id, serial_number=line_item_id
+        )
+        self.assertTrue(delete_line_item_response.success)
+        self.assertEqual(delete_line_item_response.data, line_item_id)
+
+        # Add line item via vintage_start_year and vintage_end_year
+        create_order_line_item_response = self.line_items_api.create_order_line_item(
+            order_id=order_id,
+            create_order_line_item_request={
+                "amount": 3000,
+                "unit": "g",
+                "project_id": project_id,
+                "vintage_start_year": 2023,
+                "vintage_end_year": 2025,
+            },
+        )
+
+        self.assertTrue(create_order_line_item_response.success)
+        self.assertEqual(create_order_line_item_response.data.id, line_item_id)
+        self.assertEqual(create_order_line_item_response.data.amount, 3000)
+        self.assertEqual(create_order_line_item_response.data.vintage_start_year, 2023)
+        self.assertEqual(create_order_line_item_response.data.vintage_end_year, 2025)
+        self.assertGreater(create_order_line_item_response.data.price, 0)
+
+        # Fetch order and check line item matches
+        line_item_id = create_line_item_response.data.id
+        retrieve_order_response = self.api.retrieve_order(id=order_id)
+        self.assertEqual(retrieve_order_response.data.id, order_id)
+        self.assertEqual(len(retrieve_order_response.data.line_items), 1)
+        self.assertEqual(retrieve_order_response.data.line_items[0].id, line_item_id)
+        self.assertEqual(retrieve_order_response.data.line_items[0].amount, 3000)
+        self.assertEqual(
+            retrieve_order_response.data.line_items[0].vintage_start_year, 2023
+        )
+        self.assertEqual(
+            retrieve_order_response.data.line_items[0].vintage_end_year, 2025
+        )
 
         # Delete line item
         delete_line_item_response = self.line_items_api.delete_order_line_item(

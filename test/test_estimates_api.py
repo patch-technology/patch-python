@@ -89,7 +89,7 @@ class TestEstimatesApi(unittest.TestCase):
             create_order=False,
         )
         self.assertEqual(estimate.data.order, None)
-        self.assertEqual(estimate.data.type, "shipping")
+        self.assertEqual(estimate.data.type, "ecommerce")
         self.assertGreater(estimate.data.mass_g, 200)
 
         retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
