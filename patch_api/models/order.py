@@ -410,7 +410,7 @@ class Order(object):
     def registry_url(self):
         """Gets the registry_url of this Order.  # noqa: E501
 
-        The url of this order in the public registry.  # noqa: E501
+        The URL of this order in the public registry. Use this URL to access the order's accompanying certificate.  # noqa: E501
 
         :return: The registry_url of this Order.  # noqa: E501
         :rtype: str
@@ -421,7 +421,7 @@ class Order(object):
     def registry_url(self, registry_url):
         """Sets the registry_url of this Order.
 
-        The url of this order in the public registry.  # noqa: E501
+        The URL of this order in the public registry. Use this URL to access the order's accompanying certificate.  # noqa: E501
 
         :param registry_url: The registry_url of this Order.  # noqa: E501
         :type: str

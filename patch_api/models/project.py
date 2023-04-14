@@ -41,6 +41,7 @@ class Project(object):
         "mechanism": "str",
         "country": "str",
         "state": "str",
+        "issuance_type": "str",
         "latitude": "float",
         "longitude": "float",
         "project_partner": "str",
@@ -52,6 +53,7 @@ class Project(object):
         "technology_type": "TechnologyType",
         "highlights": "list[Highlight]",
         "inventory": "list[Inventory]",
+        "disclaimers": "list[Disclaimer]",
     }
 
     attribute_map = {
@@ -62,6 +64,7 @@ class Project(object):
         "mechanism": "mechanism",
         "country": "country",
         "state": "state",
+        "issuance_type": "issuance_type",
         "latitude": "latitude",
         "longitude": "longitude",
         "project_partner": "project_partner",
@@ -73,6 +76,7 @@ class Project(object):
         "technology_type": "technology_type",
         "highlights": "highlights",
         "inventory": "inventory",
+        "disclaimers": "disclaimers",
     }
 
     def __init__(
@@ -84,6 +88,7 @@ class Project(object):
         mechanism=None,
         country=None,
         state=None,
+        issuance_type=None,
         latitude=None,
         longitude=None,
         project_partner=None,
@@ -95,6 +100,7 @@ class Project(object):
         technology_type=None,
         highlights=None,
         inventory=None,
+        disclaimers=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
@@ -109,6 +115,7 @@ class Project(object):
         self._mechanism = None
         self._country = None
         self._state = None
+        self._issuance_type = None
         self._latitude = None
         self._longitude = None
         self._project_partner = None
@@ -120,6 +127,7 @@ class Project(object):
         self._technology_type = None
         self._highlights = None
         self._inventory = None
+        self._disclaimers = None
         self.discriminator = None
 
         self.id = id
@@ -130,6 +138,8 @@ class Project(object):
             self.mechanism = mechanism
         self.country = country
         self.state = state
+        if issuance_type is not None:
+            self.issuance_type = issuance_type
         self.latitude = latitude
         self.longitude = longitude
         self.project_partner = project_partner
@@ -143,6 +153,8 @@ class Project(object):
         self.technology_type = technology_type
         self.highlights = highlights
         self.inventory = inventory
+        if disclaimers is not None:
+            self.disclaimers = disclaimers
 
     @property
     def id(self):
@@ -332,6 +344,39 @@ class Project(object):
         """
 
         self._state = state
+
+    @property
+    def issuance_type(self):
+        """Gets the issuance_type of this Project.  # noqa: E501
+
+        The issuance type of the project. One of: ex-ante, ex-post.  # noqa: E501
+
+        :return: The issuance_type of this Project.  # noqa: E501
+        :rtype: str
+        """
+        return self._issuance_type
+
+    @issuance_type.setter
+    def issuance_type(self, issuance_type):
+        """Sets the issuance_type of this Project.
+
+        The issuance type of the project. One of: ex-ante, ex-post.  # noqa: E501
+
+        :param issuance_type: The issuance_type of this Project.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["ex-ante", "ex-post"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and issuance_type not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `issuance_type` ({0}), must be one of {1}".format(  # noqa: E501
+                    issuance_type, allowed_values
+                )
+            )
+
+        self._issuance_type = issuance_type
 
     @property
     def latitude(self):
@@ -609,6 +654,29 @@ class Project(object):
             )  # noqa: E501
 
         self._inventory = inventory
+
+    @property
+    def disclaimers(self):
+        """Gets the disclaimers of this Project.  # noqa: E501
+
+        An array of objects containing disclaimers about the project. Information, warnings, and critical concerns may be present.  # noqa: E501
+
+        :return: The disclaimers of this Project.  # noqa: E501
+        :rtype: list[Disclaimer]
+        """
+        return self._disclaimers
+
+    @disclaimers.setter
+    def disclaimers(self, disclaimers):
+        """Sets the disclaimers of this Project.
+
+        An array of objects containing disclaimers about the project. Information, warnings, and critical concerns may be present.  # noqa: E501
+
+        :param disclaimers: The disclaimers of this Project.  # noqa: E501
+        :type: list[Disclaimer]
+        """
+
+        self._disclaimers = disclaimers
 
     def to_dict(self):
         """Returns the model properties as a dict"""

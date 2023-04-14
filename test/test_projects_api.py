@@ -66,6 +66,17 @@ class TestProjectsApi(unittest.TestCase):
         self.assertTrue(isinstance(inventory[0].currency, str))
         self.assertTrue(isinstance(inventory[0].unit, str))
 
+        issuance_type = project.issuance_type
+        self.assertTrue(isinstance(issuance_type, str))
+
+        disclaimers = project.disclaimers
+        self.assertTrue(isinstance(disclaimers, list))
+        self.assertTrue(isinstance(disclaimers[0].header, str))
+        self.assertTrue(isinstance(disclaimers[0].body, str))
+        self.assertTrue(isinstance(disclaimers[0].severity, str))
+        self.assertTrue(isinstance(disclaimers[0].link_text, str))
+        self.assertTrue(isinstance(disclaimers[0].link_destination, str))
+
     def test_retrieve_project_language(self):
         """Test case for retrieve_project
 
