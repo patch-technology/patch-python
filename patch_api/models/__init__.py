@@ -49,6 +49,7 @@ from patch_api.models.create_vehicle_estimate_request import (
     CreateVehicleEstimateRequest,
 )
 from patch_api.models.delete_order_response import DeleteOrderResponse
+from patch_api.models.disclaimer import Disclaimer
 from patch_api.models.error_response import ErrorResponse
 from patch_api.models.estimate import Estimate
 from patch_api.models.estimate_list_response import EstimateListResponse
