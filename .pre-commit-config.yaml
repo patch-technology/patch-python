@@ -1,17 +1,17 @@
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
-    - id: check-yaml
-    - id: end-of-file-fixer
-    - id: trailing-whitespace
-    - id: name-tests-test
--   repo: https://github.com/pycqa/flake8
-    rev: '4.0.1'
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: name-tests-test
+  - repo: https://github.com/pycqa/flake8
+    rev: "4.0.1"
     hooks:
-    - id: flake8
-      args: ['--config=.flake8']
--   repo: https://github.com/psf/black
-    rev: 22.6.0
+      - id: flake8
+        args: ["--config=.flake8"]
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
     hooks:
-    - id: black
+      - id: black

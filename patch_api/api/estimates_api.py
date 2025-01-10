@@ -258,10 +258,10 @@ class EstimatesApi(object):
         )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
+        header_params["Content-Type"] = (
+            self.api_client.select_header_content_type(  # noqa: E501
+                ["application/json"]
+            )
         )  # noqa: E501
 
         # Authentication setting
@@ -456,10 +456,10 @@ class EstimatesApi(object):
         )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
+        header_params["Content-Type"] = (
+            self.api_client.select_header_content_type(  # noqa: E501
+                ["application/json"]
+            )
         )  # noqa: E501
 
         # Authentication setting
@@ -657,10 +657,10 @@ class EstimatesApi(object):
         )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
+        header_params["Content-Type"] = (
+            self.api_client.select_header_content_type(  # noqa: E501
+                ["application/json"]
+            )
         )  # noqa: E501
 
         # Authentication setting
@@ -855,10 +855,10 @@ class EstimatesApi(object):
         )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
+        header_params["Content-Type"] = (
+            self.api_client.select_header_content_type(  # noqa: E501
+                ["application/json"]
+            )
         )  # noqa: E501
 
         # Authentication setting
@@ -1053,10 +1053,10 @@ class EstimatesApi(object):
         )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
+        header_params["Content-Type"] = (
+            self.api_client.select_header_content_type(  # noqa: E501
+                ["application/json"]
+            )
         )  # noqa: E501
 
         # Authentication setting
@@ -1251,10 +1251,10 @@ class EstimatesApi(object):
         )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
+        header_params["Content-Type"] = (
+            self.api_client.select_header_content_type(  # noqa: E501
+                ["application/json"]
+            )
         )  # noqa: E501
 
         # Authentication setting
@@ -1452,10 +1452,10 @@ class EstimatesApi(object):
         )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
+        header_params["Content-Type"] = (
+            self.api_client.select_header_content_type(  # noqa: E501
+                ["application/json"]
+            )
         )  # noqa: E501
 
         # Authentication setting
@@ -1653,10 +1653,10 @@ class EstimatesApi(object):
         )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
+        header_params["Content-Type"] = (
+            self.api_client.select_header_content_type(  # noqa: E501
+                ["application/json"]
+            )
         )  # noqa: E501
 
         # Authentication setting
@@ -1854,10 +1854,10 @@ class EstimatesApi(object):
         )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
+        header_params["Content-Type"] = (
+            self.api_client.select_header_content_type(  # noqa: E501
+                ["application/json"]
+            )
         )  # noqa: E501
 
         # Authentication setting
