@@ -601,7 +601,7 @@ class Project(object):
     def highlights(self):
         """Gets the highlights of this Project.  # noqa: E501
 
-        An array of objects containing the highlight's slug, title, and a URL for the corresponding icon. A highlight's title is a short string that spotlights a characteristic about the project.  # noqa: E501
+        DEPRECATED. An array of objects containing the highlight's slug, title, and a URL for the corresponding icon. A highlight's title is a short string that spotlights a characteristic about the project. Highlights are deprecated and not populated for recent projects.  # noqa: E501
 
         :return: The highlights of this Project.  # noqa: E501
         :rtype: list[Highlight]
@@ -612,7 +612,7 @@ class Project(object):
     def highlights(self, highlights):
         """Sets the highlights of this Project.
 
-        An array of objects containing the highlight's slug, title, and a URL for the corresponding icon. A highlight's title is a short string that spotlights a characteristic about the project.  # noqa: E501
+        DEPRECATED. An array of objects containing the highlight's slug, title, and a URL for the corresponding icon. A highlight's title is a short string that spotlights a characteristic about the project. Highlights are deprecated and not populated for recent projects.  # noqa: E501
 
         :param highlights: The highlights of this Project.  # noqa: E501
         :type: list[Highlight]

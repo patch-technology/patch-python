@@ -24,9 +24,6 @@ from patch_api.models.create_bitcoin_estimate_request import (
 from patch_api.models.create_ecommerce_estimate_request import (
     CreateEcommerceEstimateRequest,
 )
-from patch_api.models.create_ethereum_estimate_request import (
-    CreateEthereumEstimateRequest,
-)
 from patch_api.models.create_flight_estimate_request import CreateFlightEstimateRequest
 from patch_api.models.create_hotel_estimate_request import CreateHotelEstimateRequest
 from patch_api.models.create_mass_estimate_request import CreateMassEstimateRequest
@@ -41,13 +38,7 @@ from patch_api.models.create_road_shipping_estimate_request import (
 from patch_api.models.create_sea_shipping_estimate_request import (
     CreateSeaShippingEstimateRequest,
 )
-from patch_api.models.create_shipping_estimate_request import (
-    CreateShippingEstimateRequest,
-)
 from patch_api.models.create_success_response import CreateSuccessResponse
-from patch_api.models.create_vehicle_estimate_request import (
-    CreateVehicleEstimateRequest,
-)
 from patch_api.models.delete_order_response import DeleteOrderResponse
 from patch_api.models.disclaimer import Disclaimer
 from patch_api.models.error_response import ErrorResponse

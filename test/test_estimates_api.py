@@ -74,62 +74,6 @@ class TestEstimatesApi(unittest.TestCase):
         )
         self.assertGreater(estimate_long.data.mass_g, estimate_short.data.mass_g)
 
-    def test_create_and_retrieve_shipping_estimate(self):
-        """Test case for create_shipping_estimate
-
-        Create an estimate based on the shipping distance, transportation method, and package mass  # noqa: E501
-        """
-        distance_m = 10000000
-        package_mass_g = 1000
-        transportation_method = "sea"
-        estimate = self.api.create_shipping_estimate(
-            distance_m=distance_m,
-            package_mass_g=package_mass_g,
-            transportation_method=transportation_method,
-            create_order=False,
-        )
-        self.assertEqual(estimate.data.order, None)
-        self.assertEqual(estimate.data.type, "ecommerce")
-        self.assertGreater(estimate.data.mass_g, 200)
-
-        retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
-        self.assertTrue(retrieved_estimate)
-
-    def test_create_and_retrieve_vehicle_estimate(self):
-        """Test case for create_vehicle_estimate
-
-        Create an estimate based on the vehicle distance, transportation method, and package mass  # noqa: E501
-        """
-        distance_m = 1000000
-        make = "Toyota"
-        model = "Corolla"
-        year = 1995
-        estimate = self.api.create_vehicle_estimate(
-            distance_m=distance_m, model=model, make=make, year=year
-        )
-        self.assertEqual(estimate.data.type, "vehicle")
-        self.assertGreater(estimate.data.mass_g, 50000)
-
-        retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
-        self.assertTrue(retrieved_estimate)
-
-    def test_create_and_retrieve_vehicle_estimate_best_match(self):
-        """Test case for create_vehicle_estimate
-
-        Create an estimate based on the vehicle with partial information  # noqa: E501
-        """
-        distance_m = 1000000
-        make = "Toyota"
-        model = "Corolla"
-        estimate = self.api.create_vehicle_estimate(
-            distance_m=distance_m, model=model, make=make
-        )
-        self.assertEqual(estimate.data.type, "vehicle")
-        self.assertGreater(estimate.data.mass_g, 50000)
-
-        retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
-        self.assertTrue(retrieved_estimate)
-
     def test_create_bitcoin_estimate_no_params(self):
         """Test case for create_bitcoin_estimate
 
@@ -155,32 +99,6 @@ class TestEstimatesApi(unittest.TestCase):
         self.assertEqual(estimate.data.type, "bitcoin")
         self.assertGreater(
             estimate.data.mass_g, 200
-        )  # not setting an exact value since this is changing daily
-
-    def test_create_bitcoin_estimate_transaction_value(self):
-        """Test case for create_bitcoin_estimate
-
-        Create an estimate based on an average daily balance  # noqa: E501
-        """
-        estimate1 = self.api.create_bitcoin_estimate(
-            average_daily_balance_btc_sats=100000
-        )
-        estimate2 = self.api.create_bitcoin_estimate(
-            average_daily_balance_btc_sats=1000000
-        )
-        self.assertEqual(estimate1.data.type, "bitcoin")
-        self.assertGreater(estimate2.data.mass_g, estimate1.data.mass_g)
-
-    def test_create_ethereum_estimate_transaction_value(self):
-        """Test case for create_ethereum_estimate
-
-        Create an estimate based on a transaction amount  # noqa: E501
-        """
-
-        estimate = self.api.create_ethereum_estimate(gas_used=1000)
-        self.assertEqual(estimate.data.type, "ethereum")
-        self.assertGreater(
-            estimate.data.mass_g, 1
         )  # not setting an exact value since this is changing daily
 
     def test_create_hotel_estimate(self):
