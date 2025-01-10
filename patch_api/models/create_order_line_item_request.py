@@ -134,10 +134,10 @@ class CreateOrderLineItemRequest(object):
         if (
             self.local_vars_configuration.client_side_validation
             and vintage_year is not None
-            and vintage_year > 2100
+            and vintage_year > 2225
         ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `vintage_year`, must be a value less than or equal to `2100`"
+                "Invalid value for `vintage_year`, must be a value less than or equal to `2225`"
             )  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
@@ -171,10 +171,10 @@ class CreateOrderLineItemRequest(object):
         if (
             self.local_vars_configuration.client_side_validation
             and vintage_start_year is not None
-            and vintage_start_year > 2100
+            and vintage_start_year > 2225
         ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `vintage_start_year`, must be a value less than or equal to `2100`"
+                "Invalid value for `vintage_start_year`, must be a value less than or equal to `2225`"
             )  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
@@ -208,10 +208,10 @@ class CreateOrderLineItemRequest(object):
         if (
             self.local_vars_configuration.client_side_validation
             and vintage_end_year is not None
-            and vintage_end_year > 2100
+            and vintage_end_year > 2225
         ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `vintage_end_year`, must be a value less than or equal to `2100`"
+                "Invalid value for `vintage_end_year`, must be a value less than or equal to `2225`"
             )  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
@@ -329,7 +329,7 @@ class CreateOrderLineItemRequest(object):
         :param unit: The unit of this CreateOrderLineItemRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = [None, "g", "Wh"]  # noqa: E501
+        allowed_values = [None, "g"]  # noqa: E501
         if (
             self.local_vars_configuration.client_side_validation
             and unit not in allowed_values
