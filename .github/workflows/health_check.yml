@@ -12,10 +12,10 @@ jobs:
         python: ['3.12']
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
         with:
           python-version: ${{ matrix.python }}
 
@@ -26,7 +26,7 @@ jobs:
 
       - name: Notify slack
         if: failure()
-        uses: kpritam/slack-job-status-action@v1
+        uses: kpritam/slack-job-status-action@54eea0dd141dd572d7fbbe96416e9c5d8ba57976 # v0.1.2
         with:
           job-status: ${{ job.status }}
           slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
