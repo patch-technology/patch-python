@@ -3,7 +3,7 @@ FROM python:3.8.6 AS base
 
 FROM base AS lint
 
-RUN pip install black
+RUN pip install black==24.4.2
 
 WORKDIR /data
 ENTRYPOINT ["black"]
@@ -24,7 +24,7 @@ ENTRYPOINT [ "python", "setup.py", "install" ]
 
 FROM dependencies as test
 
-COPY test-requirements.txt . 
+COPY test-requirements.txt .
 RUN pip install -r test-requirements.txt
 
 COPY . .
