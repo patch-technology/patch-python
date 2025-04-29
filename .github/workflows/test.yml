@@ -16,12 +16,6 @@ jobs:
           version: "24.10.0"
 
   build-and-test:
-    # 03/27/23: it looks like there are issues with the tarballs for all python 3.6 versions
-    # that are on ubuntu-22.04 (ubuntu-latest at the time). To maintain python compatibility
-    # we're pinning ubuntu-20.04 so that we can properly run install python 3.6.
-    #
-    # As soon as this issue is addressed, we should put the image back to ubuntu-latest:
-    # https://github.com/actions/setup-python/issues/544
     runs-on: ubuntu-latest
     name: Python Library tests
     steps:
@@ -31,7 +25,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@e9aba2c848f5ebd159c070c61ea2c4e2b122355e # v2.3.4
         with:
-          python-version: "3.6"
+          python-version: "3.8"
 
       - name: Run tests
         env:
