@@ -12,24 +12,15 @@ jobs:
       - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
       - uses: actions/setup-python@e9aba2c848f5ebd159c070c61ea2c4e2b122355e # v2.3.4
       - uses: psf/black@stable
-      
+        with:
+          version: "24.10.0"
+
   build-and-test:
-    # 03/27/23: it looks like there are issues with the tarballs for all python 3.6 versions
-    # that are on ubuntu-22.04 (ubuntu-latest at the time). To maintain python compatibility
-    # we're pinning ubuntu-20.04 so that we can properly run install python 3.6.
-    #
-    # As soon as this issue is addressed, we should put the image back to ubuntu-latest:
-    # https://github.com/actions/setup-python/issues/544
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Python Library tests
     steps:
       - name: Check out code
         uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
-
-      - name: Setup Python
-        uses: actions/setup-python@e9aba2c848f5ebd159c070c61ea2c4e2b122355e # v2.3.4
-        with:
-          python-version: '3.6'
 
       - name: Run tests
         env:

@@ -21,9 +21,6 @@ from patch_api.models.create_air_shipping_estimate_request import (
 from patch_api.models.create_bitcoin_estimate_request import (
     CreateBitcoinEstimateRequest,
 )
-from patch_api.models.create_ecommerce_estimate_request import (
-    CreateEcommerceEstimateRequest,
-)
 from patch_api.models.create_flight_estimate_request import CreateFlightEstimateRequest
 from patch_api.models.create_hotel_estimate_request import CreateHotelEstimateRequest
 from patch_api.models.create_mass_estimate_request import CreateMassEstimateRequest
