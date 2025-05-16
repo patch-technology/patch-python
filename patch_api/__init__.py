@@ -1,7 +1,5 @@
 # coding: utf-8
 
-# flake8: noqa
-
 """
     Patch API V2
 
@@ -15,7 +13,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "2.3.1"
+__version__ = "2.4.0"
 
 # import ApiClient
 from patch_api.api_client import ApiClient

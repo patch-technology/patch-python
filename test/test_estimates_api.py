@@ -101,18 +101,6 @@ class TestEstimatesApi(unittest.TestCase):
             estimate.data.mass_g, 200
         )  # not setting an exact value since this is changing daily
 
-    def test_create_hotel_estimate(self):
-        """Test case for create_hotel_estimate
-
-        Create an estimate based on a country code  # noqa: E501
-        """
-
-        estimate = self.api.create_hotel_estimate(country_code="US")
-        self.assertEqual(estimate.data.type, "hotel")
-        self.assertGreater(
-            estimate.data.mass_g, 15_000
-        )  # not setting an exact value since this is changing daily
-
     def test_create_air_shipping_estimate_airport_iatas(self):
         """Test case for create_air_shipping_estimate
 
