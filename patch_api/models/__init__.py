@@ -1,6 +1,5 @@
 # coding: utf-8
 
-# flake8: noqa
 """
     Patch API V2
 
@@ -22,7 +21,6 @@ from patch_api.models.create_bitcoin_estimate_request import (
     CreateBitcoinEstimateRequest,
 )
 from patch_api.models.create_flight_estimate_request import CreateFlightEstimateRequest
-from patch_api.models.create_hotel_estimate_request import CreateHotelEstimateRequest
 from patch_api.models.create_mass_estimate_request import CreateMassEstimateRequest
 from patch_api.models.create_order_line_item_request import CreateOrderLineItemRequest
 from patch_api.models.create_order_request import CreateOrderRequest
