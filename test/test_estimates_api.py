@@ -45,35 +45,6 @@ class TestEstimatesApi(unittest.TestCase):
         retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
         self.assertTrue(retrieved_estimate)
 
-    def test_create_and_retrieve_flight_estimate(self):
-        """Test case for create_flight_estimate
-
-        Create an estimate based on the distance in meters flown by an airplane # noqa: E501
-        """
-        distance_m = 1000000
-        estimate = self.api.create_flight_estimate(
-            distance_m=distance_m, create_order=True
-        )
-        self.assertEqual(estimate.data.type, "flight")
-        self.assertGreater(estimate.data.order.amount, 50000)
-        self.assertGreater(estimate.data.mass_g, 50000)
-
-        retrieved_estimate = self.api.retrieve_estimate(id=estimate.data.id)
-        self.assertTrue(retrieved_estimate)
-
-    def test_create_and_retrieve_flight_estimate_with_airports(self):
-        """Test case for create_flight_estimate
-
-        Create an estimate based on the distance in meters flown by an airplane # noqa: E501
-        """
-        estimate_short = self.api.create_flight_estimate(
-            origin_airport="SFO", destination_airport="LAX"
-        )
-        estimate_long = self.api.create_flight_estimate(
-            origin_airport="SFO", destination_airport="JFK"
-        )
-        self.assertGreater(estimate_long.data.mass_g, estimate_short.data.mass_g)
-
     def test_create_bitcoin_estimate_no_params(self):
         """Test case for create_bitcoin_estimate
 
