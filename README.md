@@ -135,27 +135,6 @@ patch.estimates.create_mass_estimate(mass_g=mass_g)
 project_id = 'pro_test_1234' # Pass in the project's ID
 patch.estimates.create_mass_estimate(mass_g=mass_g, project_id=project_id)
 
-# Create a flight estimate
-distance_m = 1_000_000 # Pass in the distance traveled in meters
-patch.estimates.create_flight_estimate(distance_m=distance_m)
-
-# Create an ecommerce estimate
-distance_m = 1_000_000 # Pass in the distance traveled in meters
-transportation_method = "rail"
-package_mass_g = 5000
-patch.estimates.create_ecommerce_estimate(
-  distance_m=distance_m,
-  transportation_method=transportation_method,
-  package_mass_g=package_mass_g
-)
-
-# Create a vehicle estimate
-distance_m = 1_000_000 # Pass in the distance traveled in meters
-make = "Toyota"
-model = "Corolla"
-year = 1995
-patch.estimates.create_vehicle_estimate(distance_m=distance_m, make=make, model=model, year=year)
-
 # Create a bitcoin estimate
 transaction_value_btc_sats = 1000 # [Optional] Pass in the transaction value in satoshis
 patch.estimates.create_bitcoin_estimate(transaction_value_btc_sats=transaction_value_btc_sats)
