@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removes `create_mass_estimate` and `create_bitcoin_estimate` method
 - Retires all remaining estimates functionalities
 
+## [2.5.0] - 2025-08-19
+
+### Removed
+
+- Removes `Patch::Estimate.create_flight_estimate` method
+
 ## [2.4.0] - 2025-05-16
 
 ### Removed

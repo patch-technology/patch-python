@@ -108,6 +108,43 @@ page = 1 # Pass in which page of orders you'd like
 patch.orders.retrieve_orders(page=page)
 ```
 
+<<<<<<< HEAD
+=======
+### Estimates
+
+Estimates allow API users to get a quote for the cost of compensating a certain amount of CO2. When creating an estimate, an order in the `draft` state will also be created, reserving the allocation of a project for 5 minutes. If you don't place your draft order within those 5 minutes, the order will automatically be cancelled.
+
+[API Reference](https://docs.patch.io/#/estimates)
+
+#### Examples
+
+```python
+import patch_api
+
+patch = patch_api.ApiClient(api_key=os.environ.get('SANDBOX_API_KEY'))
+
+# Create an estimate
+mass_g = 1_000_000 # Pass in the mass in grams (i.e. 1 metric tonne)
+patch.estimates.create_mass_estimate(mass_g=mass_g)
+
+## You can also specify a project-id field (optional) to be used instead of the preferred one
+project_id = 'pro_test_1234' # Pass in the project's ID
+patch.estimates.create_mass_estimate(mass_g=mass_g, project_id=project_id)
+
+# Create a bitcoin estimate
+transaction_value_btc_sats = 1000 # [Optional] Pass in the transaction value in satoshis
+patch.estimates.create_bitcoin_estimate(transaction_value_btc_sats=transaction_value_btc_sats)
+
+# Retrieve an estimate
+estimate_id = 'est_test_1234'
+patch.estimates.retrieve_estimate(id=estimate_id)
+
+# Retrieve a list of estimates
+page = 1 # Pass in which page of estimates you'd like
+patch.estimates.retrieve_estimates(page=page)
+```
+
+>>>>>>> origin/main
 ### Projects
 
 Projects are the ways Patch takes CO2 out of the air. They can represent reforestation, enhanced weathering, direct air carbon capture, etc. When you place an order via Patch, it is allocated to a project.
