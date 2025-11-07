@@ -1,5 +1,6 @@
 # coding: utf-8
 
+# flake8: noqa
 """
     Patch API V2
 
@@ -14,32 +15,12 @@
 from __future__ import absolute_import
 
 # import models into model package
-from patch_api.models.create_air_shipping_estimate_request import (
-    CreateAirShippingEstimateRequest,
-)
-from patch_api.models.create_bitcoin_estimate_request import (
-    CreateBitcoinEstimateRequest,
-)
-from patch_api.models.create_flight_estimate_request import CreateFlightEstimateRequest
-from patch_api.models.create_mass_estimate_request import CreateMassEstimateRequest
 from patch_api.models.create_order_line_item_request import CreateOrderLineItemRequest
 from patch_api.models.create_order_request import CreateOrderRequest
-from patch_api.models.create_rail_shipping_estimate_request import (
-    CreateRailShippingEstimateRequest,
-)
-from patch_api.models.create_road_shipping_estimate_request import (
-    CreateRoadShippingEstimateRequest,
-)
-from patch_api.models.create_sea_shipping_estimate_request import (
-    CreateSeaShippingEstimateRequest,
-)
 from patch_api.models.create_success_response import CreateSuccessResponse
 from patch_api.models.delete_order_response import DeleteOrderResponse
 from patch_api.models.disclaimer import Disclaimer
 from patch_api.models.error_response import ErrorResponse
-from patch_api.models.estimate import Estimate
-from patch_api.models.estimate_list_response import EstimateListResponse
-from patch_api.models.estimate_response import EstimateResponse
 from patch_api.models.highlight import Highlight
 from patch_api.models.inventory import Inventory
 from patch_api.models.meta_index_object import MetaIndexObject

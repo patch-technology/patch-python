@@ -25,7 +25,6 @@ from six.moves.urllib.parse import quote
 
 from patch_api.configuration import Configuration
 import patch_api.models
-from patch_api.api.estimates_api import EstimatesApi
 from patch_api.api.order_line_items_api import OrderLineItemsApi
 from patch_api.api.orders_api import OrdersApi
 from patch_api.api.projects_api import ProjectsApi
@@ -92,7 +91,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = "patch-python/2.4.0"
+        self.user_agent = "patch-python/2.6.0"
         # Set default Patch-Version
         self.patch_version = 2
 
@@ -107,7 +106,6 @@ class ApiClient(object):
             "projects": ProjectsApi,
             "orders": OrdersApi,
             "order_line_items": OrderLineItemsApi,
-            "estimates": EstimatesApi,
             "technology_types": TechnologyTypesApi,
         }[method]
         return resource(api_client=self)
