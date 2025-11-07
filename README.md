@@ -49,12 +49,6 @@ orders = patch.orders.retrieve_orders()
 
 ### Orders
 
-In Patch, orders represent a purchase of carbon offsets or negative emissions by mass.
-Place orders directly if you know the amount of carbon dioxide you would like to sequester.
-If you do not know how much to purchase, use an estimate.
-You can also create an order with a maximum desired price, and we'll allocate enough mass to
-fulfill the order for you.
-
 [API Reference](https://docs.patch.io/#/orders)
 
 #### Examples
@@ -114,6 +108,8 @@ page = 1 # Pass in which page of orders you'd like
 patch.orders.retrieve_orders(page=page)
 ```
 
+<<<<<<< HEAD
+=======
 ### Estimates
 
 Estimates allow API users to get a quote for the cost of compensating a certain amount of CO2. When creating an estimate, an order in the `draft` state will also be created, reserving the allocation of a project for 5 minutes. If you don't place your draft order within those 5 minutes, the order will automatically be cancelled.
@@ -148,6 +144,7 @@ page = 1 # Pass in which page of estimates you'd like
 patch.estimates.retrieve_estimates(page=page)
 ```
 
+>>>>>>> origin/main
 ### Projects
 
 Projects are the ways Patch takes CO2 out of the air. They can represent reforestation, enhanced weathering, direct air carbon capture, etc. When you place an order via Patch, it is allocated to a project.
