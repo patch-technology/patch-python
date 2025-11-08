@@ -3,9 +3,15 @@ on:
   release:
     types: [created]
 
+permissions:
+  id-token: write # Required for OIDC
+  deployments: write
+  contents: read
+
 jobs:
   publish:
     name: Publish
+    environment: production
     runs-on: ubuntu-latest
     env:
       TARGET_URL: https://pypi.org/project/patch-api/
@@ -49,9 +55,6 @@ jobs:
 
       - name: Publish a Python distribution to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
 
       - name: Update deployment status (success)
         if: success()
